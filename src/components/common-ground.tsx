@@ -938,7 +938,7 @@ function HomeVoteBanner() {
             : `Your ballot, explained — ${phase.days} ${phase.days === 1 ? "day" : "days"} to go.`}
         </h2>
         <p>
-          All 14 statewide measures, statewide races, and how to find your
+          All {election.measures.filter((m) => m.scope === "statewide").length} statewide measures, statewide races, and how to find your
           official personal ballot. No recommendations, no address required.
         </p>
       </div>

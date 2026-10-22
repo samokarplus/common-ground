@@ -484,7 +484,7 @@ function MeasureList() {
         <div className="eyebrow">COLORADO 2026 · BALLOT MEASURES</div>
         <h1>What you're being asked to decide.</h1>
         <p>
-          Every statewide measure, in ballot order by type. Constitutional amendments need 55% to pass; statutory propositions need a
+          Every statewide measure, grouped by type. Constitutional amendments need 55% to pass; statutory propositions need a
           simple majority.
         </p>
       </div>
