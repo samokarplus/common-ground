@@ -13,6 +13,7 @@ const changelog = (await readFile("data/changelog/federal-register.jsonl", "utf8
   .split("\n")
   .filter(Boolean)
   .map((l) => JSON.parse(l));
+const congress = await readJSON("data/congress/bills.json");
 const election = parseElection(await readJSON("data/elections/colorado-2026.json"));
 
 const ageDays = (iso: string) => Math.floor((now.getTime() - Date.parse(iso)) / 86400000);
@@ -24,6 +25,7 @@ const upcoming = election.deadlines
   .map((d) => ({ ...d, inDays: daysUntil(d.date, now, election.timeZone) }));
 const discrepancies = election.measures.flatMap((m) => (m.discrepancies || []).map((d) => ({ id: m.id, note: d })));
 const last = changelog.at(-1);
+const cgAge = ageDays(congress.retrievedAt);
 
 const health = {
   generatedOn: today,
@@ -36,6 +38,13 @@ const health = {
       lastChange: last
         ? { at: last.at, added: last.added.length, changed: last.changed.length, leftWindow: last.leftWindow.length, rejected: last.rejected.length }
         : null,
+    },
+    "govinfo-billstatus": {
+      snapshotRetrievedAt: congress.retrievedAt,
+      snapshotAgeDays: cgAge,
+      stale: cgAge > 3,
+      billCount: congress.bills.length,
+      ...(status["govinfo-billstatus"] || {}),
     },
     "colorado-2026-election": {
       dataVerifiedAt: election.dataVerifiedAt,
@@ -61,6 +70,7 @@ _Generated ${today} by \`npm run health\`. Regenerated automatically when the sc
 | Source | Last updated in repo | Age | Status |
 | --- | --- | --- | --- |
 | Federal Register (automated) | ${snapshot.retrievedAt.slice(0, 10)} | ${frAge} days | ${fr.stale ? "⚠️ stale (older than 3 days)" : "OK"}${status["federal-register"]?.lastError ? ` · last error: ${status["federal-register"].lastError} (${status["federal-register"].lastFailure})` : ""} |
+| Congress bills, GovInfo (script; scheduled run pending) | ${congress.retrievedAt.slice(0, 10)} | ${cgAge} days | ${health.sources["govinfo-billstatus"].stale ? "⚠️ stale (older than 3 days)" : "OK"}${status["govinfo-billstatus"]?.lastError ? ` · last error: ${status["govinfo-billstatus"].lastError} (${status["govinfo-billstatus"].lastFailure})` : ""} |
 | Colorado 2026 election (manual, reviewed) | ${election.dataVerifiedAt.slice(0, 10)} | ${co.ageDays} days | ${co.stale ? "⚠️ stale — re-verify against official sources" : "OK"} |
 
 "Last updated in repo" is when official content last changed. A check that finds no change writes nothing, so its time shows in the workflow run history, not here.

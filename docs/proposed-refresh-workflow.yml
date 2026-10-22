@@ -1,0 +1,63 @@
+# Daily refresh of the bundled official snapshots: Federal Register and Congress (GovInfo BILLSTATUS).
+# Each source runs independently: one failing does not block the other, and the job still ends red.
+# Cost: $0 — standard GitHub-hosted runner in a public repository; no artifacts,
+# caches, larger runners, or paid services. Scheduling is best-effort: GitHub may
+# delay or skip scheduled runs, and may pause schedules in inactive repositories.
+# Fallback: run `npm run refresh:fr` locally, or use "Run workflow" in the Actions tab.
+name: Refresh official research snapshots
+
+on:
+  schedule:
+    - cron: "17 13 * * *" # 13:17 UTC daily (morning in Colorado)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: research-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Federal Register — fetch, validate, and diff
+        id: fr
+        continue-on-error: true
+        run: npm run refresh:fr
+      - name: Congress (GovInfo BILLSTATUS) — fetch, validate, and diff
+        id: congress
+        continue-on-error: true
+        run: npm run refresh:congress
+      - name: Detect changes
+        id: diff
+        run: |
+          if [ -z "$(git status --porcelain -- data/)" ]; then echo "changed=false" >> "$GITHUB_OUTPUT"; else echo "changed=true" >> "$GITHUB_OUTPUT"; fi
+      - name: Verify before publishing
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          npm test
+          npm run lint
+          npm run health
+          npm run build
+          npm run scan
+      - name: Commit and push
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          git config user.name "common-ground-research-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/ docs/
+          git commit -m "Refresh official research snapshots (Federal Register, Congress)"
+          git push
+      - name: Fail the run if any source failed
+        if: steps.fr.outcome == 'failure' || steps.congress.outcome == 'failure'
+        run: |
+          echo "Federal Register: ${{ steps.fr.outcome }}; Congress: ${{ steps.congress.outcome }}"
+          exit 1

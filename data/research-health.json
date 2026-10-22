@@ -2,10 +2,24 @@
   "generatedOn": "2026-10-22",
   "sources": {
     "federal-register": {
-      "snapshotRetrievedAt": "2026-10-22T20:15:29.276Z",
+      "snapshotRetrievedAt": "2026-10-22T22:59:45.615Z",
       "snapshotAgeDays": 0,
       "stale": false,
-      "lastChange": null
+      "lastSuccess": "2026-10-22",
+      "lastChange": {
+        "at": "2026-10-22T22:59:45.615Z",
+        "added": 0,
+        "changed": 40,
+        "leftWindow": 0,
+        "rejected": 0
+      }
+    },
+    "govinfo-billstatus": {
+      "snapshotRetrievedAt": "2026-10-22T23:01:40.418Z",
+      "snapshotAgeDays": 0,
+      "stale": false,
+      "billCount": 60,
+      "lastSuccess": "2026-10-22"
     },
     "colorado-2026-election": {
       "dataVerifiedAt": "2026-10-22T22:30:00Z",

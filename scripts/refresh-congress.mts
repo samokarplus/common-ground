@@ -2,9 +2,12 @@
 // Usage: npm run refresh:congress   (add --dry-run to report without writing)
 // Takes the most recently updated bills per type. Leaves the snapshot untouched on any failure.
 import { readFile, writeFile, mkdir } from "node:fs/promises";
-import { parseBillStatus, type Bill } from "../src/lib/congress.ts";
+import { diffBills, parseBillStatus, type Bill } from "../src/lib/congress.ts";
 
 const OUT = "data/congress/bills.json";
+const CHANGELOG = "data/changelog/congress.jsonl";
+const HEALTH = "data/source-status.json";
+const ID = "govinfo-billstatus";
 const CONGRESS = 119;
 const TYPES = ["hr", "s", "hjres", "sjres"];
 const PER_TYPE = 15;
@@ -28,6 +31,23 @@ async function get(url: string, accept?: string, attempts = 3): Promise<string> 
 
 const parseStamp = (s: string) => Date.parse(s.replace(/(\d+)-(\w+)-(\d+) /, "$1 $2 $3 ") + " UTC") || 0;
 
+type Status = Record<string, { lastSuccess?: string; lastFailure?: string; lastError?: string; lastChange?: string }>;
+async function recordStatus(patch: Status[string]) {
+  if (dryRun) return;
+  let status: Status = {};
+  try {
+    status = JSON.parse(await readFile(HEALTH, "utf8"));
+  } catch {
+    /* first run */
+  }
+  const prev = status[ID] || {};
+  const next = { ...prev, ...patch };
+  if (JSON.stringify(prev) === JSON.stringify(next)) return;
+  status[ID] = next;
+  await writeFile(HEALTH, JSON.stringify(status, null, 2) + "\n");
+}
+const today = new Date().toISOString().slice(0, 10);
+
 try {
   const bills: Bill[] = [];
   for (const t of TYPES) {
@@ -44,7 +64,7 @@ try {
     }
   }
   bills.sort((a, b) => b.updateDate.localeCompare(a.updateDate));
-  let prev: { bills?: unknown } = {};
+  let prev: { bills?: Bill[] } = {};
   try {
     prev = JSON.parse(await readFile(OUT, "utf8"));
   } catch {
@@ -52,6 +72,7 @@ try {
   }
   if (JSON.stringify(prev.bills) === JSON.stringify(bills)) {
     console.log("No change in official bill data. Nothing written.");
+    await recordStatus({ lastSuccess: today, lastError: undefined });
   } else if (dryRun) {
     console.log(`Dry run: would write ${bills.length} bills.`);
   } else {
@@ -65,9 +86,15 @@ try {
       bills,
     };
     await writeFile(OUT, JSON.stringify(snapshot, null, 2) + "\n");
+    const changes = diffBills(prev.bills ?? [], bills);
+    await mkdir("data/changelog", { recursive: true });
+    const log = (await readFile(CHANGELOG, "utf8").catch(() => "")) + JSON.stringify({ at: snapshot.retrievedAt, changes }) + "\n";
+    await writeFile(CHANGELOG, log);
+    await recordStatus({ lastSuccess: today, lastChange: snapshot.retrievedAt, lastError: undefined });
     console.log(`Wrote ${bills.length} bills to ${OUT}.`);
   }
 } catch (e) {
   console.error(`GovInfo unavailable or unparseable: ${(e as Error).message}. Snapshot left unchanged.`);
+  await recordStatus({ lastFailure: today, lastError: (e as Error).message });
   process.exit(1);
 }

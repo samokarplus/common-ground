@@ -141,8 +141,8 @@ export const SOURCE_REGISTRY: SourceEntry[] = [
     format: "XML bulk data",
     access: "Keyless bulk download",
     updateFrequency: "Several times daily",
-    integration: "planned",
+    integration: "manual-reviewed",
     terms: "U.S. government work; public domain",
-    knownGaps: "Not yet integrated; candidate keyless source for the Congress tracker.",
+    knownGaps: "Refresh script exists (npm run refresh:congress) but is run by hand until the owner applies docs/proposed-refresh-workflow.yml (needs a token with workflow scope). Snapshot holds only the 15 most recently updated bills of each type (H.R., S., H.J.Res., S.J.Res.) of the 119th Congress; no concurrent/simple resolutions; vote tallies not parsed; status is derived from the action log.",
   },
 ];

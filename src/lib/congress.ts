@@ -145,3 +145,19 @@ export function parseBillStatus(xml: string): Bill {
     url: txt(bill, "legislationUrl"),
   });
 }
+
+export type BillChange = { id: string; kind: "new" | "status" | "action"; from?: string; to: string };
+
+/** Meaningful differences between two snapshots: new bills, status changes, new latest actions. */
+export function diffBills(prev: Bill[], next: Bill[]): BillChange[] {
+  const before = new Map(prev.map((b) => [b.id, b]));
+  const out: BillChange[] = [];
+  for (const b of next) {
+    const p = before.get(b.id);
+    if (!p) out.push({ id: b.id, kind: "new", to: b.status });
+    else if (p.status !== b.status) out.push({ id: b.id, kind: "status", from: p.status, to: b.status });
+    else if (p.latestAction?.text !== b.latestAction?.text || p.latestAction?.date !== b.latestAction?.date)
+      out.push({ id: b.id, kind: "action", from: p.latestAction?.text, to: b.latestAction?.text ?? "" });
+  }
+  return out;
+}

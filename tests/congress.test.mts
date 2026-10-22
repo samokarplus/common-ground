@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { test } from "node:test";
-import { mapStatus, parseBillStatus, stripHtml } from "../src/lib/congress.ts";
+import { diffBills, mapStatus, parseBillStatus, stripHtml } from "../src/lib/congress.ts";
 
 const fixture = readFileSync(new URL("./fixtures/billstatus-fixture.xml", import.meta.url), "utf8");
 
@@ -35,4 +35,14 @@ test("status mapping is conservative", () => {
 
 test("rejects non-BILLSTATUS input", () => {
   assert.throws(() => parseBillStatus("<html></html>"));
+});
+
+test("diffBills reports new bills, status changes and new actions only", () => {
+  const a = parseBillStatus(fixture);
+  const b = { ...a, id: "119-hr-1", number: 1 };
+  assert.deepEqual(diffBills([a], [a]), []);
+  assert.deepEqual(diffBills([a], [a, b]).map((c) => c.kind), ["new"]);
+  assert.deepEqual(diffBills([a], [{ ...a, status: "enacted" }])[0], { id: a.id, kind: "status", from: "passed-one-chamber", to: "enacted" });
+  const moved = { ...a, latestAction: { date: "2026-02-01", text: "Something new" } };
+  assert.equal(diffBills([a], [moved])[0].kind, "action");
 });

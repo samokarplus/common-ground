@@ -7,13 +7,14 @@ _Generated 2026-10-22 by `npm run health`. Regenerated automatically when the sc
 | Source | Last updated in repo | Age | Status |
 | --- | --- | --- | --- |
 | Federal Register (automated) | 2026-10-22 | 0 days | OK |
+| Congress bills, GovInfo (script; scheduled run pending) | 2026-10-22 | 0 days | OK |
 | Colorado 2026 election (manual, reviewed) | 2026-10-22 | 0 days | OK |
 
 "Last updated in repo" is when official content last changed. A check that finds no change writes nothing, so its time shows in the workflow run history, not here.
 
 ## Latest Federal Register change
 
-No changes recorded yet.
+2026-10-22T22:59:45.615Z: 0 new, 40 updated, 0 left the newest-40 window, 0 rejected as invalid.
 
 ## Editorial review queue (Colorado measures)
 
