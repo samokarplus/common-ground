@@ -45,7 +45,7 @@ function Explainer() {
         <h1>How a federal bill becomes law.</h1>
         <p>General civics guidance, simplified. Real bills often take detours: they are folded into other bills, attached as amendments, or passed through special procedures such as budget reconciliation.</p>
       </div>
-      <ol className="steps">
+      <ol className="process-steps">
         {steps.map(([t, d], i) => (
           <li key={t}>
             <h3>

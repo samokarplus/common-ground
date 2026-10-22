@@ -2096,7 +2096,7 @@ function Atlas() {
             <svg
               viewBox="0 0 800 510"
               className="graph"
-              role="img"
+              role="group"
               aria-label="Interactive philosophy reading map. Use the accessible list for keyboard navigation."
               onPointerDown={(e) => {
                 if ((e.target as SVGElement).tagName === "svg") {

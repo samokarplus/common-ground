@@ -3,7 +3,7 @@
   --paper: #f9f9f5;
   --white: #fffefa;
   --ink: #263c35;
-  --muted: #6f7770;
+  --muted: #5c655f;
   --green: #225949;
   --line: #e2e5db;
   --soft: #edf1e8;
@@ -132,7 +132,7 @@ button {
   margin: 0 7px 48px;
 }
 .brand-period {
-  color: #aa8c51;
+  color: #7d673b;
 }
 .brand-symbol {
   position: relative;
@@ -154,13 +154,13 @@ button {
 }
 .nav-label,
 .eyebrow {
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 1.65px;
   font-weight: 650;
-  color: #6d7e6b;
+  color: #55655a;
 }
 .nav-label {
-  font-size: 8px;
+  font-size: 12px;
   letter-spacing: 1.35px;
   padding-left: 13px;
   margin-bottom: 13px;
@@ -174,7 +174,7 @@ button {
   font-weight: 500;
   margin-bottom: 4px;
   border-radius: 5px;
-  color: #6b756b;
+  color: #4f5a52;
 }
 .nav-link.active {
   color: #245546;
@@ -189,7 +189,7 @@ button {
 }
 .count {
   margin-left: auto;
-  font-size: 10px;
+  font-size: 12px;
 }
 .sidebar-bottom {
   margin-top: auto;
@@ -198,12 +198,12 @@ button {
 .sidebar-bottom > a {
   display: flex;
   gap: 9px;
-  font-size: 10px;
-  color: #6b756b;
+  font-size: 12px;
+  color: #646d64;
   margin-top: 17px;
 }
 .independent {
-  font-size: 11px;
+  font-size: 12px;
   color: #445c4c;
   font-weight: 550;
   border-bottom: 1px solid #dce1d3;
@@ -211,7 +211,7 @@ button {
   margin-bottom: 22px;
 }
 .independent p {
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.8;
   font-weight: 400;
   margin: 8px 0 0 12px;
@@ -229,8 +229,8 @@ button {
   background: #a5aaa0;
 }
 .version {
-  font-size: 7px;
-  color: #92998b;
+  font-size: 12px;
+  color: #666b61;
   letter-spacing: 1.1px;
   margin-top: 27px;
 }
@@ -251,8 +251,8 @@ button {
   display: flex;
   align-items: center;
   gap: 12px;
-  font-size: 10px;
-  color: #8a9189;
+  font-size: 12px;
+  color: #666b65;
 }
 .breadcrumb strong {
   font-weight: 500;
@@ -263,24 +263,24 @@ button {
   display: flex;
   align-items: center;
   gap: 9px;
-  color: #8b9288;
+  color: #666c64;
   width: 300px;
 }
 .global-search input {
   border: none;
   background: transparent;
   width: 100%;
-  font-size: 10px;
+  font-size: 12px;
   outline: 0;
 }
 .global-search kbd {
   border: 1px solid var(--line);
   border-radius: 4px;
   padding: 0 5px;
-  font-size: 10px;
+  font-size: 12px;
 }
 .top-bookmark {
-  color: #7c8877;
+  color: #636c5f;
   border-left: 1px solid var(--line);
   padding-left: 23px;
 }
@@ -290,11 +290,11 @@ button {
   width: 29px;
   height: 29px;
   background: #e9ede0;
-  font-size: 9px;
+  font-size: 12px;
   display: grid;
   place-items: center;
   font-weight: 600;
-  color: #66785e;
+  color: #4d5f46;
 }
 .main-content {
   max-width: 1460px;
@@ -304,21 +304,21 @@ button {
 .edition-line {
   display: flex;
   justify-content: space-between;
-  font-size: 9px;
-  color: #8a9286;
+  font-size: 12px;
+  color: #666c63;
   letter-spacing: 0.3px;
 }
 .live-status {
   display: flex;
   align-items: center;
-  font-size: 9px;
-  color: #648061;
+  font-size: 12px;
+  color: #577055;
 }
 .home-intro {
   padding: 39px 0 36px;
 }
 .home-intro .eyebrow {
-  font-size: 9px;
+  font-size: 12px;
   margin-bottom: 15px;
 }
 .home-intro h1 {
@@ -328,13 +328,13 @@ button {
 }
 .home-intro h1 em {
   font-style: normal;
-  color: #718268;
+  color: #616f59;
 }
 .home-intro > p {
   font-size: 12px;
   line-height: 1.85;
   margin: 16px 0 0;
-  color: #788073;
+  color: #646b60;
 }
 .topic-tabs {
   display: flex;
@@ -347,8 +347,8 @@ button {
 }
 .topic-tabs button {
   padding: 12px 0 13px;
-  font-size: 10px;
-  color: #7c8477;
+  font-size: 12px;
+  color: #656c61;
   border-bottom: 2px solid transparent;
   flex-shrink: 0;
 }
@@ -358,8 +358,8 @@ button {
   font-weight: 650;
 }
 .no-algorithm {
-  font-size: 8px;
-  color: #8b9385;
+  font-size: 12px;
+  color: #666c62;
   display: flex;
   gap: 6px;
   margin-left: auto;
@@ -389,8 +389,8 @@ button {
   display: flex;
   align-items: center;
   gap: 7px;
-  color: #6c7f61;
-  font-size: 9px;
+  color: #5f6f55;
+  font-size: 12px;
 }
 .lead-card {
   border: 1px solid #e0e4d7;
@@ -414,7 +414,7 @@ button {
   position: absolute;
   bottom: 13px;
   left: 21px;
-  font-size: 7px;
+  font-size: 12px;
   letter-spacing: 1.8px;
   color: #f8f8ed;
   background: #415b47b8;
@@ -428,8 +428,8 @@ button {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 8px;
-  color: #8a9084;
+  font-size: 12px;
+  color: #686d64;
   margin-bottom: 9px;
 }
 .card-meta .icon-button {
@@ -437,7 +437,7 @@ button {
 }
 .tag {
   display: inline-block;
-  font-size: 8px;
+  font-size: 12px;
   letter-spacing: 0.4px;
   padding: 3px 7px;
   background: #ecf0e4;
@@ -454,7 +454,7 @@ button {
   max-width: 600px;
 }
 .lead-content p {
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.8;
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -472,16 +472,16 @@ button {
   gap: 10px;
 }
 .source-badge {
-  font-size: 7px;
+  font-size: 12px;
   letter-spacing: 0.7px;
-  color: #6e8260;
+  color: #5e6f52;
   display: inline-flex;
   align-items: center;
   gap: 5px;
   font-weight: 550;
 }
 .lead-footer > a {
-  font-size: 9px;
+  font-size: 12px;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -499,7 +499,7 @@ button {
   justify-content: center;
   background: #e9eee0;
   border: 1px solid #e2e6d8;
-  color: #6d8460;
+  color: #5d7152;
   width: 45px;
   height: 47px;
   border-radius: 5px;
@@ -508,7 +508,7 @@ button {
 }
 .action-icon.gold {
   background: #f1eddf;
-  color: #9e895b;
+  color: #786845;
   border-color: #e8e1cf;
 }
 .action-text {
@@ -522,27 +522,27 @@ button {
   color: #344539;
 }
 .action-text p {
-  font-size: 9px;
+  font-size: 12px;
   margin: 6px 0;
-  color: #93998e;
+  color: #666b63;
   line-height: 1.5;
 }
 .action-text .card-meta {
   margin: 0 0 6px;
 }
 .type-label {
-  color: #68845b;
+  color: #59714e;
   font-weight: 500;
-  font-size: 8px;
+  font-size: 12px;
 }
 .gold-text {
-  color: #9b844d;
+  color: #7b693d;
 }
 .icon-button {
   display: inline-grid;
   place-items: center;
   background: transparent;
-  color: #87907f;
+  color: #666d60;
   padding: 5px;
   border-radius: 4px;
   align-self: start;
@@ -557,7 +557,7 @@ button {
   margin-top: 0;
 }
 .source-badge.small {
-  font-size: 6px;
+  font-size: 12px;
   letter-spacing: 0.5px;
 }
 .source-badge.small svg {
@@ -587,7 +587,7 @@ button {
 }
 .topic-icon {
   display: block;
-  color: #84916d;
+  color: #646e52;
   margin: 2px 0 16px;
 }
 .topic-icon svg {
@@ -595,7 +595,7 @@ button {
   stroke-width: 1.25;
 }
 .topic-card .eyebrow {
-  font-size: 7px;
+  font-size: 12px;
   letter-spacing: 1px;
 }
 .topic-card h3 {
@@ -606,10 +606,10 @@ button {
   margin: 8px 0 18px;
 }
 .topic-card > span:last-child {
-  font-size: 7px;
+  font-size: 12px;
   display: flex;
   justify-content: space-between;
-  color: #748368;
+  color: #616e57;
 }
 .right-rail {
   padding-top: 32px;
@@ -626,7 +626,7 @@ button {
   display: grid;
   place-items: center;
   height: 95px;
-  color: #859778;
+  color: #626f58;
   margin: 1px 0 20px;
 }
 .orbit {
@@ -643,7 +643,7 @@ button {
   opacity: 0.65;
 }
 .values-invite .eyebrow {
-  font-size: 6.5px;
+  font-size: 12px;
   letter-spacing: 1px;
   margin-bottom: 13px;
 }
@@ -654,10 +654,10 @@ button {
   letter-spacing: -0.3px;
 }
 .values-invite p {
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.9;
   margin: 14px 0 19px;
-  color: #7b8970;
+  color: #626d59;
 }
 .button {
   display: inline-flex;
@@ -666,7 +666,7 @@ button {
   gap: 12px;
   border-radius: 4px;
   padding: 11px 17px;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 500;
   line-height: 1.5;
   border: 1px solid transparent;
@@ -692,14 +692,14 @@ button {
 }
 .values-invite .button {
   width: 100%;
-  font-size: 9px;
+  font-size: 12px;
   justify-content: space-between;
   padding: 11px 14px;
 }
 .micro {
   display: block;
-  color: #8c9881;
-  font-size: 7px;
+  color: #646d5c;
+  font-size: 12px;
   margin-top: 11px;
 }
 .briefing {
@@ -709,7 +709,7 @@ button {
   margin-top: 25px;
 }
 .briefing .eyebrow {
-  font-size: 7px;
+  font-size: 12px;
   letter-spacing: 1px;
   display: flex;
   align-items: center;
@@ -721,12 +721,12 @@ button {
   line-height: 1.2;
 }
 .briefing p {
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.8;
   margin: 12px 0 15px;
 }
 .briefing a {
-  font-size: 9px;
+  font-size: 12px;
   display: flex;
   gap: 12px;
   align-items: center;
@@ -735,7 +735,7 @@ button {
   padding: 27px 5px;
 }
 .source-promise > svg {
-  color: #81916e;
+  color: #626e53;
   margin-bottom: 12px;
 }
 .source-promise h3 {
@@ -745,12 +745,12 @@ button {
   line-height: 1.2;
 }
 .source-promise p {
-  font-size: 10px;
+  font-size: 12px;
   margin-top: 12px;
   line-height: 1.85;
 }
 .source-promise a {
-  font-size: 9px;
+  font-size: 12px;
 }
 .bottom-note {
   display: flex;
@@ -773,8 +773,8 @@ button {
 }
 .bottom-note p {
   margin: 0;
-  font-size: 9px;
-  color: #7b8573;
+  font-size: 12px;
+  color: #646d5e;
 }
 .bottom-note p strong {
   font-weight: 500;
@@ -782,8 +782,8 @@ button {
 }
 .bottom-note > span:last-child {
   margin-left: auto;
-  font-size: 7px;
-  color: #919a87;
+  font-size: 12px;
+  color: #656b5e;
 }
 footer {
   padding: 24px 0;
@@ -792,8 +792,8 @@ footer {
   display: flex;
   gap: 20px;
   align-items: center;
-  color: #8a9383;
-  font-size: 8px;
+  color: #5c655f;
+  font-size: 12px;
 }
 footer > span {
   margin-right: auto;
@@ -837,8 +837,8 @@ footer > span {
   background: #edf1e6;
   border: 1px solid #dce5d3;
   border-radius: 5px;
-  font-size: 11px;
-  color: #65755d;
+  font-size: 13px;
+  color: #3f4a43;
   margin: 16px 0 24px;
   line-height: 1.8;
 }
@@ -847,7 +847,7 @@ footer > span {
 }
 .notice.error {
   background: #f3e9df;
-  color: #805b3e;
+  color: #5e3f27;
 }
 .notice button {
   margin-left: auto;
@@ -890,8 +890,8 @@ select {
   color: #54694c;
 }
 .feed-status {
-  font-size: 10px;
-  color: #7e8a73;
+  font-size: 12px;
+  color: #646e5b;
   display: flex;
   align-items: center;
   gap: 5px;
@@ -904,8 +904,8 @@ select {
   padding-left: 18px;
 }
 .results-count {
-  font-size: 10px;
-  color: #8b9482;
+  font-size: 12px;
+  color: #666d60;
   margin-top: 18px;
 }
 .record-grid .action-row {
@@ -916,13 +916,13 @@ select {
 }
 .record-grid .card-meta,
 .record-grid .type-label {
-  font-size: 10px;
+  font-size: 12px;
 }
 .record-grid .action-text p {
-  font-size: 11px;
+  font-size: 12px;
 }
 .record-grid .source-badge {
-  font-size: 8px;
+  font-size: 12px;
 }
 .load-more {
   margin: 25px auto;
@@ -931,7 +931,7 @@ select {
 .empty {
   text-align: center;
   padding: 50px;
-  color: #829075;
+  color: #626d58;
 }
 .empty svg {
   margin-bottom: 20px;
@@ -959,7 +959,7 @@ select {
 }
 .panel > a:not(.button) {
   color: #527148;
-  font-size: 11px;
+  font-size: 12px;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -1000,7 +1000,7 @@ select {
   font-size: 12px;
 }
 .field-label {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 550;
   display: flex;
   flex-direction: column;
@@ -1047,14 +1047,14 @@ textarea,
   background: #eaf0e2;
   border-radius: 5px;
   margin-bottom: 30px;
-  color: #6c7c60;
-  font-size: 10px;
+  color: #616f56;
+  font-size: 12px;
 }
 .toggle-label {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 400;
 }
 .privacy-strip .toggle-label {
@@ -1074,7 +1074,7 @@ textarea,
   padding-top: 20px;
 }
 .steps > .eyebrow {
-  font-size: 8px;
+  font-size: 12px;
   margin-bottom: 22px;
 }
 .steps > button {
@@ -1083,9 +1083,9 @@ textarea,
   gap: 11px;
   width: 100%;
   text-align: left;
-  font-size: 11px;
+  font-size: 12px;
   padding: 12px 0;
-  color: #819175;
+  color: #626e58;
   margin-bottom: 12px;
 }
 .steps > button span {
@@ -1095,7 +1095,7 @@ textarea,
   place-items: center;
   border: 1px solid #d1dbc6;
   border-radius: 50%;
-  font-size: 10px;
+  font-size: 12px;
 }
 .steps > button.selected {
   color: #2e5e3c;
@@ -1150,7 +1150,7 @@ textarea,
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 11px;
+  font-size: 12px;
   gap: 10px;
 }
 .choices > button.selected {
@@ -1184,8 +1184,8 @@ textarea,
   align-items: center;
   gap: 7px;
   padding: 4px 0;
-  font-size: 10px;
-  color: #718368;
+  font-size: 12px;
+  color: #617059;
 }
 .journal-entry {
   padding: 24px 0;
@@ -1196,8 +1196,8 @@ textarea,
   font-size: 27px;
 }
 .muted {
-  color: #909a86 !important;
-  font-size: 10px !important;
+  color: #676e60 !important;
+  font-size: 12px !important;
 }
 .journal .eyebrow {
   margin-bottom: 14px;
@@ -1214,8 +1214,8 @@ textarea,
   gap: 14px;
 }
 .form-footer > span {
-  font-size: 9px;
-  color: #8a967d;
+  font-size: 12px;
+  color: #666e5c;
 }
 .coach-response > .eyebrow {
   display: flex;
@@ -1232,7 +1232,7 @@ textarea,
   align-items: flex-start !important;
   padding: 16px 0;
   border-top: 1px solid var(--line);
-  font-size: 11px !important;
+  font-size: 12px !important;
 }
 .atlas-layout {
   display: grid;
@@ -1271,11 +1271,11 @@ textarea,
   box-shadow: 0 2px 5px #40502a10;
 }
 .graph-controls > button {
-  font-size: 10px;
+  font-size: 12px;
 }
 .graph-controls span {
-  font-size: 8px;
-  color: #8b987b;
+  font-size: 12px;
+  color: #646d58;
   margin-left: 15px;
 }
 .atlas-detail .eyebrow {
@@ -1299,7 +1299,7 @@ textarea,
   width: 100%;
   padding: 11px 0;
   border-bottom: 1px solid var(--line);
-  font-size: 11px;
+  font-size: 12px;
   text-align: left;
 }
 .atlas-list {
@@ -1322,15 +1322,15 @@ textarea,
 }
 .atlas-list button > span {
   float: right;
-  color: #889778;
-  font-size: 10px;
+  color: #646f58;
+  font-size: 12px;
 }
 .atlas-list p {
-  font-size: 11px;
+  font-size: 12px;
   margin-bottom: 0;
 }
 .atlas-detail .button {
-  font-size: 10px;
+  font-size: 12px;
   padding: 9px 10px;
 }
 .methodology-grid {
@@ -1387,7 +1387,7 @@ textarea,
 }
 .fictional-ballot > .tag {
   background: #f6ecd4;
-  color: #997736;
+  color: #83662e;
   border-color: #e5d4aa;
 }
 .fictional-ballot > h2 {
@@ -1401,7 +1401,7 @@ textarea,
   margin: 26px 0;
 }
 .facts dt {
-  color: #8a967d;
+  color: #666e5c;
 }
 .facts dd {
   margin: 0;
@@ -1410,16 +1410,16 @@ textarea,
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 10px;
-  color: #849476;
+  font-size: 13px;
+  color: #4d6240;
   margin-top: 15px;
 }
 .detail-toolbar {
   display: flex;
   align-items: center;
   gap: 22px;
-  font-size: 11px;
-  color: #809071;
+  font-size: 12px;
+  color: #616d55;
   margin-bottom: 18px;
 }
 .detail-toolbar .button {
@@ -1443,12 +1443,12 @@ textarea,
   margin-top: 22px;
 }
 .source-panel dt {
-  font-size: 9px;
-  color: #92a081;
+  font-size: 12px;
+  color: #636c57;
   margin-top: 15px;
 }
 .source-panel dd {
-  font-size: 11px;
+  font-size: 12px;
   margin: 3px 0;
   overflow-wrap: anywhere;
 }
@@ -1463,8 +1463,8 @@ textarea,
   top: 19px;
 }
 .timeline strong {
-  font-size: 11px;
-  color: #6b8258;
+  font-size: 12px;
+  color: #5c6f4b;
 }
 .timeline h3 {
   margin-top: 10px;
@@ -1474,8 +1474,8 @@ textarea,
   border-bottom: 1px solid var(--line);
 }
 .evidence-claim > a {
-  font-size: 10px;
-  color: #6d8a55;
+  font-size: 12px;
+  color: #597145;
 }
 .skeleton {
   background: linear-gradient(90deg, #e4e9dc, #f0f3e9, #e4e9dc);
@@ -1528,7 +1528,7 @@ textarea,
     font-size: 12px;
   }
   .values-invite .eyebrow {
-    font-size: 8px;
+    font-size: 12px;
   }
   .nav-link {
     font-size: 13px;
@@ -1550,16 +1550,16 @@ textarea,
     padding: 25px;
   }
   .card-meta {
-    font-size: 10px;
+    font-size: 12px;
   }
   .action-text h3 {
     font-size: 16px;
   }
   .action-text p {
-    font-size: 11px;
+    font-size: 12px;
   }
   .type-label {
-    font-size: 10px;
+    font-size: 12px;
   }
   .global-search input {
     font-size: 12px;
@@ -1651,7 +1651,7 @@ textarea,
     width: calc(100% - 180px);
   }
   .nav-link {
-    font-size: 11px;
+    font-size: 12px;
     gap: 10px;
   }
   .main-content {
@@ -1714,7 +1714,7 @@ textarea,
     white-space: nowrap;
     margin: 0;
     width: auto;
-    font-size: 10px;
+    font-size: 12px;
   }
   .steps > button span {
     width: 23px;
@@ -1785,7 +1785,7 @@ textarea,
     display: none;
   }
   .breadcrumb strong {
-    font-size: 11px;
+    font-size: 12px;
   }
   .global-search {
     width: auto;
@@ -1794,7 +1794,7 @@ textarea,
     margin-left: auto;
   }
   .global-search input {
-    font-size: 10px;
+    font-size: 12px;
     min-width: 0;
   }
   .global-search kbd {
@@ -1812,11 +1812,11 @@ textarea,
     padding: 24px 20px 0;
   }
   .edition-line {
-    font-size: 8px;
+    font-size: 12px;
     gap: 12px;
   }
   .live-status {
-    font-size: 7px;
+    font-size: 12px;
   }
   .home-intro {
     padding: 30px 0;
@@ -1826,24 +1826,24 @@ textarea,
     letter-spacing: -1px;
   }
   .home-intro .eyebrow {
-    font-size: 8px;
+    font-size: 12px;
     letter-spacing: 1.3px;
   }
   .home-intro p {
-    font-size: 11px;
+    font-size: 12px;
   }
   .topic-tabs {
     gap: 23px;
     margin-bottom: 23px;
   }
   .topic-tabs button {
-    font-size: 10px;
+    font-size: 12px;
   }
   .section-heading h2 {
     font-size: 12px;
   }
   .section-heading > a {
-    font-size: 8px;
+    font-size: 12px;
   }
   .lead-visual {
     height: 225px;
@@ -1855,19 +1855,19 @@ textarea,
     font-size: 29px;
   }
   .lead-content p {
-    font-size: 11px;
+    font-size: 12px;
   }
   .card-meta {
-    font-size: 9px;
+    font-size: 12px;
   }
   .tag {
-    font-size: 9px;
+    font-size: 12px;
   }
   .lead-footer > a {
-    font-size: 9px;
+    font-size: 12px;
   }
   .source-badge {
-    font-size: 7px;
+    font-size: 12px;
   }
   .action-row {
     gap: 12px;
@@ -1876,10 +1876,10 @@ textarea,
     font-size: 14px;
   }
   .action-text p {
-    font-size: 10px;
+    font-size: 12px;
   }
   .type-label {
-    font-size: 9px;
+    font-size: 12px;
   }
   .topic-grid {
     grid-template-columns: 1fr;
@@ -1899,7 +1899,7 @@ textarea,
   }
   .topic-card .eyebrow {
     grid-column: 2;
-    font-size: 8px;
+    font-size: 12px;
   }
   .topic-card h3 {
     grid-column: 2;
@@ -1910,7 +1910,7 @@ textarea,
     grid-column: 2;
     justify-content: start;
     gap: 14px;
-    font-size: 8px;
+    font-size: 12px;
   }
   .right-rail {
     display: block;
@@ -1932,7 +1932,7 @@ textarea,
     font-size: 33px;
   }
   .values-invite .eyebrow {
-    font-size: 8px;
+    font-size: 12px;
   }
   .values-invite p {
     font-size: 12px;
@@ -1942,10 +1942,10 @@ textarea,
   .values-invite .button {
     max-width: 260px;
     margin: auto;
-    font-size: 11px;
+    font-size: 12px;
   }
   .values-invite .micro {
-    font-size: 8px;
+    font-size: 12px;
   }
   .home-columns {
     gap: 25px;
@@ -1954,7 +1954,7 @@ textarea,
     margin-top: 27px;
   }
   .bottom-note p {
-    font-size: 8px;
+    font-size: 12px;
     line-height: 1.8;
   }
   .bottom-note p strong {
@@ -1963,7 +1963,7 @@ textarea,
   footer {
     flex-wrap: wrap;
     gap: 13px;
-    font-size: 8px;
+    font-size: 12px;
   }
   footer > span {
     width: 100%;
@@ -1979,10 +1979,10 @@ textarea,
     font-size: 12px;
   }
   .page-title .eyebrow {
-    font-size: 8px;
+    font-size: 12px;
   }
   .notice {
-    font-size: 10px;
+    font-size: 12px;
     padding: 13px;
   }
   .search-panel {
@@ -1994,7 +1994,7 @@ textarea,
   }
   .search-panel select {
     flex: 1;
-    font-size: 11px;
+    font-size: 12px;
   }
   .panel {
     padding: 22px;
@@ -2027,7 +2027,7 @@ textarea,
     font-size: 12px !important;
   }
   .choices > button {
-    font-size: 11px;
+    font-size: 12px;
   }
   .steps {
     gap: 18px;
@@ -2038,11 +2038,11 @@ textarea,
     gap: 0;
   }
   .steps > button.selected {
-    font-size: 10px;
+    font-size: 12px;
     gap: 7px;
   }
   .scenario-nav .button {
-    font-size: 10px;
+    font-size: 12px;
     padding: 10px;
   }
   .form-footer {
@@ -2058,15 +2058,15 @@ textarea,
     gap: 0;
   }
   .privacy-strip {
-    font-size: 9px;
+    font-size: 12px;
   }
   .detail-toolbar {
     gap: 10px;
-    font-size: 9px;
+    font-size: 12px;
     flex-wrap: wrap;
   }
   .detail-toolbar .button {
-    font-size: 9px;
+    font-size: 12px;
     padding: 8px 10px;
   }
   .facts {
@@ -2083,7 +2083,7 @@ textarea,
     min-height: 390px;
   }
   .graph-controls span {
-    font-size: 7px;
+    font-size: 12px;
     margin-left: 5px;
   }
   .fictional-ballot .two-columns {
@@ -2140,94 +2140,94 @@ textarea,
 }
 /* Small source labels remain legible independently of color. */
 .source-badge {
-  font-size: 9px;
+  font-size: 12px;
 }
 .source-badge.small {
-  font-size: 8px;
+  font-size: 12px;
 }
 .card-meta,
 .type-label {
-  font-size: 10px;
+  font-size: 12px;
 }
 .lead-content p {
   font-size: 12px;
 }
 .lead-footer > a {
-  font-size: 10px;
+  font-size: 12px;
 }
 .action-text p {
-  font-size: 11px;
+  font-size: 12px;
 }
 .values-invite p,
 .briefing p,
 .source-promise p {
-  font-size: 11px;
+  font-size: 12px;
 }
 .values-invite .eyebrow {
-  font-size: 8px;
+  font-size: 12px;
 }
 .topic-card .eyebrow {
-  font-size: 9px;
+  font-size: 12px;
 }
 .topic-card > span:last-child {
-  font-size: 9px;
+  font-size: 12px;
 }
 .sidebar-bottom > a {
-  font-size: 11px;
+  font-size: 12px;
 }
 .nav-link {
   font-size: 13px;
 }
 .nav-label {
-  font-size: 9px;
+  font-size: 12px;
 }
 footer {
-  font-size: 10px;
+  font-size: 12px;
 }
 .edition-line,
 .live-status {
-  font-size: 10px;
+  font-size: 12px;
 }
 .values-invite .micro {
-  font-size: 9px;
+  font-size: 12px;
 }
 .source-badge.small svg {
   width: 12px;
 }
 .no-algorithm {
-  font-size: 9px;
+  font-size: 12px;
 }
 .topbar .global-search input {
   font-size: 12px;
 }
 .topbar .breadcrumb {
-  font-size: 11px;
+  font-size: 12px;
 }
 .lead-footer {
   flex-wrap: wrap;
 }
 .record-grid .source-badge {
-  font-size: 9px;
+  font-size: 12px;
 }
 @media (max-width: 700px) {
   .edition-line,
   .live-status {
-    font-size: 8px;
+    font-size: 12px;
   }
   .topbar .global-search input {
-    font-size: 10px;
+    font-size: 12px;
   }
   .source-badge {
-    font-size: 8px;
+    font-size: 12px;
   }
   .lead-content p {
     font-size: 12px;
   }
   .lead-footer > a {
-    font-size: 10px;
+    font-size: 12px;
   }
   .nav-label {
-    font-size: 10px;
+    font-size: 12px;
   }
   .nav-link {
     font-size: 13px;
@@ -2240,8 +2240,8 @@ footer {
   }
 }
 .retrieval-line {
-  font-size: 9px;
-  color: #7d8874;
+  font-size: 12px;
+  color: #636c5c;
   margin-top: 8px;
 }
 
@@ -2397,7 +2397,7 @@ footer {
   align-items: baseline;
 }
 .deadline-list li.passed {
-  color: #8d938c;
+  color: #686c67;
 }
 .deadline-list li.passed .deadline-date {
   text-decoration: line-through;
@@ -2479,7 +2479,7 @@ footer {
   color: inherit;
 }
 .measure-card .tag {
-  font-size: 11px;
+  font-size: 12px;
 }
 .measure-card h3 {
   font-size: 18px;
@@ -2617,7 +2617,7 @@ footer {
   flex-wrap: wrap;
   gap: 14px;
   font-size: 13px;
-  color: #8d938c;
+  color: #686c67;
   margin-top: 4px;
 }
 .guide-flags .on {
@@ -2829,4 +2829,27 @@ footer {
 .note svg {
   flex: none;
   margin-top: 3px;
+}
+
+.process-steps {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+  display: grid;
+  gap: 12px;
+}
+.process-steps li {
+  padding: 14px 16px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.process-steps h3 {
+  margin: 0 0 4px;
+  font-size: 16px;
+}
+.process-steps p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.55;
 }
