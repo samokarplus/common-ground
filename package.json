@@ -1,0 +1,37 @@
+{
+  "name": "common-ground-public",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 3020",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 3021",
+    "test": "node --experimental-strip-types --test tests/*.test.mts",
+    "scan": "node scripts/scan-publication.mjs",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src tests"
+  },
+  "dependencies": {
+    "@fontsource/dm-sans": "^5.2.8",
+    "@fontsource/libre-caslon-display": "^5.2.8",
+    "lucide-react": "^1.31.0",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.2.1",
+    "@types/node": "22.19.19",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "6.0.2",
+    "eslint": "9.39.4",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "postcss": "^8.5.6",
+    "tailwindcss": "4.2.1",
+    "typescript": "5.9.3",
+    "typescript-eslint": "^8.57.0",
+    "vite": "^8.3.5"
+  }
+}
