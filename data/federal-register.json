@@ -1,18 +1,11 @@
 {
-  "description": "All Documents",
-  "count": 10000,
-  "total_pages": 50,
-  "next_page_url": "https://www.federalregister.gov/api/v1/documents?format=json&order=newest&page=2&per_page=40&search_after_cursor=WzE3OTI2MjcyMDAwMDAsIjIwMjYtMjE1OTIiXQ",
+  "description": "Newest Federal Register documents (dated official-source snapshot)",
+  "source": "https://www.federalregister.gov/api/v1/documents.json",
+  "retrievedAt": "2026-10-22T22:59:45.615Z",
+  "contentHash": "dcf986d72f1a5d9ed6d8b2f6f2448ec84b601a5f62996cad3936d3157d785824",
   "results": [
     {
-      "title": "Advancing Women's Health To Improve Outcomes in All Phases of Life",
-      "type": "Presidential Document",
       "abstract": null,
-      "document_number": "2026-21666",
-      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21666/advancing-womens-health-to-improve-outcomes-in-all-phases-of-life",
-      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21666.pdf",
-      "public_inspection_pdf_url": "https://public-inspection.federalregister.gov/2026-21666.pdf?1792595707",
-      "publication_date": "2026-10-22",
       "agencies": [
         {
           "raw_name": "EXECUTIVE OFFICE OF THE PRESIDENT",
@@ -24,17 +17,20 @@
           "slug": "executive-office-of-the-president"
         }
       ],
-      "excerpts": null
+      "comments_close_on": null,
+      "dates": null,
+      "document_number": "2026-21666",
+      "effective_on": null,
+      "executive_order_number": "14437",
+      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21666/advancing-womens-health-to-improve-outcomes-in-all-phases-of-life",
+      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21666.pdf",
+      "publication_date": "2026-10-22",
+      "signing_date": "2026-10-19",
+      "title": "Advancing Women's Health To Improve Outcomes in All Phases of Life",
+      "type": "Presidential Document"
     },
     {
-      "title": "Safety Zone; Brownsville Ship Channel, Brownsville, TX",
-      "type": "Rule",
       "abstract": "The Coast Guard is establishing a temporary safety zone for navigable waters on the Brownsville Ship Channel. The safety zone is needed to protect personnel, vessels, and the marine environment from potential hazards associated with an over-sized dead ship tow transiting the area. Entry of vessels or persons into this zone is prohibited unless specifically authorized by the Captain of the Port, Sector Corpus Christi, or their designated representative.",
-      "document_number": "2026-21636",
-      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21636/safety-zone-brownsville-ship-channel-brownsville-tx",
-      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21636.pdf",
-      "public_inspection_pdf_url": "https://public-inspection.federalregister.gov/2026-21636.pdf?1792586718",
-      "publication_date": "2026-10-22",
       "agencies": [
         {
           "raw_name": "DEPARTMENT OF HOMELAND SECURITY",
@@ -55,17 +51,20 @@
           "slug": "coast-guard"
         }
       ],
-      "excerpts": "The Coast Guard is establishing a temporary safety zone for navigable waters on the Brownsville Ship Channel. The safety zone is needed to protect personnel, vessels, and the marine environment from potential hazards associated with an over-sized dead..."
+      "comments_close_on": null,
+      "dates": "This rule is effective without actual notice from October 22, 2026 through October 24, 2026. For the purposes of enforcement, actual notice will be used from October 20, 2026 until October 22, 2026. The rule will be subject to enforcement on only one day during the effective period when the vessel transits from the sea buoy to the International Shipbreaking Limited dock.",
+      "document_number": "2026-21636",
+      "effective_on": "2026-10-22",
+      "executive_order_number": null,
+      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21636/safety-zone-brownsville-ship-channel-brownsville-tx",
+      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21636.pdf",
+      "publication_date": "2026-10-22",
+      "signing_date": null,
+      "title": "Safety Zone; Brownsville Ship Channel, Brownsville, TX",
+      "type": "Rule"
     },
     {
-      "title": "Granting of Requests for Early Termination of the Waiting Period under the Premerger Notification Rules",
-      "type": "Notice",
       "abstract": null,
-      "document_number": "2026-21630",
-      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21630/granting-of-requests-for-early-termination-of-the-waiting-period-under-the-premerger-notification",
-      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21630.pdf",
-      "public_inspection_pdf_url": "https://public-inspection.federalregister.gov/2026-21630.pdf?1792586718",
-      "publication_date": "2026-10-22",
       "agencies": [
         {
           "raw_name": "FEDERAL TRADE COMMISSION",
@@ -77,17 +76,20 @@
           "slug": "federal-trade-commission"
         }
       ],
-      "excerpts": null
+      "comments_close_on": null,
+      "dates": null,
+      "document_number": "2026-21630",
+      "effective_on": null,
+      "executive_order_number": null,
+      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21630/granting-of-requests-for-early-termination-of-the-waiting-period-under-the-premerger-notification",
+      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21630.pdf",
+      "publication_date": "2026-10-22",
+      "signing_date": null,
+      "title": "Granting of Requests for Early Termination of the Waiting Period under the Premerger Notification Rules",
+      "type": "Notice"
     },
     {
-      "title": "Agency Information Collection Activities; Submission to the Office of Management and Budget (OMB) for Review and Approval; Comment Request; Annual Business Survey",
-      "type": "Notice",
       "abstract": "The Department of Commerce, in accordance with the Paperwork Reduction Act (PRA) of 1995, invites the general public and other Federal agencies to comment on proposed, and continuing information collections, which helps us assess the impact of our information collection requirements and minimize the public's reporting burden. The purpose of this notice is to allow for 60 days of public comment on the proposed revision to the Annual Business Survey prior to the submission of this information collection request (ICR) to OMB for approval.",
-      "document_number": "2026-21629",
-      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21629/agency-information-collection-activities-submission-to-the-office-of-management-and-budget-omb-for",
-      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21629.pdf",
-      "public_inspection_pdf_url": "https://public-inspection.federalregister.gov/2026-21629.pdf?1792586718",
-      "publication_date": "2026-10-22",
       "agencies": [
         {
           "raw_name": "DEPARTMENT OF COMMERCE",
@@ -108,17 +110,20 @@
           "slug": "census-bureau"
         }
       ],
-      "excerpts": "The Department of Commerce, in accordance with the Paperwork Reduction Act (PRA) of 1995, invites the general public and other Federal agencies to comment on proposed, and continuing information collections, which helps us assess the impact of our..."
+      "comments_close_on": "2026-12-21",
+      "dates": "To ensure consideration, comments regarding this proposed information collection must be received on or before December 21, 2026.",
+      "document_number": "2026-21629",
+      "effective_on": null,
+      "executive_order_number": null,
+      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21629/agency-information-collection-activities-submission-to-the-office-of-management-and-budget-omb-for",
+      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21629.pdf",
+      "publication_date": "2026-10-22",
+      "signing_date": null,
+      "title": "Agency Information Collection Activities; Submission to the Office of Management and Budget (OMB) for Review and Approval; Comment Request; Annual Business Survey",
+      "type": "Notice"
     },
     {
-      "title": "Reliant Transportation Group, LLC, TIP MNC Acquisition, LLC, TIP MN Investments LP, and Tiger Infrastructure Partners Fund IV AIV LP-Acquisition of Control-Safe-Way Bus Co. and Safe-Way Wisconsin, Inc.",
-      "type": "Notice",
       "abstract": "On August 31, 2026, Reliant Transportation Group, LLC (Reliant); TIP MNC Acquisition, LLC; TIP MN Investments LP; and Tiger Infrastructure Partners Fund IV AIV LP (collectively, Applicants) filed an application seeking authority to acquire, from Jane M. Stiles and Thomas W. Stiles (collectively, Sellers), control of two federally regulated interstate passenger motor carriers: Safe-Way Bus Co. (Safe- Way Bus) and Safe-Way Wisconsin, Inc. (Safe-Way Wisconsin) (collectively, Additional Carriers). The Board is tentatively approving and authorizing the proposed transaction. If no opposing comments are timely filed, this notice will be the final Board action.",
-      "document_number": "2026-21628",
-      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21628/reliant-transportation-group-llc-tip-mnc-acquisition-llc-tip-mn-investments-lp-and-tiger",
-      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21628.pdf",
-      "public_inspection_pdf_url": "https://public-inspection.federalregister.gov/2026-21628.pdf?1792586718",
-      "publication_date": "2026-10-22",
       "agencies": [
         {
           "raw_name": "SURFACE TRANSPORTATION BOARD",
@@ -130,17 +135,20 @@
           "slug": "surface-transportation-board"
         }
       ],
-      "excerpts": "On August 31, 2026, Reliant Transportation Group, LLC (Reliant); TIP MNC Acquisition, LLC; TIP MN Investments LP; and Tiger Infrastructure Partners Fund IV AIV LP (collectively, Applicants) filed an application seeking authority to acquire, from Jane..."
+      "comments_close_on": "2026-12-07",
+      "dates": "Comments may be filed by December 7, 2026. If any comments are filed, Applicants may file a reply by December 21, 2026. If no opposing comments are filed by December 7, 2026, this notice shall be effective on December 8, 2026.",
+      "document_number": "2026-21628",
+      "effective_on": "2026-12-08",
+      "executive_order_number": null,
+      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21628/reliant-transportation-group-llc-tip-mnc-acquisition-llc-tip-mn-investments-lp-and-tiger",
+      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21628.pdf",
+      "publication_date": "2026-10-22",
+      "signing_date": null,
+      "title": "Reliant Transportation Group, LLC, TIP MNC Acquisition, LLC, TIP MN Investments LP, and Tiger Infrastructure Partners Fund IV AIV LP-Acquisition of Control-Safe-Way Bus Co. and Safe-Way Wisconsin, Inc.",
+      "type": "Notice"
     },
     {
-      "title": "Agency Information Collection Activity Under OMB Review: Statement of Person Claiming To Have Stood in Relation of Parent",
-      "type": "Notice",
       "abstract": "In compliance with the Paperwork Reduction Act (PRA) of 1995, this notice announces that the Veterans Benefits Administration, Department of Veterans Affairs, will submit the collection of information abstracted below to the Office of Management and Budget (OMB) for review and comment. The PRA submission describes the nature of the information collection and its expected cost and burden, and it includes the actual data collection instrument.",
-      "document_number": "2026-21627",
-      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21627/agency-information-collection-activity-under-omb-review-statement-of-person-claiming-to-have-stood",
-      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21627.pdf",
-      "public_inspection_pdf_url": "https://public-inspection.federalregister.gov/2026-21627.pdf?1792586718",
-      "publication_date": "2026-10-22",
       "agencies": [
         {
           "raw_name": "DEPARTMENT OF VETERANS AFFAIRS",
@@ -152,17 +160,45 @@
           "slug": "veterans-affairs-department"
         }
       ],
-      "excerpts": "In compliance with the Paperwork Reduction Act (PRA) of 1995, this notice announces that the Veterans Benefits Administration, Department of Veterans Affairs, will submit the collection of information abstracted below to the Office of Management and..."
+      "comments_close_on": "2026-11-23",
+      "dates": "Comments and recommendations for the proposed information collection should be sent by November 23, 2026.",
+      "document_number": "2026-21627",
+      "effective_on": null,
+      "executive_order_number": null,
+      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21627/agency-information-collection-activity-under-omb-review-statement-of-person-claiming-to-have-stood",
+      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21627.pdf",
+      "publication_date": "2026-10-22",
+      "signing_date": null,
+      "title": "Agency Information Collection Activity Under OMB Review: Statement of Person Claiming To Have Stood in Relation of Parent",
+      "type": "Notice"
     },
     {
-      "title": "Formations of, Acquisitions by, and Mergers of Bank Holding Companies",
-      "type": "Notice",
       "abstract": null,
+      "agencies": [
+        {
+          "raw_name": "FEDERAL RESERVE SYSTEM",
+          "name": "Federal Reserve System",
+          "id": 188,
+          "url": "https://www.federalregister.gov/agencies/federal-reserve-system",
+          "json_url": "https://www.federalregister.gov/api/v1/agencies/188",
+          "parent_id": null,
+          "slug": "federal-reserve-system"
+        }
+      ],
+      "comments_close_on": null,
+      "dates": null,
       "document_number": "2026-21626",
+      "effective_on": null,
+      "executive_order_number": null,
       "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21626/formations-of-acquisitions-by-and-mergers-of-bank-holding-companies",
       "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21626.pdf",
-      "public_inspection_pdf_url": "https://public-inspection.federalregister.gov/2026-21626.pdf?1792586718",
       "publication_date": "2026-10-22",
+      "signing_date": null,
+      "title": "Formations of, Acquisitions by, and Mergers of Bank Holding Companies",
+      "type": "Notice"
+    },
+    {
+      "abstract": null,
       "agencies": [
         {
           "raw_name": "FEDERAL RESERVE SYSTEM",
@@ -174,39 +210,20 @@
           "slug": "federal-reserve-system"
         }
       ],
-      "excerpts": null
-    },
-    {
-      "title": "Change in Bank Control Notices; Acquisitions of Shares of a Bank or Bank Holding Company",
-      "type": "Notice",
-      "abstract": null,
+      "comments_close_on": null,
+      "dates": null,
       "document_number": "2026-21625",
+      "effective_on": null,
+      "executive_order_number": null,
       "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21625/change-in-bank-control-notices-acquisitions-of-shares-of-a-bank-or-bank-holding-company",
       "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21625.pdf",
-      "public_inspection_pdf_url": "https://public-inspection.federalregister.gov/2026-21625.pdf?1792586717",
       "publication_date": "2026-10-22",
-      "agencies": [
-        {
-          "raw_name": "FEDERAL RESERVE SYSTEM",
-          "name": "Federal Reserve System",
-          "id": 188,
-          "url": "https://www.federalregister.gov/agencies/federal-reserve-system",
-          "json_url": "https://www.federalregister.gov/api/v1/agencies/188",
-          "parent_id": null,
-          "slug": "federal-reserve-system"
-        }
-      ],
-      "excerpts": null
+      "signing_date": null,
+      "title": "Change in Bank Control Notices; Acquisitions of Shares of a Bank or Bank Holding Company",
+      "type": "Notice"
     },
     {
-      "title": "Welded Stainless Pressure Pipe From India: Final Results of Antidumping Duty Administrative Review; 2023-2024",
-      "type": "Notice",
       "abstract": "The U.S. Department of Commerce (Commerce) determines that Suncity Metals and Tubes Private Limited (Suncity), the sole producer/ exporter subject to this administrative review, made sales of welded stainless pressure pipe (WSPP) from India at less than normal value during the period of review (POR) November 1, 2023, through October 31, 2024.",
-      "document_number": "2026-21624",
-      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21624/welded-stainless-pressure-pipe-from-india-final-results-of-antidumping-duty-administrative-review",
-      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21624.pdf",
-      "public_inspection_pdf_url": "https://public-inspection.federalregister.gov/2026-21624.pdf?1792586717",
-      "publication_date": "2026-10-22",
       "agencies": [
         {
           "raw_name": "DEPARTMENT OF COMMERCE",
@@ -227,17 +244,20 @@
           "slug": "international-trade-administration"
         }
       ],
-      "excerpts": "The U.S. Department of Commerce (Commerce) determines that Suncity Metals and Tubes Private Limited (Suncity), the sole producer/ exporter subject to this administrative review, made sales of welded stainless pressure pipe (WSPP) from India at less..."
+      "comments_close_on": null,
+      "dates": "Applicable October 22, 2026.",
+      "document_number": "2026-21624",
+      "effective_on": null,
+      "executive_order_number": null,
+      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21624/welded-stainless-pressure-pipe-from-india-final-results-of-antidumping-duty-administrative-review",
+      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21624.pdf",
+      "publication_date": "2026-10-22",
+      "signing_date": null,
+      "title": "Welded Stainless Pressure Pipe From India: Final Results of Antidumping Duty Administrative Review; 2023-2024",
+      "type": "Notice"
     },
     {
-      "title": "Draft NUREG: Report on Waste Burial Charges: Changes in Decommissioning Waste Disposal Costs at Low-Level Waste Burial Facilities",
-      "type": "Notice",
       "abstract": "The U.S. Nuclear Regulatory Commission (NRC) is issuing for public comment a draft report entitled, NUREG-1307, Revision 21, \"Report on Waste Burial Charges: Changes in Decommissioning Waste Disposal Costs at Low-Level Waste Burial Facilities.\" This report, which is revised periodically, explains the formula acceptable to the NRC for determining the minimum decommissioning fund requirements for nuclear power reactor licensees, as required by NRC regulations. Specifically, this report provides the adjustment factor and updates the values for the labor, energy, and waste burial escalation factors of the minimum formula.",
-      "document_number": "2026-21623",
-      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21623/draft-nureg-report-on-waste-burial-charges-changes-in-decommissioning-waste-disposal-costs-at",
-      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21623.pdf",
-      "public_inspection_pdf_url": "https://public-inspection.federalregister.gov/2026-21623.pdf?1792586717",
-      "publication_date": "2026-10-22",
       "agencies": [
         {
           "raw_name": "NUCLEAR REGULATORY COMMISSION",
@@ -249,17 +269,20 @@
           "slug": "nuclear-regulatory-commission"
         }
       ],
-      "excerpts": "The U.S. Nuclear Regulatory Commission (NRC) is issuing for public comment a draft report entitled, NUREG-1307, Revision 21, \"Report on Waste Burial Charges: Changes in Decommissioning Waste Disposal Costs at Low-Level Waste Burial Facilities.\" This..."
+      "comments_close_on": "2026-11-23",
+      "dates": "Submit comments by November 23, 2026. Comments received after this date will be considered if it is practical to do so, but the Commission is able to ensure consideration only for comments received before this date.",
+      "document_number": "2026-21623",
+      "effective_on": null,
+      "executive_order_number": null,
+      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21623/draft-nureg-report-on-waste-burial-charges-changes-in-decommissioning-waste-disposal-costs-at",
+      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21623.pdf",
+      "publication_date": "2026-10-22",
+      "signing_date": null,
+      "title": "Draft NUREG: Report on Waste Burial Charges: Changes in Decommissioning Waste Disposal Costs at Low-Level Waste Burial Facilities",
+      "type": "Notice"
     },
     {
-      "title": "Virginia: Approval of State Coal Combustion Residuals Permit Program",
-      "type": "Rule",
       "abstract": "The Environmental Protection Agency (EPA or the Agency) is approving Virginia's coal combustion residuals (CCR) permit program under the Resource Conservation and Recovery Act (RCRA). After reviewing the CCR permit program application submitted by the Virginia Department of Environmental Quality (VADEQ), EPA has determined that Virginia's partial CCR permit program meets the standard for approval under RCRA. Virginia's CCR permit program will operate in lieu of the Federal CCR program with the exception of the specific provisions noted below.",
-      "document_number": "2026-21622",
-      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21622/virginia-approval-of-state-coal-combustion-residuals-permit-program",
-      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21622.pdf",
-      "public_inspection_pdf_url": "https://public-inspection.federalregister.gov/2026-21622.pdf?1792586717",
-      "publication_date": "2026-10-22",
       "agencies": [
         {
           "raw_name": "ENVIRONMENTAL PROTECTION AGENCY",
@@ -271,17 +294,20 @@
           "slug": "environmental-protection-agency"
         }
       ],
-      "excerpts": "The Environmental Protection Agency (EPA or the Agency) is approving Virginia's coal combustion residuals (CCR) permit program under the Resource Conservation and Recovery Act (RCRA). After reviewing the CCR permit program application submitted by the..."
+      "comments_close_on": null,
+      "dates": "This action is effective on November 23, 2026.",
+      "document_number": "2026-21622",
+      "effective_on": "2026-11-23",
+      "executive_order_number": null,
+      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21622/virginia-approval-of-state-coal-combustion-residuals-permit-program",
+      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21622.pdf",
+      "publication_date": "2026-10-22",
+      "signing_date": null,
+      "title": "Virginia: Approval of State Coal Combustion Residuals Permit Program",
+      "type": "Rule"
     },
     {
-      "title": "Neostellar Capital Corp., et al.",
-      "type": "Notice",
       "abstract": null,
-      "document_number": "2026-21621",
-      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21621/neostellar-capital-corp-et-al",
-      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21621.pdf",
-      "public_inspection_pdf_url": "https://public-inspection.federalregister.gov/2026-21621.pdf?1792586717",
-      "publication_date": "2026-10-22",
       "agencies": [
         {
           "raw_name": "SECURITIES AND EXCHANGE COMMISSION",
@@ -293,17 +319,20 @@
           "slug": "securities-and-exchange-commission"
         }
       ],
-      "excerpts": null
+      "comments_close_on": null,
+      "dates": "The application was filed on August 3, 2026, and amended on October 2, 2026.",
+      "document_number": "2026-21621",
+      "effective_on": null,
+      "executive_order_number": null,
+      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21621/neostellar-capital-corp-et-al",
+      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21621.pdf",
+      "publication_date": "2026-10-22",
+      "signing_date": null,
+      "title": "Neostellar Capital Corp., et al.",
+      "type": "Notice"
     },
     {
-      "title": "New Postal Products",
-      "type": "Notice",
       "abstract": "The Commission is noticing a recent Postal Service filing for the Commission's consideration concerning a negotiated service agreement. This notice informs the public of the filing, invites public comment, and takes other administrative steps.",
-      "document_number": "2026-21620",
-      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21620/new-postal-products",
-      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21620.pdf",
-      "public_inspection_pdf_url": "https://public-inspection.federalregister.gov/2026-21620.pdf?1792586717",
-      "publication_date": "2026-10-22",
       "agencies": [
         {
           "raw_name": "POSTAL REGULATORY COMMISSION",
@@ -315,17 +344,20 @@
           "slug": "postal-regulatory-commission"
         }
       ],
-      "excerpts": "The Commission is noticing a recent Postal Service filing for the Commission's consideration concerning a negotiated service agreement. This notice informs the public of the filing, invites public comment, and takes other administrative steps."
+      "comments_close_on": "2026-10-27",
+      "dates": "Comments are due: October 27, 2026.",
+      "document_number": "2026-21620",
+      "effective_on": null,
+      "executive_order_number": null,
+      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21620/new-postal-products",
+      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21620.pdf",
+      "publication_date": "2026-10-22",
+      "signing_date": null,
+      "title": "New Postal Products",
+      "type": "Notice"
     },
     {
-      "title": "Privacy Act of 1974; System of Records",
-      "type": "Notice",
       "abstract": "The Federal Communications Commission (FCC, Commission, or Agency) proposes to establish a new system of records, FCC/OGC-8, Suspension and Debarment Records, subject to the Privacy Act of 1974, as amended. This action is necessary to meet the requirements of the Privacy Act to publish in the Federal Register notice of the creation, existence, and character of records maintained by the Agency. The Commission uses this system to collect information about any prior misconduct of individuals and entities who participate in certain programs the FCC administers (e.g., Universal Service Fund (USF) and the Telecommunications Relay Services (TRS) program) so that the Suspending and Debarring Official (SDO) can determine whether to exclude or take such other actions as permitted under 2 CFR 6001 against those individuals or entities.",
-      "document_number": "2026-21619",
-      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21619/privacy-act-of-1974-system-of-records",
-      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21619.pdf",
-      "public_inspection_pdf_url": "https://public-inspection.federalregister.gov/2026-21619.pdf?1792586717",
-      "publication_date": "2026-10-22",
       "agencies": [
         {
           "raw_name": "FEDERAL COMMUNICATIONS COMMISSION",
@@ -337,17 +369,20 @@
           "slug": "federal-communications-commission"
         }
       ],
-      "excerpts": "The Federal Communications Commission (FCC, Commission, or Agency) proposes to establish a new system of records, FCC/OGC-8, Suspension and Debarment Records, subject to the Privacy Act of 1974, as amended. This action is necessary to meet the..."
+      "comments_close_on": "2026-11-23",
+      "dates": "This system of records will become effective on October 22, 2026. Written comments on the routine uses are due by November 23, 2026. The routine uses will become effective on November 23, 2026, unless written comments are received that require a contrary determination.",
+      "document_number": "2026-21619",
+      "effective_on": "2026-10-22",
+      "executive_order_number": null,
+      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21619/privacy-act-of-1974-system-of-records",
+      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21619.pdf",
+      "publication_date": "2026-10-22",
+      "signing_date": null,
+      "title": "Privacy Act of 1974; System of Records",
+      "type": "Notice"
     },
     {
-      "title": "Utah Underground Injection Control Program; Class VI Primacy",
-      "type": "Proposed Rule",
       "abstract": "The U.S. Environmental Protection Agency (EPA or Agency) has received a complete Underground Injection Control (UIC) program revision application from the State of Utah, requesting primary enforcement responsibility (primacy) for Class VI injection wells under Safe Drinking Water Act (SDWA) section 1422. The EPA's approval of the State's UIC program revision application would allow the Utah Department of Natural Resources, Division of Oil, Gas and Mining (DOGM) to issue and enforce compliance with UIC Class VI permits for injection wells used for geologic carbon sequestration. In this action, the EPA proposes to approve Utah's application to implement the UIC program for Class VI injection wells located within the State, except those on Indian lands for which the EPA retains primacy. The EPA has determined that Utah's UIC Class VI program meets Federal requirements for primacy under SDWA section 1422 and the applicable implementing regulations in 40 CFR parts 144, 145, and 146.",
-      "document_number": "2026-21618",
-      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21618/utah-underground-injection-control-program-class-vi-primacy",
-      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21618.pdf",
-      "public_inspection_pdf_url": "https://public-inspection.federalregister.gov/2026-21618.pdf?1792586717",
-      "publication_date": "2026-10-22",
       "agencies": [
         {
           "raw_name": "ENVIRONMENTAL PROTECTION AGENCY",
@@ -359,17 +394,20 @@
           "slug": "environmental-protection-agency"
         }
       ],
-      "excerpts": "The U.S. Environmental Protection Agency (EPA or Agency) has received a complete Underground Injection Control (UIC) program revision application from the State of Utah, requesting primary enforcement responsibility (primacy) for Class VI injection..."
+      "comments_close_on": "2026-12-07",
+      "dates": "Comments must be received on or before December 7, 2026. Public hearing: The EPA will hold one virtual public hearing during the comment period. Please refer to the SUPPLEMENTARY INFORMATION section for additional information on the public hearing.",
+      "document_number": "2026-21618",
+      "effective_on": null,
+      "executive_order_number": null,
+      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21618/utah-underground-injection-control-program-class-vi-primacy",
+      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21618.pdf",
+      "publication_date": "2026-10-22",
+      "signing_date": null,
+      "title": "Utah Underground Injection Control Program; Class VI Primacy",
+      "type": "Proposed Rule"
     },
     {
-      "title": "Cape Cod National Seashore Advisory Commission; Notice of Public Meeting",
-      "type": "Notice",
       "abstract": "In accordance with the Federal Advisory Committee Act of 1972, as amended, the National Park Service (NPS) is hereby giving notice of the 318th meeting of the Cape Cod National Seashore Advisory Commission (Commission).",
-      "document_number": "2026-21617",
-      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21617/cape-cod-national-seashore-advisory-commission-notice-of-public-meeting",
-      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21617.pdf",
-      "public_inspection_pdf_url": "https://public-inspection.federalregister.gov/2026-21617.pdf?1792586716",
-      "publication_date": "2026-10-22",
       "agencies": [
         {
           "raw_name": "DEPARTMENT OF THE INTERIOR",
@@ -390,17 +428,54 @@
           "slug": "national-park-service"
         }
       ],
-      "excerpts": "In accordance with the Federal Advisory Committee Act of 1972, as amended, the National Park Service (NPS) is hereby giving notice of the 318th meeting of the Cape Cod National Seashore Advisory Commission (Commission)."
+      "comments_close_on": null,
+      "dates": "The Commission will meet via teleconference and in person on Monday, November 2, 2026. The meeting will begin at 1:00 p.m. and will end by 4:30 p.m. (Eastern).",
+      "document_number": "2026-21617",
+      "effective_on": null,
+      "executive_order_number": null,
+      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21617/cape-cod-national-seashore-advisory-commission-notice-of-public-meeting",
+      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21617.pdf",
+      "publication_date": "2026-10-22",
+      "signing_date": null,
+      "title": "Cape Cod National Seashore Advisory Commission; Notice of Public Meeting",
+      "type": "Notice"
     },
     {
-      "title": "Marine Mammals; File No. 29925",
-      "type": "Notice",
       "abstract": "Notice is hereby given that Craig O'Connell, Ph.D., O'Seas Conservation Foundation, Inc., 26 South Shore Drive, Ridgefield, CT 06877, has applied in due form for a permit to conduct commercial and educational photography on cetaceans.",
+      "agencies": [
+        {
+          "raw_name": "DEPARTMENT OF COMMERCE",
+          "name": "Commerce Department",
+          "id": 54,
+          "url": "https://www.federalregister.gov/agencies/commerce-department",
+          "json_url": "https://www.federalregister.gov/api/v1/agencies/54",
+          "parent_id": null,
+          "slug": "commerce-department"
+        },
+        {
+          "raw_name": "National Oceanic and Atmospheric Administration",
+          "name": "National Oceanic and Atmospheric Administration",
+          "id": 361,
+          "url": "https://www.federalregister.gov/agencies/national-oceanic-and-atmospheric-administration",
+          "json_url": "https://www.federalregister.gov/api/v1/agencies/361",
+          "parent_id": 54,
+          "slug": "national-oceanic-and-atmospheric-administration"
+        }
+      ],
+      "comments_close_on": "2026-11-23",
+      "dates": "Written comments must be received on or before November 23, 2026.",
       "document_number": "2026-21616",
+      "effective_on": null,
+      "executive_order_number": null,
       "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21616/marine-mammals-file-no-29925",
       "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21616.pdf",
-      "public_inspection_pdf_url": "https://public-inspection.federalregister.gov/2026-21616.pdf?1792586716",
       "publication_date": "2026-10-22",
+      "signing_date": null,
+      "title": "Marine Mammals; File No. 29925",
+      "type": "Notice"
+    },
+    {
+      "abstract": "The Pacific Fishery Management Council's (Pacific Council) Scientific and Statistical Committee (SSC) will hold a virtual meeting to discuss matters relevant to the November 2026 Pacific Council meeting. This meeting is open to the public.",
       "agencies": [
         {
           "raw_name": "DEPARTMENT OF COMMERCE",
@@ -421,48 +496,20 @@
           "slug": "national-oceanic-and-atmospheric-administration"
         }
       ],
-      "excerpts": "Notice is hereby given that Craig O'Connell, Ph.D., O'Seas Conservation Foundation, Inc., 26 South Shore Drive, Ridgefield, CT 06877, has applied in due form for a permit to conduct commercial and educational photography on cetaceans."
-    },
-    {
-      "title": "Pacific Fishery Management Council; Public Meeting",
-      "type": "Notice",
-      "abstract": "The Pacific Fishery Management Council's (Pacific Council) Scientific and Statistical Committee (SSC) will hold a virtual meeting to discuss matters relevant to the November 2026 Pacific Council meeting. This meeting is open to the public.",
+      "comments_close_on": null,
+      "dates": "The SSC meeting will be held Tuesday, November 10, 2026, from 8 a.m. until 12 p.m. (Pacific Time) or until business for the day has been completed.",
       "document_number": "2026-21615",
+      "effective_on": null,
+      "executive_order_number": null,
       "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21615/pacific-fishery-management-council-public-meeting",
       "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21615.pdf",
-      "public_inspection_pdf_url": "https://public-inspection.federalregister.gov/2026-21615.pdf?1792586716",
       "publication_date": "2026-10-22",
-      "agencies": [
-        {
-          "raw_name": "DEPARTMENT OF COMMERCE",
-          "name": "Commerce Department",
-          "id": 54,
-          "url": "https://www.federalregister.gov/agencies/commerce-department",
-          "json_url": "https://www.federalregister.gov/api/v1/agencies/54",
-          "parent_id": null,
-          "slug": "commerce-department"
-        },
-        {
-          "raw_name": "National Oceanic and Atmospheric Administration",
-          "name": "National Oceanic and Atmospheric Administration",
-          "id": 361,
-          "url": "https://www.federalregister.gov/agencies/national-oceanic-and-atmospheric-administration",
-          "json_url": "https://www.federalregister.gov/api/v1/agencies/361",
-          "parent_id": 54,
-          "slug": "national-oceanic-and-atmospheric-administration"
-        }
-      ],
-      "excerpts": "The Pacific Fishery Management Council's (Pacific Council) Scientific and Statistical Committee (SSC) will hold a virtual meeting to discuss matters relevant to the November 2026 Pacific Council meeting. This meeting is open to the public."
+      "signing_date": null,
+      "title": "Pacific Fishery Management Council; Public Meeting",
+      "type": "Notice"
     },
     {
-      "title": "President's Council of Advisors on Science and Technology (PCAST)",
-      "type": "Notice",
       "abstract": "This notice announces a virtual/livestreamed meeting of the President's Council of Advisors on Science and Technology (PCAST). The Federal Advisory Committee Act requires that public notice of this meeting be announced in the Federal Register.",
-      "document_number": "2026-21614",
-      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21614/presidents-council-of-advisors-on-science-and-technology-pcast",
-      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21614.pdf",
-      "public_inspection_pdf_url": "https://public-inspection.federalregister.gov/2026-21614.pdf?1792586716",
-      "publication_date": "2026-10-22",
       "agencies": [
         {
           "raw_name": "DEPARTMENT OF ENERGY",
@@ -474,17 +521,20 @@
           "slug": "energy-department"
         }
       ],
-      "excerpts": "This notice announces a virtual/livestreamed meeting of the President's Council of Advisors on Science and Technology (PCAST). The Federal Advisory Committee Act requires that public notice of this meeting be announced in the Federal Register."
+      "comments_close_on": null,
+      "dates": "Friday, November 6, 2026; 12-1 p.m. EST.",
+      "document_number": "2026-21614",
+      "effective_on": null,
+      "executive_order_number": null,
+      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21614/presidents-council-of-advisors-on-science-and-technology-pcast",
+      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21614.pdf",
+      "publication_date": "2026-10-22",
+      "signing_date": null,
+      "title": "President's Council of Advisors on Science and Technology (PCAST)",
+      "type": "Notice"
     },
     {
-      "title": "Submission for OMB Review; Comment Request",
-      "type": "Notice",
       "abstract": null,
-      "document_number": "2026-21613",
-      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21613/submission-for-omb-review-comment-request",
-      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21613.pdf",
-      "public_inspection_pdf_url": "https://public-inspection.federalregister.gov/2026-21613.pdf?1792586716",
-      "publication_date": "2026-10-22",
       "agencies": [
         {
           "raw_name": "DEPARTMENT OF AGRICULTURE",
@@ -496,17 +546,20 @@
           "slug": "agriculture-department"
         }
       ],
-      "excerpts": null
+      "comments_close_on": null,
+      "dates": null,
+      "document_number": "2026-21613",
+      "effective_on": null,
+      "executive_order_number": null,
+      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21613/submission-for-omb-review-comment-request",
+      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21613.pdf",
+      "publication_date": "2026-10-22",
+      "signing_date": null,
+      "title": "Submission for OMB Review; Comment Request",
+      "type": "Notice"
     },
     {
-      "title": "Notice of Federal Advisory Committee Meeting-Science, Technology and Innovation Board",
-      "type": "Notice",
       "abstract": "The DoD (referred to herein as \"the Department of War\" or \"DoW\") is publishing this notice to announce that the following Federal Advisory Committee meeting of the STIB will take place.",
-      "document_number": "2026-21612",
-      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21612/notice-of-federal-advisory-committee-meeting-science-technology-and-innovation-board",
-      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21612.pdf",
-      "public_inspection_pdf_url": "https://public-inspection.federalregister.gov/2026-21612.pdf?1792586716",
-      "publication_date": "2026-10-22",
       "agencies": [
         {
           "raw_name": "DEPARTMENT OF DEFENSE",
@@ -521,17 +574,20 @@
           "raw_name": "Office of the Secretary"
         }
       ],
-      "excerpts": "The DoD (referred to herein as \"the Department of War\" or \"DoW\") is publishing this notice to announce that the following Federal Advisory Committee meeting of the STIB will take place."
+      "comments_close_on": null,
+      "dates": "Closed to the public Wednesday, November 4, 2026, from 9:00 a.m. to 4:30 p.m. Eastern time.",
+      "document_number": "2026-21612",
+      "effective_on": null,
+      "executive_order_number": null,
+      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21612/notice-of-federal-advisory-committee-meeting-science-technology-and-innovation-board",
+      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21612.pdf",
+      "publication_date": "2026-10-22",
+      "signing_date": null,
+      "title": "Notice of Federal Advisory Committee Meeting-Science, Technology and Innovation Board",
+      "type": "Notice"
     },
     {
-      "title": "Privacy Act of 1974; System of Records",
-      "type": "Notice",
       "abstract": "In accordance with the Privacy Act of 1974, DFAS is providing notice to rescind a system of records titled \"Centralized Travel History Records (CTHR),\" T7333a. DFAS established this system to equip Air Force installations with online inquiry capabilities. This functionality allowed installations to support travel claims, questions, and investigations, and to obtain voucher numbers for retrieving travel vouchers from on-site storage or Federal Records Centers. DFAS decommissioned the system and consolidated its records under the Commanders Resource Integration System, F065 AF FMP C.",
-      "document_number": "2026-21611",
-      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21611/privacy-act-of-1974-system-of-records",
-      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21611.pdf",
-      "public_inspection_pdf_url": "https://public-inspection.federalregister.gov/2026-21611.pdf?1792586716",
-      "publication_date": "2026-10-22",
       "agencies": [
         {
           "raw_name": "DEPARTMENT OF DEFENSE",
@@ -543,17 +599,45 @@
           "slug": "defense-department"
         }
       ],
-      "excerpts": "In accordance with the Privacy Act of 1974, DFAS is providing notice to rescind a system of records titled \"Centralized Travel History Records (CTHR),\" T7333a. DFAS established this system to equip Air Force installations with online inquiry..."
+      "comments_close_on": null,
+      "dates": "The rescindment of these SORNs is effective November 23, 2026.",
+      "document_number": "2026-21611",
+      "effective_on": "2026-11-23",
+      "executive_order_number": null,
+      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21611/privacy-act-of-1974-system-of-records",
+      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21611.pdf",
+      "publication_date": "2026-10-22",
+      "signing_date": null,
+      "title": "Privacy Act of 1974; System of Records",
+      "type": "Notice"
     },
     {
-      "title": "Agency Information Collection Activities; Proposed Information Collection Request; Comment Request; The National Oil and Hazardous Substances Pollution Contingency Plan Regulation, Subpart J (Renewal)",
-      "type": "Notice",
       "abstract": "The Environmental Protection Agency (EPA) is planning to submit an information collection request (ICR), The National Oil and Hazardous Substances Pollution Contingency Plan Regulation, Subpart J (Renewal) (EPA ICR Number 1664.15, OMB Control Number 2050-0141) to the Office of Management and Budget (OMB) for review and approval in accordance with the Paperwork Reduction Act. Before doing so, EPA is soliciting public comments on specific aspects of the proposed information collection as described below. This is a proposed extension of the ICR, which is currently approved through May 31, 2027. This notice allows for 60 days for public comments.",
+      "agencies": [
+        {
+          "raw_name": "ENVIRONMENTAL PROTECTION AGENCY",
+          "name": "Environmental Protection Agency",
+          "id": 145,
+          "url": "https://www.federalregister.gov/agencies/environmental-protection-agency",
+          "json_url": "https://www.federalregister.gov/api/v1/agencies/145",
+          "parent_id": null,
+          "slug": "environmental-protection-agency"
+        }
+      ],
+      "comments_close_on": "2026-12-21",
+      "dates": "Comments must be submitted on or before December 21, 2026.",
       "document_number": "2026-21610",
+      "effective_on": null,
+      "executive_order_number": null,
       "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21610/agency-information-collection-activities-proposed-information-collection-request-comment-request-the",
       "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21610.pdf",
-      "public_inspection_pdf_url": "https://public-inspection.federalregister.gov/2026-21610.pdf?1792586716",
       "publication_date": "2026-10-22",
+      "signing_date": null,
+      "title": "Agency Information Collection Activities; Proposed Information Collection Request; Comment Request; The National Oil and Hazardous Substances Pollution Contingency Plan Regulation, Subpart J (Renewal)",
+      "type": "Notice"
+    },
+    {
+      "abstract": "In accordance with the Clean Air Act, as amended (CAA or the Act), notice is given of a proposed consent decree in Our Children's Earth Foundation v. Zeldin, No. 3:25-cv-08994-WHO. On October 19, 2025, Plaintiff Our Children's Earth Foundation filed a complaint in the United States District Court for the Northern District of California, San Francisco Division. Plaintiff alleged that the Environmental Protection Agency (EPA or the Agency) failed to perform certain non- discretionary duties in accordance with the Act to timely respond to numerous state implementation plan (SIP) submissions from the State of California. The EPA is providing notice of this proposed consent decree, which would resolve all claims in the case by establishing deadlines for the EPA to take final actions as specified in the decree.",
       "agencies": [
         {
           "raw_name": "ENVIRONMENTAL PROTECTION AGENCY",
@@ -565,39 +649,20 @@
           "slug": "environmental-protection-agency"
         }
       ],
-      "excerpts": "The Environmental Protection Agency (EPA) is planning to submit an information collection request (ICR), The National Oil and Hazardous Substances Pollution Contingency Plan Regulation, Subpart J (Renewal) (EPA ICR Number 1664.15, OMB Control Number..."
-    },
-    {
-      "title": "Proposed Consent Decree, Clean Air Act Citizen Suit",
-      "type": "Notice",
-      "abstract": "In accordance with the Clean Air Act, as amended (CAA or the Act), notice is given of a proposed consent decree in Our Children's Earth Foundation v. Zeldin, No. 3:25-cv-08994-WHO. On October 19, 2025, Plaintiff Our Children's Earth Foundation filed a complaint in the United States District Court for the Northern District of California, San Francisco Division. Plaintiff alleged that the Environmental Protection Agency (EPA or the Agency) failed to perform certain non- discretionary duties in accordance with the Act to timely respond to numerous state implementation plan (SIP) submissions from the State of California. The EPA is providing notice of this proposed consent decree, which would resolve all claims in the case by establishing deadlines for the EPA to take final actions as specified in the decree.",
+      "comments_close_on": "2026-11-23",
+      "dates": "Written comments on the proposed consent decree must be received by November 23, 2026.",
       "document_number": "2026-21609",
+      "effective_on": null,
+      "executive_order_number": null,
       "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21609/proposed-consent-decree-clean-air-act-citizen-suit",
       "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21609.pdf",
-      "public_inspection_pdf_url": "https://public-inspection.federalregister.gov/2026-21609.pdf?1792586716",
       "publication_date": "2026-10-22",
-      "agencies": [
-        {
-          "raw_name": "ENVIRONMENTAL PROTECTION AGENCY",
-          "name": "Environmental Protection Agency",
-          "id": 145,
-          "url": "https://www.federalregister.gov/agencies/environmental-protection-agency",
-          "json_url": "https://www.federalregister.gov/api/v1/agencies/145",
-          "parent_id": null,
-          "slug": "environmental-protection-agency"
-        }
-      ],
-      "excerpts": "In accordance with the Clean Air Act, as amended (CAA or the Act), notice is given of a proposed consent decree in Our Children's Earth Foundation v. Zeldin, No. 3:25-cv-08994-WHO. On October 19, 2025, Plaintiff Our Children's Earth Foundation filed a..."
+      "signing_date": null,
+      "title": "Proposed Consent Decree, Clean Air Act Citizen Suit",
+      "type": "Notice"
     },
     {
-      "title": "Drawbridge Operation Regulation; Manitowoc River, Manitowoc, WI",
-      "type": "Proposed Rule",
       "abstract": "The Coast Guard is proposing to alter the operating schedule that governs the Eighth Street Bridge, mile 0.29 and the Tenth Street Bridge, mile 0.43, over the Manitowoc River, in the town of Manitowoc, Wisconsin. The City of Manitowoc has requested a full review of the current bridge regulations to alleviate vehicle congestion in downtown Manitowoc and to operate both bridges remotely. On May 21, 2025, we published an interim rule requesting comments in the Federal Register. We are now proposing to include remote operations for the drawbridges. We invite your comments on this proposed rulemaking.",
-      "document_number": "2026-21608",
-      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21608/drawbridge-operation-regulation-manitowoc-river-manitowoc-wi",
-      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21608.pdf",
-      "public_inspection_pdf_url": "https://public-inspection.federalregister.gov/2026-21608.pdf?1792586715",
-      "publication_date": "2026-10-22",
       "agencies": [
         {
           "raw_name": "DEPARTMENT OF HOMELAND SECURITY",
@@ -618,17 +683,20 @@
           "slug": "coast-guard"
         }
       ],
-      "excerpts": "The Coast Guard is proposing to alter the operating schedule that governs the Eighth Street Bridge, mile 0.29 and the Tenth Street Bridge, mile 0.43, over the Manitowoc River, in the town of Manitowoc, Wisconsin. The City of Manitowoc has requested a..."
+      "comments_close_on": "2026-11-23",
+      "dates": "Comments and related material must reach the Coast Guard on or before: November 23, 2026.",
+      "document_number": "2026-21608",
+      "effective_on": null,
+      "executive_order_number": null,
+      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21608/drawbridge-operation-regulation-manitowoc-river-manitowoc-wi",
+      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21608.pdf",
+      "publication_date": "2026-10-22",
+      "signing_date": null,
+      "title": "Drawbridge Operation Regulation; Manitowoc River, Manitowoc, WI",
+      "type": "Proposed Rule"
     },
     {
-      "title": "Fisheries Off West Coast States; Modification of the West Coast Salmon Fisheries; Inseason Action #1-#11",
-      "type": "Rule",
       "abstract": "NMFS announces eleven inseason actions for 2026-2027 ocean salmon fisheries. These inseason actions modified the commercial salmon fisheries in the area from United States/Canada border to Cape Falcon, OR.",
-      "document_number": "2026-21607",
-      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21607/fisheries-off-west-coast-states-modification-of-the-west-coast-salmon-fisheries-inseason-action-1-11",
-      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21607.pdf",
-      "public_inspection_pdf_url": "https://public-inspection.federalregister.gov/2026-21607.pdf?1792586715",
-      "publication_date": "2026-10-22",
       "agencies": [
         {
           "raw_name": "DEPARTMENT OF COMMERCE",
@@ -649,17 +717,20 @@
           "slug": "national-oceanic-and-atmospheric-administration"
         }
       ],
-      "excerpts": "NMFS announces eleven inseason actions for 2026-2027 ocean salmon fisheries. These inseason actions modified the commercial salmon fisheries in the area from United States/Canada border to Cape Falcon, OR."
+      "comments_close_on": null,
+      "dates": "The effective dates for these inseason actions are set out in this document under the heading \"Inseason Actions\" and the actions remained in effect until superseded or modified.",
+      "document_number": "2026-21607",
+      "effective_on": null,
+      "executive_order_number": null,
+      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21607/fisheries-off-west-coast-states-modification-of-the-west-coast-salmon-fisheries-inseason-action-1-11",
+      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21607.pdf",
+      "publication_date": "2026-10-22",
+      "signing_date": null,
+      "title": "Fisheries Off West Coast States; Modification of the West Coast Salmon Fisheries; Inseason Action #1-#11",
+      "type": "Rule"
     },
     {
-      "title": "Sunshine Act Meetings",
-      "type": "Notice",
       "abstract": null,
-      "document_number": "2026-21606",
-      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21606/sunshine-act-meetings",
-      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21606.pdf",
-      "public_inspection_pdf_url": "https://public-inspection.federalregister.gov/2026-21606.pdf?1792509307",
-      "publication_date": "2026-10-22",
       "agencies": [
         {
           "raw_name": "DEPARTMENT OF ENERGY",
@@ -680,17 +751,20 @@
           "slug": "federal-energy-regulatory-commission"
         }
       ],
-      "excerpts": null
+      "comments_close_on": null,
+      "dates": null,
+      "document_number": "2026-21606",
+      "effective_on": null,
+      "executive_order_number": null,
+      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21606/sunshine-act-meetings",
+      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21606.pdf",
+      "publication_date": "2026-10-22",
+      "signing_date": null,
+      "title": "Sunshine Act Meetings",
+      "type": "Notice"
     },
     {
-      "title": "Submission for OMB Review; Comment Request",
-      "type": "Notice",
       "abstract": null,
-      "document_number": "2026-21605",
-      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21605/submission-for-omb-review-comment-request",
-      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21605.pdf",
-      "public_inspection_pdf_url": "https://public-inspection.federalregister.gov/2026-21605.pdf?1792586715",
-      "publication_date": "2026-10-22",
       "agencies": [
         {
           "raw_name": "DEPARTMENT OF AGRICULTURE",
@@ -702,17 +776,20 @@
           "slug": "agriculture-department"
         }
       ],
-      "excerpts": null
+      "comments_close_on": null,
+      "dates": null,
+      "document_number": "2026-21605",
+      "effective_on": null,
+      "executive_order_number": null,
+      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21605/submission-for-omb-review-comment-request",
+      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21605.pdf",
+      "publication_date": "2026-10-22",
+      "signing_date": null,
+      "title": "Submission for OMB Review; Comment Request",
+      "type": "Notice"
     },
     {
-      "title": "Agency Information Collection Activities; Submission to the Office of Management and Budget for Review and Approval; Oil Spill Financial Responsibility for Offshore Facilities",
-      "type": "Notice",
       "abstract": "In accordance with the Paperwork Reduction Act of 1995, the Bureau of Ocean Energy Management (BOEM) proposes this information collection request (ICR) to revise Office of Management and Budget (OMB) control number 1010-0106.",
-      "document_number": "2026-21604",
-      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21604/agency-information-collection-activities-submission-to-the-office-of-management-and-budget-for",
-      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21604.pdf",
-      "public_inspection_pdf_url": "https://public-inspection.federalregister.gov/2026-21604.pdf?1792586715",
-      "publication_date": "2026-10-22",
       "agencies": [
         {
           "raw_name": "DEPARTMENT OF THE INTERIOR",
@@ -733,17 +810,45 @@
           "slug": "ocean-energy-management-bureau"
         }
       ],
-      "excerpts": "In accordance with the Paperwork Reduction Act of 1995, the Bureau of Ocean Energy Management (BOEM) proposes this information collection request (ICR) to revise Office of Management and Budget (OMB) control number 1010-0106."
+      "comments_close_on": "2026-11-23",
+      "dates": "Comments must be received by the OMB desk officer no later than November 23, 2026.",
+      "document_number": "2026-21604",
+      "effective_on": null,
+      "executive_order_number": null,
+      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21604/agency-information-collection-activities-submission-to-the-office-of-management-and-budget-for",
+      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21604.pdf",
+      "publication_date": "2026-10-22",
+      "signing_date": null,
+      "title": "Agency Information Collection Activities; Submission to the Office of Management and Budget for Review and Approval; Oil Spill Financial Responsibility for Offshore Facilities",
+      "type": "Notice"
     },
     {
-      "title": "Nevada: Codification and Incorporation by Reference of Approved Underground Storage Tank Program",
-      "type": "Rule",
       "abstract": "On September 30, 2021, the State of Nevada (Nevada) received final approval, from the Environmental Protection Agency (EPA), of revisions to its Underground Storage Tank Program (UST Program) under subtitle I of the Resource Conservation and Recovery Act (RCRA). Pursuant to RCRA, the EPA is taking direct final action to codify the approval of Nevada's revised UST Program and incorporate by reference those provisions of Nevada's statutes and regulations that the EPA has determined meet the requirements for approval.",
+      "agencies": [
+        {
+          "raw_name": "ENVIRONMENTAL PROTECTION AGENCY",
+          "name": "Environmental Protection Agency",
+          "id": 145,
+          "url": "https://www.federalregister.gov/agencies/environmental-protection-agency",
+          "json_url": "https://www.federalregister.gov/api/v1/agencies/145",
+          "parent_id": null,
+          "slug": "environmental-protection-agency"
+        }
+      ],
+      "comments_close_on": "2026-11-23",
+      "dates": "This rule is effective December 21, 2026, unless the EPA receives adverse comment by November 23, 2026. If the EPA receives adverse comment, it will publish a timely withdrawal in the Federal Register informing the public that the rule will not take effect. The incorporation by reference of certain publications listed in the regulations is approved by the Director of the Federal Register as of December 21, 2026.",
       "document_number": "2026-21603",
+      "effective_on": "2026-12-21",
+      "executive_order_number": null,
       "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21603/nevada-codification-and-incorporation-by-reference-of-approved-underground-storage-tank-program",
       "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21603.pdf",
-      "public_inspection_pdf_url": "https://public-inspection.federalregister.gov/2026-21603.pdf?1792586715",
       "publication_date": "2026-10-22",
+      "signing_date": null,
+      "title": "Nevada: Codification and Incorporation by Reference of Approved Underground Storage Tank Program",
+      "type": "Rule"
+    },
+    {
+      "abstract": "Notice is hereby given that the State of Arkansas is revising its approved Public Water System Supervision (PWSS) program. Arkansas has adopted the Environmental Protection Agency (EPA) drinking water rules for the Consumer Confidence Report Rule Revisions. Therefore, the EPA intends to approve this PWSS program revision package.",
       "agencies": [
         {
           "raw_name": "ENVIRONMENTAL PROTECTION AGENCY",
@@ -755,39 +860,20 @@
           "slug": "environmental-protection-agency"
         }
       ],
-      "excerpts": "On September 30, 2021, the State of Nevada (Nevada) received final approval, from the Environmental Protection Agency (EPA), of revisions to its Underground Storage Tank Program (UST Program) under subtitle I of the Resource Conservation and Recovery..."
-    },
-    {
-      "title": "Public Water System Supervision Program Revision for the State of Arkansas",
-      "type": "Notice",
-      "abstract": "Notice is hereby given that the State of Arkansas is revising its approved Public Water System Supervision (PWSS) program. Arkansas has adopted the Environmental Protection Agency (EPA) drinking water rules for the Consumer Confidence Report Rule Revisions. Therefore, the EPA intends to approve this PWSS program revision package.",
+      "comments_close_on": "2026-11-23",
+      "dates": "Comments or a request for a public hearing must be submitted by November 23, 2026 to the Regional Administrator at the EPA Region 6 address shown below.",
       "document_number": "2026-21602",
+      "effective_on": null,
+      "executive_order_number": null,
       "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21602/public-water-system-supervision-program-revision-for-the-state-of-arkansas",
       "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21602.pdf",
-      "public_inspection_pdf_url": "https://public-inspection.federalregister.gov/2026-21602.pdf?1792586715",
       "publication_date": "2026-10-22",
-      "agencies": [
-        {
-          "raw_name": "ENVIRONMENTAL PROTECTION AGENCY",
-          "name": "Environmental Protection Agency",
-          "id": 145,
-          "url": "https://www.federalregister.gov/agencies/environmental-protection-agency",
-          "json_url": "https://www.federalregister.gov/api/v1/agencies/145",
-          "parent_id": null,
-          "slug": "environmental-protection-agency"
-        }
-      ],
-      "excerpts": "Notice is hereby given that the State of Arkansas is revising its approved Public Water System Supervision (PWSS) program. Arkansas has adopted the Environmental Protection Agency (EPA) drinking water rules for the Consumer Confidence Report Rule..."
+      "signing_date": null,
+      "title": "Public Water System Supervision Program Revision for the State of Arkansas",
+      "type": "Notice"
     },
     {
-      "title": "Combined Notice of Filings #1",
-      "type": "Notice",
       "abstract": null,
-      "document_number": "2026-21601",
-      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21601/combined-notice-of-filings-1",
-      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21601.pdf",
-      "public_inspection_pdf_url": "https://public-inspection.federalregister.gov/2026-21601.pdf?1792586715",
-      "publication_date": "2026-10-22",
       "agencies": [
         {
           "raw_name": "DEPARTMENT OF ENERGY",
@@ -808,17 +894,20 @@
           "slug": "federal-energy-regulatory-commission"
         }
       ],
-      "excerpts": null
+      "comments_close_on": null,
+      "dates": "10/16/26.",
+      "document_number": "2026-21601",
+      "effective_on": null,
+      "executive_order_number": null,
+      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21601/combined-notice-of-filings-1",
+      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21601.pdf",
+      "publication_date": "2026-10-22",
+      "signing_date": null,
+      "title": "Combined Notice of Filings #1",
+      "type": "Notice"
     },
     {
-      "title": "Indefinite Suspension of the De Minimis Exemption for Mail Shipments and New Postal Informal Entry Process; Delayed Compliance Extension",
-      "type": "Rule",
       "abstract": "This document announces that U.S. Customs and Border Protection (CBP) will extend the compliance date for the regulatory provisions mandating the formal entry of merchandise arriving through the international postal network that is subject to partner government agency requirements, subject to duties under Chapter 98 or Chapter 99 of the Harmonized Tariff Schedule of the United States (HTSUS), or for which duty-free treatment is claimed under Chapter 98 of the HTSUS or pursuant to a Free Trade Agreement, which were published in the Federal Register on June 24, 2026. We believe the public will benefit from more time to prepare for compliance with these changes.",
-      "document_number": "2026-21600",
-      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21600/indefinite-suspension-of-the-de-minimis-exemption-for-mail-shipments-and-new-postal-informal-entry",
-      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21600.pdf",
-      "public_inspection_pdf_url": "https://public-inspection.federalregister.gov/2026-21600.pdf?1792586714",
-      "publication_date": "2026-10-22",
       "agencies": [
         {
           "raw_name": "DEPARTMENT OF HOMELAND SECURITY",
@@ -839,17 +928,20 @@
           "slug": "u-s-customs-and-border-protection"
         }
       ],
-      "excerpts": "This document announces that U.S. Customs and Border Protection (CBP) will extend the compliance date for the regulatory provisions mandating the formal entry of merchandise arriving through the international postal network that is subject to partner..."
+      "comments_close_on": null,
+      "dates": "The compliance date for 19 CFR 145.12(a)(2)(v) and (vi) is January 20, 2027.",
+      "document_number": "2026-21600",
+      "effective_on": null,
+      "executive_order_number": null,
+      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21600/indefinite-suspension-of-the-de-minimis-exemption-for-mail-shipments-and-new-postal-informal-entry",
+      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21600.pdf",
+      "publication_date": "2026-10-22",
+      "signing_date": null,
+      "title": "Indefinite Suspension of the De Minimis Exemption for Mail Shipments and New Postal Informal Entry Process; Delayed Compliance Extension",
+      "type": "Rule"
     },
     {
-      "title": "Court Orders and Legal Processes Affecting Thrift Savings Plan Accounts",
-      "type": "Rule",
       "abstract": null,
-      "document_number": "2026-21598",
-      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21598/court-orders-and-legal-processes-affecting-thrift-savings-plan-accounts",
-      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21598.pdf",
-      "public_inspection_pdf_url": "https://public-inspection.federalregister.gov/2026-21598.pdf?1792586714",
-      "publication_date": "2026-10-22",
       "agencies": [
         {
           "raw_name": "FEDERAL RETIREMENT THRIFT INVESTMENT BOARD",
@@ -861,17 +953,54 @@
           "slug": "federal-retirement-thrift-investment-board"
         }
       ],
-      "excerpts": null
+      "comments_close_on": null,
+      "dates": null,
+      "document_number": "2026-21598",
+      "effective_on": null,
+      "executive_order_number": null,
+      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21598/court-orders-and-legal-processes-affecting-thrift-savings-plan-accounts",
+      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21598.pdf",
+      "publication_date": "2026-10-22",
+      "signing_date": null,
+      "title": "Court Orders and Legal Processes Affecting Thrift Savings Plan Accounts",
+      "type": "Rule"
     },
     {
-      "title": "Takes of Marine Mammals Incidental to Specified Activities; Taking Marine Mammals Incidental to Seward Cruise Ship Passenger Dock and Terminal Facility Project in Seward, Alaska",
-      "type": "Notice",
       "abstract": "In accordance with the regulations implementing the Marine Mammal Protection Act (MMPA), as amended, notification is hereby given that NMFS has issued a renewal incidental harassment authorization (IHA) to Turnagain Marine Services (TMC) to incidentally harass marine mammals incidental to the Seward Cruise Ship Passenger Dock and Terminal Facility project in Seward, Alaska.",
+      "agencies": [
+        {
+          "raw_name": "DEPARTMENT OF COMMERCE",
+          "name": "Commerce Department",
+          "id": 54,
+          "url": "https://www.federalregister.gov/agencies/commerce-department",
+          "json_url": "https://www.federalregister.gov/api/v1/agencies/54",
+          "parent_id": null,
+          "slug": "commerce-department"
+        },
+        {
+          "raw_name": "National Oceanic and Atmospheric Administration",
+          "name": "National Oceanic and Atmospheric Administration",
+          "id": 361,
+          "url": "https://www.federalregister.gov/agencies/national-oceanic-and-atmospheric-administration",
+          "json_url": "https://www.federalregister.gov/api/v1/agencies/361",
+          "parent_id": 54,
+          "slug": "national-oceanic-and-atmospheric-administration"
+        }
+      ],
+      "comments_close_on": null,
+      "dates": "This renewal IHA is valid from September 25, 2026, through September 20, 2027.",
       "document_number": "2026-21597",
+      "effective_on": null,
+      "executive_order_number": null,
       "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21597/takes-of-marine-mammals-incidental-to-specified-activities-taking-marine-mammals-incidental-to",
       "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21597.pdf",
-      "public_inspection_pdf_url": "https://public-inspection.federalregister.gov/2026-21597.pdf?1792586714",
       "publication_date": "2026-10-22",
+      "signing_date": null,
+      "title": "Takes of Marine Mammals Incidental to Specified Activities; Taking Marine Mammals Incidental to Seward Cruise Ship Passenger Dock and Terminal Facility Project in Seward, Alaska",
+      "type": "Notice"
+    },
+    {
+      "abstract": "In accordance with regulations implementing the Marine Mammal Protection Act (MMPA) as amended, notification is hereby given that NMFS has issued an incidental harassment authorization (IHA) to the United States Navy (Navy) for authorization to take marine mammals incidental to Year 1 of the Bremerton Waterfront Infrastructure Improvements Project in Puget Sound, Washington.",
       "agencies": [
         {
           "raw_name": "DEPARTMENT OF COMMERCE",
@@ -892,48 +1021,20 @@
           "slug": "national-oceanic-and-atmospheric-administration"
         }
       ],
-      "excerpts": "In accordance with the regulations implementing the Marine Mammal Protection Act (MMPA), as amended, notification is hereby given that NMFS has issued a renewal incidental harassment authorization (IHA) to Turnagain Marine Services (TMC) to..."
-    },
-    {
-      "title": "Takes of Marine Mammals Incidental to Specified Activities; Taking Marine Mammals Incidental to Year 1 of the Bremerton Waterfront Infrastructure Improvements Project in Puget Sound, Washington",
-      "type": "Notice",
-      "abstract": "In accordance with regulations implementing the Marine Mammal Protection Act (MMPA) as amended, notification is hereby given that NMFS has issued an incidental harassment authorization (IHA) to the United States Navy (Navy) for authorization to take marine mammals incidental to Year 1 of the Bremerton Waterfront Infrastructure Improvements Project in Puget Sound, Washington.",
+      "comments_close_on": null,
+      "dates": "This authorization is effective July 1, 2027 through June 30, 2028.",
       "document_number": "2026-21596",
+      "effective_on": "2027-07-01",
+      "executive_order_number": null,
       "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21596/takes-of-marine-mammals-incidental-to-specified-activities-taking-marine-mammals-incidental-to-year",
       "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21596.pdf",
-      "public_inspection_pdf_url": "https://public-inspection.federalregister.gov/2026-21596.pdf?1792586714",
       "publication_date": "2026-10-22",
-      "agencies": [
-        {
-          "raw_name": "DEPARTMENT OF COMMERCE",
-          "name": "Commerce Department",
-          "id": 54,
-          "url": "https://www.federalregister.gov/agencies/commerce-department",
-          "json_url": "https://www.federalregister.gov/api/v1/agencies/54",
-          "parent_id": null,
-          "slug": "commerce-department"
-        },
-        {
-          "raw_name": "National Oceanic and Atmospheric Administration",
-          "name": "National Oceanic and Atmospheric Administration",
-          "id": 361,
-          "url": "https://www.federalregister.gov/agencies/national-oceanic-and-atmospheric-administration",
-          "json_url": "https://www.federalregister.gov/api/v1/agencies/361",
-          "parent_id": 54,
-          "slug": "national-oceanic-and-atmospheric-administration"
-        }
-      ],
-      "excerpts": "In accordance with regulations implementing the Marine Mammal Protection Act (MMPA) as amended, notification is hereby given that NMFS has issued an incidental harassment authorization (IHA) to the United States Navy (Navy) for authorization to take..."
+      "signing_date": null,
+      "title": "Takes of Marine Mammals Incidental to Specified Activities; Taking Marine Mammals Incidental to Year 1 of the Bremerton Waterfront Infrastructure Improvements Project in Puget Sound, Washington",
+      "type": "Notice"
     },
     {
-      "title": "Notice of Determinations; Culturally Significant Objects Being Imported for Exhibition-Determinations: “Two Minds, One Vision” Exhibition",
-      "type": "Notice",
       "abstract": "Notice is hereby given of the following determinations: I hereby determine that certain objects being imported from abroad pursuant to agreements with their foreign owners or custodians for temporary display in the exhibition \"Two Minds, One Vision\" at the Embassy of Italy, Washington, District of Columbia; the Italian Cultural Institute, New York, New York; and at possible additional exhibitions or venues yet to be determined, are of cultural significance, and, further, that their temporary exhibition or display within the United States as aforementioned is in the national interest. I have ordered that Public Notice of these determinations be published in the Federal Register.",
-      "document_number": "2026-21595",
-      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21595/notice-of-determinations-culturally-significant-objects-being-imported-for-exhibition-determinations",
-      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21595.pdf",
-      "public_inspection_pdf_url": "https://public-inspection.federalregister.gov/2026-21595.pdf?1792586714",
-      "publication_date": "2026-10-22",
       "agencies": [
         {
           "raw_name": "DEPARTMENT OF STATE",
@@ -945,17 +1046,20 @@
           "slug": "state-department"
         }
       ],
-      "excerpts": "Notice is hereby given of the following determinations: I hereby determine that certain objects being imported from abroad pursuant to agreements with their foreign owners or custodians for temporary display in the exhibition \"Two Minds, One Vision\" at..."
+      "comments_close_on": null,
+      "dates": null,
+      "document_number": "2026-21595",
+      "effective_on": null,
+      "executive_order_number": null,
+      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21595/notice-of-determinations-culturally-significant-objects-being-imported-for-exhibition-determinations",
+      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21595.pdf",
+      "publication_date": "2026-10-22",
+      "signing_date": null,
+      "title": "Notice of Determinations; Culturally Significant Objects Being Imported for Exhibition-Determinations: “Two Minds, One Vision” Exhibition",
+      "type": "Notice"
     },
     {
-      "title": "Palisades Energy, LLC; Palisades Nuclear Plant; License Amendment",
-      "type": "Notice",
       "abstract": "The U.S. Nuclear Regulatory Commission (NRC, the Commission) has issued an amendment under exigent circumstances to Renewed Facility Operating License (RFOL) No. DPR-20, issued to Palisades Energy, LLC (the licensee), for operation of the Palisades Nuclear Plant (Palisades, PNP). The amendment modifies the PNP Updated Final Safety Analysis Report (UFSAR) Section 9.11, \"Fuel Handling and Storage Systems,\" and Section 14.19, \"Fuel Handling Accident,\" on a one-time basis, to facilitate transport of a fuel assembly designated DD41 from the reactor to the spent fuel pool (SFP) utilizing different plant equipment and following a different travel path than is described in the UFSAR.",
-      "document_number": "2026-21594",
-      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21594/palisades-energy-llc-palisades-nuclear-plant-license-amendment",
-      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21594.pdf",
-      "public_inspection_pdf_url": "https://public-inspection.federalregister.gov/2026-21594.pdf?1792586714",
-      "publication_date": "2026-10-22",
       "agencies": [
         {
           "raw_name": "NUCLEAR REGULATORY COMMISSION",
@@ -967,17 +1071,20 @@
           "slug": "nuclear-regulatory-commission"
         }
       ],
-      "excerpts": "The U.S. Nuclear Regulatory Commission (NRC, the Commission) has issued an amendment under exigent circumstances to Renewed Facility Operating License (RFOL) No. DPR-20, issued to Palisades Energy, LLC (the licensee), for operation of the Palisades..."
+      "comments_close_on": null,
+      "dates": "The amendment was issued on October 13, 2026. A request for a hearing or petitions for leave to intervene must be filed by December 21, 2026.",
+      "document_number": "2026-21594",
+      "effective_on": null,
+      "executive_order_number": null,
+      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21594/palisades-energy-llc-palisades-nuclear-plant-license-amendment",
+      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21594.pdf",
+      "publication_date": "2026-10-22",
+      "signing_date": null,
+      "title": "Palisades Energy, LLC; Palisades Nuclear Plant; License Amendment",
+      "type": "Notice"
     },
     {
-      "title": "RIN 1625-AA00",
-      "type": "Rule",
       "abstract": "The Coast Guard is establishing a temporary safety zone for certain navigable waters of Zach's Bay, near Wantagh, NY to protect swimmers, personnel, vessels, and the marine environment from potential hazards created by a swim event at Jones Beach State Park which had originally been scheduled for September 25-26 but was cancelled due to storms. Entry of vessels or persons into this zone is prohibited unless specifically authorized by the Captain of the Port, Sector Long Island Sound, or their designated representative.",
-      "document_number": "2026-21593",
-      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21593/rin-1625-aa00",
-      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21593.pdf",
-      "public_inspection_pdf_url": "https://public-inspection.federalregister.gov/2026-21593.pdf?1792586714",
-      "publication_date": "2026-10-22",
       "agencies": [
         {
           "raw_name": "DEPARTMENT OF HOMELAND SECURITY",
@@ -998,17 +1105,20 @@
           "slug": "coast-guard"
         }
       ],
-      "excerpts": "The Coast Guard is establishing a temporary safety zone for certain navigable waters of Zach's Bay, near Wantagh, NY to protect swimmers, personnel, vessels, and the marine environment from potential hazards created by a swim event at Jones Beach State..."
+      "comments_close_on": null,
+      "dates": "This rule is effective from 6 a.m. through 4 p.m. on October 24, 2026.",
+      "document_number": "2026-21593",
+      "effective_on": "2026-10-24",
+      "executive_order_number": null,
+      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21593/rin-1625-aa00",
+      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21593.pdf",
+      "publication_date": "2026-10-22",
+      "signing_date": null,
+      "title": "RIN 1625-AA00",
+      "type": "Rule"
     },
     {
-      "title": "Agency Information Collection Activities: Proposed Collection; Comment Request",
-      "type": "Notice",
       "abstract": "We are proposing to request that the Office of Management and Budget (OMB) renew OMB 3095-0036, a currently approved information collection. This collection is used to obtain information from private foundations or other entities in order to design, construct and equip Presidential libraries. Pursuant to the Paperwork Reduction Act of 1995, we invite you to comment on this proposed combined information collection.",
-      "document_number": "2026-21592",
-      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21592/agency-information-collection-activities-proposed-collection-comment-request",
-      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21592.pdf",
-      "public_inspection_pdf_url": "https://public-inspection.federalregister.gov/2026-21592.pdf?1792586714",
-      "publication_date": "2026-10-22",
       "agencies": [
         {
           "raw_name": "NATIONAL ARCHIVES AND RECORDS ADMINISTRATION",
@@ -1020,8 +1130,17 @@
           "slug": "national-archives-and-records-administration"
         }
       ],
-      "excerpts": "We are proposing to request that the Office of Management and Budget (OMB) renew OMB 3095-0036, a currently approved information collection. This collection is used to obtain information from private foundations or other entities in order to design,..."
+      "comments_close_on": "2026-12-21",
+      "dates": "We must receive written comments on or before December 21, 2026.",
+      "document_number": "2026-21592",
+      "effective_on": null,
+      "executive_order_number": null,
+      "html_url": "https://www.federalregister.gov/documents/2026/10/22/2026-21592/agency-information-collection-activities-proposed-collection-comment-request",
+      "pdf_url": "https://www.govinfo.gov/content/pkg/FR-2026-10-22/pdf/2026-21592.pdf",
+      "publication_date": "2026-10-22",
+      "signing_date": null,
+      "title": "Agency Information Collection Activities: Proposed Collection; Comment Request",
+      "type": "Notice"
     }
-  ],
-  "retrievedAt": "2026-10-22T20:15:29.276Z"
+  ]
 }

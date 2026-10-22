@@ -11,6 +11,8 @@ const routes = [
   "#/vote/my-guide",
   "#/vote/how-to-read",
   "#/vote/demo",
+  "#/congress",
+  "#/congress/how-it-works",
 ];
 
 for (const route of routes) {
@@ -43,4 +45,20 @@ test("external links are safe", async ({ page }) => {
     as.filter((a) => !/noopener|noreferrer/.test(a.getAttribute("rel") ?? "")).map((a) => a.getAttribute("href")),
   );
   expect(bad).toEqual([]);
+});
+
+test("congress list filters and opens a bill", async ({ page }) => {
+  await page.goto("#/congress");
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("federal legislation");
+  await page.getByRole("button", { name: "Became law" }).click();
+  const card = page.locator("a.measure-card").first();
+  await expect(card).toBeVisible();
+  await card.click();
+  await expect(page.getByText("Public Law").first()).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Legislative timeline" })).toBeVisible();
+});
+
+test("congress explainer renders", async ({ page }) => {
+  await page.goto("#/congress/how-it-works");
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("becomes law");
 });

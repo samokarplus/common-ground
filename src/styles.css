@@ -2813,3 +2813,20 @@ footer {
   gap: 6px;
   margin: 8px 0;
 }
+
+.note {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  margin: 12px 0 20px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.note svg {
+  flex: none;
+  margin-top: 3px;
+}

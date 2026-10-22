@@ -13,3 +13,9 @@ Factual log. Only items marked verified were checked in the session that wrote t
 - 15 measure explanations remain drafts, hidden pending human review (unchanged).
 - Candidate/judge facts not human-verified against the official XLSX.
 - Congress tracker, committed Playwright tests, axe audit, Atlas expansion: not started.
+
+## Session 3, continued
+- Real Federal Register refresh, verified locally: `npm run refresh:fr` updated 40 records (snapshot, `data/changelog/federal-register.jsonl`, `data/source-status.json` created); a second run reported "No change" (idempotent). The scheduled GitHub Actions run is still unobserved.
+- Playwright smoke tests committed (`e2e/`, `npm run e2e`): 12 routes plus search/flow checks at 1360, 768 and 390px; each checks h1, no horizontal overflow, no console errors. Verified: 48/48 pass. Not yet covered: axe audit, broken external link checks, document pages.
+- Congress tracker (first slice): `src/lib/congress.ts` parses GovInfo BILLSTATUS XML; `scripts/refresh-congress.mts` (`npm run refresh:congress`) fetched real data for 60 recently updated bills (H.R., S., H.J.Res., S.J.Res., 119th Congress) into `data/congress/bills.json`. UI at `#/congress`, `#/congress/bill/:id`, `#/congress/how-it-works` (lazy-loaded chunk). Status is derived conservatively from the action log; the UI says so and links Congress.gov. 4 new unit tests use a labeled fictional fixture.
+- Congress limits: only the 15 most recently updated bills per type, not a full list; no vote tallies, no plain-language "major provisions" (only the CRS summary when present); not yet in the scheduled workflow, source registry or health report; status mapping is heuristic and unreviewed against many real bills; screenshots were not visually reviewed (browser pane unavailable).

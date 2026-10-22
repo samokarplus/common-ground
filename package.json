@@ -9,6 +9,7 @@
     "preview": "vite preview --host 127.0.0.1 --port 3021",
     "test": "node --experimental-strip-types --test tests/*.test.mts",
     "e2e": "playwright test",
+    "refresh:congress": "node --experimental-strip-types scripts/refresh-congress.mts",
     "scan": "node scripts/scan-publication.mjs",
     "typecheck": "tsc --noEmit",
     "lint": "eslint src tests",

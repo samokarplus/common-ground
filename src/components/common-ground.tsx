@@ -1,11 +1,12 @@
 "use client";
 // External URL and local-storage state is hydrated after SSR; these effects intentionally initialize client state.
 /* eslint-disable react-hooks/set-state-in-effect */
-import { useEffect, useState, useRef } from "react";
+import { lazy, Suspense, useEffect, useState, useRef } from "react";
 import Link, { routeSearch } from "./link";
 import { getFeed, getDocument } from "@/lib/free-source";
 import { localDebate } from "@/lib/local-debate";
 import HelpMeVote, { election } from "./help-me-vote";
+const Congress = lazy(() => import("./congress"));
 import { daysUntil, electionPhase } from "@/lib/election";
 import {
   ArrowUpRight,
@@ -45,7 +46,8 @@ import type { Feed } from "@/lib/free-source";
 const nav = [
   ["today", "Today", Sun],
   ["vote", "Help Me Vote", Vote],
-  ["legislation", "Legislation", Landmark],
+  ["congress", "Congress", Landmark],
+  ["legislation", "Federal Register", Landmark],
   ["policy", "Policy Explorer", Layers],
   ["values", "My Values", Compass],
   ["debate", "Debate Lab", MessageCircle],
@@ -776,6 +778,11 @@ export default function CommonGround({
           {(section === "vote" || section === "ballot") && (
             <HelpMeVote parts={section === "vote" ? parts.slice(1) : []} />
           )}
+          {section === "congress" && (
+            <Suspense fallback={<p className="empty">Loading…</p>}>
+              <Congress parts={parts.slice(1)} />
+            </Suspense>
+          )}
           {section === "methodology" && <Methodology />}
           {section === "privacy" && <Privacy onClear={() => setSaved([])} />}
           {section === "status" && (
@@ -895,6 +902,7 @@ export default function CommonGround({
             "atlas",
             "ballot",
             "vote",
+            "congress",
             "methodology",
             "privacy",
             "status",

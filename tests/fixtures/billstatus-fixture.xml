@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!-- TEST FIXTURE: fictional bill shaped like GovInfo BILLSTATUS. Not real congressional data. -->
+<billStatus><version>3.0.0</version><bill>
+<number>9999</number><updateDate>2026-01-02T00:00:00Z</updateDate><originChamber>House</originChamber>
+<type>HR</type><introducedDate>2026-01-01</introducedDate><congress>119</congress>
+<legislationUrl>https://www.congress.gov/bill/119th-congress/house-bill/9999</legislationUrl>
+<committees><item><name>Example Committee</name></item></committees>
+<relatedBills><item><title>Unrelated Title</title></item></relatedBills>
+<sponsors><item><fullName>Rep. Example, Test [I-ZZ-1]</fullName><party>I</party><state>ZZ</state></item></sponsors>
+<cosponsors><count>2</count></cosponsors>
+<policyArea><name>Government Operations</name></policyArea>
+<recordedVotes><recordedVote><url>https://clerk.house.gov/evs/2026/roll1.xml</url><chamber>House</chamber><date>2026-01-05T00:00:00Z</date></recordedVote></recordedVotes>
+<summaries><summary><updateDate>2026-01-02T00:00:00Z</updateDate><text><![CDATA[<p>This is <b>fixture</b> text &amp; nothing more.</p>]]></text></summary></summaries>
+<latestAction><actionDate>2026-01-05</actionDate><text>Passed/agreed to in House: On passage Passed by recorded vote.</text></latestAction>
+<actions>
+<item><actionDate>2026-01-01</actionDate><text>Introduced in House</text><type>IntroReferral</type></item>
+<item><actionDate>2026-01-03</actionDate><text>Referred to the Example Committee.</text><type>IntroReferral</type></item>
+<item><actionDate>2026-01-05</actionDate><text>Passed/agreed to in House: On passage Passed by recorded vote.</text><type>Floor</type></item>
+</actions>
+<title>Fixture &amp; Example Act</title>
+</bill></billStatus>
