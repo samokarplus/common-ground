@@ -1,0 +1,654 @@
+{
+  "id": "co-2026-general",
+  "state": "CO",
+  "jurisdiction": "State of Colorado",
+  "name": "Colorado 2026 General Election",
+  "electionDate": "2026-11-03",
+  "certifiedOn": "2026-09-04",
+  "dataVerifiedAt": "2026-10-22T22:30:00Z",
+  "staleAfterDays": 7,
+  "timeZone": "America/Denver",
+  "sources": [
+    {
+      "id": "sos-certification",
+      "title": "Secretary of State certifies the 2026 General Election ballot (press release, Sept. 4, 2026)",
+      "publisher": "Colorado Secretary of State",
+      "url": "https://www.coloradosos.gov/pubs/newsRoom/pressReleases/2026/PR20260904BallotCertification.html",
+      "kind": "official-primary",
+      "retrievedAt": "2026-10-22"
+    },
+    {
+      "id": "sos-measures",
+      "title": "Amendments and Propositions on the 2026 Ballot",
+      "publisher": "Colorado Secretary of State",
+      "url": "https://www.coloradosos.gov/pubs/elections/Initiatives/ballot/contacts/2026.html",
+      "kind": "official-primary",
+      "retrievedAt": "2026-10-22"
+    },
+    {
+      "id": "sos-candidates",
+      "title": "2026 General Election official candidate list (page last updated Sept. 15, 2026)",
+      "publisher": "Colorado Secretary of State",
+      "url": "https://www.coloradosos.gov/pubs/elections/vote/generalCandidates.html",
+      "kind": "official-primary",
+      "retrievedAt": "2026-10-22"
+    },
+    {
+      "id": "blue-book",
+      "title": "2026 State Ballot Information Booklet (Blue Book), published Sept. 21, 2026",
+      "publisher": "Colorado Legislative Council Staff",
+      "url": "https://content.leg.colorado.gov/sites/default/files/2026-blue-book-en-accessible.pdf",
+      "kind": "official-analysis",
+      "retrievedAt": "2026-10-22"
+    },
+    {
+      "id": "blue-book-es",
+      "title": "2026 Libro azul (Spanish-language Blue Book)",
+      "publisher": "Colorado Legislative Council Staff",
+      "url": "https://content.leg.colorado.gov/sites/default/files/2026-blue-book-es-accessible.pdf",
+      "kind": "official-analysis",
+      "retrievedAt": "2026-10-22"
+    },
+    {
+      "id": "fiscal-statements",
+      "title": "Fiscal impact statements for the 2026 statewide ballot measures",
+      "publisher": "Colorado Legislative Council Staff",
+      "url": "https://content.leg.colorado.gov/sites/default/files/2026-fiscal-impact-statements-english-accessible.pdf",
+      "kind": "official-analysis",
+      "retrievedAt": "2026-10-22"
+    },
+    {
+      "id": "judicial-performance",
+      "title": "2026 Judicial Performance Evaluations",
+      "publisher": "Colorado Office of Judicial Performance Evaluation",
+      "url": "https://judicialperformance.colorado.gov/know-your-judges/2026-judicial-performance-evaluations",
+      "kind": "official-analysis",
+      "retrievedAt": "2026-10-22"
+    }
+  ],
+  "officialLinks": [
+    {
+      "id": "govote",
+      "label": "GoVoteColorado.gov — check registration, track your ballot, find drop boxes and voting centers",
+      "url": "https://www.govotecolorado.gov/"
+    },
+    {
+      "id": "county-clerks",
+      "label": "Colorado county election offices (your clerk mails your official ballot)",
+      "url": "https://www.coloradosos.gov/pubs/elections/Resources/CountyElectionOffices.html"
+    },
+    {
+      "id": "blue-book",
+      "label": "2026 Blue Book — nonpartisan analysis of every statewide measure",
+      "url": "https://content.leg.colorado.gov/sites/default/files/2026-blue-book-en-accessible.pdf"
+    },
+    {
+      "id": "blue-book-audio",
+      "label": "Blue Book audio edition (Colorado Talking Book Library)",
+      "url": "https://myctbl.cde.state.co.us/legislative-blue-book"
+    },
+    {
+      "id": "judges",
+      "label": "Judicial performance evaluations for judges on your ballot",
+      "url": "https://judicialperformance.colorado.gov/know-your-judges/2026-judicial-performance-evaluations"
+    },
+    {
+      "id": "committees",
+      "label": "Committees supporting and opposing each measure (Secretary of State)",
+      "url": "https://www.coloradosos.gov/pubs/elections/Initiatives/ballot/contacts/2026.html"
+    }
+  ],
+  "deadlines": [
+    { "date": "2026-10-02", "label": "First day county clerks may mail ballots to active voters", "sourceId": "sos-certification" },
+    { "date": "2026-10-09", "label": "Deadline for counties to mail initial ballots to active voters", "sourceId": "sos-certification" },
+    { "date": "2026-10-12", "label": "Minimum required drop boxes open", "sourceId": "sos-certification" },
+    { "date": "2026-10-19", "label": "Minimum required voter service and polling centers open", "sourceId": "sos-certification" },
+    { "date": "2026-10-26", "label": "Last day to register and still be mailed a ballot. After this, you can still register and vote in person.", "sourceId": "sos-certification" },
+    { "date": "2026-10-26", "label": "Last suggested day to return a ballot by mail. After this, use a drop box or voting center.", "sourceId": "sos-certification" },
+    { "date": "2026-11-03", "label": "Election Day. Ballots must be received, or you must be in line, by 7 p.m.", "time": "19:00", "sourceId": "sos-certification" }
+  ],
+  "measures": [
+    {
+      "id": "amendment-81",
+      "designation": "Amendment 81",
+      "shortTitle": "Law Enforcement Reporting Requirements to Federal Authorities",
+      "blueBookTitle": "Law Enforcement Communication with Federal Immigration Authorities",
+      "scope": "statewide",
+      "kind": "constitutional",
+      "origin": "citizen-initiated",
+      "initiativeNumber": "2025-2026 #95",
+      "threshold": "55-percent",
+      "topic": "Public safety",
+      "officialTextUrl": "https://www.coloradosos.gov/pubs/elections/Initiatives/titleBoard/filings/2025-2026/95Final.pdf",
+      "blueBookPages": { "quickReference": "7–8", "analysis": "15–19", "titleAndText": "69" },
+      "sourceIds": ["sos-measures", "blue-book"],
+      "draft": {
+        "summary": "Would require certain law enforcement, corrections, and district attorney personnel to notify the U.S. Department of Homeland Security within 72 hours after formally charging someone with a crime of violence, or charging anyone who has a prior felony conviction, when that person is not confirmed to be lawfully present or their status cannot be determined. The duty begins at charging, not arrest.",
+        "yes": "Law enforcement would be required to notify federal immigration authorities after filing certain criminal charges against people not confirmed to be lawfully present.",
+        "no": "Current law continues: cooperation with federal immigration authorities is allowed in some criminal matters, while state and local involvement in civil immigration enforcement stays limited.",
+        "fiscal": [
+          "State: workload and spending increase in FY 2026-27, including $50,000 for the Department of Revenue and $10,000 for the Department of Natural Resources; no funding source is specified (Blue Book).",
+          "Local: workload increases, mainly for district attorney offices; no dollar amount is stated (Blue Book)."
+        ],
+        "unclear": [
+          "Workload and cost for local agencies are not estimated in dollars."
+        ],
+        "review": { "status": "draft", "preparedBy": "AI-assisted draft from the official Blue Book", "preparedOn": "2026-10-22" }
+      }
+    },
+    {
+      "id": "amendment-82",
+      "designation": "Amendment 82",
+      "shortTitle": "Right to Natural Gas",
+      "blueBookTitle": "Constitutional Right to Purchase and Sell Natural Gas",
+      "scope": "statewide",
+      "kind": "constitutional",
+      "origin": "citizen-initiated",
+      "initiativeNumber": "2025-2026 #177",
+      "threshold": "55-percent",
+      "topic": "Energy & environment",
+      "officialTextUrl": "https://www.coloradosos.gov/pubs/elections/Initiatives/titleBoard/filings/2025-2026/177Final.pdf",
+      "blueBookPages": { "quickReference": "7–8", "analysis": "19–21", "titleAndText": "69" },
+      "sourceIds": ["sos-measures", "blue-book"],
+      "draft": {
+        "summary": "Would create a constitutional right for consumers to buy natural gas for cooking or heating in homes and businesses, and for distributors and utilities to sell it to them. The Blue Book says this may limit state and local governments' ability to enforce existing or future natural gas regulations.",
+        "yes": "Creates a state constitutional right to buy and sell natural gas for use in homes and businesses.",
+        "no": "Current laws and regulations on buying and selling natural gas stay in place.",
+        "fiscal": [
+          "State: may minimally increase spending (for example, Department of Local Affairs building-code guidance) and may increase legal costs for agencies that regulate gas utilities; no dollar amount is stated (Blue Book).",
+          "Local: governments whose building codes restrict natural gas may face legal costs and costs to change codes and permitting; no dollar amount is stated (Blue Book)."
+        ],
+        "unclear": [
+          "How courts would apply the new right to existing local building codes is uncertain."
+        ],
+        "review": { "status": "draft", "preparedBy": "AI-assisted draft from the official Blue Book", "preparedOn": "2026-10-22" }
+      }
+    },
+    {
+      "id": "amendment-83",
+      "designation": "Amendment 83",
+      "shortTitle": "Constitutional Right to Hunt and Fish",
+      "blueBookTitle": "Constitutional Right to Hunt and Fish",
+      "scope": "statewide",
+      "kind": "constitutional",
+      "origin": "citizen-initiated",
+      "initiativeNumber": "2025-2026 #302",
+      "threshold": "55-percent",
+      "topic": "Energy & environment",
+      "officialTextUrl": "https://www.coloradosos.gov/pubs/elections/Initiatives/titleBoard/filings/2025-2026/302Final.pdf",
+      "blueBookPages": { "quickReference": "8–9", "analysis": "21–24", "titleAndText": "70" },
+      "sourceIds": ["sos-measures", "blue-book"],
+      "draft": {
+        "summary": "Would create a constitutional right to hunt and fish certain wildlife using traditional methods and make hunting and fishing the preferred way to manage those populations. Nongame species, endangered species, and species illegal to hunt under federal law are excluded. The state could still regulate for sound science, public safety, or preserving future opportunities. The Blue Book says it makes no immediate change to existing law or regulations.",
+        "yes": "Creates a state constitutional right to hunt and fish.",
+        "no": "Hunting and fishing continue as allowed under existing state and federal law.",
+        "fiscal": [
+          "State: no significant near-term change expected; legal and workload costs for Colorado Parks and Wildlife could rise if rules are challenged, but the amount cannot be estimated (Blue Book)."
+        ],
+        "unclear": [
+          "Future litigation over wildlife rules and its cost cannot be estimated."
+        ],
+        "review": { "status": "draft", "preparedBy": "AI-assisted draft from the official Blue Book", "preparedOn": "2026-10-22" }
+      }
+    },
+    {
+      "id": "amendment-84",
+      "designation": "Amendment 84",
+      "shortTitle": "Mail Ballot Voter Identification",
+      "blueBookTitle": "Mail Ballot Voter Identification",
+      "scope": "statewide",
+      "kind": "constitutional",
+      "origin": "citizen-initiated",
+      "initiativeNumber": "2025-2026 #362",
+      "threshold": "55-percent",
+      "topic": "Elections & democracy",
+      "officialTextUrl": "https://www.coloradosos.gov/pubs/elections/Initiatives/titleBoard/filings/2025-2026/362Final.pdf",
+      "blueBookPages": { "quickReference": "8–9", "analysis": "24–27", "titleAndText": "70" },
+      "sourceIds": ["sos-measures", "blue-book"],
+      "draft": {
+        "summary": "For federal and statewide elections, voters would have to write the last four digits of their Social Security number, or of their Colorado driver's license or ID card number, on their mail ballot in addition to signing it. If the information is missing or doesn't match, voters could fix it within eight days after Election Day, including with other forms of ID; otherwise the ballot would not be counted.",
+        "yes": "Voters must provide identification information with their mail ballot, in addition to their signature.",
+        "no": "The current signature-only verification system for mail ballots continues.",
+        "fiscal": [
+          "State and local spending increases by up to $2.7 million in FY 2026-27 and about $1.2 million a year after that, shared between state and counties (Blue Book).",
+          "The state would reimburse counties up to $1.1 million in FY 2026-27 and up to $500,000 in later years; business filing fees may rise to cover state costs (Blue Book)."
+        ],
+        "unclear": [
+          "How many ballots would need correction, and how many would go uncorrected, is not estimated."
+        ],
+        "review": { "status": "draft", "preparedBy": "AI-assisted draft from the official Blue Book", "preparedOn": "2026-10-22" }
+      }
+    },
+    {
+      "id": "amendment-85",
+      "designation": "Amendment 85",
+      "shortTitle": "Plain Language Ballot Questions",
+      "blueBookTitle": "Plain Language Ballot Titles",
+      "scope": "statewide",
+      "kind": "constitutional",
+      "origin": "citizen-initiated",
+      "initiativeNumber": "2025-2026 #234",
+      "threshold": "55-percent",
+      "topic": "Elections & democracy",
+      "officialTextUrl": "https://www.coloradosos.gov/pubs/elections/Initiatives/titleBoard/filings/2025-2026/234Final.pdf",
+      "blueBookPages": { "quickReference": "9", "analysis": "27–29", "titleAndText": "71" },
+      "sourceIds": ["sos-measures", "blue-book"],
+      "draft": {
+        "summary": "Would require all state and local ballot titles to be written in plain language at no more than an eighth-grade reading level, and bar laws from requiring wording in citizen-initiative titles that conflicts with that standard. The Blue Book notes the measure does not define plain language or say who decides whether a title meets it.",
+        "yes": "Ballot titles must be in plain language at an eighth-grade level, and no law may interfere with that requirement.",
+        "no": "Current law continues: ballot titles must be plain language, with no specific grade-level standard.",
+        "fiscal": [
+          "State: may minimally increase Title Board workload; no dollar amount is stated (Blue Book)."
+        ],
+        "unclear": [
+          "Who decides whether a title meets the eighth-grade standard is not specified in the measure."
+        ],
+        "review": { "status": "draft", "preparedBy": "AI-assisted draft from the official Blue Book", "preparedOn": "2026-10-22" }
+      }
+    },
+    {
+      "id": "amendment-86",
+      "designation": "Amendment 86",
+      "shortTitle": "Congressional Redistricting",
+      "blueBookTitle": "Requirements for Off-Cycle Congressional Redistricting",
+      "scope": "statewide",
+      "kind": "constitutional",
+      "origin": "citizen-initiated",
+      "initiativeNumber": "2025-2026 #256",
+      "threshold": "55-percent",
+      "topic": "Elections & democracy",
+      "officialTextUrl": "https://www.coloradosos.gov/pubs/elections/Initiatives/titleBoard/filings/2025-2026/256Final.pdf",
+      "blueBookPages": { "quickReference": "10", "analysis": "30–32", "titleAndText": "71" },
+      "sourceIds": ["sos-measures", "blue-book"],
+      "draft": {
+        "summary": "Would require the Independent Congressional Redistricting Commission and the Colorado Supreme Court to review and approve any change to congressional districts made outside a scheduled redistricting year. The commission would have to hold at least three public hearings first, and off-cycle changes could not intentionally favor a political party or unnecessarily split communities of interest.",
+        "yes": "The commission must approve any new congressional districts proposed outside a scheduled redistricting year.",
+        "no": "Current requirements, which provide for redrawing congressional districts every ten years, stay in place.",
+        "fiscal": [
+          "State: about $370,000 in Legislative Department costs in any year the commission convenes for an off-cycle review, plus a small Judicial Department workload increase (Blue Book)."
+        ],
+        "unclear": [
+          "Whether and when an off-cycle redistricting would be proposed is unknown."
+        ],
+        "review": { "status": "draft", "preparedBy": "AI-assisted draft from the official Blue Book", "preparedOn": "2026-10-22" }
+      }
+    },
+    {
+      "id": "amendment-87",
+      "designation": "Amendment 87",
+      "shortTitle": "Graduated Income Tax",
+      "blueBookTitle": "Graduated Income Tax",
+      "scope": "statewide",
+      "kind": "constitutional-and-statutory",
+      "origin": "citizen-initiated",
+      "initiativeNumber": "2025-2026 #195",
+      "threshold": "55-percent",
+      "topic": "Taxes & budget",
+      "officialTextUrl": "https://www.coloradosos.gov/pubs/elections/Initiatives/titleBoard/filings/2025-2026/195Final.pdf",
+      "blueBookPages": { "quickReference": "10", "analysis": "33–41", "titleAndText": "79" },
+      "sourceIds": ["sos-measures", "blue-book"],
+      "draft": {
+        "summary": "Would replace Colorado's flat income tax with a graduated (tiered) income tax: lower rates on taxable income below $500,000 and higher rates above it. The added revenue would have to be spent on K-12 education, health care, and early childhood care and education, would be exempt from the TABOR revenue limit, and would be reported in an audited annual report.",
+        "yes": "Creates a graduated state income tax that raises revenue for K-12 education, health care, and early childhood programs, exempt from the TABOR limit.",
+        "no": "The current constitutional requirement for a single flat income tax rate stays in place.",
+        "fiscal": [
+          "State revenue increase estimated at $958.4 million in budget year 2026-27 (a half year) and $1.972 billion in 2027-28 (Blue Book).",
+          "Taxpayers: taxes fall for Colorado taxable income below $510,834 and rise at $510,834 and above, according to the Blue Book's estimates."
+        ],
+        "unclear": [
+          "Revenue estimates depend on economic conditions and taxpayer behavior; how the legislature allocates the new revenue among the required purposes is not fixed."
+        ],
+        "review": { "status": "draft", "preparedBy": "AI-assisted draft from the official Blue Book", "preparedOn": "2026-10-22" }
+      }
+    },
+    {
+      "id": "proposition-nn",
+      "designation": "Proposition NN",
+      "shortTitle": "State Public K-12 Education Funding",
+      "blueBookTitle": "Keep and Spend Money for Education and Other Purposes",
+      "scope": "statewide",
+      "kind": "statutory",
+      "origin": "legislative-referral",
+      "referringBill": "SB26-135",
+      "threshold": "majority",
+      "topic": "Taxes & budget",
+      "officialTextUrl": "https://leg.colorado.gov/bill_files/116503/download",
+      "blueBookPages": { "quickReference": "11", "analysis": "41–46", "titleAndText": "84" },
+      "sourceIds": ["sos-measures", "blue-book", "fiscal-statements"],
+      "draft": {
+        "summary": "Would let the state keep and spend revenue that TABOR would otherwise require it to refund, up to a new limit tied to state spending on public education. For the first ten years, the retained money must go to K-12 education and programs that support children; after that, to K-12 education and other purposes the legislature sets. The state auditor and school districts would report on spending.",
+        "yes": "The state may keep some or all revenue that TABOR would otherwise refund, and must spend it on K-12 education, children's programs, and other purposes.",
+        "no": "Current TABOR refunds and current funding levels for K-12 education, children's programs, and other purposes continue.",
+        "fiscal": [
+          "The Blue Book estimates the state would actually keep about $500 million in the first year (the new limit would allow up to $4.6 billion above the current limit).",
+          "The fiscal impact statement estimates TABOR refunds would decrease by $329.9 million in FY 2026-27 and $521.0 million in FY 2027-28."
+        ],
+        "unclear": [
+          "Future amounts depend on how much revenue exceeds the current TABOR limit, which depends on the economy."
+        ],
+        "review": { "status": "draft", "preparedBy": "AI-assisted draft from the official Blue Book and fiscal impact statement", "preparedOn": "2026-10-22" }
+      }
+    },
+    {
+      "id": "proposition-132",
+      "designation": "Proposition 132",
+      "shortTitle": "Penalties for Fentanyl Crimes",
+      "blueBookTitle": "Increase Penalties for Fentanyl Crimes",
+      "scope": "statewide",
+      "kind": "statutory",
+      "origin": "citizen-initiated",
+      "initiativeNumber": "2025-2026 #85",
+      "threshold": "majority",
+      "topic": "Public safety",
+      "officialTextUrl": "https://www.coloradosos.gov/pubs/elections/Initiatives/titleBoard/filings/2025-2026/85Final.pdf",
+      "blueBookPages": { "quickReference": "7–14", "analysis": "48", "titleAndText": "88" },
+      "sourceIds": ["sos-measures", "blue-book", "fiscal-statements"],
+      "draft": {
+        "summary": "Would increase penalties for crimes involving the sale and possession of synthetic opiates such as fentanyl and carfentanil.",
+        "yes": "Possession of any amount of fentanyl becomes a felony, any fentanyl distribution carries a mandatory minimum 8-year prison sentence, and options to reduce certain penalties are removed (Blue Book quick reference).",
+        "no": "Possession of small amounts of fentanyl stays a misdemeanor, distribution penalties stay tiered by quantity, and options to reduce certain penalties remain (Blue Book quick reference).",
+        "fiscal": [
+          "State spending is estimated at $876,488 in FY 2026-27, $8.9 million in FY 2027-28, and $24.8 million in FY 2028-29 (fiscal impact statement).",
+          "Local: county jail costs may decrease by an unknown amount (fiscal impact statement)."
+        ],
+        "unclear": [
+          "Long-term prison population and cost effects grow over several years and depend on charging and sentencing patterns."
+        ],
+        "review": { "status": "draft", "preparedBy": "AI-assisted draft from the official Blue Book and fiscal impact statement", "preparedOn": "2026-10-22" }
+      }
+    },
+    {
+      "id": "proposition-133",
+      "designation": "Proposition 133",
+      "shortTitle": "Penalties for Human Trafficking of a Minor",
+      "blueBookTitle": "Penalties for Human Trafficking of a Minor",
+      "scope": "statewide",
+      "kind": "statutory",
+      "origin": "citizen-initiated",
+      "initiativeNumber": "2025-2026 #108",
+      "threshold": "majority",
+      "topic": "Public safety",
+      "officialTextUrl": "https://www.coloradosos.gov/pubs/elections/Initiatives/titleBoard/filings/2025-2026/108Final.pdf",
+      "blueBookPages": { "quickReference": "7–14", "analysis": "52", "titleAndText": "92" },
+      "sourceIds": ["sos-measures", "blue-book", "fiscal-statements"],
+      "draft": {
+        "summary": "Would make human trafficking of a minor for sexual servitude a class 1 felony instead of a class 2 felony.",
+        "yes": "The penalty for child sex trafficking becomes life in prison without parole, and buying sexual activity with a minor is added to the offense (Blue Book quick reference).",
+        "no": "Existing felony penalties for child sex trafficking continue: 8 to 48 years in prison plus mandatory parole (Blue Book quick reference).",
+        "fiscal": [
+          "State spending: $0 in the near term; costs begin far in the future, estimated at $180,000 in FY 2041-42 and $360,000 in FY 2042-43 as longer sentences take effect (fiscal impact statement).",
+          "Local: district attorney workload increases minimally (fiscal impact statement)."
+        ],
+        "unclear": [
+          "Long-range cost estimates depend on future conviction numbers."
+        ],
+        "review": { "status": "draft", "preparedBy": "AI-assisted draft from the official Blue Book and fiscal impact statement", "preparedOn": "2026-10-22" }
+      }
+    },
+    {
+      "id": "proposition-134",
+      "designation": "Proposition 134",
+      "shortTitle": "Male and Female Participation in School Sports",
+      "blueBookTitle": "Male and Female Participation in School and Collegiate Sports",
+      "scope": "statewide",
+      "kind": "statutory",
+      "origin": "citizen-initiated",
+      "initiativeNumber": "2025-2026 #109",
+      "threshold": "majority",
+      "topic": "Education",
+      "officialTextUrl": "https://www.coloradosos.gov/pubs/elections/Initiatives/titleBoard/filings/2025-2026/109Final.pdf",
+      "blueBookPages": { "quickReference": "7–14", "analysis": "55–58", "titleAndText": "92" },
+      "sourceIds": ["sos-measures", "blue-book", "fiscal-statements"],
+      "draft": {
+        "summary": "Would require school and collegiate sports teams to be designated male, female, or coeducational, and limit participation based on biological sex.",
+        "yes": "Every school-based team or sport must be designated male, female, or mixed, and schools and districts must adopt sex-eligibility policies for sports (Blue Book quick reference).",
+        "no": "Schools, districts, and athletic associations continue to set their own eligibility policies, consistent with current state and federal law (Blue Book quick reference).",
+        "fiscal": [
+          "State: no change in revenue or spending (fiscal impact statement).",
+          "Local: school district costs to update policies are expected to be minimal (fiscal impact statement)."
+        ],
+        "unclear": [
+          "Interaction with current state and federal law may be subject to legal challenge."
+        ],
+        "review": { "status": "draft", "preparedBy": "AI-assisted draft from the official Blue Book and fiscal impact statement", "preparedOn": "2026-10-22" }
+      }
+    },
+    {
+      "id": "proposition-135",
+      "designation": "Proposition 135",
+      "shortTitle": "Prohibit Certain Surgeries on Minors",
+      "blueBookTitle": "Prohibit Surgery on Minors in Response to Perception of Sex or Gender",
+      "scope": "statewide",
+      "kind": "statutory",
+      "origin": "citizen-initiated",
+      "initiativeNumber": "2025-2026 #110",
+      "threshold": "majority",
+      "topic": "Health",
+      "officialTextUrl": "https://www.coloradosos.gov/pubs/elections/Initiatives/titleBoard/filings/2025-2026/110Final.pdf",
+      "blueBookPages": { "quickReference": "7–14", "analysis": "59–61", "titleAndText": "94" },
+      "sourceIds": ["sos-measures", "blue-book", "fiscal-statements"],
+      "discrepancies": [
+        "The Secretary of State's measures page lists the short title as \"Prohibit Certain Surgeries on Minors\"; the Sept. 4 certification press release says \"Prohibit Certain Surgeries for Minors.\" Your official ballot governs."
+      ],
+      "draft": {
+        "summary": "Would prohibit surgeries on minors that alter biological sex characteristics in response to the minor's perception of sex or gender, with exceptions, and bar government funds and health insurance from paying for them.",
+        "yes": "These surgeries on minors are prohibited, and government funds and health insurance may not pay for them (Blue Book quick reference).",
+        "no": "Current Colorado law, which protects access to these surgeries and allows public and private insurance to cover them, continues (Blue Book quick reference).",
+        "fiscal": [
+          "State: no change in revenue or spending; savings to Medicaid and state employee insurance are described as minimal (fiscal impact statement)."
+        ],
+        "unclear": [
+          "The scope of the measure's exceptions and how it would be enforced may be clarified only in practice or in court."
+        ],
+        "review": { "status": "draft", "preparedBy": "AI-assisted draft from the official Blue Book and fiscal impact statement", "preparedOn": "2026-10-22" }
+      }
+    },
+    {
+      "id": "proposition-136",
+      "designation": "Proposition 136",
+      "shortTitle": "Income Tax Rate Cap",
+      "blueBookTitle": "Income Tax Rate Limit",
+      "scope": "statewide",
+      "kind": "statutory",
+      "origin": "citizen-initiated",
+      "initiativeNumber": "2025-2026 #232",
+      "threshold": "majority",
+      "topic": "Taxes & budget",
+      "officialTextUrl": "https://www.coloradosos.gov/pubs/elections/Initiatives/titleBoard/filings/2025-2026/232FinalCorrected.pdf",
+      "blueBookPages": { "quickReference": "7–14", "analysis": "62–63", "titleAndText": "95" },
+      "sourceIds": ["sos-measures", "blue-book", "fiscal-statements"],
+      "draft": {
+        "summary": "Would set the current 4.40 percent state income tax rate as the maximum rate in state law, starting in tax year 2027.",
+        "yes": "The current 4.4 percent state income tax rate becomes the maximum rate in statute.",
+        "no": "The rate stays at 4.4 percent for now, without a new limit in statute.",
+        "fiscal": [
+          "No change to state or local revenue or spending (fiscal impact statement)."
+        ],
+        "unclear": [
+          "Interaction with Amendment 87, which would create a graduated income tax, is not described here; read the Blue Book analysis of both."
+        ],
+        "review": { "status": "draft", "preparedBy": "AI-assisted draft from the official Blue Book and fiscal impact statement", "preparedOn": "2026-10-22" }
+      }
+    },
+    {
+      "id": "proposition-137",
+      "designation": "Proposition 137",
+      "shortTitle": "Designate Sporting Goods Sales Tax Revenue for Conservation",
+      "blueBookTitle": "Direct Sporting Goods Sales Tax Revenue for Conservation",
+      "scope": "statewide",
+      "kind": "statutory",
+      "origin": "citizen-initiated",
+      "initiativeNumber": "2025-2026 #308",
+      "threshold": "majority",
+      "topic": "Energy & environment",
+      "officialTextUrl": "https://www.coloradosos.gov/pubs/elections/Initiatives/titleBoard/filings/2025-2026/308Final.pdf",
+      "blueBookPages": { "quickReference": "7–14", "analysis": "64–67", "titleAndText": "95" },
+      "sourceIds": ["sos-measures", "blue-book", "fiscal-statements"],
+      "draft": {
+        "summary": "Would direct existing state sales tax revenue from sporting goods to conservation, wildfire risk mitigation, and outdoor recreation programs, and exempt that revenue from state revenue limits. It does not create a new tax.",
+        "yes": "Existing sporting goods sales tax revenue goes to the listed conservation and wildfire purposes and is exempt from state revenue limits.",
+        "no": "That revenue stays in the general budget, subject to the state revenue limit, where it is spent on legislative priorities or refunded when required.",
+        "fiscal": [
+          "Transfers from the General Fund are estimated at $175.0 million in FY 2027-28 and $180.2 million in FY 2028-29 (fiscal impact statement).",
+          "TABOR refunds are estimated to decrease by $175.0 million in FY 2027-28 (fiscal impact statement)."
+        ],
+        "unclear": [
+          "Because the money is redirected from the general budget, the effect on other programs depends on future budget decisions."
+        ],
+        "review": { "status": "draft", "preparedBy": "AI-assisted draft from the official Blue Book and fiscal impact statement", "preparedOn": "2026-10-22" }
+      }
+    },
+    {
+      "id": "issue-7a",
+      "designation": "Ballot Issue 7A",
+      "shortTitle": "Front Range Passenger Rail District",
+      "blueBookTitle": "Front Range Passenger Rail District Ballot Issue 7A",
+      "scope": "district",
+      "district": "Front Range Passenger Rail District",
+      "kind": "local-issue",
+      "origin": "district-referral",
+      "referringBill": "SB26-172",
+      "threshold": "majority",
+      "topic": "Transportation",
+      "officialTextUrl": "https://leg.colorado.gov/bills/SB26-172",
+      "moreInfoUrl": "https://www.frprdistrict.com",
+      "blueBookPages": { "notice": "100" },
+      "sourceIds": ["sos-certification", "sos-measures", "blue-book"],
+      "draft": {
+        "summary": "Referred by the Front Range Passenger Rail District's board; concerns funding for Front Range passenger rail (called the Colorado Connector). It appears only on ballots of voters who live inside the district.",
+        "yes": null,
+        "no": null,
+        "fiscal": [],
+        "unclear": [
+          "The district's own notice in the Blue Book (p. 100) has not yet been reviewed for this guide."
+        ],
+        "review": { "status": "draft", "preparedBy": "AI-assisted draft from the Secretary of State certification", "preparedOn": "2026-10-22" }
+      }
+    }
+  ],
+  "contests": [
+    {
+      "id": "us-senate",
+      "office": "U.S. Senator",
+      "scope": "statewide",
+      "kind": "partisan",
+      "termYears": 6,
+      "role": "One of Colorado's two members of the U.S. Senate. Senators vote on federal legislation, confirm federal judges and many executive appointees, and ratify treaties.",
+      "candidates": [
+        { "name": "Mark Baisley", "affiliation": "Republican Party", "status": "on-ballot" },
+        { "name": "John Hickenlooper", "affiliation": "Democratic Party", "status": "on-ballot" },
+        { "name": "Bob Chew", "affiliation": "Forward Party", "status": "on-ballot" },
+        { "name": "Christopher Baum", "affiliation": "Approval Voting Party", "status": "on-ballot" },
+        { "name": "Blake Huber", "affiliation": "Libertarian Party", "status": "on-ballot" },
+        { "name": "Adam Withrow", "affiliation": "Unity Party", "status": "on-ballot" },
+        { "name": "Donald Willoughby", "affiliation": "Unaffiliated", "status": "write-in" },
+        { "name": "Will Powers", "affiliation": "Republican Party", "status": "write-in" },
+        { "name": "Ryan Apelbaum", "affiliation": "Republican Party", "status": "write-in" }
+      ],
+      "sourceIds": ["sos-candidates"]
+    },
+    {
+      "id": "governor",
+      "office": "Governor and Lieutenant Governor",
+      "scope": "statewide",
+      "kind": "partisan",
+      "termYears": 4,
+      "role": "The governor is Colorado's chief executive: signs or vetoes bills, proposes the state budget, appoints many officials and judges, and oversees state agencies. Governor and lieutenant governor are elected together as a ticket.",
+      "candidates": [
+        { "name": "Victor Marx", "runningMate": "George Washington Markert", "affiliation": "Republican Party", "status": "on-ballot" },
+        { "name": "Phil Weiser", "runningMate": "Lesley Dahlkemper", "affiliation": "Democratic Party", "status": "on-ballot" },
+        { "name": "Stephen T. Hamilton", "runningMate": "James K Treibert", "affiliation": "American Constitution Party", "status": "on-ballot" },
+        { "name": "Eric Mulder", "runningMate": "Wayne Harlos", "affiliation": "Libertarian Party", "status": "on-ballot" },
+        { "name": "Jeff Peckman", "runningMate": "T.J. Cole", "affiliation": "Unity Party", "status": "on-ballot" },
+        { "name": "Erik Underwood", "runningMate": "Frank Atwood", "affiliation": "Approval Voting Party", "status": "on-ballot" },
+        { "name": "Greg Lopez", "runningMate": "Taralyn Romero", "affiliation": "Unaffiliated", "status": "on-ballot" }
+      ],
+      "sourceIds": ["sos-candidates"]
+    },
+    {
+      "id": "secretary-of-state",
+      "office": "Secretary of State",
+      "scope": "statewide",
+      "kind": "partisan",
+      "termYears": 4,
+      "role": "Oversees statewide election administration, campaign finance and lobbying disclosure, business and charity registrations, and notaries.",
+      "candidates": [
+        { "name": "Amanda Gonzalez", "affiliation": "Democratic Party", "status": "on-ballot" },
+        { "name": "James Wiley", "affiliation": "Republican Party", "status": "on-ballot" },
+        { "name": "Sean Vadney", "affiliation": "Libertarian Party", "status": "on-ballot" },
+        { "name": "Amanda Campbell", "affiliation": "American Constitution Party", "status": "on-ballot" },
+        { "name": "Celeste Landry", "affiliation": "Forward Party", "status": "on-ballot" }
+      ],
+      "sourceIds": ["sos-candidates"]
+    },
+    {
+      "id": "state-treasurer",
+      "office": "State Treasurer",
+      "scope": "statewide",
+      "kind": "partisan",
+      "termYears": 4,
+      "role": "Manages and invests state funds, oversees the state's unclaimed property program, and sits on state financial and pension-related boards.",
+      "candidates": [
+        { "name": "Jeff Bridges", "affiliation": "Democratic Party", "status": "on-ballot" },
+        { "name": "Kevin Grantham", "affiliation": "Republican Party", "status": "on-ballot" },
+        { "name": "Jodie Barr", "affiliation": "Libertarian Party", "status": "on-ballot" },
+        { "name": "Marilee Langner Sturgis", "affiliation": "Approval Voting Party", "status": "on-ballot" }
+      ],
+      "sourceIds": ["sos-candidates"]
+    },
+    {
+      "id": "attorney-general",
+      "office": "Attorney General",
+      "scope": "statewide",
+      "kind": "partisan",
+      "termYears": 4,
+      "role": "Colorado's chief legal officer: represents the state in court, advises state agencies, and enforces consumer protection and other state laws.",
+      "candidates": [
+        { "name": "Michael J. Allen", "affiliation": "Republican Party", "status": "on-ballot" },
+        { "name": "Jena Griswold", "affiliation": "Democratic Party", "status": "on-ballot" }
+      ],
+      "sourceIds": ["sos-candidates"]
+    },
+    {
+      "id": "supreme-court-retention",
+      "office": "Colorado Supreme Court — retention",
+      "scope": "statewide",
+      "kind": "retention",
+      "termYears": 10,
+      "role": "Colorado judges are appointed, then periodically appear on the ballot in a yes/no retention question. A YES vote keeps the judge in office for another term; a NO vote removes them, and the governor appoints a replacement through the nominating process. Retention questions are nonpartisan.",
+      "candidates": [
+        { "name": "William W. Hood, III", "affiliation": null, "status": "on-ballot" }
+      ],
+      "sourceIds": ["sos-candidates", "judicial-performance"]
+    },
+    {
+      "id": "court-of-appeals-retention",
+      "office": "Colorado Court of Appeals — retention",
+      "scope": "statewide",
+      "kind": "retention",
+      "termYears": 8,
+      "role": "Court of Appeals judges hear most appeals from district courts and some state agencies. Each judge appears as a separate yes/no retention question. Retention questions are nonpartisan.",
+      "candidates": [
+        { "name": "Rebecca Rankin Freyre", "affiliation": null, "status": "on-ballot" },
+        { "name": "Elizabeth L. Harris", "affiliation": null, "status": "on-ballot" },
+        { "name": "Katharine E. Lum", "affiliation": null, "status": "on-ballot" },
+        { "name": "Pax Moultrie", "affiliation": null, "status": "on-ballot" },
+        { "name": "Karl L. Schock", "affiliation": null, "status": "on-ballot" },
+        { "name": "Grant Sullivan", "affiliation": null, "status": "on-ballot" }
+      ],
+      "sourceIds": ["sos-candidates", "judicial-performance"]
+    }
+  ],
+  "notCovered": [
+    "U.S. House races (by congressional district)",
+    "State Senate and State House races (by legislative district)",
+    "State Board of Education and CU Regent races (by district)",
+    "District attorney, county offices, and district and county court judge retention",
+    "City, school district, and special district measures and offices"
+  ],
+  "knownGaps": [
+    "Withdrawals: the official candidate list marks withdrawn candidates with strikethrough formatting, which this transcription could not capture. Confirm against the official list or your ballot.",
+    "Full ballot titles are not reproduced here; follow the official text links or the Blue Book Title and Text section.",
+    "Plain-language explanations are drafts awaiting editorial review and are not shown until reviewed."
+  ]
+}

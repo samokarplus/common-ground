@@ -168,7 +168,13 @@ export function coach(position: string, mode: string) {
     },
   ];
 }
-export const PRIVATE_KEYS = ["cg-values", "cg-debate", "cg-ballot", "cg-saved"];
+export const PRIVATE_KEYS = [
+  "cg-values",
+  "cg-debate",
+  "cg-ballot",
+  "cg-saved",
+  "cg-vote-guide",
+];
 export function clearPrivate(storage: Pick<Storage, "removeItem">) {
   PRIVATE_KEYS.forEach((k) => storage.removeItem(k));
 }

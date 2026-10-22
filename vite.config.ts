@@ -6,5 +6,5 @@ export default defineConfig({
   base: "./",
   plugins: [react()],
   resolve: { alias: { "@": fileURLToPath(new URL("./src", import.meta.url)) } },
-  build: { outDir: "docs", emptyOutDir: true, sourcemap: false },
+  build: { outDir: "docs", emptyOutDir: false, sourcemap: false },
 });

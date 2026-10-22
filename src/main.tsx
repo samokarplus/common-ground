@@ -16,12 +16,23 @@ function App() {
     window.addEventListener("hashchange", update);
     return () => window.removeEventListener("hashchange", update);
   }, []);
-  const parts = route.split("?")[0].split("/").filter(Boolean);
+  const parts = route
+    .split("?")[0]
+    .split("/")
+    .filter(Boolean)
+    .map((p) => {
+      try {
+        return decodeURIComponent(p);
+      } catch {
+        return p;
+      }
+    });
   return (
     <CommonGround
       key={route}
       section={parts.length === 0 ? "today" : parts[0]}
       documentId={parts[0] === "action" ? parts[1] : undefined}
+      parts={parts}
     />
   );
 }

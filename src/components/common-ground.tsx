@@ -5,6 +5,8 @@ import { useEffect, useState, useRef } from "react";
 import Link, { routeSearch } from "./link";
 import { getFeed, getDocument } from "@/lib/free-source";
 import { localDebate } from "@/lib/local-debate";
+import HelpMeVote, { election } from "./help-me-vote";
+import { electionPhase } from "@/lib/election";
 import {
   ArrowUpRight,
   ArrowRight,
@@ -42,14 +44,15 @@ import { topics, scenarios, atlasNodes, atlasEdges } from "@/lib/content";
 import type { Feed } from "@/lib/free-source";
 const nav = [
   ["today", "Today", Sun],
+  ["vote", "Help Me Vote", Vote],
   ["legislation", "Legislation", Landmark],
   ["policy", "Policy Explorer", Layers],
   ["values", "My Values", Compass],
   ["debate", "Debate Lab", MessageCircle],
-  ["ballot", "My Ballot", Vote],
   ["atlas", "Thought Atlas", Network],
   ["saved", "Reading List", Bookmark],
 ] as const;
+const FEED_SECTIONS = ["today", "legislation", "saved", "action", "status", "debate"];
 const fmt = (d: string) =>
   new Date(d.length === 10 ? d + "T12:00:00" : d).toLocaleDateString("en-US", {
     month: "short",
@@ -142,14 +145,18 @@ function SourceBadge({ small = false }: { small?: boolean }) {
 export default function CommonGround({
   section,
   documentId,
+  parts = [],
 }: {
   section: string;
   documentId?: string;
+  parts?: string[];
 }) {
   const [feed, setFeed] = useState<Feed | null>(null),
     [error, setError] = useState(""),
     [busy, setBusy] = useState(true),
-    [query, setQuery] = useState(""),
+    [query, setQuery] = useState(
+      () => new URLSearchParams(routeSearch()).get("q") || "",
+    ),
     [filter, setFilter] = useState("All actions"),
     [saved, setSaved] = useState<string[]>([]),
     [mobile, setMobile] = useState(false),
@@ -218,6 +225,7 @@ export default function CommonGround({
     nav.find((n) => n[0] === section)?.[1] ||
     {
       action: "Federal action",
+      ballot: "Help Me Vote",
       methodology: "Our Methodology",
       status: "Source Status",
       privacy: "Your Privacy",
@@ -258,7 +266,7 @@ export default function CommonGround({
               className={
                 "nav-link " +
                 (section === id ? "active" : "") +
-                (i === 3 ? " nav-break" : "")
+                (i === 4 ? " nav-break" : "")
               }
             >
               <Icon size={18} />
@@ -314,6 +322,7 @@ export default function CommonGround({
               aria-label="Search actions and ideas"
               name="q"
               placeholder="Search actions, topics, ideas…"
+              defaultValue={query}
               onChange={(e) => setQuery(e.target.value)}
             />
             <kbd>↵</kbd>
@@ -334,7 +343,7 @@ export default function CommonGround({
           tabIndex={-1}
           className={"main-content " + (section === "today" ? "home" : "")}
         >
-          {error && (
+          {error && FEED_SECTIONS.includes(section) && (
             <div className="notice error" role="alert">
               {error}
               <button
@@ -348,7 +357,7 @@ export default function CommonGround({
               </button>
             </div>
           )}
-          {feed?.error && (
+          {feed?.error && FEED_SECTIONS.includes(section) && (
             <div className="notice" role="status">
               <Info size={16} />
               {feed.error} Retrieved{" "}
@@ -402,6 +411,26 @@ export default function CommonGround({
                   and decide for yourself.
                 </p>
               </div>
+              <HomeVoteBanner />
+              <nav className="paths-grid" aria-label="Start exploring">
+                {(
+                  [
+                    ["/vote", "Help Me Vote", "Understand Colorado's 2026 ballot", Vote],
+                    ["/legislation", "Explore government", "Official federal actions, explained", Landmark],
+                    ["/policy", "Understand a policy", "Questions behind the headlines", Layers],
+                    ["/debate", "Debate an idea", "Test your reasoning, privately", MessageCircle],
+                    ["/values", "Discover your values", "Reflection, not a quiz score", Compass],
+                    ["/atlas", "Thought Atlas", "Ideas that shape the debate", Network],
+                  ] as const
+                ).map(([href, title, text, Icon]) => (
+                  <Link key={href} href={href} className="path-card">
+                    <strong>
+                      <Icon size={17} /> {title}
+                    </strong>
+                    <span>{text}</span>
+                  </Link>
+                ))}
+              </nav>
               <div
                 className="topic-tabs"
                 role="group"
@@ -597,6 +626,30 @@ export default function CommonGround({
                   </div>
                 </aside>
               </div>
+              <section className="panel" aria-labelledby="gov-guide">
+                <div className="eyebrow">START HERE IN 3 MINUTES</div>
+                <h2 id="gov-guide">How government action actually happens</h2>
+                <p>
+                  Headlines often blur these steps. Each one means something
+                  different, and only some of them change the law.
+                </p>
+                <div className="gov-guide">
+                  {[
+                    ["Bills", "Proposed laws in Congress or a state legislature. Most never pass. A bill becomes law only after both chambers pass the same text and the executive signs it (or a veto is overridden)."],
+                    ["Laws", "Enacted statutes. They set the rules and often direct agencies to fill in the details."],
+                    ["Rulemaking", "Agencies propose rules, take public comments, then publish final rules in the Federal Register. A proposed rule is not in force."],
+                    ["Executive orders", "Presidential directives to the executive branch. They can't override statutes and can be revoked by a later president."],
+                    ["Courts", "Judges decide disputes, including whether laws and rules are lawful. A ruling can pause (stay) or block an action."],
+                    ["Implementation", "What agencies and officials actually do. Effective dates, funding, and enforcement can lag well behind an announcement."],
+                    ["Ballot measures", "In states like Colorado, voters can change the constitution or state law directly."],
+                  ].map(([t, d]) => (
+                    <div key={t}>
+                      <h3>{t}</h3>
+                      <p>{d}</p>
+                    </div>
+                  ))}
+                </div>
+              </section>
               <div className="bottom-note">
                 <span className="brand-symbol small-symbol">
                   ∩<span>∩</span>
@@ -720,7 +773,9 @@ export default function CommonGround({
           {section === "values" && <ValuesExplorer />}
           {section === "debate" && <DebateLab actions={actions} />}
           {section === "atlas" && <Atlas />}
-          {section === "ballot" && <Ballot />}
+          {(section === "vote" || section === "ballot") && (
+            <HelpMeVote parts={section === "vote" ? parts.slice(1) : []} />
+          )}
           {section === "methodology" && <Methodology />}
           {section === "privacy" && <Privacy onClear={() => setSaved([])} />}
           {section === "status" && (
@@ -814,6 +869,7 @@ export default function CommonGround({
             "debate",
             "atlas",
             "ballot",
+            "vote",
             "methodology",
             "privacy",
             "status",
@@ -832,6 +888,38 @@ export default function CommonGround({
           </footer>
         </main>
       </div>
+    </div>
+  );
+}
+function HomeVoteBanner() {
+  const phase = electionPhase(election, new Date());
+  if (phase.phase === "after") return null;
+  return (
+    <div className="home-vote">
+      <div>
+        <div className="eyebrow" style={{ color: "#cfe0d4" }}>
+          COLORADO · ELECTION DAY{" "}
+          {new Date(election.electionDate + "T12:00:00Z")
+            .toLocaleDateString("en-US", {
+              month: "long",
+              day: "numeric",
+              timeZone: "UTC",
+            })
+            .toUpperCase()}
+        </div>
+        <h2>
+          {phase.phase === "election-day"
+            ? "It's Election Day. Ballots are due by 7 p.m."
+            : `Your ballot, explained — ${phase.days} ${phase.days === 1 ? "day" : "days"} to go.`}
+        </h2>
+        <p>
+          All 14 statewide measures, statewide races, and how to find your
+          official personal ballot. No recommendations, no address required.
+        </p>
+      </div>
+      <Link className="button" href="/vote">
+        Help Me Vote <ArrowRight size={15} />
+      </Link>
     </div>
   );
 }
@@ -989,6 +1077,10 @@ function ActionDetail({
           <Bookmark size={15} fill={saved ? "currentColor" : "none"} />
           {saved ? "Saved" : "Save for later"}
         </button>
+        <CopyLink action={a} />
+        <button className="button secondary" onClick={() => window.print()}>
+          Print
+        </button>
       </div>
       <div className="notice">
         <ShieldCheck size={18} /> Official metadata and agency abstract. This is
@@ -1068,6 +1160,25 @@ function ActionDetail({
                 These questions require full-text review and supporting
                 evidence. We do not fill those gaps with generated claims.
               </p>
+              <h2>Questions to ask</h2>
+              <ul>
+                {questionsFor(a.type).map((q) => (
+                  <li key={q}>{q}</li>
+                ))}
+              </ul>
+              <p className="muted">
+                Neutral prompts based only on the document type, not on this
+                document's content.
+              </p>
+              <h2>Key terms</h2>
+              <dl className="glossary">
+                {termsFor(a.type).map(([t, d]) => (
+                  <div key={t}>
+                    <dt>{t}</dt>
+                    <dd>{d}</dd>
+                  </div>
+                ))}
+              </dl>
             </>
           ) : tab === "Timeline" ? (
             <>
@@ -1168,6 +1279,71 @@ function ActionDetail({
         </aside>
       </div>
     </>
+  );
+}
+const GLOSSARY: Record<string, [string, string]> = {
+  fr: ["Federal Register", "The U.S. government's daily official publication of agency rules, proposed rules, notices, and presidential documents."],
+  proposed: ["Proposed rule", "A draft regulation published for public comment. It has no legal force until an agency publishes a final rule."],
+  final: ["Final rule", "A regulation the agency has adopted. It takes effect on its stated effective date, which can be later than publication."],
+  comment: ["Comment period", "The window when anyone can submit comments on a proposed rule. Agencies must consider significant comments before finalizing."],
+  effective: ["Effective date", "The date a rule becomes legally binding. It is different from the publication date."],
+  notice: ["Notice", "An agency announcement — such as a meeting, application deadline, or policy statement — that usually does not itself create binding rules."],
+  eo: ["Executive order", "A presidential directive to federal agencies. It cannot override a statute and can be revoked by a later president."],
+  proclamation: ["Proclamation", "A presidential statement, often ceremonial; some proclamations have legal effect under specific statutes."],
+  cfr: ["Code of Federal Regulations (CFR)", "The organized collection of final federal rules currently in force."],
+};
+function termsFor(type: string): [string, string][] {
+  const k: Record<string, string[]> = {
+    "Proposed Rule": ["fr", "proposed", "comment", "cfr"],
+    Rule: ["fr", "final", "effective", "cfr"],
+    Notice: ["fr", "notice"],
+    "Presidential Document": ["fr", "eo", "proclamation"],
+  };
+  return (k[type] || ["fr"]).map((x) => GLOSSARY[x]);
+}
+function questionsFor(type: string) {
+  const common = [
+    "What legal authority does the agency cite for this action?",
+    "Who is directly affected, and who might be affected indirectly?",
+  ];
+  const byType: Record<string, string[]> = {
+    "Proposed Rule": [
+      "When does the comment period close, and how can the public comment?",
+      "What alternatives did the agency consider, and why did it prefer this one?",
+      "What costs and benefits does the agency estimate, and how confident is it?",
+    ],
+    Rule: [
+      "When does it take effect, and are there phase-ins or exceptions?",
+      "How did the final rule change from the proposal after public comments?",
+      "How will it be enforced, and could it face legal challenge?",
+    ],
+    Notice: [
+      "Does this notice change anyone's obligations, or only announce something?",
+      "Is there a deadline or meeting the public can take part in?",
+    ],
+    "Presidential Document": [
+      "Which agencies are directed to act, and by when?",
+      "Which existing laws limit what this document can do?",
+      "What later actions (rules, guidance, funding) would be needed to implement it?",
+    ],
+  };
+  return [...(byType[type] || []), ...common];
+}
+function CopyLink({ action }: { action: Action }) {
+  const [done, setDone] = useState(false);
+  return (
+    <button
+      className="button secondary"
+      onClick={() => {
+        const text = `${action.title} — Federal Register ${action.document_number} (${action.publication_date}). Official source: ${action.html_url}`;
+        navigator.clipboard
+          ?.writeText(text)
+          .then(() => setDone(true))
+          .catch(() => setDone(false));
+      }}
+    >
+      {done ? "Citation copied" : "Copy citation"}
+    </button>
   );
 }
 function PolicyExplorer() {
@@ -2062,183 +2238,6 @@ function Atlas() {
     </>
   );
 }
-function Ballot() {
-  const [state, setState] = useState(""),
-    [demo, setDemo] = useState(false),
-    [note, setNote] = useState(""),
-    [persist, setPersist] = useState(false);
-  useEffect(() => {
-    const n = localStorage.getItem("cg-ballot");
-    if (n) {
-      setNote(n);
-      setPersist(true);
-    }
-  }, []);
-  return (
-    <>
-      <PageTitle
-        eyebrow="YOUR BALLOT. YOUR DECISION."
-        title="Prepare to decide for yourself."
-        text="Find your official election resource and make room for your own questions. We never rank candidates or recommend a vote."
-      />
-      <div className="notice">
-        <Info size={18} /> Live local ballot data is not connected. No
-        candidates, measures, or election dates on this page are presented as
-        real.
-      </div>
-      <div className="two-columns">
-        <div className="panel">
-          <Landmark size={27} />
-          <h2>Start with your official ballot.</h2>
-          <p>
-            Exact ballots depend on your district and eligibility. We don’t
-            infer your location or collect an address.
-          </p>
-          <label className="field-label">
-            Choose your state
-            <select value={state} onChange={(e) => setState(e.target.value)}>
-              <option value="">Select a state…</option>
-              {[
-                "Colorado",
-                "California",
-                "New York",
-                "Texas",
-                "Other state or territory",
-              ].map((x) => (
-                <option key={x}>{x}</option>
-              ))}
-            </select>
-          </label>
-          {state && (
-            <a
-              className="button primary"
-              href={
-                (
-                  {
-                    Colorado: "https://www.sos.state.co.us/pubs/elections/",
-                    California: "https://www.sos.ca.gov/elections",
-                    "New York": "https://elections.ny.gov/",
-                    Texas: "https://www.votetexas.gov/",
-                  } as Record<string, string>
-                )[state] || "https://www.usa.gov/state-election-office"
-              }
-              target="_blank"
-              rel="noreferrer"
-            >
-              Open official election resource <ExternalLink size={15} />
-            </a>
-          )}
-          <p className="muted">
-            Other states and territories are available through the official
-            directory.
-          </p>
-          <a
-            href="https://www.usa.gov/state-election-office"
-            target="_blank"
-            rel="noreferrer"
-          >
-            All state election offices <ExternalLink size={14} />
-          </a>
-        </div>
-        <div className="panel ballot-demo-invite">
-          <Vote size={34} />
-          <div className="eyebrow">LEARN HOW A GUIDE WORKS</div>
-          <h2>Practice with a fictional measure.</h2>
-          <p>
-            Explore YES, NO, uncertainty, and the questions you want answered.
-          </p>
-          <button className="button secondary" onClick={() => setDemo(!demo)}>
-            {demo ? "Close demonstration" : "Open fictional demo"}
-            <ArrowRight size={15} />
-          </button>
-        </div>
-      </div>
-      {demo && (
-        <div className="panel fictional-ballot">
-          <div className="tag">FICTIONAL DEMONSTRATION · NOT A REAL BALLOT</div>
-          <h2>Example Town · Measure A</h2>
-          <p>
-            <strong>Fictional ballot text:</strong> Shall Example Town create a
-            dedicated fund for public library improvements through a temporary
-            local levy?
-          </p>
-          <div className="two-columns">
-            <div>
-              <h3>What YES means</h3>
-              <p>
-                Approve the proposed fund and levy as described in the fictional
-                measure.
-              </p>
-            </div>
-            <div>
-              <h3>What NO means</h3>
-              <p>
-                Reject this proposal; current arrangements remain in this
-                fictional example.
-              </p>
-            </div>
-          </div>
-          <h3>What needs checking?</h3>
-          <p>
-            The levy’s rate, duration, exemptions, oversight, and fiscal
-            effects. No amounts or fiscal estimates are supplied in this
-            demonstration.
-          </p>
-          <p className="muted">
-            Source: a fictional learning fixture authored for Common Ground.
-            There is no election date, candidate, or jurisdiction-specific
-            factual claim.
-          </p>
-        </div>
-      )}
-      <div className="panel">
-        <h2>Your ballot questions</h2>
-        <label className="field-label">
-          A private worksheet
-          <textarea
-            className="large-textarea"
-            value={note}
-            onChange={(e) => {
-              setNote(e.target.value);
-              if (persist) localStorage.setItem("cg-ballot", e.target.value);
-            }}
-            placeholder="What is the office responsible for? What evidence supports this claim? What would implementation involve?"
-          />
-        </label>
-        <label className="toggle-label">
-          <input
-            type="checkbox"
-            checked={persist}
-            onChange={(e) => {
-              setPersist(e.target.checked);
-              if (e.target.checked) localStorage.setItem("cg-ballot", note);
-              else localStorage.removeItem("cg-ballot");
-            }}
-          />{" "}
-          Save worksheet on this device
-        </label>
-        <div className="utility-row">
-          <button
-            onClick={() =>
-              download("common-ground-ballot-notes.json", { state, note })
-            }
-          >
-            <Download size={15} /> Export notes
-          </button>
-          <button
-            onClick={() => {
-              setNote("");
-              localStorage.removeItem("cg-ballot");
-              setPersist(false);
-            }}
-          >
-            <Trash2 size={15} /> Delete notes
-          </button>
-        </div>
-      </div>
-    </>
-  );
-}
 function Methodology() {
   return (
     <>
@@ -2335,7 +2334,7 @@ function Privacy({ onClear }: { onClear: () => void }) {
       <div className="panel longform">
         <h2>What stays on your device</h2>
         <p>
-          Values reflections and ballot notes remain in page memory unless you
+          Values reflections and your ballot research guide remain in page memory unless you
           explicitly enable device saving. Saved reading IDs use local storage.
           Debate history exists only in the current page session. Nothing is
           synchronized across devices.
@@ -2367,7 +2366,7 @@ function Privacy({ onClear }: { onClear: () => void }) {
             className="button secondary"
             onClick={() => {
               const data: Record<string, unknown> = {};
-              ["cg-values", "cg-saved", "cg-ballot"].forEach((k) => {
+              ["cg-values", "cg-saved", "cg-ballot", "cg-vote-guide"].forEach((k) => {
                 data[k] = localStorage.getItem(k);
               });
               download("common-ground-device-data.json", data);
