@@ -1,10 +1,13 @@
 import { defineConfig } from "@playwright/test";
 
+// Set E2E_BASE_URL (with trailing slash) to test a deployed site instead of the local preview.
+const remote = process.env.E2E_BASE_URL;
+
 export default defineConfig({
   testDir: "e2e",
   timeout: 30_000,
-  use: { baseURL: "http://127.0.0.1:3021/" },
-  webServer: {
+  use: { baseURL: remote ?? "http://127.0.0.1:3021/" },
+  webServer: remote ? undefined : {
     command: "npm run preview",
     url: "http://127.0.0.1:3021/",
     reuseExistingServer: true,

@@ -23,3 +23,7 @@ Factual log. Only items marked verified were checked in the session that wrote t
 ## Congress automation (blocked on owner)
 - Added: `data/changelog/congress.jsonl` (new bills, status changes, new latest actions via `diffBills`, unit-tested), per-source status in `data/source-status.json`, Congress rows in the source registry and `docs/research-health.md`.
 - **Blocked:** pushing a change to `.github/workflows/` was rejected because the Git credentials on the development machine lack GitHub's `workflow` scope. The updated workflow (both sources run independently; job fails if either fails; commit message generalized) is saved as `docs/proposed-refresh-workflow.yml`. Owner action: copy it over `.github/workflows/refresh-federal-register.yml` (via the GitHub web editor or a token with `workflow` scope), then use "Run workflow". Until then Congress refresh is manual and the registry says so.
+
+## Live deploy check (2026-10-22, after push `1a99c12`)
+- Verified: the live site serves `index-D2FncIgf.js` (the new build) and the lazy `congress-*.js` chunk. The full 48-test Playwright suite passed against the live URL (`E2E_BASE_URL=https://samokarplus.github.io/common-ground/ npm run e2e`).
+- Still unverified: the scheduled workflow (and the proposed two-source version) has never run in GitHub Actions; the Pages rebuild after a bot push is untested.
