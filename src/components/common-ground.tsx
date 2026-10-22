@@ -41,7 +41,8 @@ import {
 } from "lucide-react";
 import type { Action } from "@/lib/domain";
 import { clearPrivate, metadataClaims } from "@/lib/domain";
-import { topics, scenarios, atlasNodes, atlasEdges } from "@/lib/content";
+import { topics, scenarios } from "@/lib/content";
+import { atlasNodes, atlasEdges } from "@/lib/atlas";
 import type { Feed } from "@/lib/free-source";
 const nav = [
   ["today", "Today", Sun],
@@ -2024,20 +2025,17 @@ function Atlas() {
       (period === "All traditions" || n.period === period) &&
       n.name.toLowerCase().includes(query.toLowerCase()),
   );
-  const positions = Object.fromEntries(
-    atlasNodes.map((n, i) => {
-      if (n.id === "justice") return [n.id, { x: 400, y: 255 }];
-      const angle = i * 2.39996;
-      const radius = 115 + ((i * 37) % 140);
-      return [
-        n.id,
-        {
-          x: 400 + Math.cos(angle) * radius * 1.2,
-          y: 255 + Math.sin(angle) * radius * 0.85,
-        },
-      ];
-    }),
-  );
+  const neighborIds = atlasEdges
+    .filter(([a, b]) => a === selected || b === selected)
+    .map(([a, b]) => (a === selected ? b : a));
+  const graphNodes = atlasNodes.filter((n) => n.id === selected || neighborIds.includes(n.id));
+  const positions: Record<string, { x: number; y: number }> = {
+    [selected]: { x: 400, y: 255 },
+  };
+  neighborIds.forEach((id, i) => {
+    const angle = (i / Math.max(neighborIds.length, 1)) * Math.PI * 2 - Math.PI / 2;
+    positions[id] = { x: 400 + Math.cos(angle) * 270, y: 255 + Math.sin(angle) * 175 };
+  });
   return (
     <>
       <PageTitle
@@ -2067,6 +2065,9 @@ function Atlas() {
             "Early modern",
             "Modern",
             "Contemporary",
+            "Tradition",
+            "Institution",
+            "Ethics",
             "Concept",
           ].map((x) => (
             <option key={x}>{x}</option>
@@ -2140,8 +2141,8 @@ function Atlas() {
                 {atlasEdges
                   .filter(
                     ([a, b]) =>
-                      visible.some((n) => n.id === a) &&
-                      visible.some((n) => n.id === b),
+                      graphNodes.some((n) => n.id === a) &&
+                      graphNodes.some((n) => n.id === b),
                   )
                   .map(([a, b]) => (
                     <g
@@ -2179,7 +2180,7 @@ function Atlas() {
                       />
                     </g>
                   ))}
-                {visible.map((n) => (
+                {graphNodes.map((n) => (
                   <g
                     role="button"
                     tabIndex={0}
@@ -2193,11 +2194,11 @@ function Atlas() {
                     className="graph-node"
                   >
                     <circle
-                      r={n.period === "Concept" ? 27 : 21}
+                      r={n.period !== "Thinker" && !["Classical","South Asian","Early modern","Modern","Contemporary"].includes(n.period) ? 27 : 21}
                       fill={
                         selected === n.id
                           ? "#245c50"
-                          : n.period === "Concept"
+                          : n.period !== "Thinker" && !["Classical","South Asian","Early modern","Modern","Contemporary"].includes(n.period)
                             ? "#e4d7b5"
                             : "#f9faf5"
                       }
@@ -2209,11 +2210,11 @@ function Atlas() {
                       fill={selected === n.id ? "#fff" : "#365144"}
                       fontSize="12"
                     >
-                      {n.period === "Concept" ? "◇" : "✦"}
+                      {n.period !== "Thinker" && !["Classical","South Asian","Early modern","Modern","Contemporary"].includes(n.period) ? "◇" : "✦"}
                     </text>
                     <text
                       textAnchor="middle"
-                      y={n.period === "Concept" ? 45 : 39}
+                      y={n.period !== "Thinker" && !["Classical","South Asian","Early modern","Modern","Contemporary"].includes(n.period) ? 45 : 39}
                       fill="#273f36"
                       fontSize="12"
                       fontWeight={selected === n.id ? "700" : "500"}
@@ -2248,7 +2249,7 @@ function Atlas() {
             >
               Reset
             </button>
-            <span>Drag background to pan</span>
+            <span>Showing {node.name} and its {neighborIds.length} linked ideas. Use the list to browse all {atlasNodes.length}.</span>
           </div>
         </div>
         <aside className="panel atlas-detail">
@@ -2282,6 +2283,27 @@ function Atlas() {
                 </button>
               );
             })}
+          {node.thinkers && (
+            <>
+              <h3>Key thinkers</h3>
+              <p>{node.thinkers.join(" · ")}</p>
+            </>
+          )}
+          {node.contested && (
+            <>
+              <h3>Where people disagree</h3>
+              <p>{node.contested}</p>
+            </>
+          )}
+          {node.example && (
+            <>
+              <h3>Example</h3>
+              <p>{node.example}</p>
+            </>
+          )}
+          <p className="muted">
+            Editorial draft by Common Ground, not peer reviewed; the linked encyclopedia entry is the better authority.
+          </p>
           <p className="muted">
             Reading-path relationship · editorial interpretation. Consult each
             entry for differences within and across traditions.

@@ -62,3 +62,12 @@ test("congress explainer renders", async ({ page }) => {
   await page.goto("#/congress/how-it-works");
   await expect(page.getByRole("heading", { level: 1 })).toContainText("becomes law");
 });
+
+test("atlas list search opens a concept with competing views", async ({ page }) => {
+  await page.goto("#/atlas");
+  await page.getByRole("button", { name: "Accessible list" }).click();
+  await page.getByLabel("Search ideas").fill("federalism");
+  await page.locator(".atlas-list button", { hasText: "Federalism" }).click();
+  await expect(page.getByRole("heading", { name: "Where people disagree" })).toBeVisible();
+  await expect(page.locator(".atlas-detail a[href*=plato]")).toBeVisible();
+});
