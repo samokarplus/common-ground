@@ -10,7 +10,9 @@
     "test": "node --experimental-strip-types --test tests/*.test.mts",
     "scan": "node scripts/scan-publication.mjs",
     "typecheck": "tsc --noEmit",
-    "lint": "eslint src tests"
+    "lint": "eslint src tests",
+    "refresh:fr": "node --experimental-strip-types scripts/refresh-federal-register.mts",
+    "health": "node --experimental-strip-types scripts/research-health.mts"
   },
   "dependencies": {
     "@fontsource/dm-sans": "^5.2.8",

@@ -1,0 +1,51 @@
+# Daily refresh of the bundled Federal Register snapshot.
+# Cost: $0 — standard GitHub-hosted runner in a public repository; no artifacts,
+# caches, larger runners, or paid services. Scheduling is best-effort: GitHub may
+# delay or skip scheduled runs, and may pause schedules in inactive repositories.
+# Fallback: run `npm run refresh:fr` locally, or use "Run workflow" in the Actions tab.
+name: Refresh Federal Register snapshot
+
+on:
+  schedule:
+    - cron: "17 13 * * *" # 13:17 UTC daily (morning in Colorado)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: research-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Fetch, validate, and diff official records
+        run: npm run refresh:fr
+      - name: Detect changes
+        id: diff
+        run: |
+          if git diff --quiet -- data/; then echo "changed=false" >> "$GITHUB_OUTPUT"; else echo "changed=true" >> "$GITHUB_OUTPUT"; fi
+      - name: Verify before publishing
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          npm test
+          npm run lint
+          npm run health
+          npm run build
+          npm run scan
+      - name: Commit and push
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          git config user.name "common-ground-research-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/ docs/
+          git commit -m "Refresh Federal Register snapshot from official API"
+          git push

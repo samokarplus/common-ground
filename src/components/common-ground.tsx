@@ -6,7 +6,7 @@ import Link, { routeSearch } from "./link";
 import { getFeed, getDocument } from "@/lib/free-source";
 import { localDebate } from "@/lib/local-debate";
 import HelpMeVote, { election } from "./help-me-vote";
-import { electionPhase } from "@/lib/election";
+import { daysUntil, electionPhase } from "@/lib/election";
 import {
   ArrowUpRight,
   ArrowRight,
@@ -827,8 +827,10 @@ export default function CommonGround({
                   </dd>
                   <dt>Known limits</dt>
                   <dd>
-                    Not a complete historical archive. No scheduled ingestion
-                    configured. No current Congressional bill coverage.
+                    Not a complete historical archive. The bundled snapshot is
+                    refreshed by a daily scheduled job when official content
+                    changes (best-effort; see the research pipeline docs). No
+                    Congressional bill coverage yet.
                   </dd>
                 </dl>
                 <a
@@ -838,6 +840,29 @@ export default function CommonGround({
                 >
                   API documentation <ExternalLink size={14} />
                 </a>
+              </div>
+              <div className="panel">
+                <h2>Colorado 2026 election data</h2>
+                <p>
+                  Manually transcribed from the Colorado Secretary of State and
+                  Legislative Council, then validated by automated checks. Last
+                  verified{" "}
+                  {new Date(election.dataVerifiedAt).toLocaleString("en-US", {
+                    month: "short",
+                    day: "numeric",
+                    year: "numeric",
+                    hour: "numeric",
+                    minute: "2-digit",
+                    timeZone: "America/Denver",
+                    timeZoneName: "short",
+                  })}
+                  .{" "}
+                  {election.measures.filter((m) => m.draft.review.status === "reviewed").length}{" "}
+                  of {election.measures.length} measure explanations reviewed.
+                </p>
+                <Link href="/vote/colorado">
+                  Open Help Me Vote <ArrowRight size={14} />
+                </Link>
               </div>
               <div className="panel">
                 <h2>Congress.gov & GovInfo</h2>
@@ -1116,6 +1141,16 @@ function ActionDetail({
                     ? "A final-rule publication is distinct from a bill becoming law. Effective dates and any exceptions must be checked in the document."
                     : "Publication alone does not establish enactment of legislation."}
               </p>
+              {a.comments_close_on && (
+                <>
+                  <h2>Public comment period</h2>
+                  <p>
+                    <CommentStatus date={a.comments_close_on} /> Comments close{" "}
+                    {fmt(a.comments_close_on)}, according to the official
+                    record. The document explains how to submit a comment.
+                  </p>
+                </>
+              )}
               <h2>When it takes effect</h2>
               <p>
                 {a.effective_on
@@ -1194,6 +1229,15 @@ function ActionDetail({
                   <div>
                     <strong>{fmt(a.signing_date)}</strong>
                     <p>Signing date in official metadata.</p>
+                  </div>
+                )}
+                {a.comments_close_on && (
+                  <div>
+                    <strong>{fmt(a.comments_close_on)}</strong>
+                    <p>
+                      Public comments close (official metadata).{" "}
+                      <CommentStatus date={a.comments_close_on} />
+                    </p>
                   </div>
                 )}
                 {a.effective_on && (
@@ -1328,6 +1372,18 @@ function questionsFor(type: string) {
     ],
   };
   return [...(byType[type] || []), ...common];
+}
+function CommentStatus({ date }: { date: string }) {
+  const days = daysUntil(date, new Date(), "America/New_York");
+  return (
+    <span className="tag">
+      {days < 0
+        ? "Comment period closed"
+        : days === 0
+          ? "Comments close today"
+          : `${days} ${days === 1 ? "day" : "days"} left to comment`}
+    </span>
+  );
 }
 function CopyLink({ action }: { action: Action }) {
   const [done, setDone] = useState(false);
@@ -2290,8 +2346,10 @@ function Methodology() {
         <h2>What this beta can and cannot establish</h2>
         <p>
           We provide a traceable way into official documents. We have not
-          independently verified the full substantive contents of each document,
-          implemented expert editorial review, or connected state ballot feeds.
+          independently verified the full substantive contents of each document.
+          Colorado ballot information is transcribed from official sources and
+          checked; plain-language ballot explanations appear only after editorial
+          review.
           The debate coach runs locally using transparent reasoning templates.
           Generative AI and paid API integrations are disabled in this
           zero-spending edition.

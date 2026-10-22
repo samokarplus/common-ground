@@ -21,6 +21,7 @@ export const DocumentSchema = z.object({
   ),
   dates: z.string().nullable().optional(),
   effective_on: CalendarDate.nullable().optional(),
+  comments_close_on: CalendarDate.nullable().optional(),
   signing_date: CalendarDate.nullable().optional(),
   executive_order_number: z.string().nullable().optional(),
 });
@@ -31,6 +32,25 @@ export type Action = SourceDocument & {
   status: string;
   jurisdiction: string;
 };
+/** Fields requested from the Federal Register list endpoint (by the browser and the refresh pipeline). */
+export const FR_FIELDS = [
+  "abstract",
+  "agencies",
+  "comments_close_on",
+  "dates",
+  "document_number",
+  "effective_on",
+  "executive_order_number",
+  "html_url",
+  "pdf_url",
+  "publication_date",
+  "signing_date",
+  "title",
+  "type",
+] as const;
+export const frFieldQuery = () =>
+  FR_FIELDS.map((f) => "fields[]=" + f).join("&");
+
 export function classify(
   d: Pick<SourceDocument, "type" | "executive_order_number">,
 ) {

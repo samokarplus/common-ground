@@ -1,5 +1,5 @@
 import snapshot from "../../data/federal-register.json";
-import { normalize, type Action } from "./domain";
+import { frFieldQuery, normalize, type Action } from "./domain";
 export type Feed = {
   actions: Action[];
   mode: "live" | "cache" | "snapshot";
@@ -59,7 +59,7 @@ export async function getFeed(page = 1, refresh = false): Promise<Feed> {
 async function load(page: number): Promise<Feed> {
   try {
     const raw = (await officialJSON(
-      `/api/v1/documents.json?per_page=40&order=newest&page=${page}`,
+      `/api/v1/documents.json?per_page=40&order=newest&page=${page}&${frFieldQuery()}`,
     )) as { results: unknown[]; total_pages: number };
     const retrievedAt = new Date().toISOString();
     const actions = raw.results.flatMap((r) => {

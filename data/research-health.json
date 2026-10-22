@@ -1,0 +1,53 @@
+{
+  "generatedOn": "2026-10-22",
+  "sources": {
+    "federal-register": {
+      "snapshotRetrievedAt": "2026-10-22T20:15:29.276Z",
+      "snapshotAgeDays": 0,
+      "stale": false,
+      "lastChange": null
+    },
+    "colorado-2026-election": {
+      "dataVerifiedAt": "2026-10-22T22:30:00Z",
+      "ageDays": 0,
+      "stale": false,
+      "reviewQueue": {
+        "draft": 15,
+        "reviewed": 0,
+        "needs-re-review": 0
+      }
+    }
+  },
+  "upcomingElectionDeadlines": [
+    {
+      "date": "2026-10-26",
+      "label": "Last day to register and still be mailed a ballot. After this, you can still register and vote in person.",
+      "sourceId": "sos-certification",
+      "inDays": 4
+    },
+    {
+      "date": "2026-10-26",
+      "label": "Last suggested day to return a ballot by mail. After this, use a drop box or voting center.",
+      "sourceId": "sos-certification",
+      "inDays": 4
+    },
+    {
+      "date": "2026-11-03",
+      "label": "Election Day. Ballots must be received, or you must be in line, by 7 p.m.",
+      "time": "19:00",
+      "sourceId": "sos-certification",
+      "inDays": 12
+    }
+  ],
+  "unresolvedDiscrepancies": [
+    {
+      "id": "proposition-135",
+      "note": "The Secretary of State's measures page lists the short title as \"Prohibit Certain Surgeries on Minors\"; the Sept. 4 certification press release says \"Prohibit Certain Surgeries for Minors.\" Your official ballot governs."
+    }
+  ],
+  "knownGaps": [
+    "Withdrawals: the official candidate list marks withdrawn candidates with strikethrough formatting, which this transcription could not capture. Confirm against the official list or your ballot.",
+    "Full ballot titles are not reproduced here; follow the official text links or the Blue Book Title and Text section.",
+    "Plain-language explanations are drafts awaiting editorial review and are not shown until reviewed."
+  ]
+}

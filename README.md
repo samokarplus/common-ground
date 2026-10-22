@@ -1,16 +1,16 @@
 # Common Ground — The World, Explained.
 
-Free, noncommercial civic education. Understand official government documents, explore your values, and examine ideas without voting recommendations or political profiling.
+Free, noncommercial, nonpartisan civic education. Understand official government documents and your ballot, explore your values, and examine ideas — without voting recommendations or political profiling.
 
 ## Zero-spending edition
 
-This is a static React + TypeScript app built locally with Vite and published from `/docs` through GitHub Pages in a **public** repository. No cloud server, cloud database, purchased domain, paid AI, trials, subscriptions, payment method, metered service, or custom CI runner is needed. No deployment credentials or API keys belong in this repository. No automatic paid upgrades or overage service is configured.
+A static React + TypeScript app built with Vite and published from `/docs` by GitHub Pages in a **public** repository. No cloud server, database, purchased domain, paid AI, trials, subscriptions, payment method, or metered service. No API keys or deployment credentials belong in this repository.
 
-GitHub documents Pages availability for public repositories on GitHub Free and soft limits that may restrict service rather than automatically purchase capacity:
+GitHub documents Pages availability for public repositories on GitHub Free and soft limits that restrict service rather than purchase capacity:
 - https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits
 - https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
 
-The site is a free educational project, not a commercial SaaS or transaction service. If hosting eligibility changes, stop publishing and verify the new terms before selecting any replacement. Do not add paid fallbacks.
+The scheduled data refresh uses GitHub Actions on a standard runner, which is free for public repositories (larger runners are billed and are not used): https://docs.github.com/en/billing/concepts/product-billing/github-actions. If hosting or Actions eligibility changes, stop and verify terms; don't add paid fallbacks.
 
 ## Run and check
 
@@ -18,32 +18,33 @@ Requires Node 22.13+ and npm.
 
 ```sh
 npm ci --ignore-scripts
-npm run dev
-npm test
+npm run dev          # http://127.0.0.1:3020
+npm test             # unit tests (node test runner)
 npm run lint
-npm run build
-npm run scan
-npm run preview
+npm run build        # typecheck + build into /docs (keeps docs/*.md)
+npm run scan         # secret / personal-data scan of source and build
+npm run preview      # http://127.0.0.1:3021
+npm run refresh:fr   # refresh the Federal Register snapshot (needs network)
+npm run health       # regenerate docs/research-health.md and docs/source-registry.md
 ```
 
-Development: http://127.0.0.1:3020. Built preview: http://127.0.0.1:3021. Navigation uses hash routes so every page works under a GitHub Pages project subdirectory and survives refresh without a backend. The built `/docs` directory is committed for branch-based Pages publication; `.nojekyll` disables Jekyll transformations. No custom Actions workflows or stored Actions artifacts are used.
+Navigation uses hash routes (`#/vote/colorado`) so every page works under a GitHub Pages project path and survives refresh.
 
-## Working features
+## Features
 
-- Live official Federal Register feed with pagination, schema validation, bounded retries, timeouts, action-type filters, keyword/agency/ID search, canonical citations, source passages, timelines and reading list.
-- Direct browser requests only to the keyless public Federal Register API; its CORS response permits public-browser access. A dated real-source snapshot is clearly labeled when live data is unavailable. It is not fictional news and is not represented as current when offline.
-- Values scenarios with uncertainty, reasoning, certainty, change-of-mind evidence, tensions, editable journal, explicit device saving, export, and deletion.
-- Five debate modes running entirely locally. Transparent topical templates provide questions, supporting and challenging frames, and revision history. **This is not generative AI** and no AI API can be called by this app.
-- Interactive 19-node Thought Atlas with scholarly references, thematic relationships, search, filters, pan/zoom, list alternative and reading-path export.
-- Clearly fictional ballot learning demo, official state-election links, and a local private worksheet. No real local ballots or candidates are invented.
-- Methodology, source status, corrections information, privacy controls, responsive layout, keyboard focus and reduced-motion support. Fonts are self-hosted open-source assets with licenses included.
+- **Help Me Vote — Colorado 2026** (`#/vote`). All 14 certified statewide measures plus district Issue 7A, statewide offices, and judicial retention, from official Secretary of State and Legislative Council sources. Every item is labeled with its coverage status; Mountain Time deadlines; stale-data warnings; links to the official personal ballot. A private research guide (memory by default, opt-in device storage, print/PDF, download, delete). A ballot primer and glossary. Plain-language explanations are drafted but **hidden until editorially reviewed**; meanwhile each measure links to its exact Blue Book pages.
+- **Federal Register.** Live official feed with validation, bounded retries, filters, and search. The document explainer separates the agency's abstract from analysis and shows the comment deadline and effective date from official metadata, plus questions to ask, key terms, and citation copy. A dated snapshot is the fallback and is refreshed daily by a scheduled, idempotent pipeline.
+- **Values Explorer, Debate Lab, Thought Atlas.** Local-only reflection tools. The Debate Lab is template-based and **not generative AI**.
+- **Methodology, source status, privacy controls**, responsive layout, keyboard focus, reduced-motion support.
+
+## Documentation
+
+`docs/current-state.md` (what's tested and what isn't) · `docs/roadmap.md` · `docs/election-data-coverage.md` · `docs/editorial-review.md` (review queue) · `docs/editorial-methodology.md` · `docs/data-sources.md` · `docs/source-registry.md` · `docs/research-pipeline.md` · `docs/research-health.md` · `docs/privacy-and-security.md`
 
 ## Privacy
 
-No accounts, analytics, advertising, hidden profiling, or cloud reflection storage. Values and ballot notes are in memory unless device saving is explicitly enabled. Debate input never leaves the browser. Reading-list IDs use browser storage. Export/delete controls are available. Public-source requests reveal normal network request information to FederalRegister.gov; GitHub serves the static site and applies its hosting privacy policies.
+No accounts, analytics, advertising, location detection, or address collection. Research notes and reflections stay in the browser unless you opt in to device storage, and can be exported or deleted. See `docs/privacy-and-security.md`.
 
-## Limits and next work
+## Limits
 
-No Congress.gov bill ingestion, state ballot feeds, reviewed full-text explainers, full-text version archive, or scheduled backend ingestion. There is no shared database; live metadata and a dated snapshot replace server persistence. The local coach is a reasoning aid with conceptual frames, not an evidence-reviewed assessment. No public-beta security/accessibility certification or trademark clearance is claimed. Only the new sanitized static project is public; the original server project and unrelated private files are excluded.
-
-Next priorities: richer free curated learning guides, keyless official-source coverage, accessibility audit, browser regression coverage, and reviewed evidence/corrections workflows that preserve the zero-spending restriction.
+No Congress tracker yet (planned via a keyless or maintainer-run snapshot). Candidate positions aren't compiled. District and local races aren't covered — the site sends voters to their official sample ballot. Other states aren't covered. No accessibility certification is claimed. Only this sanitized static project is public; a separate private server beta is excluded.
