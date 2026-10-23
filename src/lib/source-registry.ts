@@ -1,7 +1,7 @@
 /*
  * Registry of the sources Common Ground uses or plans to use.
  * "integration" says how each source is actually used today. Nothing here is
- * fetched automatically unless integration is "automated".
+ * "scripted" means a refresh script exists, not that scheduling has been verified.
  */
 export type SourceEntry = {
   id: string;
@@ -13,7 +13,7 @@ export type SourceEntry = {
   format: "REST API (JSON)" | "HTML" | "PDF" | "XLSX" | "XML bulk data";
   access: string;
   updateFrequency: string;
-  integration: "automated" | "browser-live" | "manual-reviewed" | "link-only" | "planned";
+  integration: "scripted" | "browser-live" | "manual-source-checked" | "link-only" | "planned";
   terms: string;
   knownGaps: string;
 };
@@ -29,7 +29,7 @@ export const SOURCE_REGISTRY: SourceEntry[] = [
     format: "REST API (JSON)",
     access: "Keyless; CORS allows browser requests",
     updateFrequency: "Each federal business day",
-    integration: "automated",
+    integration: "scripted",
     terms: "U.S. government work; public domain",
     knownGaps: "Agency rules, notices, and presidential documents only; no bills, court rulings, or state actions.",
   },
@@ -43,7 +43,7 @@ export const SOURCE_REGISTRY: SourceEntry[] = [
     format: "HTML",
     access: "Public web page; no API",
     updateFrequency: "As measures are certified or committees register",
-    integration: "manual-reviewed",
+    integration: "manual-source-checked",
     terms: "Public government information",
     knownGaps: "Committee lists noted as not final; check TRACER for campaign finance.",
   },
@@ -57,7 +57,7 @@ export const SOURCE_REGISTRY: SourceEntry[] = [
     format: "XLSX",
     access: "Public page with downloadable XLSX",
     updateFrequency: "Updated after certification and withdrawals",
-    integration: "manual-reviewed",
+    integration: "manual-source-checked",
     terms: "Public government information",
     knownGaps: "Withdrawals shown with strikethrough formatting; district races require address-level lookup.",
   },
@@ -71,7 +71,7 @@ export const SOURCE_REGISTRY: SourceEntry[] = [
     format: "PDF",
     access: "Public PDF (English and Spanish, audio edition available)",
     updateFrequency: "Once per election, with possible corrections",
-    integration: "manual-reviewed",
+    integration: "manual-source-checked",
     terms: "Public government information",
     knownGaps: "Statewide measures only, plus district notices; judges listed by area.",
   },
@@ -85,7 +85,7 @@ export const SOURCE_REGISTRY: SourceEntry[] = [
     format: "PDF",
     access: "Public PDF",
     updateFrequency: "Once per election",
-    integration: "manual-reviewed",
+    integration: "manual-source-checked",
     terms: "Public government information",
     knownGaps: "Estimates, not guarantees.",
   },
@@ -141,8 +141,8 @@ export const SOURCE_REGISTRY: SourceEntry[] = [
     format: "XML bulk data",
     access: "Keyless bulk download",
     updateFrequency: "Several times daily",
-    integration: "manual-reviewed",
+    integration: "scripted",
     terms: "U.S. government work; public domain",
-    knownGaps: "Refresh script exists (npm run refresh:congress) but is run by hand until the owner applies docs/proposed-refresh-workflow.yml (needs a token with workflow scope). Snapshot holds only the 40 most recently updated bills of each type (H.R., S., H.J.Res., S.J.Res.) of the 119th Congress; no concurrent/simple resolutions; vote tallies not parsed; status is derived from the action log.",
+    knownGaps: "Keyless refresh script and a successful audit-branch Actions run exist; default-branch deployment and scheduling still need verification after merge (docs/enable-automation.md). Snapshot holds only the 40 most recently updated bills of each type (H.R., S., H.J.Res., S.J.Res.) of the 119th Congress; no concurrent/simple resolutions; vote tallies not parsed; status is derived from the action log.",
   },
 ];

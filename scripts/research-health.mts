@@ -19,7 +19,7 @@ const decisions = await readJSON("data/review/decisions.json").catch(() => []);
 const election = parseElection(await readJSON("data/elections/colorado-2026.json"));
 
 const ageDays = (iso: string) => Math.floor((now.getTime() - Date.parse(iso)) / 86400000);
-const frAge = ageDays(snapshot.retrievedAt);
+const frAge = ageDays(status["federal-register"]?.lastCheckedAt ?? snapshot.retrievedAt);
 const review = { draft: 0, "source-checked": 0, reviewed: 0, "needs-re-review": 0 } as Record<string, number>;
 for (const m of election.measures) review[m.draft.review.status]++;
 const upcoming = election.deadlines
@@ -27,14 +27,15 @@ const upcoming = election.deadlines
   .map((d) => ({ ...d, inDays: daysUntil(d.date, now, election.timeZone) }));
 const discrepancies = election.measures.flatMap((m) => (m.discrepancies || []).map((d) => ({ id: m.id, note: d })));
 const last = changelog.at(-1);
-const cgAge = ageDays(congress.retrievedAt);
+const cgAge = ageDays(status["govinfo-billstatus"]?.lastCheckedAt ?? congress.retrievedAt);
 
 const health = {
   generatedOn: today,
   sources: {
     "federal-register": {
       snapshotRetrievedAt: snapshot.retrievedAt,
-      snapshotAgeDays: frAge,
+      snapshotAgeDays: ageDays(snapshot.retrievedAt),
+      lastCheckAgeDays: frAge,
       stale: frAge > 3,
       ...(status["federal-register"] || {}),
       lastChange: last
@@ -43,7 +44,8 @@ const health = {
     },
     "govinfo-billstatus": {
       snapshotRetrievedAt: congress.retrievedAt,
-      snapshotAgeDays: cgAge,
+      snapshotAgeDays: ageDays(congress.retrievedAt),
+      lastCheckAgeDays: cgAge,
       stale: cgAge > 3,
       billCount: congress.bills.length,
       ...(status["govinfo-billstatus"] || {}),
@@ -71,11 +73,11 @@ _Generated ${today} by \`npm run health\`. Regenerated automatically when the sc
 
 | Source | Last updated in repo | Age | Status |
 | --- | --- | --- | --- |
-| Federal Register (automated) | ${snapshot.retrievedAt.slice(0, 10)} | ${frAge} days | ${fr.stale ? "⚠️ stale (older than 3 days)" : "OK"}${status["federal-register"]?.lastError ? ` · last error: ${status["federal-register"].lastError} (${status["federal-register"].lastFailure})` : ""} |
+| Federal Register (refresh script) | ${snapshot.retrievedAt.slice(0, 10)} | ${frAge} days | ${fr.stale ? "⚠️ stale (older than 3 days)" : "OK"}${status["federal-register"]?.lastError ? ` · last error: ${status["federal-register"].lastError} (${status["federal-register"].lastFailure})` : ""} |
 | Congress bills, GovInfo (script; scheduled run pending) | ${congress.retrievedAt.slice(0, 10)} | ${cgAge} days | ${health.sources["govinfo-billstatus"].stale ? "⚠️ stale (older than 3 days)" : "OK"}${status["govinfo-billstatus"]?.lastError ? ` · last error: ${status["govinfo-billstatus"].lastError} (${status["govinfo-billstatus"].lastFailure})` : ""} |
-| Colorado 2026 election (manual, reviewed) | ${election.dataVerifiedAt.slice(0, 10)} | ${co.ageDays} days | ${co.stale ? "⚠️ stale — re-verify against official sources" : "OK"} |
+| Colorado 2026 election (source-checked; not human-reviewed) | ${election.dataVerifiedAt.slice(0, 10)} | ${co.ageDays} days | ${co.stale ? "⚠️ stale — re-verify against official sources" : "OK"} |
 
-"Last updated in repo" is when official content last changed. A check that finds no change writes nothing, so its time shows in the workflow run history, not here.
+"Last updated in repo" is when official content last changed. Age and staleness use the last successful source check when available (lastCheckedAt in source-status.json); unchanged checks preserve the content snapshot and changelog. Scheduling is not operational until a successful Actions run is independently verified.
 
 ## Latest Federal Register change
 
@@ -120,7 +122,7 @@ const reg = `# Source registry
 
 _Generated from \`src/lib/source-registry.ts\` by \`npm run health\`._
 
-Integration types: **automated** (scheduled refresh), **browser-live** (fetched by the visitor's browser), **manual-reviewed** (transcribed by a maintainer, checked, versioned), **link-only** (we send visitors there; no data is copied), **planned** (not yet used).
+Integration types: **scripted** (refresh script available; verify scheduling in Actions), **browser-live** (fetched by the visitor's browser), **manual-source-checked** (transcribed and source-checked, versioned; does not imply human editorial review), **link-only** (we send visitors there; no data is copied), **planned** (not yet used).
 
 ${SOURCE_REGISTRY.map(
   (s) => `## ${s.name}

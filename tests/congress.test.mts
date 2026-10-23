@@ -26,7 +26,8 @@ test("summary HTML is reduced to plain text", () => {
 test("status mapping is conservative", () => {
   assert.equal(mapStatus([{ text: "Introduced in House" }], false), "introduced");
   assert.equal(mapStatus([{ text: "Referred to the Committee on X.", type: "IntroReferral" }], false), "in-committee");
-  assert.equal(mapStatus([{ text: "Passed/agreed to in House: x" }, { text: "Passed/agreed to in Senate: y" }], false), "passed-both-chambers");
+  assert.equal(mapStatus([{ text: "Passed/agreed to in House: x" }, { text: "Passed/agreed to in Senate: y" }], false), "agreement-unconfirmed");
+  assert.equal(mapStatus([{ text: "House agreed to Senate amendment." }], false), "passed-both-chambers");
   assert.equal(mapStatus([{ text: "Presented to President." }], false), "to-president");
   assert.equal(mapStatus([{ text: "Vetoed by President." }], false), "vetoed");
   assert.equal(mapStatus([{ text: "Became Public Law No: 119-1.", type: "BecameLaw" }], false), "enacted");
@@ -56,4 +57,17 @@ test("votes nested inside action items are collected with the official action te
   assert.equal(b.votes.length, 2);
   assert.equal(b.votes[0].chamber, "Senate");
   assert.match(b.votes[0].action ?? "", /51 - 49/);
+});
+
+test("rejects truncated, mismatched and DTD-bearing source XML", () => {
+  assert.throws(() => parseBillStatus(fixture.replace("</billStatus>", "")));
+  assert.throws(() => parseBillStatus(fixture.replace("</title>", "</wrong>")));
+  assert.throws(() => parseBillStatus('<!DOCTYPE billStatus [<!ENTITY x SYSTEM "file:///etc/passwd">]>' + fixture));
+});
+
+test("Congress citations reject lookalike hosts, credentials and insecure links", () => {
+  assert.throws(() => parseBillStatus(fixture.replaceAll("https://www.congress.gov", "https://www.congress.gov.example.com")));
+  assert.throws(() => parseBillStatus(fixture.replaceAll("https://www.congress.gov", "http://www.congress.gov")));
+  assert.throws(() => parseBillStatus(fixture.replaceAll("https://www.congress.gov", "https://user:pass@www.congress.gov")));
+  assert.throws(() => parseBillStatus(fixture.replaceAll("https://clerk.house.gov", "https://example.com")));
 });

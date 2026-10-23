@@ -4,7 +4,7 @@ import { freshness } from "@/lib/freshness";
 const fmtDay = (d: string, opts: Intl.DateTimeFormatOptions = {}) =>
   new Date(d + "T12:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric", ...opts });
 
-type Src = { snapshotRetrievedAt?: string; dataVerifiedAt?: string; lastSuccess?: string; lastFailure?: string; lastError?: string };
+type Src = { snapshotRetrievedAt?: string; dataVerifiedAt?: string; lastSuccess?: string; lastCheckedAt?: string; lastFailure?: string; lastError?: string };
 const health = raw as unknown as {
   generatedOn: string;
   sources: Record<string, Src & { billCount?: number; reviewQueue?: Record<string, number> }>;
@@ -27,8 +27,8 @@ export default function HealthPanel() {
     <section className="panel" aria-labelledby="research-health">
       <h2 id="research-health">Research health</h2>
       <p className="muted">
-        Ages are computed when you open this page, from the last time each source's data actually changed. A source can be checked without
-        changing; failed checks are listed. The scheduled workflow is <strong>not yet active</strong>, so refreshes currently run by hand.
+        Ages are computed when you open this page, from each source's last successful check when recorded; otherwise they use the snapshot date.
+        A successful check can find unchanged content. Failed checks are listed. Scheduled automation is unverified until a successful GitHub Actions run is recorded.
         Report generated {health.generatedOn}.
       </p>
       <div className="compare-table" role="table" aria-label="Source freshness">
@@ -41,12 +41,14 @@ export default function HealthPanel() {
         {ROWS.map(([id, label, , maxAge]) => {
           const s = health.sources[id] ?? {};
           const when = s.snapshotRetrievedAt ?? s.dataVerifiedAt ?? "";
-          const f = freshness(when, now, maxAge);
+          const checked = s.lastCheckedAt ?? when;
+          const f = freshness(checked, now, maxAge);
           return (
             <div role="row" key={id}>
               <span role="cell"><strong>{label}</strong></span>
-              <span role="cell">{when ? `${fmtDay(when.slice(0, 10), { year: "numeric" })} (${f.label})` : "never"}</span>
-              <span role="cell">{f.stale ? `Stale: older than ${maxAge} days` : "Fresh"}</span>
+              <span role="cell">{when ? fmtDay(when.slice(0, 10), { year: "numeric" }) : "never"}
+                {s.lastCheckedAt && <small className="muted"> Last checked: {new Date(s.lastCheckedAt).toLocaleString("en-US", { timeZone: "America/Denver", timeZoneName: "short" })}</small>}</span>
+              <span role="cell">{f.stale ? `Stale: older than ${maxAge} days` : `Fresh (${f.label})`}</span>
               <span role="cell">{s.lastError ? `${s.lastError} (${s.lastFailure})` : "None recorded"}</span>
             </div>
           );

@@ -176,3 +176,8 @@ Factual log. Only items marked verified were checked in the session that wrote t
 - **No-auto-approval guard** refined: other code may read the decision log but only the apply script may write it (tested across all source files).
 - **Owner actions** consolidated in `docs/OWNER-ACTIONS.md` (workflow activation, HTTPS/domain, human review, sources only a person can get, pre-election re-checks) and linked from the README.
 - 128 unit and 288 browser checks pass locally.
+
+
+## Independent audit follow-up — October 22, 2026
+
+Fetched current history in a separate branch/worktree and incorporated c4c370c concurrently. Corrected cached private-note deletion and editorial change-request withdrawal; made congressional status/XML ingestion more conservative; added complete action timelines, unknown-bill official fallback and successful-check timestamps. Repaired swallowed test assertions and prepared a safe dual-source workflow. Real branch run 39893778468 passed and created bot commit 3f784ca; production publication was skipped intentionally. See independent-audit.md for source comparisons, limits, validation and next work. No main push/merge or spending occurred.

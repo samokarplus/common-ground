@@ -2,14 +2,14 @@
 
 _Generated from `src/lib/source-registry.ts` by `npm run health`._
 
-Integration types: **automated** (scheduled refresh), **browser-live** (fetched by the visitor's browser), **manual-reviewed** (transcribed by a maintainer, checked, versioned), **link-only** (we send visitors there; no data is copied), **planned** (not yet used).
+Integration types: **scripted** (refresh script available; verify scheduling in Actions), **browser-live** (fetched by the visitor's browser), **manual-source-checked** (transcribed and source-checked, versioned; does not imply human editorial review), **link-only** (we send visitors there; no data is copied), **planned** (not yet used).
 
 ## Federal Register API
 
 - **Publisher:** Office of the Federal Register / GPO · **Jurisdiction:** United States · Federal · **Authority:** official-primary
 - **URL:** https://www.federalregister.gov/developers/documentation/api/v1
 - **Format / access:** REST API (JSON) · Keyless; CORS allows browser requests
-- **Updates:** Each federal business day · **Integration:** automated
+- **Updates:** Each federal business day · **Integration:** scripted
 - **Terms:** U.S. government work; public domain
 - **Known gaps:** Agency rules, notices, and presidential documents only; no bills, court rulings, or state actions.
 
@@ -18,7 +18,7 @@ Integration types: **automated** (scheduled refresh), **browser-live** (fetched 
 - **Publisher:** Colorado Secretary of State · **Jurisdiction:** Colorado · **Authority:** official-primary
 - **URL:** https://www.coloradosos.gov/pubs/elections/Initiatives/ballot/contacts/2026.html
 - **Format / access:** HTML · Public web page; no API
-- **Updates:** As measures are certified or committees register · **Integration:** manual-reviewed
+- **Updates:** As measures are certified or committees register · **Integration:** manual-source-checked
 - **Terms:** Public government information
 - **Known gaps:** Committee lists noted as not final; check TRACER for campaign finance.
 
@@ -27,7 +27,7 @@ Integration types: **automated** (scheduled refresh), **browser-live** (fetched 
 - **Publisher:** Colorado Secretary of State · **Jurisdiction:** Colorado · **Authority:** official-primary
 - **URL:** https://www.coloradosos.gov/pubs/elections/vote/generalCandidates.html
 - **Format / access:** XLSX · Public page with downloadable XLSX
-- **Updates:** Updated after certification and withdrawals · **Integration:** manual-reviewed
+- **Updates:** Updated after certification and withdrawals · **Integration:** manual-source-checked
 - **Terms:** Public government information
 - **Known gaps:** Withdrawals shown with strikethrough formatting; district races require address-level lookup.
 
@@ -36,7 +36,7 @@ Integration types: **automated** (scheduled refresh), **browser-live** (fetched 
 - **Publisher:** Colorado Legislative Council Staff · **Jurisdiction:** Colorado · **Authority:** official-analysis
 - **URL:** https://content.leg.colorado.gov/publications/2026-statewide-ballot-information-booklet
 - **Format / access:** PDF · Public PDF (English and Spanish, audio edition available)
-- **Updates:** Once per election, with possible corrections · **Integration:** manual-reviewed
+- **Updates:** Once per election, with possible corrections · **Integration:** manual-source-checked
 - **Terms:** Public government information
 - **Known gaps:** Statewide measures only, plus district notices; judges listed by area.
 
@@ -45,7 +45,7 @@ Integration types: **automated** (scheduled refresh), **browser-live** (fetched 
 - **Publisher:** Colorado Legislative Council Staff · **Jurisdiction:** Colorado · **Authority:** official-analysis
 - **URL:** https://content.leg.colorado.gov/publications/2026-fiscal-impact-statements
 - **Format / access:** PDF · Public PDF
-- **Updates:** Once per election · **Integration:** manual-reviewed
+- **Updates:** Once per election · **Integration:** manual-source-checked
 - **Terms:** Public government information
 - **Known gaps:** Estimates, not guarantees.
 
@@ -81,6 +81,6 @@ Integration types: **automated** (scheduled refresh), **browser-live** (fetched 
 - **Publisher:** U.S. Government Publishing Office · **Jurisdiction:** United States · Federal · **Authority:** official-primary
 - **URL:** https://www.govinfo.gov/bulkdata/BILLSTATUS
 - **Format / access:** XML bulk data · Keyless bulk download
-- **Updates:** Several times daily · **Integration:** manual-reviewed
+- **Updates:** Several times daily · **Integration:** scripted
 - **Terms:** U.S. government work; public domain
-- **Known gaps:** Refresh script exists (npm run refresh:congress) but is run by hand until the owner applies docs/proposed-refresh-workflow.yml (needs a token with workflow scope). Snapshot holds only the 40 most recently updated bills of each type (H.R., S., H.J.Res., S.J.Res.) of the 119th Congress; no concurrent/simple resolutions; vote tallies not parsed; status is derived from the action log.
+- **Known gaps:** Keyless refresh script and a successful audit-branch Actions run exist; default-branch deployment and scheduling still need verification after merge (docs/enable-automation.md). Snapshot holds only the 40 most recently updated bills of each type (H.R., S., H.J.Res., S.J.Res.) of the 119th Congress; no concurrent/simple resolutions; vote tallies not parsed; status is derived from the action log.

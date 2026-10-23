@@ -141,6 +141,7 @@ function List() {
 }
 
 function Detail({ id }: { id?: string }) {
+  const [showAllActions, setShowAllActions] = useState(false);
   const b = snapshot.bills.find((x) => x.id === id);
   if (!b)
     return (
@@ -148,7 +149,9 @@ function Detail({ id }: { id?: string }) {
         <Link href="/congress" className="back-link">
           <ChevronLeft size={15} /> Congress
         </Link>
-        <p className="empty">That bill is not in the current snapshot. It may exist on Congress.gov.</p>
+        <h1>Bill outside this snapshot</h1>
+        <p className="empty">That bill is not in the current snapshot. This does not mean it was withdrawn or does not exist.</p>
+        <a className="button secondary" href="https://www.congress.gov/search" target="_blank" rel="noreferrer">Search the official Congress.gov record <ExternalLink size={14} /></a>
       </>
     );
   return (
@@ -171,7 +174,7 @@ function Detail({ id }: { id?: string }) {
       <p className="note" role="note">
         {b.status === "enacted"
           ? "This bill has become law."
-          : "This bill has NOT become law. Everything below describes a proposal unless the status above says otherwise."}{" "}
+          : "No enactment is recorded in this snapshot. Check the official record for changes since retrieval."}{" "}
         Status is derived from the official action log below; check Congress.gov for the authoritative record.
       </p>
       {b.crsSummary && (
@@ -201,13 +204,17 @@ function Detail({ id }: { id?: string }) {
       <section>
         <h2>Legislative timeline</h2>
         <ol className="timeline">
-          {b.actions.slice(0, 25).map((a, i) => (
+          {b.actions.slice(0, showAllActions ? undefined : 25).map((a, i) => (
             <li key={i}>
               <strong>{day(a.date)}</strong> — {a.text}
             </li>
           ))}
         </ol>
-        {b.actions.length > 25 && <p className="card-meta">Showing the 25 most recent of {b.actions.length} actions.</p>}
+        {b.actions.length > 25 && (
+          <button className="button secondary" aria-expanded={showAllActions} onClick={() => setShowAllActions(!showAllActions)}>
+            {showAllActions ? "Show only the 25 most recent actions" : `Show all ${b.actions.length} official actions`}
+          </button>
+        )}
       </section>
       {b.policyArea && (
         <section>

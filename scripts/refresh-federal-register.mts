@@ -42,7 +42,7 @@ async function readJSON<T>(path: string): Promise<T | null> {
   }
 }
 
-type Status = Record<string, { lastSuccess?: string; lastFailure?: string; lastError?: string; lastChange?: string }>;
+type Status = Record<string, { lastSuccess?: string; lastCheckedAt?: string; lastFailure?: string; lastError?: string; lastChange?: string }>;
 
 async function recordStatus(patch: Status[string]) {
   const status = (await readJSON<Status>(HEALTH)) || {};
@@ -74,7 +74,8 @@ if (!plan.ok) {
 }
 if (plan.rejected.length) console.warn(`Rejected ${plan.rejected.length} invalid record(s):`, plan.rejected);
 if (!plan.changed) {
-  console.log(`No change in official content (hash ${plan.contentHash.slice(0, 12)}). Nothing written.`);
+  console.log(`No change in official content (hash ${plan.contentHash.slice(0, 12)}). Content snapshot preserved.`);
+  await recordStatus({ lastSuccess: now.toISOString().slice(0, 10), lastCheckedAt: now.toISOString(), lastError: undefined });
   process.exit(0);
 }
 const { entry, snapshot } = plan;
@@ -89,5 +90,5 @@ await mkdir("data/changelog", { recursive: true });
 await writeFile(SNAPSHOT, JSON.stringify(snapshot, null, 2) + "\n");
 const existing = (await readFile(CHANGELOG, "utf8").catch(() => "")) || "";
 await writeFile(CHANGELOG, appendChangelog(existing, entry));
-await recordStatus({ lastSuccess: now.toISOString().slice(0, 10), lastChange: entry.at, lastError: undefined });
+await recordStatus({ lastSuccess: now.toISOString().slice(0, 10), lastChange: entry.at, lastError: undefined, lastCheckedAt: new Date().toISOString() });
 console.log(`Wrote ${SNAPSHOT} and appended ${CHANGELOG}.`);

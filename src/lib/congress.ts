@@ -8,21 +8,27 @@ type XNode = { tag: string; text: string; children: XNode[] };
 
 /** Minimal XML reader sufficient for BILLSTATUS (no attributes needed, CDATA supported). */
 export function parseXml(xml: string): XNode {
+  if (/<!DOCTYPE|<!ENTITY/i.test(xml)) throw new Error("DTD and entity declarations are not supported");
   const root: XNode = { tag: "#root", text: "", children: [] };
   const stack = [root];
   const re = /<!\[CDATA\[([\s\S]*?)\]\]>|<!--[\s\S]*?-->|<\?[\s\S]*?\?>|<\/([\w:.-]+)\s*>|<([\w:.-]+)[^>]*?(\/?)>|([^<]+)/g;
+  let cursor = 0;
   let m: RegExpExecArray | null;
   while ((m = re.exec(xml))) {
+    if (m.index !== cursor) throw new Error("Malformed XML");
+    cursor = re.lastIndex;
     const top = stack[stack.length - 1];
     if (m[1] !== undefined) top.text += m[1];
     else if (m[2]) {
-      if (stack.length > 1) stack.pop();
+      if (stack.length <= 1 || top.tag !== m[2]) throw new Error("Mismatched XML closing tag");
+      stack.pop();
     } else if (m[3]) {
       const node: XNode = { tag: m[3], text: "", children: [] };
       top.children.push(node);
       if (!m[4]) stack.push(node);
     } else if (m[5] !== undefined) top.text += decode(m[5]);
   }
+  if (cursor !== xml.length || stack.length !== 1 || root.children.length !== 1 || root.text.trim()) throw new Error("Incomplete XML document");
   return root;
 }
 
@@ -50,6 +56,7 @@ export const BILL_STATUSES = [
   "in-committee",
   "passed-one-chamber",
   "passed-both-chambers",
+  "agreement-unconfirmed",
   "to-president",
   "vetoed",
   "enacted",
@@ -61,10 +68,16 @@ export const STATUS_LABEL: Record<BillStatus, string> = {
   "in-committee": "In committee",
   "passed-one-chamber": "Passed one chamber",
   "passed-both-chambers": "Passed both chambers",
+  "agreement-unconfirmed": "Both chambers passed versions; agreement unconfirmed",
   "to-president": "Sent to the President",
   vetoed: "Vetoed",
   enacted: "Became law",
 };
+
+const officialUrl = (hosts: string[]) => z.string().url().refine((value) => {
+  const url = new URL(value);
+  return url.protocol === "https:" && !url.username && !url.password && hosts.includes(url.host);
+}, "expected an HTTPS official government source");
 
 export const BillSchema = z.object({
   id: z.string().regex(/^\d+-[a-z]+-\d+$/),
@@ -84,9 +97,9 @@ export const BillSchema = z.object({
   latestAction: z.object({ date: z.string(), text: z.string() }).optional(),
   actions: z.array(z.object({ date: z.string(), text: z.string(), type: z.string().optional() })),
   /** Recorded roll calls. `action` is the official action text, which usually states the tally. */
-  votes: z.array(z.object({ chamber: z.string(), date: z.string(), url: z.string().url(), action: z.string().optional() })),
+  votes: z.array(z.object({ chamber: z.string(), date: z.string(), url: officialUrl(["clerk.house.gov", "www.senate.gov"]), action: z.string().optional() })),
   crsSummary: z.string().optional(),
-  url: z.string().url(),
+  url: officialUrl(["www.congress.gov"]),
 });
 export type Bill = z.infer<typeof BillSchema>;
 
@@ -103,7 +116,10 @@ export function mapStatus(actions: { text: string; type?: string }[], hasLaw: bo
       if (/senate/i.test(t)) passed.add("Senate");
     }
   }
-  if (passed.size >= 2) return "passed-both-chambers";
+  // Separate passage votes can concern different versions. Enrollment/concurrence
+  // is needed before reporting agreement on the same text.
+  if (all.some((t) => /^(?:cleared for (?:the )?white house|(?:house|senate) agreed to (?:the )?(?:house|senate) amendment(?: without amendment|\.|$)|(?:house|senate) agreed to (?:the )?conference report|presented to president)|^enrolled bill/i.test(t))) return "passed-both-chambers";
+  if (passed.size >= 2) return "agreement-unconfirmed";
   if (passed.size === 1) return "passed-one-chamber";
   if (actions.some((a) => a.type === "Committee" || /referred to/i.test(a.text))) return "in-committee";
   return "introduced";

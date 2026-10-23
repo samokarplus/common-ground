@@ -10,7 +10,7 @@ export default defineConfig({
   webServer: remote ? undefined : {
     command: "npm run preview",
     url: "http://127.0.0.1:3021/",
-    reuseExistingServer: true,
+    reuseExistingServer: false,
   },
   projects: [
     { name: "desktop", use: { viewport: { width: 1360, height: 900 } } },
