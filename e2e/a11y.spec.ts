@@ -7,6 +7,8 @@ const routes = [
   "#/vote/colorado",
   "#/vote/colorado/measures",
   "#/vote/colorado/measure/amendment-81",
+  "#/vote/colorado/measure/amendment-87",
+  "#/vote/colorado/measure/issue-7a",
   "#/vote/colorado/contests",
   "#/vote/colorado/judges",
   "#/vote/colorado/candidate/governor/Victor%20Marx",

@@ -33,11 +33,16 @@ export const SourceSchema = z.object({
 });
 
 export const ReviewSchema = z.object({
-  status: z.enum(["draft", "reviewed", "needs-re-review"]),
+  /** "source-checked": compared line by line with the official sources by an AI-assisted process; no human editor yet. */
+  status: z.enum(["draft", "source-checked", "reviewed", "needs-re-review"]),
   preparedBy: z.string().min(1),
   preparedOn: CalendarDate,
   reviewer: z.string().optional(),
   reviewedOn: CalendarDate.optional(),
+  checkedOn: CalendarDate.optional(),
+  checkedAgainst: z.array(z.string()).optional(),
+  /** What the check changed or could not confirm, kept for the human reviewer. */
+  checkNotes: z.array(z.string()).optional(),
   note: z.string().optional(),
 });
 
@@ -71,6 +76,8 @@ export const MeasureSchema = z
       no: z.string().nullable(),
       fiscal: z.array(z.string()),
       unclear: z.array(z.string()),
+      /** Arguments as summarized from the Blue Book's "Arguments For and Against" sections. */
+      arguments: z.object({ for: z.array(z.string()), against: z.array(z.string()) }).optional(),
       review: ReviewSchema,
     }),
   })
@@ -83,6 +90,13 @@ export const MeasureSchema = z
       ctx.addIssue({ code: "custom", message: `${m.id}: statutory measures pass by majority` });
     if (m.draft.review.status === "reviewed" && !(m.draft.review.reviewer && m.draft.review.reviewedOn))
       ctx.addIssue({ code: "custom", message: `${m.id}: a reviewed explanation needs reviewer and date` });
+    if (m.draft.review.status === "source-checked") {
+      const r = m.draft.review;
+      if (!r.checkedOn || !r.checkedAgainst?.length)
+        ctx.addIssue({ code: "custom", message: `${m.id}: a source-checked explanation needs a check date and the sources checked` });
+      if (r.reviewer || r.reviewedOn)
+        ctx.addIssue({ code: "custom", message: `${m.id}: source-checked content must not claim human review` });
+    }
   });
 
 export const CandidateSchema = z.object({
@@ -166,10 +180,17 @@ export function parseElection(raw: unknown): Election {
   return ElectionSchema.parse(raw);
 }
 
-/** The reviewed explanation, or null. Drafts are never returned for display. */
+/**
+ * The explanation that may be shown, or null. Plain drafts are never returned. "source-checked"
+ * content is shown with a label saying no human editor has reviewed it; only "reviewed" content
+ * (named reviewer and date) is shown without that label.
+ */
 export function publishedExplanation(m: Measure) {
-  return m.draft.review.status === "reviewed" ? m.draft : null;
+  const s = m.draft.review.status;
+  return s === "reviewed" || s === "source-checked" ? m.draft : null;
 }
+
+export const isHumanReviewed = (m: Measure) => m.draft.review.status === "reviewed";
 
 /** Calendar date (YYYY-MM-DD) for an instant, in the given IANA time zone. */
 export function localDate(now: Date, timeZone: string) {
@@ -228,6 +249,10 @@ export const COVERAGE = {
   demo: {
     label: "Illustrative demo",
     detail: "Fictional example for learning. Not a real ballot item.",
+  },
+  sourceChecked: {
+    label: "Source-checked, not human-reviewed",
+    detail: "Compared with the official Blue Book by Common Ground's AI-assisted process. No human editor has reviewed it yet.",
   },
   awaitingReview: {
     label: "Explanation awaiting review",

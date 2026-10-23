@@ -1,6 +1,6 @@
 # Editorial review
 
-High-stakes explanatory text is never published automatically. Anything marked `draft` in a data file stays hidden on the site until a person reviews it.
+High-stakes explanatory text is never published automatically. Anything marked `draft` in a data file stays hidden on the site. Content marked `source-checked` (added 2026-10-22 at the owner's direction) is shown with a visible "source-checked, not human-reviewed" label; only `reviewed` content, with a named reviewer and date, is shown without it. Nothing here has been human-reviewed yet.
 
 ## How to review a Help Me Vote measure
 
@@ -288,3 +288,10 @@ Blue Book: notice p. 100. Official text: https://leg.colorado.gov/bills/SB26-172
 - **Candidate names** were transcribed from the Secretary of State's official list (last updated Sept. 15, 2026). Spot-check against the official XLSX: https://www.coloradosos.gov/pubs/elections/vote/files/2026/2026GeneralCandidateListOfficial.xlsx — especially for withdrawn candidates, which the official list marks with strikethrough.
 - **Office descriptions and term lengths** in `contests[].role` were written by Common Ground as general background.
 - **Glossary and primer** text in `src/components/help-me-vote.tsx` was written by Common Ground.
+
+
+## Source check, 2026-10-22 (AI-assisted, not a human review)
+
+All 14 statewide measures and Ballot Issue 7A were compared with the text of the English 2026 Blue Book (extracted locally from the official PDF): what each measure does, YES/NO meaning, fiscal items, and the Blue Book's arguments for and against (summarized in `draft.arguments`). Corrections made: Amendment 85 (scope wording and referred-measure exception), Proposition 132 fiscal figures (replaced two figures not found in the Blue Book), Propositions 134 and 135 fiscal notes (previously said no state spending change; the Blue Book describes indeterminate or minimal costs), Amendment 87 and Proposition 136 (maximum-revenue figure, inflation indexing, and the unresolved outcome if both pass). Ballot Issue 7A's summary was written from the district's printed ballot title and fiscal information on Blue Book p. 100.
+
+Not done: the separate fiscal impact statements PDF was not read; Spanish edition not checked; statements about what the measures' legal text would do beyond the Blue Book's analysis were not checked against the full measure text. Each measure's `review.checkNotes` lists what changed. A human reviewer should still confirm these and set `status: reviewed` with their name and date.

@@ -1416,8 +1416,9 @@ textarea,
 }
 .detail-toolbar {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 22px;
+  gap: 10px 22px;
   font-size: 12px;
   color: #616d55;
   margin-bottom: 18px;

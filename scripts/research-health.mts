@@ -18,7 +18,7 @@ const election = parseElection(await readJSON("data/elections/colorado-2026.json
 
 const ageDays = (iso: string) => Math.floor((now.getTime() - Date.parse(iso)) / 86400000);
 const frAge = ageDays(snapshot.retrievedAt);
-const review = { draft: 0, reviewed: 0, "needs-re-review": 0 } as Record<string, number>;
+const review = { draft: 0, "source-checked": 0, reviewed: 0, "needs-re-review": 0 } as Record<string, number>;
 for (const m of election.measures) review[m.draft.review.status]++;
 const upcoming = election.deadlines
   .filter((d) => deadlineState(d.date, now, election.timeZone) !== "passed")
@@ -86,7 +86,8 @@ ${
 ## Editorial review queue (Colorado measures)
 
 - Draft, hidden from the site: **${review.draft}**
-- Reviewed and published: **${review.reviewed}**
+- Source-checked against the Blue Book, shown with a "not human-reviewed" label: **${review["source-checked"]}**
+- Human-reviewed and published: **${review.reviewed}**
 - Needs re-review after an official change: **${review["needs-re-review"]}**
 
 See \`editorial-review.md\`.

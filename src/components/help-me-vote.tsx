@@ -23,6 +23,7 @@ import rawProfiles from "../../data/elections/colorado-2026-profiles.json";
 import { CLAIM_KINDS, CLAIM_LABEL, RESEARCH_AREAS, completeness, validateProfiles, type Profile } from "@/lib/candidate";
 import {
   COVERAGE,
+  isHumanReviewed,
   GUIDE_KEY,
   KIND_LABEL,
   ORIGIN_LABEL,
@@ -433,10 +434,10 @@ function Overview() {
             <span role="cell">{election.notCovered.join("; ")}.</span>
           </div>
           <div role="row">
-            <span role="cell"><CoverageBadge c={COVERAGE.awaitingReview} /></span>
+            <span role="cell"><CoverageBadge c={COVERAGE.sourceChecked} /></span>
             <span role="cell">
-              Plain-language summaries are drafted from the official Blue Book and appear once an editor has reviewed them. Until then,
-              each measure links straight to the Blue Book's analysis.
+              Measure explanations were compared line by line with the official Blue Book, but no human editor has reviewed them yet, and
+              each page says so. Each measure also links straight to the Blue Book's analysis.
             </span>
           </div>
         </div>
@@ -610,6 +611,7 @@ function MeasureDetail({ id }: { id?: string }) {
       </div>
       <div className="detail-toolbar">
         <CoverageBadge c={measureCoverage(m)} />
+        {explanation && !isHumanReviewed(m) && <CoverageBadge c={COVERAGE.sourceChecked} />}
         <span className="tag">{KIND_LABEL[m.kind]}</span>
         <span>{THRESHOLD_LABEL[m.threshold]}</span>
       </div>
@@ -680,10 +682,37 @@ function MeasureDetail({ id }: { id?: string }) {
                   <ul>{explanation.unclear.map((f) => <li key={f}>{f}</li>)}</ul>
                 </>
               )}
-              <p className="muted">
-                Reviewed by {explanation.review.reviewer} on {explanation.review.reviewedOn}. Prepared from the official Blue Book and
-                fiscal impact statements.
-              </p>
+              {explanation.arguments && (
+                <>
+                  <h2>Arguments for and against</h2>
+                  <p className="muted">
+                    Summarized from the Blue Book's "Arguments For and Against" sections, which the Legislative Council Staff writes from
+                    comments submitted by supporters and opponents. Each side is given in its own terms; these are claims, not findings.
+                  </p>
+                  <div className="yes-no">
+                    <div>
+                      <h3>Arguments for</h3>
+                      <ul>{explanation.arguments.for.map((a) => <li key={a}>{a}</li>)}</ul>
+                    </div>
+                    <div>
+                      <h3>Arguments against</h3>
+                      <ul>{explanation.arguments.against.map((a) => <li key={a}>{a}</li>)}</ul>
+                    </div>
+                  </div>
+                </>
+              )}
+              {isHumanReviewed(m) ? (
+                <p className="muted">
+                  Reviewed by {explanation.review.reviewer} on {explanation.review.reviewedOn}. Prepared from the official Blue Book and
+                  fiscal impact statements.
+                </p>
+              ) : (
+                <div className="notice">
+                  <Info size={18} /> Source-checked, not human-reviewed. On {explanation.review.checkedOn}, Common Ground's AI-assisted process
+                  compared this explanation with the official Blue Book text and corrected what did not match. No human editor has reviewed
+                  it, and the separate fiscal impact statements were not read. The Blue Book is the authority; use the page numbers below.
+                </div>
+              )}
             </>
           ) : (
             <div className="awaiting-review">

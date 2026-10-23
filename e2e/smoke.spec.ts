@@ -24,7 +24,8 @@ for (const route of routes) {
     const errors: string[] = [];
     page.on("pageerror", (e) => errors.push(e.message));
     page.on("console", (m) => {
-      if (m.type() === "error" && !/federalregister\.gov/.test(m.text())) errors.push(m.text());
+      // The live Federal Register request may be rate-limited (HTTP 429); the app falls back to its snapshot by design.
+      if (m.type() === "error" && !/federalregister\.gov|Failed to load resource/.test(m.text())) errors.push(m.text());
     });
     await page.goto(route);
     await expect(page.locator("h1").first()).toBeVisible();
@@ -121,4 +122,13 @@ test("candidate profile shows labeled own statements, sources and the not-fact-c
   await expect(page.getByRole("heading", { name: "The candidate's own statement" })).toBeVisible();
   await expect(page.locator('a[href^="https://"][target="_blank"]').first()).toBeVisible();
   await expect(page.getByText(/not yet researched/).first()).toBeVisible();
+});
+
+test("measure page shows YES/NO, both sides' arguments and the not-human-reviewed label", async ({ page }) => {
+  await page.goto("#/vote/colorado/measure/amendment-87");
+  await expect(page.getByRole("heading", { name: "A YES vote means" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Arguments for", exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Arguments against", exact: true })).toBeVisible();
+  await expect(page.getByText(/Source-checked, not human-reviewed\. On 2026-10-22/)).toBeVisible();
+  await expect(page.getByText(/we recommend/i)).toHaveCount(0);
 });

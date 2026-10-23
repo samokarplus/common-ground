@@ -59,9 +59,12 @@ test("constitutional amendments require 55 percent and propositions a majority",
   assert.throws(() => parseElection(bad));
 });
 
-test("unreviewed drafts are never published, and reviewed ones need a reviewer and date", () => {
+test("plain drafts are never published; reviewed ones need a reviewer and date", () => {
   for (const m of e.measures)
-    if (m.draft.review.status !== "reviewed") assert.equal(publishedExplanation(m), null, m.id);
+    if (!["reviewed", "source-checked"].includes(m.draft.review.status)) assert.equal(publishedExplanation(m), null, m.id);
+  const draft = clone();
+  draft.measures[0].draft.review.status = "draft";
+  assert.equal(publishedExplanation(parseElection(draft).measures[0]), null);
   const reviewedNoReviewer = clone();
   reviewedNoReviewer.measures[0].draft.review.status = "reviewed";
   assert.throws(() => parseElection(reviewedNoReviewer));
@@ -180,4 +183,39 @@ test("no measure is labeled with a suggested vote", () => {
   const text = JSON.stringify(raw).toLowerCase();
   for (const phrase of ["we recommend", "you should vote", "vote yes on", "vote no on", "endorse"])
     assert.ok(!text.includes(phrase), phrase);
+});
+
+test("source-checked content is labeled, names its checks, and never claims human review", () => {
+  for (const m of e.measures) {
+    const r = m.draft.review;
+    if (r.status !== "source-checked") continue;
+    assert.ok(r.checkedOn && r.checkedAgainst?.length, m.id);
+    assert.equal(r.reviewer, undefined, m.id);
+    assert.equal(r.reviewedOn, undefined, m.id);
+  }
+  const bad = clone();
+  Object.assign(bad.measures[0].draft.review, { status: "source-checked", reviewer: "Someone", checkedOn: "2026-10-22", checkedAgainst: ["blue-book"] });
+  assert.throws(() => parseElection(bad));
+  const noCheck = clone();
+  Object.assign(noCheck.measures[0].draft.review, { status: "source-checked", checkedOn: undefined, checkedAgainst: undefined });
+  assert.throws(() => parseElection(noCheck));
+});
+
+test("every published statewide explanation has YES/NO text, both sides' arguments and fiscal notes", () => {
+  for (const m of e.measures.filter((x) => x.scope === "statewide")) {
+    const x = publishedExplanation(m);
+    assert.ok(x, m.id);
+    assert.ok(x.yes && x.no, `${m.id} needs yes/no`);
+    assert.ok(x.fiscal.length > 0, `${m.id} needs fiscal notes`);
+    assert.ok(x.arguments && x.arguments.for.length > 0 && x.arguments.against.length > 0, `${m.id} needs arguments on both sides`);
+  }
+});
+
+test("explanations contain no voting recommendation language", () => {
+  const banned = /\b(you should vote|we recommend|vote yes|vote no|vote for|vote against)\b/i;
+  for (const m of e.measures) {
+    const x = m.draft;
+    const text = [x.summary, x.yes, x.no, ...x.fiscal, ...x.unclear, ...(x.arguments?.for ?? []), ...(x.arguments?.against ?? [])].join(" ");
+    assert.ok(!banned.test(text), m.id);
+  }
 });
