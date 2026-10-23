@@ -6,11 +6,11 @@ _Generated 2026-10-22 by `npm run health`. Regenerated automatically when the sc
 
 | Source | Last updated in repo | Age | Status |
 | --- | --- | --- | --- |
-| Federal Register (automated) | 2026-10-22 | 0 days | OK |
+| Federal Register (refresh script) | 2026-10-22 | 0 days | OK |
 | Congress bills, GovInfo (script; scheduled run pending) | 2026-10-23 | 0 days | OK |
-| Colorado 2026 election (manual, reviewed) | 2026-10-22 | 0 days | OK |
+| Colorado 2026 election (source-checked; not human-reviewed) | 2026-10-22 | 0 days | OK |
 
-"Last updated in repo" is when official content last changed. A check that finds no change writes nothing, so its time shows in the workflow run history, not here.
+"Last updated in repo" is when official content last changed. Age and staleness use the last successful source check when available (lastCheckedAt in source-status.json); unchanged checks preserve the content snapshot and changelog. Scheduling is not operational until a successful Actions run is independently verified.
 
 ## Latest Federal Register change
 
