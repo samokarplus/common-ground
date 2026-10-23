@@ -7,7 +7,8 @@ test("private research guide: mark, note, export, persist opt-in, delete", async
   await page.getByRole("button", { name: "Add a private note" }).first().click();
   await page.getByLabel(/Private note/).first().fill("Ask about the 72-hour requirement");
 
-  await page.goto("#/vote/my-guide");
+  // Navigate in-app (hash change) so the in-memory guide survives, even if the site redirects between origins.
+  await page.evaluate(() => (window.location.hash = "#/vote/my-guide"));
   await expect(page.getByText("Ask about the 72-hour requirement")).toBeVisible();
 
   const [download] = await Promise.all([page.waitForEvent("download"), page.getByRole("button", { name: /Download my notes/ }).click()]);
