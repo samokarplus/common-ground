@@ -27,7 +27,7 @@ See `editorial-review.md`.
 
 ## Citation links
 
-Checked 2026-10-23: 49 of 54 cited links responded normally, 0 broken, 5 could not be confirmed (often sites that block automated requests). Run `npm run check:links` to refresh.
+Checked 2026-10-23: 53 of 59 cited links responded normally, 0 broken, 6 could not be confirmed (often sites that block automated requests). Run `npm run check:links` to refresh.
 
 ## Human review decisions recorded
 

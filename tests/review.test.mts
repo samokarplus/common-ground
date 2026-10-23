@@ -85,3 +85,14 @@ test("no source file other than the apply script writes review decisions or mark
     assert.ok(!/write\w*\([^)]*decisions\.json/.test(text), `${f} writes the decision log`);
   }
 });
+
+test("evidence briefings are queued as machine-checked and are only human-reviewed through a decision", () => {
+  const briefings = [{ id: "federal-spending", question: "Q?", sourceCheckedOn: "2026-10-22", sources: [{ label: "Treasury", url: "https://fiscaldata.treasury.gov/" }], limitations: ["L1"] }];
+  const q = buildQueue({ election, profiles, debates: DEBATES, atlasCount: 86, briefings, log: [], builtOn: "2026-10-22" });
+  const item = q.find((x) => x.id === "briefing:federal-spending")!;
+  assert.equal(item.kind, "briefing");
+  assert.equal(item.state, "machine-checked");
+  assert.equal(item.href, "/issues/federal-spending");
+  const q2 = buildQueue({ election, profiles, debates: DEBATES, atlasCount: 86, briefings, log: [{ itemId: "briefing:federal-spending", decision: "approve", reviewer: "Test Reviewer", on: "2026-10-23" }], builtOn: "2026-10-22" });
+  assert.equal(q2.find((x) => x.id === "briefing:federal-spending")!.state, "human-reviewed");
+});

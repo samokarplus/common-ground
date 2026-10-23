@@ -1,0 +1,405 @@
+{
+  "retrievedAt": "2026-10-23T05:07:30.227Z",
+  "sources": {
+    "mts": "https://fiscaldata.treasury.gov/datasets/monthly-treasury-statement/summary-of-receipts-and-outlays-of-the-u-s-government",
+    "debt": "https://fiscaldata.treasury.gov/datasets/debt-to-the-penny/debt-to-the-penny"
+  },
+  "units": "nominal U.S. dollars",
+  "fiscalYears": [
+    {
+      "fy": 2015,
+      "receipts": 3248723200915.73,
+      "defense": 591372205224.07,
+      "intl": 48598332870.71,
+      "health": 482153111817.46,
+      "medicare": 546202525840.74,
+      "incomeSecurity": 509429152709.52,
+      "socialSecurity": 887770817463.99,
+      "veterans": 159739333048.38,
+      "interest": 223336132268.23,
+      "outlays": 3687622059038.44,
+      "recordDate": "2015-09-30"
+    },
+    {
+      "fy": 2016,
+      "receipts": 3266688370973.35,
+      "defense": 595303439435.41,
+      "intl": 45304204110.79,
+      "health": 511320133269.73,
+      "medicare": 594535157426.09,
+      "incomeSecurity": 514582983291.1,
+      "socialSecurity": 916077987132.59,
+      "veterans": 174514511683.73,
+      "interest": 240721540897.61,
+      "outlays": 3854100140609.65,
+      "recordDate": "2016-09-30"
+    },
+    {
+      "fy": 2017,
+      "receipts": 3314893904524.18,
+      "defense": 600277920490.87,
+      "intl": 46316973214.74,
+      "health": 533058672766.95,
+      "medicare": 597304755180.54,
+      "incomeSecurity": 504013992231.39,
+      "socialSecurity": 944878364646.45,
+      "veterans": 176542429396.1,
+      "interest": 262780896891.58,
+      "outlays": 3980605417586.44,
+      "recordDate": "2017-09-30"
+    },
+    {
+      "fy": 2018,
+      "receipts": 3328745244718.2,
+      "defense": 664669552390.37,
+      "intl": 48974860965.43,
+      "health": 518508364566.03,
+      "medicare": 588706453191.01,
+      "incomeSecurity": 495802270172.32,
+      "socialSecurity": 987795949710.47,
+      "veterans": 178852753221.84,
+      "interest": 324697247981.35,
+      "outlays": 4107741496584.31,
+      "recordDate": "2018-09-30"
+    },
+    {
+      "fy": 2019,
+      "receipts": 3462195610149.2,
+      "defense": 687602824303.59,
+      "intl": 52747521527.98,
+      "health": 584764101328.67,
+      "medicare": 650997403730.82,
+      "incomeSecurity": 515433103680.44,
+      "socialSecurity": 1044415951892.3,
+      "veterans": 200036255254.31,
+      "interest": 375606338036.69,
+      "outlays": 4446583636480.58,
+      "recordDate": "2019-09-30"
+    },
+    {
+      "fy": 2020,
+      "receipts": 3419955005765.34,
+      "defense": 726151468010.1,
+      "intl": 67660337596.65,
+      "health": 748292683863.54,
+      "medicare": 776224012762.94,
+      "incomeSecurity": 1262558242934.46,
+      "socialSecurity": 1095817057877.81,
+      "veterans": 218673996984.9,
+      "interest": 344704683968.99,
+      "outlays": 6551872254653.64,
+      "recordDate": "2020-09-30"
+    },
+    {
+      "fy": 2021,
+      "receipts": 4045978858727.41,
+      "defense": 754848780225.38,
+      "intl": 46945792210.06,
+      "health": 796762309961.83,
+      "medicare": 696460520815.17,
+      "incomeSecurity": 1648844849395.31,
+      "socialSecurity": 1134592529731.97,
+      "veterans": 234277678862.47,
+      "interest": 352264012863.77,
+      "outlays": 6818157647016.83,
+      "recordDate": "2021-09-30"
+    },
+    {
+      "fy": 2022,
+      "receipts": 4896119043921,
+      "defense": 766657430794.22,
+      "intl": 71677717697.11,
+      "health": 914466284012.76,
+      "medicare": 755094428009.37,
+      "incomeSecurity": 865449106216.47,
+      "socialSecurity": 1218674437413.83,
+      "veterans": 274409836598.5,
+      "interest": 475120812162.87,
+      "outlays": 6271507596876,
+      "recordDate": "2022-09-30"
+    },
+    {
+      "fy": 2023,
+      "receipts": 4439283739920.54,
+      "defense": 820734092776.06,
+      "intl": 69306106586.44,
+      "health": 889296678110.57,
+      "medicare": 847544067210.3,
+      "incomeSecurity": 774168449954.23,
+      "socialSecurity": 1354318827503.37,
+      "veterans": 301606396605.34,
+      "interest": 659182313583.33,
+      "outlays": 6134432040451.31,
+      "recordDate": "2023-09-30"
+    },
+    {
+      "fy": 2024,
+      "receipts": 4918735644738.25,
+      "defense": 874040585085.73,
+      "intl": 71992379484.96,
+      "health": 911683804349.74,
+      "medicare": 874134335792.92,
+      "incomeSecurity": 671075997542.26,
+      "socialSecurity": 1460913705752.69,
+      "veterans": 325362727505.67,
+      "interest": 881650995035.46,
+      "outlays": 6751551633812.29,
+      "recordDate": "2024-09-30"
+    },
+    {
+      "fy": 2025,
+      "receipts": 5234616386315.43,
+      "defense": 916648676662.05,
+      "intl": 45169891179.7,
+      "health": 978877168639.95,
+      "medicare": 996719243004.76,
+      "incomeSecurity": 701583598129.63,
+      "socialSecurity": 1580685783033.83,
+      "veterans": 377161882980.59,
+      "interest": 970358886994.32,
+      "outlays": 7009973667049.3,
+      "recordDate": "2025-09-30"
+    },
+    {
+      "fy": 2026,
+      "receipts": 5403326758960.81,
+      "defense": 965160356821.48,
+      "intl": 48014568338.42,
+      "health": 1025587234576.31,
+      "medicare": 1072626018868.53,
+      "incomeSecurity": 694224470394.36,
+      "socialSecurity": 1667097265194.46,
+      "veterans": 416204104589.87,
+      "interest": 1051753969311.11,
+      "outlays": 7395799983313.23,
+      "recordDate": "2026-09-30"
+    }
+  ],
+  "debtAtFiscalYearEnd": [
+    {
+      "fy": 2001,
+      "date": "2001-09-28",
+      "total": 5807463412200.06,
+      "heldByPublic": 3339310176094.74,
+      "intragovernmental": 2468153236105.32
+    },
+    {
+      "fy": 2002,
+      "date": "2002-09-30",
+      "total": 6228235965597.16,
+      "heldByPublic": 3553180247874.74,
+      "intragovernmental": 2675055717722.42
+    },
+    {
+      "fy": 2003,
+      "date": "2003-09-30",
+      "total": 6783231062743.62,
+      "heldByPublic": 3924090106880.88,
+      "intragovernmental": 2859140955862.74
+    },
+    {
+      "fy": 2004,
+      "date": "2004-09-30",
+      "total": 7379052696330.32,
+      "heldByPublic": 4307344596908.92,
+      "intragovernmental": 3071708099421.4
+    },
+    {
+      "fy": 2005,
+      "date": "2005-09-30",
+      "total": 7932709661723.5,
+      "heldByPublic": 4601238726062.04,
+      "intragovernmental": 3331470935661.46
+    },
+    {
+      "fy": 2006,
+      "date": "2006-09-29",
+      "total": 8506973899215.23,
+      "heldByPublic": 4843120736192.43,
+      "intragovernmental": 3663853163022.8
+    },
+    {
+      "fy": 2007,
+      "date": "2007-09-28",
+      "total": 9007653372262.48,
+      "heldByPublic": 5049305502926.48,
+      "intragovernmental": 3958347869336
+    },
+    {
+      "fy": 2008,
+      "date": "2008-09-30",
+      "total": 10024724896912.49,
+      "heldByPublic": 5808691665403.71,
+      "intragovernmental": 4216033231508.78
+    },
+    {
+      "fy": 2009,
+      "date": "2009-09-30",
+      "total": 11909829003511.75,
+      "heldByPublic": 7551861558736.77,
+      "intragovernmental": 4357967444774.98
+    },
+    {
+      "fy": 2010,
+      "date": "2010-09-30",
+      "total": 13561623030891.79,
+      "heldByPublic": 9022808423453.08,
+      "intragovernmental": 4538814607438.71
+    },
+    {
+      "fy": 2011,
+      "date": "2011-09-30",
+      "total": 14790340328557.15,
+      "heldByPublic": 10127031384654.1,
+      "intragovernmental": 4663308943903.05
+    },
+    {
+      "fy": 2012,
+      "date": "2012-09-28",
+      "total": 16066241407385.89,
+      "heldByPublic": 11269585800039.32,
+      "intragovernmental": 4796655607346.57
+    },
+    {
+      "fy": 2013,
+      "date": "2013-09-30",
+      "total": 16738183526697.32,
+      "heldByPublic": 11976279236073.83,
+      "intragovernmental": 4761904290623.49
+    },
+    {
+      "fy": 2014,
+      "date": "2014-09-30",
+      "total": 17824071380733.82,
+      "heldByPublic": 12784971238978.02,
+      "intragovernmental": 5039100141755.8
+    },
+    {
+      "fy": 2015,
+      "date": "2015-09-30",
+      "total": 18150617666484.33,
+      "heldByPublic": 13123847198347.81,
+      "intragovernmental": 5026770468136.52
+    },
+    {
+      "fy": 2016,
+      "date": "2016-09-30",
+      "total": 19573444713936.79,
+      "heldByPublic": 14173423516895.82,
+      "intragovernmental": 5400021197040.97
+    },
+    {
+      "fy": 2017,
+      "date": "2017-09-29",
+      "total": 20244900016053.51,
+      "heldByPublic": 14673428663140.94,
+      "intragovernmental": 5571471352912.57
+    },
+    {
+      "fy": 2018,
+      "date": "2018-09-28",
+      "total": 21516058183180.23,
+      "heldByPublic": 15761154524132.45,
+      "intragovernmental": 5754903659047.78
+    },
+    {
+      "fy": 2019,
+      "date": "2019-09-30",
+      "total": 22719401753433.78,
+      "heldByPublic": 16809092325171.8,
+      "intragovernmental": 5910309428261.98
+    },
+    {
+      "fy": 2020,
+      "date": "2020-09-30",
+      "total": 26945391194615.15,
+      "heldByPublic": 21018952080385.63,
+      "intragovernmental": 5926439114229.52
+    },
+    {
+      "fy": 2021,
+      "date": "2021-09-30",
+      "total": 28428918570048.68,
+      "heldByPublic": 22282900363084.77,
+      "intragovernmental": 6146018206963.91
+    },
+    {
+      "fy": 2022,
+      "date": "2022-09-30",
+      "total": 30928911613306.73,
+      "heldByPublic": 24299192620158.51,
+      "intragovernmental": 6629718993148.22
+    },
+    {
+      "fy": 2023,
+      "date": "2023-09-29",
+      "total": 33167334044723.16,
+      "heldByPublic": 26330142473191.94,
+      "intragovernmental": 6837191571531.22
+    },
+    {
+      "fy": 2024,
+      "date": "2024-09-30",
+      "total": 35464673929171.69,
+      "heldByPublic": 28307312290783,
+      "intragovernmental": 7157361638388.69
+    },
+    {
+      "fy": 2025,
+      "date": "2025-09-30",
+      "total": 37637553494935.61,
+      "heldByPublic": 30277766440770.58,
+      "intragovernmental": 7359787054165.03
+    },
+    {
+      "fy": 2026,
+      "date": "2026-09-30",
+      "total": 40171825101340.31,
+      "heldByPublic": 32425012546390.57,
+      "intragovernmental": 7746812554949.74
+    }
+  ],
+  "debtMilestones": [
+    {
+      "trillions": 34,
+      "firstDate": "2023-12-29",
+      "total": 34001493655565.48
+    },
+    {
+      "trillions": 35,
+      "firstDate": "2024-07-26",
+      "total": 35001278179208.67
+    },
+    {
+      "trillions": 36,
+      "firstDate": "2024-11-21",
+      "total": 36034994586981.97
+    },
+    {
+      "trillions": 37,
+      "firstDate": "2025-08-11",
+      "total": 37004817625842.56
+    },
+    {
+      "trillions": 38,
+      "firstDate": "2025-10-21",
+      "total": 38019813354700.26
+    },
+    {
+      "trillions": 39,
+      "firstDate": "2026-03-17",
+      "total": 39016762910245.14
+    },
+    {
+      "trillions": 40,
+      "firstDate": "2026-08-18",
+      "total": 40047425768420.22
+    }
+  ],
+  "latestDebt": {
+    "date": "2026-10-21",
+    "total": 40413639012305.97,
+    "heldByPublic": 32566346587338.02,
+    "intragovernmental": 7847292424967.95
+  }
+}
