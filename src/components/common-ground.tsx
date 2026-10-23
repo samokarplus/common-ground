@@ -5,7 +5,7 @@ import { lazy, Suspense, useEffect, useState, useRef } from "react";
 import Link, { routeSearch } from "./link";
 import { getFeed, getDocument } from "@/lib/free-source";
 import { localDebate } from "@/lib/local-debate";
-import HelpMeVote, { election } from "./help-me-vote";
+import HelpMeVote, { election, clearResearchGuide } from "./help-me-vote";
 const Congress = lazy(() => import("./congress"));
 const DebateMaps = lazy(() => import("./debate-maps"));
 import Corrections from "./corrections";
@@ -827,7 +827,7 @@ export default function CommonGround({
           )}
           {section === "corrections" && <Corrections />}
           {section === "methodology" && <Methodology />}
-          {section === "privacy" && <Privacy onClear={() => setSaved([])} />}
+          {section === "privacy" && <Privacy onClear={() => { setSaved([]); clearResearchGuide(); }} />}
           {section === "status" && (
             <>
               <PageTitle

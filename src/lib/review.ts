@@ -66,7 +66,7 @@ export function buildQueue(i: QueueInput): ReviewItem[] {
   for (const m of i.election.measures) {
     const r = m.draft.review;
     const state: ItemState =
-      r.status === "reviewed" ? "human-reviewed" : r.status === "source-checked" ? "machine-checked" : r.status === "needs-re-review" ? "rejected" : "draft-hidden";
+      r.status === "reviewed" ? "human-reviewed" : r.status === "source-checked" ? "machine-checked" : r.status === "needs-re-review" ? (log.get(`measure:${m.id}`)?.decision === "request-changes" ? "changes-requested" : "rejected") : "draft-hidden";
     items.push({
       id: `measure:${m.id}`,
       kind: "measure",
@@ -161,11 +161,9 @@ export function applyDecisions(election: Election, log: Decision[], decisions: D
         r.reviewedOn = d.on;
       } else {
         r.checkNotes = [...(r.checkNotes ?? []), `${d.decision === "reject" ? "Rejected" : "Changes requested"} by ${d.reviewer} on ${d.on}: ${d.note}`];
-        if (d.decision === "reject") {
-          r.status = "needs-re-review";
-          delete r.reviewer;
-          delete r.reviewedOn;
-        }
+        r.status = "needs-re-review";
+        delete r.reviewer;
+        delete r.reviewedOn;
       }
     }
     applied.push(d.itemId);

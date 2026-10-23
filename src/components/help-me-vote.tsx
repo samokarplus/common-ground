@@ -138,12 +138,22 @@ const guideStore = {
   clear() {
     guideState = emptyGuide();
     persistState = false;
+    storageError = "";
     try {
       localStorage.removeItem(GUIDE_KEY);
     } catch {}
     emit();
   },
 };
+export function clearResearchGuide() {
+  guideStore.clear();
+}
+
+// Deletion in another tab must also remove cached notes here.
+window.addEventListener("storage", (event) => {
+  if ((event.key === GUIDE_KEY && event.newValue === null) || event.key === null) clearResearchGuide();
+});
+
 function useGuide() {
   return useSyncExternalStore(guideStore.subscribe, guideStore.get, guideStore.get);
 }

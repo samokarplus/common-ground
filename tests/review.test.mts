@@ -51,14 +51,17 @@ test("approving a measure records the human reviewer and keeps it published; not
   assert.equal(election.measures[0].draft.review.status, "source-checked", "the input is not mutated");
 });
 
-test("rejecting hides the explanation and records why; requesting changes keeps it but records the note", () => {
+test("rejecting and requesting changes both hide explanations and revoke approval", () => {
   const rej = applyDecisions(election, log, [d({ decision: "reject", note: "Wrong threshold" })], ids);
   const m = rej.election.measures[0];
   assert.equal(m.draft.review.status, "needs-re-review");
   assert.equal(publishedExplanation(m), null);
   assert.match(m.draft.review.checkNotes!.at(-1)!, /Rejected by Test Reviewer.*Wrong threshold/);
-  const chg = applyDecisions(election, log, [d({ decision: "request-changes", note: "Clarify fiscal note" })], ids);
-  assert.equal(chg.election.measures[0].draft.review.status, "source-checked");
+  const chg = applyDecisions(applyDecisions(election, log, [d({})], ids).election, log, [d({ decision: "request-changes", note: "Clarify fiscal note" })], ids);
+  assert.equal(chg.election.measures[0].draft.review.status, "needs-re-review");
+  assert.equal(chg.election.measures[0].draft.review.reviewer, undefined);
+  assert.equal(publishedExplanation(chg.election.measures[0]), null);
+  assert.equal(buildQueue({ election: chg.election, profiles, debates: DEBATES, atlasCount: 86, log: chg.log, builtOn: "2026-10-22" })[0].state, "changes-requested");
   assert.match(chg.election.measures[0].draft.review.checkNotes!.at(-1)!, /Changes requested by Test Reviewer/);
 });
 

@@ -34,3 +34,23 @@ test("a deadline check on the Colorado overview names the official source", asyn
   await expect(page.getByText(/Election Day/).first()).toBeVisible();
   await expect(page.locator('a[href*="coloradosos.gov"]').first()).toBeVisible();
 });
+
+for (const persist of [false, true]) {
+  test(`Privacy deletion clears ${persist ? "saved" : "session"} ballot notes without resurrection`, async ({ page }) => {
+    await page.goto("#/vote/colorado/measure/amendment-81");
+    await page.getByRole("button", { name: "Add a private note" }).first().click();
+    await page.getByLabel(/Private note/).first().fill("Private deletion regression");
+    await page.evaluate(() => (location.hash = "#/vote/my-guide"));
+    if (persist) await page.getByLabel(/Save my guide on this device/).check();
+    await page.evaluate(() => (location.hash = "#/privacy"));
+    await page.getByRole("button", { name: "Delete all device data" }).click();
+    await page.evaluate(() => (location.hash = "#/vote/my-guide"));
+    await expect(page.getByText("Private deletion regression")).toHaveCount(0);
+    await expect(page.getByLabel(/Save my guide on this device/)).not.toBeChecked();
+    await page.evaluate(() => (location.hash = "#/vote/colorado/measure/amendment-81"));
+    await page.getByLabel("I've read this").first().check();
+    expect(await page.evaluate(() => localStorage.getItem("cg-vote-guide"))).toBeNull();
+    await page.reload();
+    await expect(page.getByLabel("I've read this").first()).not.toBeChecked();
+  });
+}
