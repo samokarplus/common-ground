@@ -1,6 +1,6 @@
 # Independent engineering audit — October 22, 2026
 
-This report separates the deployed site from the fixes on `codex/independent-audit`. No main-branch push or automatic merge was authorized for this audit. The private server beta was not accessed or copied. No paid services, keys, billing changes, or new dependencies were used.
+This report separates the deployed site from the fixes on `codex/independent-audit`. Reviewable changes: [pull request #1](https://github.com/samokarplus/common-ground/pull/1). No main-branch push or automatic merge was authorized for this audit. The private server beta was not accessed or copied. No paid services, keys, billing changes, or new dependencies were used.
 
 ## Scope and evidence
 
@@ -62,7 +62,7 @@ Source download SHA-256 fingerprints:
 ## Validation results
 
 - Baseline: 128 unit tests and 288 browser tests passed; lint, types, election validation, build and publication scan passed. Live HTML matched the initial build.
-- Improved branch: 300 browser tests passed, including all three viewports, axe WCAG A/AA checks, critical guide deletion, complete timeline and unknown bill journeys. Final local verification: 132 unit tests passed; lint, TypeScript, election-data validation, production build and publication scan passed.
+- Improved branch: 300 browser tests passed, including all three viewports, axe WCAG A/AA checks, critical guide deletion, complete timeline and unknown bill journeys. Final local verification: 132 unit tests passed; lint, TypeScript, election-data validation, production build and publication scan passed. After the final citation/schema and health changes, 33 targeted browser/accessibility checks also passed.
 - Live site: 273 distinct smoke/accessibility cases passed across three sizes after correcting the test selector and allowing the existing automation wording. Initial run had four test-assertion failures (269 passed); six targeted rechecks passed. These rechecks did not publish fixes or make production deletion claims.
 - Citation recheck: 54 links, 49 responded, zero confirmed dead, five inconclusive (403/timeouts). Inconclusive is not equivalent to working or broken.
 - npm dependency audit: zero reported vulnerabilities across all severities. Publication pattern scan found no secrets or personal paths; this is a targeted scan, not a guarantee against every possible secret.
