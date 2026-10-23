@@ -74,6 +74,11 @@ export const STATUS_LABEL: Record<BillStatus, string> = {
   enacted: "Became law",
 };
 
+const officialUrl = (hosts: string[]) => z.string().url().refine((value) => {
+  const url = new URL(value);
+  return url.protocol === "https:" && !url.username && !url.password && hosts.includes(url.host);
+}, "expected an HTTPS official government source");
+
 export const BillSchema = z.object({
   id: z.string().regex(/^\d+-[a-z]+-\d+$/),
   congress: z.number().int().positive(),
@@ -92,9 +97,9 @@ export const BillSchema = z.object({
   latestAction: z.object({ date: z.string(), text: z.string() }).optional(),
   actions: z.array(z.object({ date: z.string(), text: z.string(), type: z.string().optional() })),
   /** Recorded roll calls. `action` is the official action text, which usually states the tally. */
-  votes: z.array(z.object({ chamber: z.string(), date: z.string(), url: z.string().url(), action: z.string().optional() })),
+  votes: z.array(z.object({ chamber: z.string(), date: z.string(), url: officialUrl(["clerk.house.gov", "www.senate.gov"]), action: z.string().optional() })),
   crsSummary: z.string().optional(),
-  url: z.string().url(),
+  url: officialUrl(["www.congress.gov"]),
 });
 export type Bill = z.infer<typeof BillSchema>;
 

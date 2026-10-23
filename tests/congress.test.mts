@@ -64,3 +64,10 @@ test("rejects truncated, mismatched and DTD-bearing source XML", () => {
   assert.throws(() => parseBillStatus(fixture.replace("</title>", "</wrong>")));
   assert.throws(() => parseBillStatus('<!DOCTYPE billStatus [<!ENTITY x SYSTEM "file:///etc/passwd">]>' + fixture));
 });
+
+test("Congress citations reject lookalike hosts, credentials and insecure links", () => {
+  assert.throws(() => parseBillStatus(fixture.replaceAll("https://www.congress.gov", "https://www.congress.gov.example.com")));
+  assert.throws(() => parseBillStatus(fixture.replaceAll("https://www.congress.gov", "http://www.congress.gov")));
+  assert.throws(() => parseBillStatus(fixture.replaceAll("https://www.congress.gov", "https://user:pass@www.congress.gov")));
+  assert.throws(() => parseBillStatus(fixture.replaceAll("https://clerk.house.gov", "https://example.com")));
+});

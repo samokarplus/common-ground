@@ -34,7 +34,8 @@ const health = {
   sources: {
     "federal-register": {
       snapshotRetrievedAt: snapshot.retrievedAt,
-      snapshotAgeDays: frAge,
+      snapshotAgeDays: ageDays(snapshot.retrievedAt),
+      lastCheckAgeDays: frAge,
       stale: frAge > 3,
       ...(status["federal-register"] || {}),
       lastChange: last
@@ -43,7 +44,8 @@ const health = {
     },
     "govinfo-billstatus": {
       snapshotRetrievedAt: congress.retrievedAt,
-      snapshotAgeDays: cgAge,
+      snapshotAgeDays: ageDays(congress.retrievedAt),
+      lastCheckAgeDays: cgAge,
       stale: cgAge > 3,
       billCount: congress.bills.length,
       ...(status["govinfo-billstatus"] || {}),

@@ -36,3 +36,16 @@ test("the site serves no source maps or environment files", () => {
     assert.ok(!/\.map$/.test(f) && !/(^|\/)\.env/.test(f), `unexpected file in docs: ${f}`);
   }
 });
+
+test("refresh workflow is public-only, validates updates, and never publishes a feature branch", () => {
+  const workflow = readFileSync(".github/workflows/refresh-federal-register.yml", "utf8");
+  assert.equal(workflow, readFileSync("docs/proposed-refresh-workflow.yml", "utf8"));
+  assert.match(workflow, /github\.event\.repository\.private == false/);
+  assert.match(workflow, /runs-on: ubuntu-latest/);
+  assert.match(workflow, /npm run refresh:fr/);
+  assert.match(workflow, /npm run refresh:congress/);
+  assert.match(workflow, /npm run verify/);
+  assert.match(workflow, /github\.ref_name == github\.event\.repository\.default_branch/);
+  assert.match(workflow, /pages\/builds/);
+  assert.doesNotMatch(workflow, /upload-artifact|actions\/cache|git push.*--force|pull_request_target/);
+});
