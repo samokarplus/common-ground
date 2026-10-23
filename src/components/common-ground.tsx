@@ -10,6 +10,7 @@ const Congress = lazy(() => import("./congress"));
 const DebateMaps = lazy(() => import("./debate-maps"));
 import Corrections from "./corrections";
 import { agencyOptions, applyFeedFilters } from "@/lib/feed-filter";
+import { TENSIONS } from "@/lib/values-tradeoffs";
 import { daysUntil, electionPhase } from "@/lib/election";
 import {
   ArrowUpRight,
@@ -1577,11 +1578,48 @@ type Reflection = {
   change: string;
   tension: string;
 };
+function TradeoffsPanel() {
+  return (
+    <div className="panel">
+      <div className="eyebrow">VALUES MEET REAL CHOICES</div>
+      <h2>The same values pull in different directions.</h2>
+      <p>
+        These are tensions that show up in Colorado's 2026 ballot measures, described with the official Blue Book's arguments. They do not
+        say which way your values should lead, and different people resolve each tension differently for good reasons. Common Ground does
+        not score you or map these to any party or identity.
+      </p>
+      {TENSIONS.map((t) => (
+        <section key={t.id} className="journal-entry">
+          <h3>
+            {t.values[0]} <span aria-hidden="true">↔</span>
+            <span className="sr-only"> versus </span> {t.values[1]}
+          </h3>
+          <p>{t.question}</p>
+          <ul>
+            {t.measures.map((m) => {
+              const measure = election.measures.find((x) => x.id === m.id);
+              return (
+                <li key={m.id}>
+                  <Link href={`/vote/colorado/measure/${m.id}`}>{measure?.designation}: {measure?.shortTitle}</Link> — {m.how}
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      ))}
+      <p>
+        Want to test your reasoning on one of these? Open a <Link href="/debate/maps">debate map</Link>.
+      </p>
+    </div>
+  );
+}
 function ValuesExplorer() {
   const [step, setStep] = useState(0),
     [answers, setAnswers] = useState<Record<number, Reflection>>({}),
     [persist, setPersist] = useState(false),
     [journal, setJournal] = useState(false),
+    [tradeoffs, setTradeoffs] = useState(false),
+    [confirmDelete, setConfirmDelete] = useState(false),
     [notice, setNotice] = useState("");
   useEffect(() => {
     try {
@@ -1632,6 +1670,48 @@ function ValuesExplorer() {
           />{" "}
           Save on this device
         </label>
+        <button
+          className="button secondary"
+          onClick={() => {
+            const blob = new Blob(
+              [JSON.stringify({ exportedFrom: "Common Ground Values Explorer", note: "Your own reflections only. No scores or labels.", reflections: answers }, null, 2)],
+              { type: "application/json" },
+            );
+            const url = URL.createObjectURL(blob);
+            const el = document.createElement("a");
+            el.href = url;
+            el.download = "my-values-reflections.json";
+            el.click();
+            URL.revokeObjectURL(url);
+          }}
+        >
+          <Download size={14} /> Download my reflections
+        </button>
+        {!confirmDelete ? (
+          <button className="button danger" onClick={() => setConfirmDelete(true)}>
+            <Trash2 size={14} /> Delete all
+          </button>
+        ) : (
+          <span className="confirm-row" role="group" aria-label="Confirm deletion">
+            Delete every reflection?{" "}
+            <button
+              className="button danger"
+              onClick={() => {
+                setAnswers({});
+                setPersist(false);
+                try {
+                  localStorage.removeItem("cg-values");
+                } catch {}
+                setConfirmDelete(false);
+              }}
+            >
+              Yes, delete
+            </button>{" "}
+            <button className="button secondary" onClick={() => setConfirmDelete(false)}>
+              Cancel
+            </button>
+          </span>
+        )}
       </div>
       <div className="values-layout">
         <aside className="steps">
@@ -1639,10 +1719,11 @@ function ValuesExplorer() {
           {scenarios.map((s, i) => (
             <button
               key={s.title}
-              className={step === i && !journal ? "selected" : ""}
+              className={step === i && !journal && !tradeoffs ? "selected" : ""}
               onClick={() => {
                 setStep(i);
                 setJournal(false);
+                setTradeoffs(false);
               }}
             >
               <span>{answers[i]?.choice ? <Check size={14} /> : i + 1}</span>
@@ -1650,8 +1731,23 @@ function ValuesExplorer() {
             </button>
           ))}
           <button
-            className={journal ? "selected" : ""}
-            onClick={() => setJournal(true)}
+            className={tradeoffs ? "selected" : ""}
+            onClick={() => {
+              setTradeoffs(true);
+              setJournal(false);
+            }}
+          >
+            <span>
+              <Scale size={14} />
+            </span>
+            Real tradeoffs on the ballot
+          </button>
+          <button
+            className={journal && !tradeoffs ? "selected" : ""}
+            onClick={() => {
+              setJournal(true);
+              setTradeoffs(false);
+            }}
           >
             <span>
               <BookOpen size={14} />
@@ -1660,7 +1756,9 @@ function ValuesExplorer() {
           </button>
         </aside>
         <div>
-          {journal ? (
+          {tradeoffs ? (
+            <TradeoffsPanel />
+          ) : journal ? (
             <div className="panel journal">
               <div className="eyebrow">IN YOUR OWN WORDS</div>
               <h2>Your values are a conversation.</h2>

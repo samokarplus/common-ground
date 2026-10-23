@@ -151,3 +151,15 @@ test("debate map separates claim types, filters them and keeps steelman text on 
   await page.getByText("Amendment 84 requires photo ID to vote.").click();
   await expect(page.getByText(/last four digits/).first()).toBeVisible();
 });
+
+test("values explorer: tradeoffs link to real measures; reflections can be exported and deleted", async ({ page }) => {
+  await page.goto("#/values");
+  await page.getByRole("button", { name: "Real tradeoffs on the ballot" }).click();
+  await expect(page.getByRole("heading", { name: "The same values pull in different directions." })).toBeVisible();
+  await expect(page.locator('a[href*="#/vote/colorado/measure/"]').first()).toBeVisible();
+  await expect(page.getByText(/does not score you|not score you/).first()).toBeVisible();
+  await expect(page.getByRole("button", { name: /Download my reflections/ })).toBeVisible();
+  await page.getByRole("button", { name: /Delete all/ }).click();
+  await page.getByRole("button", { name: "Yes, delete" }).click();
+  expect(await page.evaluate(() => localStorage.getItem("cg-values"))).toBeNull();
+});
