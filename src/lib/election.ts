@@ -129,6 +129,10 @@ export const ElectionSchema = z
     staleAfterDays: z.number().int().positive(),
     timeZone: z.string(),
     sources: z.array(SourceSchema).min(1),
+    /** What was checked, how, when, and what could not be checked. Shown to readers. */
+    verificationLog: z
+      .array(z.object({ on: CalendarDate, scope: z.string().min(1), method: z.string().min(1), result: z.string().min(1) }))
+      .optional(),
     officialLinks: z.array(z.object({ id: z.string(), label: z.string(), url: HttpsUrl })),
     deadlines: z.array(
       z.object({

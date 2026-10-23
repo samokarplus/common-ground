@@ -5,7 +5,7 @@
   "name": "Colorado 2026 General Election",
   "electionDate": "2026-11-03",
   "certifiedOn": "2026-09-04",
-  "dataVerifiedAt": "2026-10-22T22:30:00Z",
+  "dataVerifiedAt": "2026-10-22T23:00:00Z",
   "staleAfterDays": 7,
   "timeZone": "America/Denver",
   "sources": [
@@ -130,6 +130,11 @@
       "sourceId": "sos-certification"
     },
     {
+      "date": "2026-10-27",
+      "label": "Suggested: return your ballot to a voting center or drop box, or vote in person, from this date through Election Day.",
+      "sourceId": "sos-certification"
+    },
+    {
       "date": "2026-11-03",
       "label": "Election Day. Ballots must be received, or you must be in line, by 7 p.m.",
       "time": "19:00",
@@ -156,7 +161,8 @@
       },
       "sourceIds": [
         "sos-measures",
-        "blue-book"
+        "blue-book",
+        "fiscal-statements"
       ],
       "draft": {
         "summary": "Would require certain law enforcement, corrections, and district attorney personnel to notify the U.S. Department of Homeland Security within 72 hours after formally charging someone with a crime of violence, or charging anyone who has a prior felony conviction, when that person is not confirmed to be lawfully present or their status cannot be determined. The duty begins at charging, not arrest.",
@@ -176,10 +182,11 @@
           "preparedOn": "2026-10-22",
           "checkedOn": "2026-10-22",
           "checkedAgainst": [
-            "blue-book"
+            "blue-book",
+            "fiscal-statements"
           ],
           "checkNotes": [
-            "Summary, YES/NO meaning, fiscal items and arguments compared with the Blue Book (English edition) text. The separate fiscal impact statement PDF was not read."
+            "Summary, YES/NO meaning, fiscal items and arguments compared with the English Blue Book text and the English fiscal impact statements PDF (2026-10-22). Every dollar and percent figure was machine-matched against those two documents; figures present only in the Blue Book are its rounded versions. Spanish editions and the full legal text of each measure were not checked."
           ]
         },
         "arguments": {
@@ -213,7 +220,8 @@
       },
       "sourceIds": [
         "sos-measures",
-        "blue-book"
+        "blue-book",
+        "fiscal-statements"
       ],
       "draft": {
         "summary": "Would create a constitutional right for consumers to buy natural gas for cooking or heating in homes and businesses, and for distributors and utilities to sell it to them. The Blue Book says this may limit state and local governments' ability to enforce existing or future natural gas regulations.",
@@ -232,10 +240,11 @@
           "preparedOn": "2026-10-22",
           "checkedOn": "2026-10-22",
           "checkedAgainst": [
-            "blue-book"
+            "blue-book",
+            "fiscal-statements"
           ],
           "checkNotes": [
-            "Summary, YES/NO meaning, fiscal items and arguments compared with the Blue Book (English edition) text. The separate fiscal impact statement PDF was not read."
+            "Summary, YES/NO meaning, fiscal items and arguments compared with the English Blue Book text and the English fiscal impact statements PDF (2026-10-22). Every dollar and percent figure was machine-matched against those two documents; figures present only in the Blue Book are its rounded versions. Spanish editions and the full legal text of each measure were not checked."
           ]
         },
         "arguments": {
@@ -267,7 +276,8 @@
       },
       "sourceIds": [
         "sos-measures",
-        "blue-book"
+        "blue-book",
+        "fiscal-statements"
       ],
       "draft": {
         "summary": "Would create a constitutional right to hunt and fish certain wildlife using traditional methods and make hunting and fishing the preferred way to manage those populations. Nongame species, endangered species, and species illegal to hunt under federal law are excluded. The state could still regulate for sound science, public safety, or preserving future opportunities. The Blue Book says it makes no immediate change to existing law or regulations.",
@@ -285,10 +295,11 @@
           "preparedOn": "2026-10-22",
           "checkedOn": "2026-10-22",
           "checkedAgainst": [
-            "blue-book"
+            "blue-book",
+            "fiscal-statements"
           ],
           "checkNotes": [
-            "Summary, YES/NO meaning, fiscal items and arguments compared with the Blue Book (English edition) text. The separate fiscal impact statement PDF was not read."
+            "Summary, YES/NO meaning, fiscal items and arguments compared with the English Blue Book text and the English fiscal impact statements PDF (2026-10-22). Every dollar and percent figure was machine-matched against those two documents; figures present only in the Blue Book are its rounded versions. Spanish editions and the full legal text of each measure were not checked."
           ]
         },
         "arguments": {
@@ -320,7 +331,8 @@
       },
       "sourceIds": [
         "sos-measures",
-        "blue-book"
+        "blue-book",
+        "fiscal-statements"
       ],
       "draft": {
         "summary": "For federal and statewide elections, voters would have to write the last four digits of their Social Security number, or of their Colorado driver's license or ID card number, on their mail ballot in addition to signing it. If the information is missing or doesn't match, voters could fix it within eight days after Election Day, including with other forms of ID; otherwise the ballot would not be counted.",
@@ -339,10 +351,11 @@
           "preparedOn": "2026-10-22",
           "checkedOn": "2026-10-22",
           "checkedAgainst": [
-            "blue-book"
+            "blue-book",
+            "fiscal-statements"
           ],
           "checkNotes": [
-            "Summary, YES/NO meaning, fiscal items and arguments compared with the Blue Book (English edition) text. The separate fiscal impact statement PDF was not read."
+            "Summary, YES/NO meaning, fiscal items and arguments compared with the English Blue Book text and the English fiscal impact statements PDF (2026-10-22). Every dollar and percent figure was machine-matched against those two documents; figures present only in the Blue Book are its rounded versions. Spanish editions and the full legal text of each measure were not checked."
           ]
         },
         "arguments": {
@@ -374,7 +387,8 @@
       },
       "sourceIds": [
         "sos-measures",
-        "blue-book"
+        "blue-book",
+        "fiscal-statements"
       ],
       "draft": {
         "summary": "Would require all ballot titles to be in plain language, written at no more than an eighth-grade reading level, and bar laws from requiring wording in citizen-initiative titles if it interferes with plain language. Titles for measures referred by the legislature are not covered by that prohibition. The Blue Book notes the measure does not define plain language or say who decides whether a title meets it.",
@@ -392,11 +406,12 @@
           "preparedOn": "2026-10-22",
           "checkedOn": "2026-10-22",
           "checkedAgainst": [
-            "blue-book"
+            "blue-book",
+            "fiscal-statements"
           ],
           "checkNotes": [
             "Corrected 'state and local ballot titles' to 'all ballot titles' and added the referred-measure exception, per the Blue Book analysis.",
-            "Summary, YES/NO meaning, fiscal items and arguments compared with the Blue Book (English edition) text. The separate fiscal impact statement PDF was not read."
+            "Summary, YES/NO meaning, fiscal items and arguments compared with the English Blue Book text and the English fiscal impact statements PDF (2026-10-22). Every dollar and percent figure was machine-matched against those two documents; figures present only in the Blue Book are its rounded versions. Spanish editions and the full legal text of each measure were not checked."
           ]
         },
         "arguments": {
@@ -430,7 +445,8 @@
       },
       "sourceIds": [
         "sos-measures",
-        "blue-book"
+        "blue-book",
+        "fiscal-statements"
       ],
       "draft": {
         "summary": "Would require the Independent Congressional Redistricting Commission and the Colorado Supreme Court to review and approve any change to congressional districts made outside a scheduled redistricting year. The commission would have to hold at least three public hearings first, and off-cycle changes could not intentionally favor a political party or unnecessarily split communities of interest.",
@@ -448,10 +464,11 @@
           "preparedOn": "2026-10-22",
           "checkedOn": "2026-10-22",
           "checkedAgainst": [
-            "blue-book"
+            "blue-book",
+            "fiscal-statements"
           ],
           "checkNotes": [
-            "Summary, YES/NO meaning, fiscal items and arguments compared with the Blue Book (English edition) text. The separate fiscal impact statement PDF was not read."
+            "Summary, YES/NO meaning, fiscal items and arguments compared with the English Blue Book text and the English fiscal impact statements PDF (2026-10-22). Every dollar and percent figure was machine-matched against those two documents; figures present only in the Blue Book are its rounded versions. Spanish editions and the full legal text of each measure were not checked."
           ]
         },
         "arguments": {
@@ -483,7 +500,8 @@
       },
       "sourceIds": [
         "sos-measures",
-        "blue-book"
+        "blue-book",
+        "fiscal-statements"
       ],
       "draft": {
         "summary": "Would replace Colorado's flat income tax with a graduated (tiered) income tax: lower rates on taxable income below $500,000 and higher rates above it. The added revenue would have to be spent on K-12 education, health care, and early childhood care and education, would be exempt from the TABOR revenue limit, and would be reported in an audited annual report.",
@@ -505,10 +523,11 @@
           "preparedOn": "2026-10-22",
           "checkedOn": "2026-10-22",
           "checkedAgainst": [
-            "blue-book"
+            "blue-book",
+            "fiscal-statements"
           ],
           "checkNotes": [
-            "Summary, YES/NO meaning, fiscal items and arguments compared with the Blue Book (English edition) text. The separate fiscal impact statement PDF was not read."
+            "Summary, YES/NO meaning, fiscal items and arguments compared with the English Blue Book text and the English fiscal impact statements PDF (2026-10-22). Every dollar and percent figure was machine-matched against those two documents; figures present only in the Blue Book are its rounded versions. Spanish editions and the full legal text of each measure were not checked."
           ]
         },
         "arguments": {
@@ -565,10 +584,11 @@
           "preparedOn": "2026-10-22",
           "checkedOn": "2026-10-22",
           "checkedAgainst": [
-            "blue-book"
+            "blue-book",
+            "fiscal-statements"
           ],
           "checkNotes": [
-            "Summary, YES/NO meaning, fiscal items and arguments compared with the Blue Book (English edition) text. The separate fiscal impact statement PDF was not read."
+            "Summary, YES/NO meaning, fiscal items and arguments compared with the English Blue Book text and the English fiscal impact statements PDF (2026-10-22). Every dollar and percent figure was machine-matched against those two documents; figures present only in the Blue Book are its rounded versions. Spanish editions and the full legal text of each measure were not checked."
           ]
         },
         "arguments": {
@@ -610,9 +630,9 @@
         "yes": "Possession of any amount of fentanyl becomes a felony, any fentanyl distribution carries a mandatory minimum 8-year prison sentence, and options to reduce certain penalties are removed (Blue Book quick reference).",
         "no": "Possession of small amounts of fentanyl stays a misdemeanor, distribution penalties stay tiered by quantity, and options to reduce certain penalties remain (Blue Book quick reference).",
         "fiscal": [
-          "State: costs are $0.9 million in the first budget year (courts and public defenders), $8.9 million in the second, and an estimated $68.2 million by year five as prison costs grow; the state may need new prison space. No funding source is specified (Blue Book).",
-          "State revenue from added criminal fines is small: $23,000 in the first year and $73,000 in later years (Blue Book).",
-          "Local: county-funded district attorneys would have higher costs to prosecute longer cases with enhanced penalties (Blue Book)."
+          "State spending: $876,488 in FY 2026-27, $8,923,227 in FY 2027-28 and $24,782,566 in FY 2028-29 (fiscal impact statement), all from the General Fund; the Blue Book estimates the cost reaches $68.2 million by year five as prison costs build, and the state may need new prison space. No funding source is specified.",
+          "State revenue from added criminal fines is small: $23,025 in the first year and $73,231 in later years (fiscal impact statement).",
+          "Local: some costs shift from county-funded courts and jails to state-funded courts and prisons when offenses are reclassified, and county-funded district attorneys would have higher costs to prosecute longer cases (fiscal impact statement; Blue Book)."
         ],
         "unclear": [
           "Long-term prison population and cost effects grow over several years and depend on charging and sentencing patterns."
@@ -623,11 +643,12 @@
           "preparedOn": "2026-10-22",
           "checkedOn": "2026-10-22",
           "checkedAgainst": [
-            "blue-book"
+            "blue-book",
+            "fiscal-statements"
           ],
           "checkNotes": [
-            "Replaced a $24.8 million FY 2028-29 figure and a 'county jail costs may decrease' item that could not be confirmed in the Blue Book with the Blue Book's own figures.",
-            "Summary, YES/NO meaning, fiscal items and arguments compared with the Blue Book (English edition) text. The separate fiscal impact statement PDF was not read."
+            "Correction of a correction: an earlier pass removed the $24.8 million FY 2028-29 figure and the county-cost item as unconfirmed in the Blue Book; the fiscal impact statement does contain them, so they were restored and combined with the Blue Book's year-five estimate.",
+            "Summary, YES/NO meaning, fiscal items and arguments compared with the English Blue Book text and the English fiscal impact statements PDF (2026-10-22). Every dollar and percent figure was machine-matched against those two documents; figures present only in the Blue Book are its rounded versions. Spanish editions and the full legal text of each measure were not checked."
           ]
         },
         "arguments": {
@@ -679,10 +700,11 @@
           "preparedOn": "2026-10-22",
           "checkedOn": "2026-10-22",
           "checkedAgainst": [
-            "blue-book"
+            "blue-book",
+            "fiscal-statements"
           ],
           "checkNotes": [
-            "Summary, YES/NO meaning, fiscal items and arguments compared with the Blue Book (English edition) text. The separate fiscal impact statement PDF was not read."
+            "Summary, YES/NO meaning, fiscal items and arguments compared with the English Blue Book text and the English fiscal impact statements PDF (2026-10-22). Every dollar and percent figure was machine-matched against those two documents; figures present only in the Blue Book are its rounded versions. Spanish editions and the full legal text of each measure were not checked."
           ]
         },
         "arguments": {
@@ -723,7 +745,8 @@
         "no": "Schools, districts, and athletic associations continue to set their own eligibility policies, consistent with current state and federal law (Blue Book quick reference).",
         "fiscal": [
           "State: the Department of Education's workload and legal costs may rise by an indeterminate amount if a district is intentionally out of compliance; public colleges would have costs to update policies, assumed to be paid from institutional revenue (Blue Book).",
-          "Local: schools, districts and charter schools will have workload and likely minimal costs to update and implement their policies (Blue Book)."
+          "Local: schools, districts and charter schools will have workload and likely minimal costs to update and implement their policies (Blue Book).",
+          "If approved, the measure takes effect January 1, 2027 (fiscal impact statement)."
         ],
         "unclear": [
           "Interaction with current state and federal law may be subject to legal challenge."
@@ -734,11 +757,12 @@
           "preparedOn": "2026-10-22",
           "checkedOn": "2026-10-22",
           "checkedAgainst": [
-            "blue-book"
+            "blue-book",
+            "fiscal-statements"
           ],
           "checkNotes": [
             "Replaced 'state: no change in spending' with the Blue Book's description of indeterminate Department of Education costs, and filled in scope details from the Blue Book analysis.",
-            "Summary, YES/NO meaning, fiscal items and arguments compared with the Blue Book (English edition) text. The separate fiscal impact statement PDF was not read."
+            "Summary, YES/NO meaning, fiscal items and arguments compared with the English Blue Book text and the English fiscal impact statements PDF (2026-10-22). Every dollar and percent figure was machine-matched against those two documents; figures present only in the Blue Book are its rounded versions. Spanish editions and the full legal text of each measure were not checked."
           ]
         },
         "arguments": {
@@ -795,11 +819,12 @@
           "preparedOn": "2026-10-22",
           "checkedOn": "2026-10-22",
           "checkedAgainst": [
-            "blue-book"
+            "blue-book",
+            "fiscal-statements"
           ],
           "checkNotes": [
             "Replaced 'state: no change in revenue or spending' with the Blue Book's description of minimal workload increases and slight possible savings.",
-            "Summary, YES/NO meaning, fiscal items and arguments compared with the Blue Book (English edition) text. The separate fiscal impact statement PDF was not read."
+            "Summary, YES/NO meaning, fiscal items and arguments compared with the English Blue Book text and the English fiscal impact statements PDF (2026-10-22). Every dollar and percent figure was machine-matched against those two documents; figures present only in the Blue Book are its rounded versions. Spanish editions and the full legal text of each measure were not checked."
           ]
         },
         "arguments": {
@@ -851,10 +876,11 @@
           "preparedOn": "2026-10-22",
           "checkedOn": "2026-10-22",
           "checkedAgainst": [
-            "blue-book"
+            "blue-book",
+            "fiscal-statements"
           ],
           "checkNotes": [
-            "Summary, YES/NO meaning, fiscal items and arguments compared with the Blue Book (English edition) text. The separate fiscal impact statement PDF was not read."
+            "Summary, YES/NO meaning, fiscal items and arguments compared with the English Blue Book text and the English fiscal impact statements PDF (2026-10-22). Every dollar and percent figure was machine-matched against those two documents; figures present only in the Blue Book are its rounded versions. Spanish editions and the full legal text of each measure were not checked."
           ]
         },
         "arguments": {
@@ -906,10 +932,11 @@
           "preparedOn": "2026-10-22",
           "checkedOn": "2026-10-22",
           "checkedAgainst": [
-            "blue-book"
+            "blue-book",
+            "fiscal-statements"
           ],
           "checkNotes": [
-            "Summary, YES/NO meaning, fiscal items and arguments compared with the Blue Book (English edition) text. The separate fiscal impact statement PDF was not read."
+            "Summary, YES/NO meaning, fiscal items and arguments compared with the English Blue Book text and the English fiscal impact statements PDF (2026-10-22). Every dollar and percent figure was machine-matched against those two documents; figures present only in the Blue Book are its rounded versions. Spanish editions and the full legal text of each measure were not checked."
           ]
         },
         "arguments": {
@@ -965,7 +992,7 @@
             "blue-book"
           ],
           "checkNotes": [
-            "Summary, YES/NO meaning, fiscal items and arguments compared with the Blue Book (English edition) text. The separate fiscal impact statement PDF was not read."
+            "Summary, fiscal items and ballot title compared with the district notice on Blue Book p. 100. The fiscal impact statements PDF covers statewide measures only."
           ]
         }
       }
@@ -1254,5 +1281,43 @@
     "Withdrawals: the official candidate list marks withdrawn candidates with strikethrough formatting, which this transcription could not capture. Confirm against the official list or your ballot.",
     "Full ballot titles are not reproduced here; follow the official text links or the Blue Book Title and Text section.",
     "Plain-language explanations are drafts awaiting editorial review and are not shown until reviewed."
+  ],
+  "verificationLog": [
+    {
+      "on": "2026-10-22",
+      "scope": "Election dates and deadlines",
+      "method": "Read the Secretary of State's Sept. 4, 2026 ballot-certification press release (official primary source) through a fetch tool.",
+      "result": "All eight dates match; one date (Oct. 27 suggested return day) was missing and was added."
+    },
+    {
+      "on": "2026-10-22",
+      "scope": "List of statewide measures",
+      "method": "Same press release.",
+      "result": "The 14 statewide measures match; Ballot Issue 7A is confirmed as district-only."
+    },
+    {
+      "on": "2026-10-22",
+      "scope": "Statewide candidate names",
+      "method": "Read the Secretary of State's general-election candidate page through a summarizing fetch tool.",
+      "result": "Every name listed for U.S. Senate, Governor, Secretary of State, Treasurer and Attorney General is in our data. Withdrawals (marked by strikethrough in the official file) cannot be seen by this method, and two U.S. Senate write-ins in our data were not mentioned in the summary."
+    },
+    {
+      "on": "2026-10-22",
+      "scope": "Ballot measure explanations",
+      "method": "Text extracted from the official English Blue Book and fiscal impact statements PDFs; every figure machine-matched.",
+      "result": "Six explanations corrected; arguments for and against added. Machine-checked only; no human editor has reviewed them."
+    },
+    {
+      "on": "2026-10-22",
+      "scope": "Judicial retention information",
+      "method": "The official evaluation site blocks automated access.",
+      "result": "Not verified against the official pages. General explanations only; individual judges' evaluations are not reproduced."
+    },
+    {
+      "on": "2026-10-22",
+      "scope": "Candidate profiles",
+      "method": "Candidates' own campaign sites, read through a summarizing fetch tool.",
+      "result": "Statements are paraphrased and attributed to the campaigns. Not independently fact-checked."
+    }
   ]
 }

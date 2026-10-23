@@ -442,6 +442,25 @@ function Overview() {
           </div>
         </div>
       </div>
+      {election.verificationLog && (
+        <section className="panel" aria-labelledby="how-checked">
+          <h2 id="how-checked">How we checked this, and what we couldn't</h2>
+          <p className="muted">
+            Data last verified {fmtDay(election.dataVerifiedAt.slice(0, 10), { year: "numeric" })}. Nothing here has been reviewed by a human
+            editor. Where a check could not be done, that is stated.
+          </p>
+          <ul className="source-list">
+            {election.verificationLog.map((v) => (
+              <li key={v.scope}>
+                <strong>{v.scope}</strong> · checked {fmtDay(v.on, { year: "numeric" })}
+                <span>
+                  Method: {v.method} Result: {v.result}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
       <div className="two-columns">
         <Link href="/vote/colorado/measures" className="panel state-card">
           <FileText size={24} />

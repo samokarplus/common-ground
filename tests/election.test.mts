@@ -219,3 +219,19 @@ test("explanations contain no voting recommendation language", () => {
     assert.ok(!banned.test(text), m.id);
   }
 });
+
+test("the verification log is dated, honest about gaps, and never claims human review", () => {
+  assert.ok(e.verificationLog && e.verificationLog.length >= 5);
+  for (const v of e.verificationLog ?? []) assert.ok(v.on <= "2026-12-31" && v.method && v.result);
+  const text = JSON.stringify(e.verificationLog);
+  assert.match(text, /not been reviewed by a human|no human editor|Machine-checked only/i);
+  assert.ok(!/human[- ]reviewed and approved|editorially approved/i.test(text));
+  assert.ok(e.verificationLog?.some((v) => /Judicial/.test(v.scope) && /Not verified/.test(v.result)));
+});
+
+test("every statewide measure cites the fiscal impact statements it was checked against", () => {
+  for (const m of e.measures.filter((x) => x.scope === "statewide")) {
+    assert.ok(m.sourceIds.includes("fiscal-statements"), m.id);
+    assert.ok(m.draft.review.checkedAgainst?.includes("fiscal-statements"), m.id);
+  }
+});

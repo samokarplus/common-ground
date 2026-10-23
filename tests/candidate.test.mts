@@ -68,3 +68,11 @@ test("profile parity: a contest's major-party candidates are either all profiled
     for (const m of majors) assert.ok(mine.some((p: { name: string }) => p.name === m.name), `${c.id}: ${m.name} lacks a profile while a rival has one`);
   }
 });
+
+test("profile text never states a claim as the campaign's if it only summarizes the page", async () => {
+  const { readFileSync } = await import("node:fs");
+  const list = JSON.parse(readFileSync("data/elections/colorado-2026-profiles.json", "utf8"));
+  for (const p of list)
+    for (const c of p.claims.filter((x: { kind: string }) => x.kind === "own-statement"))
+      assert.match(c.text, /campaign's|campaign|page says|page lists|site/i, `${p.name}: own-statement not attributed to the campaign`);
+});
