@@ -10,6 +10,8 @@ const routes = [
   "#/vote/colorado/contest/governor",
   "#/vote/colorado/judges",
   "#/vote/colorado/candidate/governor/Phil%20Weiser",
+  "#/vote/colorado/candidate/secretary-of-state/James%20Wiley",
+  "#/vote/colorado/candidate/state-treasurer/Jodie%20Barr",
   "#/vote/colorado/contest/supreme-court-retention",
   "#/vote/my-guide",
   "#/vote/how-to-read",
@@ -92,7 +94,7 @@ test("judge retention page explains YES/NO and links to official evaluations", a
 
 test("unresearched candidates are labeled as such, not as having no position", async ({ page }) => {
   await page.goto("#/vote/colorado/contest/governor");
-  await expect(page.getByText(/Not yet researched/).first()).toBeVisible();
+  await expect(page.getByText(/No candidate-authored or official source was located/).first()).toBeVisible();
 });
 
 test("measure search narrows the list and can be emptied", async ({ page }) => {
@@ -228,4 +230,10 @@ test("site search finds measures, ideas and debate maps, and explains an empty r
   await page.goto("#/search?q=zzzzzz");
   await expect(page.getByText(/Nothing on this site matches/)).toBeVisible();
   await expect(page.getByRole("link", { name: /search the Federal Register/i }).first()).toBeVisible();
+});
+
+test("candidates without a profile show an explicit research note, not a blank", async ({ page }) => {
+  await page.goto("#/vote/colorado/contest/secretary-of-state");
+  await expect(page.getByText(/did not respond/).first()).toBeVisible();
+  await expect(page.getByRole("link", { name: /Research profile/ }).first()).toBeVisible();
 });

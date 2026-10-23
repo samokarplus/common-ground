@@ -7,5 +7,5 @@ test("judicial guide, corrections and unresearched-candidate labels are present"
   await page.goto("#/corrections");
   await expect(page.getByRole("heading", { name: "Corrections history" })).toBeVisible();
   await page.goto("#/vote/colorado/contest/governor");
-  await expect(page.getByText(/0 of 5 areas/).first()).toBeVisible();
+  await expect(page.getByText(/No candidate-authored or official source was located/).first()).toBeVisible();
 });

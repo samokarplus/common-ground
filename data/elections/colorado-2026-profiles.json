@@ -172,5 +172,239 @@
         "retrievedOn": "2026-10-22"
       }
     ]
+  },
+  {
+    "contestId": "secretary-of-state",
+    "name": "Amanda Gonzalez",
+    "campaignWebsite": "https://amandaforcolorado.com/",
+    "lastVerifiedOn": "2026-10-22",
+    "checkedNothingFound": [],
+    "claims": [
+      {
+        "kind": "own-statement",
+        "area": "positions",
+        "text": "In the Denver Gazette's candidate questionnaire she says she defends Colorado's mail-ballot system as secure and accessible, would invest in physical and cybersecurity and work with county clerks without dismantling the system, would issue clearer campaign finance guidance and make donor and spending data easier to search, and would resist federal interference in state elections and challenge it in court when needed. On the 2024 ballot-access case she says the office should apply the law and court rulings without regard to candidate or party.",
+        "sourceUrl": "https://www.denvergazette.com/2026/10/02/gonzales-wiley-vadney-landry-secretary-of-state/",
+        "sourceTitle": "Denver Gazette candidate questionnaire: Secretary of State (Oct. 2, 2026)",
+        "retrievedOn": "2026-10-22"
+      },
+      {
+        "kind": "own-statement",
+        "area": "positions",
+        "text": "Her campaign site lists these priorities: protecting voting rights and expanding ballot access; election security and transparent, efficient administration; ensuring every eligible vote is counted; and limiting dark money.",
+        "sourceUrl": "https://amandaforcolorado.com/",
+        "sourceTitle": "Campaign site: home page and priorities",
+        "retrievedOn": "2026-10-22"
+      },
+      {
+        "kind": "own-statement",
+        "area": "positions",
+        "text": "In an interview with The Colorado Sun she said she supports automatically mailing ballots to active voters, says post-election audits and paper ballots are safeguards, does not take positions on ballot measures (including Amendment 84), and said Joe Biden won the 2020 election.",
+        "sourceUrl": "https://coloradosun.com/2026/10/07/james-wiley-amanda-gonzalez-secretary-of-state-voter-guide/",
+        "sourceTitle": "Colorado Sun voter guide: Secretary of State (Oct. 7, 2026)",
+        "retrievedOn": "2026-10-22"
+      },
+      {
+        "kind": "independent-finding",
+        "area": "government-experience",
+        "text": "The Colorado Sun reports she has been Jefferson County clerk and recorder since 2023, led the nonprofit Colorado Common Cause from 2018 to 2021, and is an attorney. Her campaign site describes the same county role and the Common Cause role without dates.",
+        "sourceUrl": "https://coloradosun.com/2026/10/07/james-wiley-amanda-gonzalez-secretary-of-state-voter-guide/",
+        "sourceTitle": "Colorado Sun voter guide: Secretary of State (Oct. 7, 2026)",
+        "retrievedOn": "2026-10-22"
+      }
+    ]
+  },
+  {
+    "contestId": "secretary-of-state",
+    "name": "James Wiley",
+    "campaignWebsite": "https://wileyforcolorado.com/",
+    "lastVerifiedOn": "2026-10-22",
+    "checkedNothingFound": [],
+    "claims": [
+      {
+        "kind": "own-statement",
+        "area": "positions",
+        "text": "In the Denver Gazette's candidate questionnaire he says he favors one-day in-person voting with government-issued ID and paper ballots; if mail voting continues he would add citizenship checks, stricter ID and signature standards and documented chain of custody, and reduce electronic voting systems. He would make filings searchable in plain language, close dark-money loopholes, and publish data on late filings and enforcement. He says elections are a state responsibility and he would resist federal overreach while allowing limited cooperation on shared threats. On the 2024 ballot-access case he says he would have defended ballot access and applied the law evenly.",
+        "sourceUrl": "https://www.denvergazette.com/2026/10/02/gonzales-wiley-vadney-landry-secretary-of-state/",
+        "sourceTitle": "Denver Gazette candidate questionnaire: Secretary of State (Oct. 2, 2026)",
+        "retrievedOn": "2026-10-22"
+      },
+      {
+        "kind": "own-statement",
+        "area": "positions",
+        "text": "His campaign site's issues page proposes a statewide voting holiday, in-person voting in every precinct, voter ID, paper ballots only, citizen-run hand counts that clerks could choose to use, cleaning voter rolls, moving public records to an auditable blockchain ledger, and reducing business regulation.",
+        "sourceUrl": "https://wileyforcolorado.com/",
+        "sourceTitle": "Campaign site: issues",
+        "retrievedOn": "2026-10-22"
+      },
+      {
+        "kind": "own-statement",
+        "area": "positions",
+        "text": "In an interview with The Colorado Sun he said he opposes automatic mailing of ballots and would return to absentee voting with a stated reason (which would need a change in state law), supports periodic voter-roll reviews, supports Amendment 84, and said he does not know who won the 2020 election. The Sun adds that no evidence of widespread fraud in the 2020 election has been revealed.",
+        "sourceUrl": "https://coloradosun.com/2026/10/07/james-wiley-amanda-gonzalez-secretary-of-state-voter-guide/",
+        "sourceTitle": "Colorado Sun voter guide: Secretary of State (Oct. 7, 2026)",
+        "retrievedOn": "2026-10-22"
+      },
+      {
+        "kind": "own-statement",
+        "area": "background",
+        "text": "His campaign site says he was born in Colorado Springs, lived in Kazakhstan for about 15 years as a child, earned a management and marketing degree and an MBA at CSU-Pueblo, ran a financial-services practice and a consulting firm, and turned to full-time election-integrity work after 2020. The Colorado Sun reports he was a Libertarian until last year. The sources list no prior elected office.",
+        "sourceUrl": "https://wileyforcolorado.com/",
+        "sourceTitle": "Campaign site: home and biography",
+        "retrievedOn": "2026-10-22"
+      }
+    ]
+  },
+  {
+    "contestId": "secretary-of-state",
+    "name": "Sean Vadney",
+    "lastVerifiedOn": "2026-10-22",
+    "checkedNothingFound": [
+      "campaign-website"
+    ],
+    "claims": [
+      {
+        "kind": "own-statement",
+        "area": "positions",
+        "text": "In the Denver Gazette's candidate questionnaire he says he would roll back mail voting, with exceptions for voters with disabilities, and make in-person voting the main method; would apply clear public campaign finance standards equally and allow fixes for good-faith mistakes; and would cooperate with federal agencies on cybersecurity but keep Colorado in control. On the 2024 ballot-access case he says he would have kept the candidate on the ballot unless a clear legal ruling required removal.",
+        "sourceUrl": "https://www.denvergazette.com/2026/10/02/gonzales-wiley-vadney-landry-secretary-of-state/",
+        "sourceTitle": "Denver Gazette candidate questionnaire: Secretary of State (Oct. 2, 2026)",
+        "retrievedOn": "2026-10-22"
+      },
+      {
+        "kind": "own-statement",
+        "area": "background",
+        "text": "The questionnaire describes him as a small business owner and political volunteer.",
+        "sourceUrl": "https://www.denvergazette.com/2026/10/02/gonzales-wiley-vadney-landry-secretary-of-state/",
+        "sourceTitle": "Denver Gazette candidate questionnaire: Secretary of State (Oct. 2, 2026)",
+        "retrievedOn": "2026-10-22"
+      }
+    ]
+  },
+  {
+    "contestId": "secretary-of-state",
+    "name": "Celeste Landry",
+    "lastVerifiedOn": "2026-10-22",
+    "checkedNothingFound": [
+      "campaign-website"
+    ],
+    "claims": [
+      {
+        "kind": "own-statement",
+        "area": "positions",
+        "text": "In the Denver Gazette's candidate questionnaire she says she supports mail ballots and vote centers, with electronic return only for voters with specific needs such as military and overseas voters; cites paper ballots and risk-limiting audits as safeguards; would create a working group with public-interest groups to improve campaign finance enforcement and make TRACER better for analysis; is wary of coordinating with federal agencies; and on the 2024 ballot-access case says she would have let the lawsuit proceed and asked for a quick decision.",
+        "sourceUrl": "https://www.denvergazette.com/2026/10/02/gonzales-wiley-vadney-landry-secretary-of-state/",
+        "sourceTitle": "Denver Gazette candidate questionnaire: Secretary of State (Oct. 2, 2026)",
+        "retrievedOn": "2026-10-22"
+      },
+      {
+        "kind": "own-statement",
+        "area": "background",
+        "text": "The questionnaire describes her as a longtime advocate for better voting methods and a volunteer lobbyist with the League of Women Voters, and notes a 2024 Colorado Sun guest opinion in which she proposed an alternative to vacancy committee elections.",
+        "sourceUrl": "https://www.denvergazette.com/2026/10/02/gonzales-wiley-vadney-landry-secretary-of-state/",
+        "sourceTitle": "Denver Gazette candidate questionnaire: Secretary of State (Oct. 2, 2026)",
+        "retrievedOn": "2026-10-22"
+      }
+    ]
+  },
+  {
+    "contestId": "state-treasurer",
+    "name": "Jeff Bridges",
+    "campaignWebsite": "https://bridgesforcolorado.com/",
+    "lastVerifiedOn": "2026-10-22",
+    "checkedNothingFound": [],
+    "claims": [
+      {
+        "kind": "own-statement",
+        "area": "positions",
+        "text": "In the Denver Gazette's candidate questionnaire he says he would invest more state money inside Colorado in affordable housing, infrastructure, renewable energy and small businesses, protect PERA, make government more transparent and return unclaimed property proactively, and oppose repeatedly spending that money to close budget gaps. He says PERA is about 69% funded and on track to eliminate its unfunded liability by 2048, and points to his record of increasing state contributions.",
+        "sourceUrl": "https://www.denvergazette.com/2026/10/02/state-treasurer-grantham-bridges-barr-seek-top-financial-position-3/",
+        "sourceTitle": "Denver Gazette candidate questionnaire: State Treasurer (Oct. 2, 2026)",
+        "retrievedOn": "2026-10-22"
+      },
+      {
+        "kind": "own-statement",
+        "area": "positions",
+        "text": "His campaign site lists priorities of affordable housing for workers such as nurses, teachers and firefighters, investing in infrastructure and clean energy to lower utility bills, directing state investment to Colorado businesses, and moving state Treasury funds into Colorado (it cites Vermont, Illinois and Nevada as examples).",
+        "sourceUrl": "https://bridgesforcolorado.com/",
+        "sourceTitle": "Campaign site: home page",
+        "retrievedOn": "2026-10-22"
+      },
+      {
+        "kind": "own-statement",
+        "area": "government-experience",
+        "text": "His campaign site says he has about ten years in the state legislature, including four years on the Joint Budget Committee and service as its chair, and that he earlier worked for U.S. Senator Ken Salazar. The Gazette describes him as a state senator and chair of the Joint Budget Committee.",
+        "sourceUrl": "https://bridgesforcolorado.com/",
+        "sourceTitle": "Campaign site: home page and expertise",
+        "retrievedOn": "2026-10-22"
+      },
+      {
+        "kind": "documented-action",
+        "area": "government-experience",
+        "text": "The Colorado General Assembly's member page lists him as a Democratic senator for District 26 and Vice Chair of the Senate Appropriations Committee and of the Joint Budget Committee. The campaign site and the Gazette call him chair of the Joint Budget Committee, so the official page may be out of date; it gives no service dates.",
+        "sourceUrl": "https://www.leg.colorado.gov/legislators/jeff-bridges",
+        "sourceTitle": "Colorado General Assembly: Senator Jeff Bridges",
+        "retrievedOn": "2026-10-22"
+      }
+    ]
+  },
+  {
+    "contestId": "state-treasurer",
+    "name": "Kevin Grantham",
+    "campaignWebsite": "https://citizensforkevingrantham.com/",
+    "lastVerifiedOn": "2026-10-22",
+    "checkedNothingFound": [],
+    "claims": [
+      {
+        "kind": "own-statement",
+        "area": "positions",
+        "text": "In the Denver Gazette's candidate questionnaire he says he would maximize taxpayer dollars and advocate for families under affordability pressure, and that the state should do more with less. He opposes the state using unclaimed property money for general spending, which he calls a tax increase without a public vote. On PERA he says the state must meet its obligations to workers, manage risk and pursue strong returns, and he calls for lower investment-management costs and fewer large salaries and bonuses.",
+        "sourceUrl": "https://www.denvergazette.com/2026/10/02/state-treasurer-grantham-bridges-barr-seek-top-financial-position-3/",
+        "sourceTitle": "Denver Gazette candidate questionnaire: State Treasurer (Oct. 2, 2026)",
+        "retrievedOn": "2026-10-22"
+      },
+      {
+        "kind": "own-statement",
+        "area": "positions",
+        "text": "His campaign site's home page gives one broad theme, making Colorado more affordable, and links a launch video; the home page lists no detailed policy positions.",
+        "sourceUrl": "https://citizensforkevingrantham.com/",
+        "sourceTitle": "Campaign site: home page",
+        "retrievedOn": "2026-10-22"
+      },
+      {
+        "kind": "own-statement",
+        "area": "government-experience",
+        "text": "In the questionnaire he describes himself as a former Colorado Senate president and current Fremont County commissioner. The Colorado General Assembly page that could document his legislative service returned outdated information (a 2017-2018 listing), so it is not cited.",
+        "sourceUrl": "https://www.denvergazette.com/2026/10/02/state-treasurer-grantham-bridges-barr-seek-top-financial-position-3/",
+        "sourceTitle": "Denver Gazette candidate questionnaire: State Treasurer (Oct. 2, 2026)",
+        "retrievedOn": "2026-10-22"
+      }
+    ]
+  },
+  {
+    "contestId": "state-treasurer",
+    "name": "Jodie Barr",
+    "lastVerifiedOn": "2026-10-22",
+    "checkedNothingFound": [
+      "campaign-website"
+    ],
+    "claims": [
+      {
+        "kind": "own-statement",
+        "area": "positions",
+        "text": "In the Denver Gazette's candidate questionnaire he says he would act as a fiduciary for taxpayers rather than an advocate for higher spending, protect dedicated funds, increase transparency in the state's roughly $17 billion of investments, defend TABOR and reduce reliance on debt, speed up returns of unclaimed property, and end or sharply limit transfers from the unclaimed property fund. On PERA he says it is about 69% funded with roughly $30 billion unfunded and supports closing the defined-benefit plan to new hires in favor of defined-contribution accounts, more transparent actuarial assumptions and no new benefit increases.",
+        "sourceUrl": "https://www.denvergazette.com/2026/10/02/state-treasurer-grantham-bridges-barr-seek-top-financial-position-3/",
+        "sourceTitle": "Denver Gazette candidate questionnaire: State Treasurer (Oct. 2, 2026)",
+        "retrievedOn": "2026-10-22"
+      },
+      {
+        "kind": "own-statement",
+        "area": "background",
+        "text": "The questionnaire says years of running a small business shaped his view that every tax dollar has a real cost, and that he has studied state and municipal finance closely.",
+        "sourceUrl": "https://www.denvergazette.com/2026/10/02/state-treasurer-grantham-bridges-barr-seek-top-financial-position-3/",
+        "sourceTitle": "Denver Gazette candidate questionnaire: State Treasurer (Oct. 2, 2026)",
+        "retrievedOn": "2026-10-22"
+      }
+    ]
   }
 ]

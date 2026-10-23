@@ -76,3 +76,31 @@ export function validateProfiles(
   }
   return list;
 }
+
+/** An explicit record that a candidate was looked for and why there is no profile. Never a position. */
+export const GapSchema = z.object({
+  contestId: z.string(),
+  name: z.string().min(1),
+  note: z.string().min(10),
+  checkedOn: Day,
+  sourceUrl: Url.optional(),
+});
+export type Gap = z.infer<typeof GapSchema>;
+
+export function validateGaps(
+  gaps: unknown,
+  contests: { id: string; kind: string; candidates: { name: string }[] }[],
+  profiles: Profile[],
+): Gap[] {
+  const list = z.array(GapSchema).parse(gaps);
+  const seen = new Set<string>();
+  for (const g of list) {
+    const c = contests.find((x) => x.id === g.contestId);
+    if (!c || !c.candidates.some((x) => x.name === g.name)) throw new Error(`Gap for unknown candidate: ${g.contestId}/${g.name}`);
+    if (profiles.some((p) => p.contestId === g.contestId && p.name === g.name)) throw new Error(`${g.name} has both a profile and a gap note`);
+    const key = `${g.contestId}:${g.name}`;
+    if (seen.has(key)) throw new Error(`Duplicate gap: ${key}`);
+    seen.add(key);
+  }
+  return list;
+}

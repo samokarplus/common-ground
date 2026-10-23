@@ -235,3 +235,11 @@ test("every statewide measure cites the fiscal impact statements it was checked 
     assert.ok(m.draft.review.checkedAgainst?.includes("fiscal-statements"), m.id);
   }
 });
+
+test("the judicial guide attributes press-reported facts and never states an individual judge's recommendation", async () => {
+  const { readFileSync } = await import("node:fs");
+  const ui = readFileSync("src/components/help-me-vote.tsx", "utf8");
+  assert.match(ui, /not verified against the official site/);
+  assert.match(ui, /coloradopolitics\.com\/2026\/10\/16/);
+  assert.ok(!/(Hood|Freyre|Harris|Lum|Moultrie|Schock|Sullivan)[^.<]{0,40}(meets performance standards|recommended for retention)/i.test(ui));
+});

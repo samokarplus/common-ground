@@ -21,7 +21,8 @@ import raw from "../../data/elections/colorado-2026.json";
 import { LOCAL_RACE_TYPES } from "@/lib/local-races";
 import { JURISDICTIONS, coverageOf, officialElectionOffices } from "@/lib/states";
 import rawProfiles from "../../data/elections/colorado-2026-profiles.json";
-import { CLAIM_KINDS, CLAIM_LABEL, RESEARCH_AREAS, completeness, validateProfiles, type Profile } from "@/lib/candidate";
+import rawGaps from "../../data/elections/colorado-2026-gaps.json";
+import { CLAIM_KINDS, CLAIM_LABEL, RESEARCH_AREAS, completeness, validateGaps, validateProfiles, type Profile } from "@/lib/candidate";
 import {
   COVERAGE,
   isHumanReviewed,
@@ -51,6 +52,8 @@ import {
 
 export const election: Election = parseElection(raw);
 const profiles: Profile[] = validateProfiles(rawProfiles, election.contests);
+const gaps = validateGaps(rawGaps, election.contests, profiles);
+const gapFor = (contestId: string, name: string) => gaps.find((g) => g.contestId === contestId && g.name === name);
 const profileFor = (contestId: string, name: string) => profiles.find((p) => p.contestId === contestId && p.name === name);
 const AREA_LABEL: Record<(typeof RESEARCH_AREAS)[number], string> = {
   background: "Background",
@@ -935,7 +938,7 @@ function ContestDetail({ id }: { id?: string }) {
                           Research profile · {completeness(profileFor(c.id, x.name)).covered.length} of {RESEARCH_AREAS.length} areas sourced
                         </Link>
                       ) : (
-                        "Not yet researched — 0 of 5 areas; not inferred from party"
+                        gapFor(c.id, x.name)?.note ?? "Not yet researched — 0 of 5 areas; not inferred from party"
                       )}
                     </span>
                   </div>
@@ -1229,6 +1232,21 @@ function JudicialGuide() {
           <li>Commissions very rarely recommend against retention, and voters very rarely vote a judge out. Whether that reflects good performance or a weak filter is something reasonable people debate.</li>
           <li>Judges who expect poor reviews sometimes leave before the election, so the list of those who reach the ballot is itself filtered.</li>
         </ul>
+        <h2>What the press has reported this year (not verified against the official site)</h2>
+        <ul>
+          <li>
+            Colorado Politics reported on Oct. 16, 2026 that 123 state judges are standing for retention this year, that Supreme Court Justice
+            William Hood's evaluation drew 31 survey responses, and that the only "does not meet performance standards" findings it
+            described involved trial-level (district or county) judges, not the Supreme Court or Court of Appeals judges on every ballot.{" "}
+            <a href="https://www.coloradopolitics.com/2026/10/16/judicial-retention-judges-on-the-ballot-in-2026/" target="_blank" rel="noreferrer">
+              Colorado Politics, Oct. 16, 2026 <ExternalLink size={12} />
+            </a>
+          </li>
+        </ul>
+        <p className="muted">
+          This is a news report's summary, read on 2026-10-22. Common Ground could not open the official evaluations, so it does not state any
+          individual judge's recommendation. Read each judge's evaluation on the official site.
+        </p>
         <h2>Questions you might ask</h2>
         <ul>
           <li>How many people answered the survey for this judge?</li>

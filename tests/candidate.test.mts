@@ -60,11 +60,11 @@ test("profile parity: a contest's major-party candidates are either all profiled
   const { readFileSync } = await import("node:fs");
   const e = JSON.parse(readFileSync("data/elections/colorado-2026.json", "utf8"));
   const profiles = JSON.parse(readFileSync("data/elections/colorado-2026-profiles.json", "utf8"));
-  const major = new Set(["Democratic", "Republican"]);
+  const isMajor = (a: string | null) => !!a && /^(Democratic|Republican)/.test(a);
   for (const c of e.contests) {
     const mine = profiles.filter((p: { contestId: string }) => p.contestId === c.id);
     if (mine.length === 0) continue;
-    const majors = c.candidates.filter((x: { affiliation: string | null; status: string }) => x.status === "on-ballot" && x.affiliation && major.has(x.affiliation));
+    const majors = c.candidates.filter((x: { affiliation: string | null; status: string }) => x.status === "on-ballot" && isMajor(x.affiliation));
     for (const m of majors) assert.ok(mine.some((p: { name: string }) => p.name === m.name), `${c.id}: ${m.name} lacks a profile while a rival has one`);
   }
 });
@@ -74,5 +74,32 @@ test("profile text never states a claim as the campaign's if it only summarizes 
   const list = JSON.parse(readFileSync("data/elections/colorado-2026-profiles.json", "utf8"));
   for (const p of list)
     for (const c of p.claims.filter((x: { kind: string }) => x.kind === "own-statement"))
-      assert.match(c.text, /campaign's|campaign|page says|page lists|site/i, `${p.name}: own-statement not attributed to the campaign`);
+      assert.match(c.text, /campaign|page|site|questionnaire|interview/i, `${p.name}: own-statement is not attributed to its source`);
+});
+
+test("the parity rule actually inspects major-party candidates (guards against a vacuous check)", async () => {
+  const { readFileSync } = await import("node:fs");
+  const e = JSON.parse(readFileSync("data/elections/colorado-2026.json", "utf8"));
+  const gov = e.contests.find((c: { id: string }) => c.id === "governor");
+  const majors = gov.candidates.filter((x: { affiliation: string | null; status: string }) => x.status === "on-ballot" && /^(Democratic|Republican)/.test(x.affiliation ?? ""));
+  assert.equal(majors.length, 2);
+});
+
+test("every on-ballot candidate in a contest with profiles has either a profile or an explicit gap note", async () => {
+  const { readFileSync } = await import("node:fs");
+  const { validateGaps } = await import("../src/lib/candidate.ts");
+  const e = JSON.parse(readFileSync("data/elections/colorado-2026.json", "utf8"));
+  const profiles = JSON.parse(readFileSync("data/elections/colorado-2026-profiles.json", "utf8"));
+  const gaps = validateGaps(JSON.parse(readFileSync("data/elections/colorado-2026-gaps.json", "utf8")), e.contests, profiles);
+  for (const c of e.contests.filter((x: { id: string }) => profiles.some((p: { contestId: string }) => p.contestId === x.id))) {
+    for (const cand of c.candidates.filter((x: { status: string }) => x.status === "on-ballot")) {
+      const ok = profiles.some((p: { contestId: string; name: string }) => p.contestId === c.id && p.name === cand.name) || gaps.some((g) => g.contestId === c.id && g.name === cand.name);
+      assert.ok(ok, `${c.id}: ${cand.name} has neither a profile nor a gap note`);
+    }
+  }
+});
+
+test("gap notes never contain positions", async () => {
+  const { readFileSync } = await import("node:fs");
+  for (const g of JSON.parse(readFileSync("data/elections/colorado-2026-gaps.json", "utf8"))) assert.ok(!/\b(supports|opposes|favors|believes|would)\b/i.test(g.note), g.name);
 });
