@@ -46,3 +46,14 @@ test("diffBills reports new bills, status changes and new actions only", () => {
   const moved = { ...a, latestAction: { date: "2026-02-01", text: "Something new" } };
   assert.equal(diffBills([a], [moved])[0].kind, "action");
 });
+
+test("votes nested inside action items are collected with the official action text", () => {
+  const xml = fixture.replace(
+    "<actions>",
+    "<actions><item><actionDate>2026-01-06</actionDate><text>Passed Senate by recorded vote: 51 - 49</text><type>Floor</type><recordedVotes><recordedVote><url>https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_00001.xml</url><chamber>Senate</chamber><date>2026-01-06T00:00:00Z</date></recordedVote></recordedVotes></item>",
+  );
+  const b = parseBillStatus(xml);
+  assert.equal(b.votes.length, 2);
+  assert.equal(b.votes[0].chamber, "Senate");
+  assert.match(b.votes[0].action ?? "", /51 - 49/);
+});

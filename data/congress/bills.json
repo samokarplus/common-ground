@@ -2,9 +2,394 @@
   "source": "GovInfo BILLSTATUS bulk data (U.S. Government Publishing Office)",
   "sourceUrl": "https://www.govinfo.gov/bulkdata/BILLSTATUS/119",
   "congress": 119,
-  "retrievedAt": "2026-10-22T23:01:40.418Z",
+  "retrievedAt": "2026-10-23T00:58:15.089Z",
   "selection": "Most recently updated 15 bills of each type (hr, s, hjres, sjres). Not a complete list.",
   "bills": [
+    {
+      "id": "119-s-5",
+      "congress": 119,
+      "type": "s",
+      "number": 5,
+      "title": "Laken Riley Act",
+      "originChamber": "Senate",
+      "introducedDate": "2025-01-06",
+      "updateDate": "2026-10-22T21:23:22Z",
+      "status": "enacted",
+      "publicLaw": "119-1",
+      "policyArea": "Immigration",
+      "sponsor": {
+        "name": "Sen. Britt, Katie Boyd [R-AL]",
+        "party": "R",
+        "state": "AL"
+      },
+      "cosponsorCount": 0,
+      "committees": [],
+      "latestAction": {
+        "date": "2025-01-29",
+        "text": "Became Public Law No: 119-1."
+      },
+      "actions": [
+        {
+          "date": "2025-01-29",
+          "text": "Became Public Law No: 119-1.",
+          "type": "President"
+        },
+        {
+          "date": "2025-01-29",
+          "text": "Became Public Law No: 119-1.",
+          "type": "BecameLaw"
+        },
+        {
+          "date": "2025-01-29",
+          "text": "Signed by President.",
+          "type": "President"
+        },
+        {
+          "date": "2025-01-29",
+          "text": "Signed by President.",
+          "type": "BecameLaw"
+        },
+        {
+          "date": "2025-01-23",
+          "text": "Presented to President.",
+          "type": "Floor"
+        },
+        {
+          "date": "2025-01-23",
+          "text": "Presented to President.",
+          "type": "President"
+        },
+        {
+          "date": "2025-01-22",
+          "text": "Motion to reconsider laid on the table Agreed to without objection.",
+          "type": "Floor"
+        },
+        {
+          "date": "2025-01-22",
+          "text": "On passage Passed by the Yeas and Nays: 263 - 156 (Roll no. 23). (text: CR H277-278)",
+          "type": "Floor"
+        },
+        {
+          "date": "2025-01-22",
+          "text": "Passed/agreed to in House: On passage Passed by the Yeas and Nays: 263 - 156 (Roll no. 23). (text: CR H277-278)",
+          "type": "Floor"
+        },
+        {
+          "date": "2025-01-22",
+          "text": "Considered as unfinished business. (consideration: CR H285-286)",
+          "type": "Floor"
+        },
+        {
+          "date": "2025-01-22",
+          "text": "POSTPONED PROCEEDINGS - At the conclusion of the debate on S. 5, the Chair put the question on passage of the bill and by voice vote announced that the ayes had prevailed. Mr. Raskin demanded the yeas and nays and the Chair postponed further proceedings until a time to be announced.",
+          "type": "Floor"
+        },
+        {
+          "date": "2025-01-22",
+          "text": "The previous question was ordered pursuant to the rule.",
+          "type": "Floor"
+        },
+        {
+          "date": "2025-01-22",
+          "text": "DEBATE - The House proceeded with one hour of debate on S. 5.",
+          "type": "Floor"
+        },
+        {
+          "date": "2025-01-22",
+          "text": "Rule provides for consideration of H.R. 471 and S. 5. The resolution provides for consideration of H.R. 471 under a structured rule with one hour of general debate and one motion to recommit. Also, the resolution provides for consideration of S. 5 under a closed rule with one hour of general debate and one motion to commit.",
+          "type": "Floor"
+        },
+        {
+          "date": "2025-01-22",
+          "text": "Considered under the provisions of rule H. Res. 53. (consideration: CR H277-284)",
+          "type": "Floor"
+        },
+        {
+          "date": "2025-01-22",
+          "text": "Rule H. Res. 53 passed House.",
+          "type": "Floor"
+        },
+        {
+          "date": "2025-01-21",
+          "text": "Rules Committee Resolution H. Res. 53 Reported to House. Rule provides for consideration of H.R. 471 and S. 5. The resolution provides for consideration of H.R. 471 under a structured rule with one hour of general debate and one motion to recommit. Also, the resolution provides for consideration of S. 5 under a closed rule with one hour of general debate and one motion to commit.",
+          "type": "Floor"
+        },
+        {
+          "date": "2025-01-21",
+          "text": "Held at the desk.",
+          "type": "Floor"
+        },
+        {
+          "date": "2025-01-21",
+          "text": "Received in the House.",
+          "type": "Floor"
+        },
+        {
+          "date": "2025-01-21",
+          "text": "Message on Senate action sent to the House.",
+          "type": "Floor"
+        },
+        {
+          "date": "2025-01-20",
+          "text": "Passed Senate with an amendment by Yea-Nay Vote. 64 - 35. Record Vote Number: 7. (text: CR S250-251)",
+          "type": "Floor"
+        },
+        {
+          "date": "2025-01-20",
+          "text": "Passed/agreed to in Senate: Passed Senate with an amendment by Yea-Nay Vote. 64 - 35. Record Vote Number: 7.",
+          "type": "Floor"
+        },
+        {
+          "date": "2025-01-20",
+          "text": "Considered by Senate. (consideration: CR S246-251)",
+          "type": "Floor"
+        },
+        {
+          "date": "2025-01-17",
+          "text": "Cloture on the measure invoked in Senate by Yea-Nay Vote. 61 - 35. Record Vote Number: 5. (CR S240)",
+          "type": "Floor"
+        },
+        {
+          "date": "2025-01-17",
+          "text": "Considered by Senate. (consideration: CR S237-241)",
+          "type": "Floor"
+        },
+        {
+          "date": "2025-01-16",
+          "text": "Considered by Senate. (consideration: CR S198-218)",
+          "type": "Floor"
+        },
+        {
+          "date": "2025-01-15",
+          "text": "Cloture motion on the measure presented in Senate. (CR S182)",
+          "type": "Floor"
+        },
+        {
+          "date": "2025-01-15",
+          "text": "Considered by Senate. (consideration: CR S161-182)",
+          "type": "Floor"
+        },
+        {
+          "date": "2025-01-14",
+          "text": "Considered by Senate. (consideration: CR S130)",
+          "type": "Floor"
+        },
+        {
+          "date": "2025-01-13",
+          "text": "Measure laid before Senate by motion.",
+          "type": "Floor"
+        },
+        {
+          "date": "2025-01-13",
+          "text": "Motion to proceed to consideration of measure agreed to in Senate by Yea-Nay Vote. 82 - 10. Record Vote Number: 2. (CR S87)",
+          "type": "Floor"
+        },
+        {
+          "date": "2025-01-13",
+          "text": "Motion to proceed to measure considered in Senate. (CR S83)",
+          "type": "Floor"
+        },
+        {
+          "date": "2025-01-09",
+          "text": "Cloture on the motion to proceed to the measure invoked in Senate by Yea-Nay Vote. 84 - 9. Record Vote Number: 1. (CR S73)",
+          "type": "Floor"
+        },
+        {
+          "date": "2025-01-09",
+          "text": "Motion to proceed to measure considered in Senate. (CR S70)",
+          "type": "Floor"
+        },
+        {
+          "date": "2025-01-08",
+          "text": "Cloture motion on the motion to proceed to the measure presented in Senate. (CR S46)",
+          "type": "Floor"
+        },
+        {
+          "date": "2025-01-08",
+          "text": "Motion to proceed to consideration of measure made in Senate. (CR S46)",
+          "type": "Floor"
+        },
+        {
+          "date": "2025-01-07",
+          "text": "Read the second time. Placed on Senate Legislative Calendar under General Orders. Calendar No. 1.",
+          "type": "Calendars"
+        },
+        {
+          "date": "2025-01-06",
+          "text": "Introduced in the Senate. Read the first time. Placed on Senate Legislative Calendar under Read the First Time.",
+          "type": "Calendars"
+        },
+        {
+          "date": "2025-01-06",
+          "text": "Introduced in Senate",
+          "type": "IntroReferral"
+        }
+      ],
+      "votes": [
+        {
+          "chamber": "House",
+          "date": "2025-01-22T22:04:55Z",
+          "url": "https://clerk.house.gov/evs/2025/roll023.xml",
+          "action": "On passage Passed by the Yeas and Nays: 263 - 156 (Roll no. 23). (text: CR H277-278)"
+        },
+        {
+          "chamber": "Senate",
+          "date": "2025-01-20T23:30:58Z",
+          "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_00007.xml",
+          "action": "Passed Senate with an amendment by Yea-Nay Vote. 64 - 35. Record Vote Number: 7. (text: CR S250-251)"
+        },
+        {
+          "chamber": "Senate",
+          "date": "2025-01-17T15:47:29Z",
+          "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_00005.xml",
+          "action": "Cloture on the measure invoked in Senate by Yea-Nay Vote. 61 - 35. Record Vote Number: 5. (CR S240)"
+        },
+        {
+          "chamber": "Senate",
+          "date": "2025-01-13T23:33:38Z",
+          "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_00002.xml",
+          "action": "Motion to proceed to consideration of measure agreed to in Senate by Yea-Nay Vote. 82 - 10. Record Vote Number: 2. (CR S87)"
+        },
+        {
+          "chamber": "Senate",
+          "date": "2025-01-09T20:32:41Z",
+          "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_00001.xml",
+          "action": "Cloture on the motion to proceed to the measure invoked in Senate by Yea-Nay Vote. 84 - 9. Record Vote Number: 1. (CR S73)"
+        }
+      ],
+      "crsSummary": "Laken Riley Act This act requires the Department of Homeland Security (DHS) to detain certain non-U.S. nationals ( aliens under federal law) who have been arrested for burglary, theft, larceny, shoplifting, assault of a law enforcement officer, or any crime that results in death or serious bodily injury to another person. The act also authorizes states to sue the federal government for decisions or alleged failures related to immigration enforcement. Under this act, DHS must detain an individual who (1) is unlawfully present in the United States or did not possess the necessary documents when applying for admission; and (2) has been charged with, arrested for, convicted of, or admits to having committed acts that constitute the essential elements of the above crimes. The act also authorizes state governments to sue for injunctive relief over certain immigration-related decisions or alleged failures by the federal government if the decision or failure caused the state or its residents harm, including financial harm of more than $100. Specifically, the state government may sue the federal government over a decision to release a non-U.S. national from custody; failure to fulfill requirements relating to inspecting individuals seeking admission into the United States, including requirements related to asylum interviews; failure to fulfill a requirement to stop issuing visas to nationals of a country that unreasonably denies or delays acceptance of nationals of that country; viola",
+      "url": "https://www.congress.gov/bill/119th-congress/senate-bill/5"
+    },
+    {
+      "id": "119-s-4618",
+      "congress": 119,
+      "type": "s",
+      "number": 4618,
+      "title": "Elementary and Secondary School Counseling Act",
+      "originChamber": "Senate",
+      "introducedDate": "2026-05-21",
+      "updateDate": "2026-10-22T20:49:26Z",
+      "status": "in-committee",
+      "policyArea": "Education",
+      "sponsor": {
+        "name": "Sen. Merkley, Jeff [D-OR]",
+        "party": "D",
+        "state": "OR"
+      },
+      "cosponsorCount": 0,
+      "committees": [
+        "Health, Education, Labor, and Pensions Committee"
+      ],
+      "latestAction": {
+        "date": "2026-05-21",
+        "text": "Read twice and referred to the Committee on Health, Education, Labor, and Pensions."
+      },
+      "actions": [
+        {
+          "date": "2026-05-21",
+          "text": "Read twice and referred to the Committee on Health, Education, Labor, and Pensions.",
+          "type": "IntroReferral"
+        },
+        {
+          "date": "2026-05-21",
+          "text": "Introduced in Senate",
+          "type": "IntroReferral"
+        }
+      ],
+      "votes": [],
+      "crsSummary": "Elementary and Secondary School Counseling Act This bill directs the Department of Education to award formula grants to states and, through them, subgrants to local educational agencies to increase access to school-based, mental-health-services providers at high-need public elementary and secondary schools.",
+      "url": "https://www.congress.gov/bill/119th-congress/senate-bill/4618"
+    },
+    {
+      "id": "119-hr-8484",
+      "congress": 119,
+      "type": "hr",
+      "number": 8484,
+      "title": "Hazard Pay for Health Care Heroes Act",
+      "originChamber": "House",
+      "introducedDate": "2026-04-23",
+      "updateDate": "2026-10-22T20:46:42Z",
+      "status": "in-committee",
+      "policyArea": "Health",
+      "sponsor": {
+        "name": "Rep. Lee, Summer L. [D-PA-12]",
+        "party": "D",
+        "state": "PA"
+      },
+      "cosponsorCount": 0,
+      "committees": [
+        "Energy and Commerce Committee"
+      ],
+      "latestAction": {
+        "date": "2026-04-23",
+        "text": "Referred to the House Committee on Energy and Commerce."
+      },
+      "actions": [
+        {
+          "date": "2026-04-23",
+          "text": "Referred to the House Committee on Energy and Commerce.",
+          "type": "IntroReferral"
+        },
+        {
+          "date": "2026-04-23",
+          "text": "Introduced in House",
+          "type": "IntroReferral"
+        },
+        {
+          "date": "2026-04-23",
+          "text": "Introduced in House",
+          "type": "IntroReferral"
+        }
+      ],
+      "votes": [],
+      "crsSummary": "Hazard Pay for Health Care Heroes Act This bill authorizes grants to support hazard pay and safety measures for essential health care workers whose work or commute is hazardous due to a declared emergency or disaster. Essential health care workers include health care providers, public health workers, janitorial staff in health care settings, and other roles essential to the care of patients or maintenance of public health that cannot be conducted remotely. Specifically, the Department of Health and Human Services may award grants to public or private nonprofit health care facilities and home health agencies for providing hazard pay to essential health care workers working or commuting in such conditions. Recipients may also use funds for safety measures to protect health care workers from such hazards (e.g., alternative transit options and personal protective equipment).",
+      "url": "https://www.congress.gov/bill/119th-congress/house-bill/8484"
+    },
+    {
+      "id": "119-s-1269",
+      "congress": 119,
+      "type": "s",
+      "number": 1269,
+      "title": "Promoting United States Leadership in Standards Act of 2025",
+      "originChamber": "Senate",
+      "introducedDate": "2025-04-02",
+      "updateDate": "2026-10-22T20:42:09Z",
+      "status": "in-committee",
+      "policyArea": "Science, Technology, Communications",
+      "sponsor": {
+        "name": "Sen. Blackburn, Marsha [R-TN]",
+        "party": "R",
+        "state": "TN"
+      },
+      "cosponsorCount": 0,
+      "committees": [
+        "Health, Education, Labor, and Pensions Committee",
+        "Commerce, Science, and Transportation Committee"
+      ],
+      "latestAction": {
+        "date": "2026-03-19",
+        "text": "Committee on Health, Education, Labor, and Pensions. Hearings held."
+      },
+      "actions": [
+        {
+          "date": "2026-03-19",
+          "text": "Committee on Health, Education, Labor, and Pensions. Hearings held.",
+          "type": "Committee"
+        },
+        {
+          "date": "2025-04-02",
+          "text": "Read twice and referred to the Committee on Commerce, Science, and Transportation.",
+          "type": "IntroReferral"
+        },
+        {
+          "date": "2025-04-02",
+          "text": "Introduced in Senate",
+          "type": "IntroReferral"
+        }
+      ],
+      "votes": [],
+      "url": "https://www.congress.gov/bill/119th-congress/senate-bill/1269"
+    },
     {
       "id": "119-hr-227",
       "congress": 119,
@@ -173,7 +558,14 @@
           "type": "IntroReferral"
         }
       ],
-      "votes": [],
+      "votes": [
+        {
+          "chamber": "House",
+          "date": "2026-04-27T23:10:14Z",
+          "url": "https://clerk.house.gov/evs/2026/roll139.xml",
+          "action": "On motion to suspend the rules and pass the bill, as amended Agreed to by the Yeas and Nays: (2/3 required): 350 - 5 (Roll no. 139). (text: CR H3115-3116)"
+        }
+      ],
       "crsSummary": "Clergy Act This act establishes a two-year window for members of the clergy who have opted out of Social Security and Medicare taxes (and are thus ineligible for benefits under those programs) to opt back in. Under current law, certain ministers, members of religious orders, and Christian Science practitioners who object to participation in public insurance programs on religious or conscientious grounds may apply to the Internal Revenue Service (IRS) for an exemption from Social Security and Medicare taxes on ministerial earnings. Individuals who are approved for the exemption do not receive Social Security or Medicare benefits in retirement unless they have qualifying credits from other employment. The exemption is irrevocable. Under the act, clergy members may choose to revoke their exemption by filing an application with the IRS by the due date of their federal income tax return for the second taxable year after December 31, 2028 (i.e., April 15, 2031, unless an individual obtains an extension to file their taxes). A clergy member may choose for the revocation to take effect in taxable year 2029 or taxable year 2030. A revocation under the act is permanent. Clergy members who opt back in will generally need 10 years of covered employment (40 credits) to be eligible for Social Security and Medicare benefits, as is currently required for these programs. The IRS must develop a plan to inform clergy members of their eligibility to revoke prior exemptions, pursuant to the act's",
       "url": "https://www.congress.gov/bill/119th-congress/house-bill/227"
     },
@@ -308,6 +700,56 @@
       ],
       "votes": [],
       "url": "https://www.congress.gov/bill/119th-congress/senate-joint-resolution/221"
+    },
+    {
+      "id": "119-hr-10810",
+      "congress": 119,
+      "type": "hr",
+      "number": 10810,
+      "title": "National Patient Safety Board Act of 2026",
+      "originChamber": "House",
+      "introducedDate": "2026-10-15",
+      "updateDate": "2026-10-22T18:14:03Z",
+      "status": "in-committee",
+      "policyArea": "Health",
+      "sponsor": {
+        "name": "Rep. Barragán, Nanette Diaz [D-CA-44]",
+        "party": "D",
+        "state": "CA"
+      },
+      "cosponsorCount": 0,
+      "committees": [
+        "Veterans' Affairs Committee",
+        "Energy and Commerce Committee"
+      ],
+      "latestAction": {
+        "date": "2026-10-15",
+        "text": "Referred to the Committee on Energy and Commerce, and in addition to the Committee on Veterans' Affairs, for a period to be subsequently determined by the Speaker, in each case for consideration of such provisions as fall within the jurisdiction of the committee concerned."
+      },
+      "actions": [
+        {
+          "date": "2026-10-15",
+          "text": "Referred to the Committee on Energy and Commerce, and in addition to the Committee on Veterans' Affairs, for a period to be subsequently determined by the Speaker, in each case for consideration of such provisions as fall within the jurisdiction of the committee concerned.",
+          "type": "IntroReferral"
+        },
+        {
+          "date": "2026-10-15",
+          "text": "Referred to the Committee on Energy and Commerce, and in addition to the Committee on Veterans' Affairs, for a period to be subsequently determined by the Speaker, in each case for consideration of such provisions as fall within the jurisdiction of the committee concerned.",
+          "type": "IntroReferral"
+        },
+        {
+          "date": "2026-10-15",
+          "text": "Introduced in House",
+          "type": "IntroReferral"
+        },
+        {
+          "date": "2026-10-15",
+          "text": "Introduced in House",
+          "type": "IntroReferral"
+        }
+      ],
+      "votes": [],
+      "url": "https://www.congress.gov/bill/119th-congress/house-bill/10810"
     },
     {
       "id": "119-hr-1721",
@@ -596,259 +1038,6 @@
       "url": "https://www.congress.gov/bill/119th-congress/senate-bill/4865"
     },
     {
-      "id": "119-hr-4307",
-      "congress": 119,
-      "type": "hr",
-      "number": 4307,
-      "title": "Enhancing Detection of Human Trafficking Act",
-      "originChamber": "House",
-      "introducedDate": "2025-07-10",
-      "updateDate": "2026-10-22T15:42:37Z",
-      "status": "enacted",
-      "publicLaw": "119-131",
-      "policyArea": "Crime and Law Enforcement",
-      "sponsor": {
-        "name": "Rep. Walberg, Tim [R-MI-5]",
-        "party": "R",
-        "state": "MI"
-      },
-      "cosponsorCount": 0,
-      "committees": [
-        "Education and Workforce Committee"
-      ],
-      "latestAction": {
-        "date": "2026-10-20",
-        "text": "Became Public Law No: 119-131."
-      },
-      "actions": [
-        {
-          "date": "2026-10-20",
-          "text": "Became Public Law No: 119-131.",
-          "type": "President"
-        },
-        {
-          "date": "2026-10-20",
-          "text": "Became Public Law No: 119-131.",
-          "type": "BecameLaw"
-        },
-        {
-          "date": "2026-10-20",
-          "text": "Signed by President.",
-          "type": "President"
-        },
-        {
-          "date": "2026-10-20",
-          "text": "Signed by President.",
-          "type": "BecameLaw"
-        },
-        {
-          "date": "2026-10-15",
-          "text": "Presented to President.",
-          "type": "Floor"
-        },
-        {
-          "date": "2026-10-15",
-          "text": "Presented to President.",
-          "type": "President"
-        },
-        {
-          "date": "2026-10-14",
-          "text": "Message on Senate action sent to the House.",
-          "type": "Floor"
-        },
-        {
-          "date": "2026-09-30",
-          "text": "Passed Senate without amendment by Unanimous Consent. (consideration: CR S5299)",
-          "type": "Floor"
-        },
-        {
-          "date": "2026-09-30",
-          "text": "Passed/agreed to in Senate: Passed Senate without amendment by Unanimous Consent.",
-          "type": "Floor"
-        },
-        {
-          "date": "2026-03-04",
-          "text": "Received in the Senate, read twice.",
-          "type": "IntroReferral"
-        },
-        {
-          "date": "2026-03-03",
-          "text": "Motion to reconsider laid on the table Agreed to without objection.",
-          "type": "Floor"
-        },
-        {
-          "date": "2026-03-03",
-          "text": "On motion to suspend the rules and pass the bill, as amended Agreed to by voice vote. (text: CR H2363)",
-          "type": "Floor"
-        },
-        {
-          "date": "2026-03-03",
-          "text": "Passed/agreed to in House: On motion to suspend the rules and pass the bill, as amended Agreed to by voice vote. (text: CR H2363)",
-          "type": "Floor"
-        },
-        {
-          "date": "2026-03-03",
-          "text": "DEBATE - The House proceeded with forty minutes of debate on H.R. 4307.",
-          "type": "Floor"
-        },
-        {
-          "date": "2026-03-03",
-          "text": "Considered under suspension of the rules. (consideration: CR H2363-2364)",
-          "type": "Floor"
-        },
-        {
-          "date": "2026-03-03",
-          "text": "Mr. Walberg moved to suspend the rules and pass the bill, as amended.",
-          "type": "Floor"
-        },
-        {
-          "date": "2026-02-20",
-          "text": "Placed on the Union Calendar, Calendar No. 433.",
-          "type": "Calendars"
-        },
-        {
-          "date": "2026-02-20",
-          "text": "Reported (Amended) by the Committee on Education and Workforce. H. Rept. 119-507.",
-          "type": "Committee"
-        },
-        {
-          "date": "2026-02-20",
-          "text": "Reported (Amended) by the Committee on Education and Workforce. H. Rept. 119-507.",
-          "type": "Committee"
-        },
-        {
-          "date": "2026-01-08",
-          "text": "Ordered to be Reported (Amended) by the Yeas and Nays: 36 - 0.",
-          "type": "Committee"
-        },
-        {
-          "date": "2026-01-08",
-          "text": "Committee Consideration and Mark-up Session Held",
-          "type": "Committee"
-        },
-        {
-          "date": "2025-07-10",
-          "text": "Referred to the House Committee on Education and Workforce.",
-          "type": "IntroReferral"
-        },
-        {
-          "date": "2025-07-10",
-          "text": "Introduced in House",
-          "type": "IntroReferral"
-        },
-        {
-          "date": "2025-07-10",
-          "text": "Introduced in House",
-          "type": "IntroReferral"
-        }
-      ],
-      "votes": [],
-      "crsSummary": "Enhancing Detection of Human Trafficking Act This act requires the Department of Labor to provide training and education to its employees on how to effectively assist law enforcement in detecting human trafficking. The act directs Labor to determine which employees should receive the training and education based on their official duties. Further, it requires the training and education to include information that is appropriate for the employees' location or environment; that reflects current trends and best practices for the location or environment; and that is relevant to detecting human trafficking, identifying suspected victims, and referring potential cases to the Department of Justice and other appropriate authorities.",
-      "url": "https://www.congress.gov/bill/119th-congress/house-bill/4307"
-    },
-    {
-      "id": "119-hr-8979",
-      "congress": 119,
-      "type": "hr",
-      "number": 8979,
-      "title": "Elementary and Secondary School Counseling Act",
-      "originChamber": "House",
-      "introducedDate": "2026-05-21",
-      "updateDate": "2026-10-22T15:40:13Z",
-      "status": "in-committee",
-      "policyArea": "Education",
-      "sponsor": {
-        "name": "Rep. Mannion, John W. [D-NY-22]",
-        "party": "D",
-        "state": "NY"
-      },
-      "cosponsorCount": 0,
-      "committees": [
-        "Education and Workforce Committee"
-      ],
-      "latestAction": {
-        "date": "2026-05-21",
-        "text": "Referred to the House Committee on Education and Workforce."
-      },
-      "actions": [
-        {
-          "date": "2026-05-21",
-          "text": "Referred to the House Committee on Education and Workforce.",
-          "type": "IntroReferral"
-        },
-        {
-          "date": "2026-05-21",
-          "text": "Introduced in House",
-          "type": "IntroReferral"
-        },
-        {
-          "date": "2026-05-21",
-          "text": "Introduced in House",
-          "type": "IntroReferral"
-        }
-      ],
-      "votes": [],
-      "crsSummary": "Elementary and Secondary School Counseling Act This bill directs the Department of Education to award formula grants to states and, through them, subgrants to local educational agencies to increase access to school-based, mental-health-services providers at high-need public elementary and secondary schools.",
-      "url": "https://www.congress.gov/bill/119th-congress/house-bill/8979"
-    },
-    {
-      "id": "119-hr-6106",
-      "congress": 119,
-      "type": "hr",
-      "number": 6106,
-      "title": "CLEAR Path Act",
-      "originChamber": "House",
-      "introducedDate": "2025-11-18",
-      "updateDate": "2026-10-22T15:31:39Z",
-      "status": "in-committee",
-      "policyArea": "Crime and Law Enforcement",
-      "sponsor": {
-        "name": "Rep. Pfluger, August [R-TX-11]",
-        "party": "R",
-        "state": "TX"
-      },
-      "cosponsorCount": 0,
-      "committees": [
-        "Rules Committee",
-        "Judiciary Committee",
-        "Foreign Affairs Committee"
-      ],
-      "latestAction": {
-        "date": "2025-11-18",
-        "text": "Referred to the Committee on Foreign Affairs, and in addition to the Committees on the Judiciary, and Rules, for a period to be subsequently determined by the Speaker, in each case for consideration of such provisions as fall within the jurisdiction of the committee concerned."
-      },
-      "actions": [
-        {
-          "date": "2025-11-18",
-          "text": "Referred to the Committee on Foreign Affairs, and in addition to the Committees on the Judiciary, and Rules, for a period to be subsequently determined by the Speaker, in each case for consideration of such provisions as fall within the jurisdiction of the committee concerned.",
-          "type": "IntroReferral"
-        },
-        {
-          "date": "2025-11-18",
-          "text": "Referred to the Committee on Foreign Affairs, and in addition to the Committees on the Judiciary, and Rules, for a period to be subsequently determined by the Speaker, in each case for consideration of such provisions as fall within the jurisdiction of the committee concerned.",
-          "type": "IntroReferral"
-        },
-        {
-          "date": "2025-11-18",
-          "text": "Referred to the Committee on Foreign Affairs, and in addition to the Committees on the Judiciary, and Rules, for a period to be subsequently determined by the Speaker, in each case for consideration of such provisions as fall within the jurisdiction of the committee concerned.",
-          "type": "IntroReferral"
-        },
-        {
-          "date": "2025-11-18",
-          "text": "Introduced in House",
-          "type": "IntroReferral"
-        },
-        {
-          "date": "2025-11-18",
-          "text": "Introduced in House",
-          "type": "IntroReferral"
-        }
-      ],
-      "votes": [],
-      "crsSummary": "Conflict-free Leaving Employment and Activity Restrictions Path Act or the CLEAR Path Act This bill bans former presidential appointees in the executive branch from knowingly representing, aiding, or advising a foreign country of concern (e.g., China, Iran, North Korea, or Russia) with the intent to influence a decision of U.S. government officials. Under the bill, the ban applies to former presidential appointees who served (1) as head or deputy head of an executive branch department or agency, or (2) in any other Senate-confirmed position in an executive branch department or agency. The ban applies to those who are appointed to their positions on or after the date of this bill's enactment. The ban expires five years after the date of this bill's enactment. The bill also establishes a process that authorizes the Department of State to propose and Congress to enact changes to the list of foreign countries of concern.",
-      "url": "https://www.congress.gov/bill/119th-congress/house-bill/6106"
-    },
-    {
       "id": "119-s-5624",
       "congress": 119,
       "type": "s",
@@ -1094,171 +1283,6 @@
       "url": "https://www.congress.gov/bill/119th-congress/senate-bill/240"
     },
     {
-      "id": "119-hr-5867",
-      "congress": 119,
-      "type": "hr",
-      "number": 5867,
-      "title": "Plant-Powered School Meals Pilot Act",
-      "originChamber": "House",
-      "introducedDate": "2025-10-28",
-      "updateDate": "2026-10-22T13:45:58Z",
-      "status": "in-committee",
-      "policyArea": "Agriculture and Food",
-      "sponsor": {
-        "name": "Rep. Velázquez, Nydia M. [D-NY-7]",
-        "party": "D",
-        "state": "NY"
-      },
-      "cosponsorCount": 0,
-      "committees": [
-        "Education and Workforce Committee"
-      ],
-      "latestAction": {
-        "date": "2025-10-28",
-        "text": "Referred to the House Committee on Education and Workforce."
-      },
-      "actions": [
-        {
-          "date": "2025-10-28",
-          "text": "Referred to the House Committee on Education and Workforce.",
-          "type": "IntroReferral"
-        },
-        {
-          "date": "2025-10-28",
-          "text": "Introduced in House",
-          "type": "IntroReferral"
-        },
-        {
-          "date": "2025-10-28",
-          "text": "Introduced in House",
-          "type": "IntroReferral"
-        }
-      ],
-      "votes": [],
-      "crsSummary": "Plant-Powered School Meals Pilot Act This bill establishes pilot programs for providing 100% plant-based food and milk options in school meals and expands access to nondairy beverages in school meals. Specifically, the Department of Agriculture (USDA) must carry out a pilot program to award grants for purposes such as training food service personnel on serving 100% plant-based food options and covering additional costs of buying plant-based foods. USDA must give priority in awarding pilot program grants to school food authorities that will use the funds to serve a high proportion of children who are eligible for free or reduced-price meals. The bill also requires a school participating in the school lunch program to substitute a nondairy beverage that is nutritionally equivalent to fluid milk, and meets USDA-established standards, if the student's parent or legal guardian submits a written request for such substitution. Further, a school has the option to offer each student a nondairy beverage as a substitute for fluid milk if it meets these same standards. USDA must also establish a pilot program to reimburse eligible schools for the cost of providing a nondairy beverage as a substitute for fluid milk. Eligible schools are those where at least 50% of the students served are eligible for free or reduced-price meals.",
-      "url": "https://www.congress.gov/bill/119th-congress/house-bill/5867"
-    },
-    {
-      "id": "119-s-5688",
-      "congress": 119,
-      "type": "s",
-      "number": 5688,
-      "title": "Acquired Lands Revenue Modernization Act",
-      "originChamber": "Senate",
-      "introducedDate": "2026-10-15",
-      "updateDate": "2026-10-22T13:16:27Z",
-      "status": "in-committee",
-      "policyArea": "Energy",
-      "sponsor": {
-        "name": "Sen. Moreno, Bernie [R-OH]",
-        "party": "R",
-        "state": "OH"
-      },
-      "cosponsorCount": 0,
-      "committees": [],
-      "latestAction": {
-        "date": "2026-10-15",
-        "text": "Under authority of the order of the Senate of September 30, 2026, ordered read twice and referred to the Committee on Energy and Natural Resources."
-      },
-      "actions": [
-        {
-          "date": "2026-10-15",
-          "text": "Under authority of the order of the Senate of September 30, 2026, ordered read twice and referred to the Committee on Energy and Natural Resources.",
-          "type": "Floor"
-        },
-        {
-          "date": "2026-10-15",
-          "text": "Introduced in Senate",
-          "type": "IntroReferral"
-        }
-      ],
-      "votes": [],
-      "url": "https://www.congress.gov/bill/119th-congress/senate-bill/5688"
-    },
-    {
-      "id": "119-hr-10176",
-      "congress": 119,
-      "type": "hr",
-      "number": 10176,
-      "title": "No PRC Seafood in Congress Act",
-      "originChamber": "House",
-      "introducedDate": "2026-08-27",
-      "updateDate": "2026-10-22T13:15:13Z",
-      "status": "in-committee",
-      "policyArea": "Congress",
-      "sponsor": {
-        "name": "Rep. Smith, Christopher H. [R-NJ-4]",
-        "party": "R",
-        "state": "NJ"
-      },
-      "cosponsorCount": 0,
-      "committees": [
-        "Committee on House Administration"
-      ],
-      "latestAction": {
-        "date": "2026-08-27",
-        "text": "Referred to the House Committee on House Administration."
-      },
-      "actions": [
-        {
-          "date": "2026-08-27",
-          "text": "Referred to the House Committee on House Administration.",
-          "type": "IntroReferral"
-        },
-        {
-          "date": "2026-08-27",
-          "text": "Introduced in House",
-          "type": "IntroReferral"
-        },
-        {
-          "date": "2026-08-27",
-          "text": "Introduced in House",
-          "type": "IntroReferral"
-        }
-      ],
-      "votes": [],
-      "url": "https://www.congress.gov/bill/119th-congress/house-bill/10176"
-    },
-    {
-      "id": "119-s-5667",
-      "congress": 119,
-      "type": "s",
-      "number": 5667,
-      "title": "Ending Birthright Citizenship in U.S. Territories Act",
-      "originChamber": "Senate",
-      "introducedDate": "2026-09-30",
-      "updateDate": "2026-10-22T13:07:08Z",
-      "status": "in-committee",
-      "policyArea": "Immigration",
-      "sponsor": {
-        "name": "Sen. Lankford, James [R-OK]",
-        "party": "R",
-        "state": "OK"
-      },
-      "cosponsorCount": 0,
-      "committees": [
-        "Judiciary Committee"
-      ],
-      "latestAction": {
-        "date": "2026-09-30",
-        "text": "Read twice and referred to the Committee on the Judiciary."
-      },
-      "actions": [
-        {
-          "date": "2026-09-30",
-          "text": "Read twice and referred to the Committee on the Judiciary.",
-          "type": "IntroReferral"
-        },
-        {
-          "date": "2026-09-30",
-          "text": "Introduced in Senate",
-          "type": "IntroReferral"
-        }
-      ],
-      "votes": [],
-      "url": "https://www.congress.gov/bill/119th-congress/senate-bill/5667"
-    },
-    {
       "id": "119-sjres-200",
       "congress": 119,
       "type": "sjres",
@@ -1296,66 +1320,6 @@
       ],
       "votes": [],
       "url": "https://www.congress.gov/bill/119th-congress/senate-joint-resolution/200"
-    },
-    {
-      "id": "119-s-5039",
-      "congress": 119,
-      "type": "s",
-      "number": 5039,
-      "title": "License to Drill Act",
-      "originChamber": "Senate",
-      "introducedDate": "2026-07-21",
-      "updateDate": "2026-10-22T12:30:08Z",
-      "status": "in-committee",
-      "policyArea": "Energy",
-      "sponsor": {
-        "name": "Sen. Lee, Mike [R-UT]",
-        "party": "R",
-        "state": "UT"
-      },
-      "cosponsorCount": 0,
-      "committees": [
-        "Energy and Natural Resources Committee"
-      ],
-      "latestAction": {
-        "date": "2026-09-17",
-        "text": "Placed on Senate Legislative Calendar under General Orders. Calendar No. 659."
-      },
-      "actions": [
-        {
-          "date": "2026-09-17",
-          "text": "Placed on Senate Legislative Calendar under General Orders. Calendar No. 659.",
-          "type": "Calendars"
-        },
-        {
-          "date": "2026-09-17",
-          "text": "Committee on Energy and Natural Resources. Reported by Senator Lee without amendment. Without written report.",
-          "type": "Committee"
-        },
-        {
-          "date": "2026-09-17",
-          "text": "Committee on Energy and Natural Resources. Reported by Senator Lee without amendment. Without written report.",
-          "type": "Committee"
-        },
-        {
-          "date": "2026-07-29",
-          "text": "Committee on Energy and Natural Resources. Ordered to be reported without amendment favorably.",
-          "type": "Committee"
-        },
-        {
-          "date": "2026-07-21",
-          "text": "Read twice and referred to the Committee on Energy and Natural Resources.",
-          "type": "IntroReferral"
-        },
-        {
-          "date": "2026-07-21",
-          "text": "Introduced in Senate",
-          "type": "IntroReferral"
-        }
-      ],
-      "votes": [],
-      "crsSummary": "License to Drill Act This bill extends through FY2037 the Bureau of Land Management’s (BLM’s) authority to collect oil and gas permit processing fees. For each new permit application, BLM collects a fee that is transferred to the BLM Permit Processing Improvement Fund. (Under current law, the fees are authorized through FY2026.)",
-      "url": "https://www.congress.gov/bill/119th-congress/senate-bill/5039"
     },
     {
       "id": "119-hjres-218",
@@ -1877,6 +1841,50 @@
       "url": "https://www.congress.gov/bill/119th-congress/senate-bill/5384"
     },
     {
+      "id": "119-hr-10323",
+      "congress": 119,
+      "type": "hr",
+      "number": 10323,
+      "title": "Thirty-Two Hour Workweek Act",
+      "originChamber": "House",
+      "introducedDate": "2026-09-08",
+      "updateDate": "2026-10-13T15:18:12Z",
+      "status": "in-committee",
+      "policyArea": "Labor and Employment",
+      "sponsor": {
+        "name": "Rep. Takano, Mark [D-CA-39]",
+        "party": "D",
+        "state": "CA"
+      },
+      "cosponsorCount": 0,
+      "committees": [
+        "Education and Workforce Committee"
+      ],
+      "latestAction": {
+        "date": "2026-09-08",
+        "text": "Referred to the House Committee on Education and Workforce."
+      },
+      "actions": [
+        {
+          "date": "2026-09-08",
+          "text": "Referred to the House Committee on Education and Workforce.",
+          "type": "IntroReferral"
+        },
+        {
+          "date": "2026-09-08",
+          "text": "Introduced in House",
+          "type": "IntroReferral"
+        },
+        {
+          "date": "2026-09-08",
+          "text": "Introduced in House",
+          "type": "IntroReferral"
+        }
+      ],
+      "votes": [],
+      "url": "https://www.congress.gov/bill/119th-congress/house-bill/10323"
+    },
+    {
       "id": "119-hjres-217",
       "congress": 119,
       "type": "hjres",
@@ -2099,7 +2107,14 @@
           "type": "IntroReferral"
         }
       ],
-      "votes": [],
+      "votes": [
+        {
+          "chamber": "House",
+          "date": "2026-09-16T02:22:06Z",
+          "url": "https://clerk.house.gov/evs/2026/roll306.xml",
+          "action": "On passage Passed by the Yeas and Nays: 216 - 211 (Roll no. 306). (text: CR H5680)"
+        }
+      ],
       "crsSummary": "This joint resolution revokes the authorization granted to the California Air Resources Board (CARB) to amend its Ocean-Going Vessels At-Berth Regulation. Among other elements, the amendment proposed by CARB and authorized by the Environmental Protection Agency (EPA) expanded auxiliary engine emissions reductions requirements to include additional categories of ocean-going vessels. (Under the Clean Air Act, the EPA may authorize California to adopt and enforce standards relating to the control of emissions from nonroad vehicles or engines if those standards meet certain requirements.) Specifically, the joint resolution nullifies the EPA authorization decision titled California State Nonroad Engine Pollution Control Standards; Ocean-Going Vessels At-Berth; Notice of Decision .",
       "url": "https://www.congress.gov/bill/119th-congress/house-joint-resolution/210"
     },
@@ -2159,7 +2174,14 @@
           "type": "IntroReferral"
         }
       ],
-      "votes": [],
+      "votes": [
+        {
+          "chamber": "Senate",
+          "date": "2026-09-29T19:04:30Z",
+          "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00251.xml",
+          "action": "Motion to proceed to consideration of measure rejected in Senate by Yea-Nay Vote. 48 - 51. Record Vote Number: 251. (consideration: CR S5139-5140)"
+        }
+      ],
       "url": "https://www.congress.gov/bill/119th-congress/senate-joint-resolution/197"
     },
     {
@@ -2750,7 +2772,14 @@
           "type": "IntroReferral"
         }
       ],
-      "votes": [],
+      "votes": [
+        {
+          "chamber": "House",
+          "date": "2026-09-16T22:50:06Z",
+          "url": "https://clerk.house.gov/evs/2026/roll311.xml",
+          "action": "On passage Passed by the Yeas and Nays: 214 - 208 (Roll no. 311). (text: CR H5953)"
+        }
+      ],
       "crsSummary": "This joint resolution revokes the partial authorization granted to the California Air Resources Board (CARB) to amend its Commercial Harbor Craft regulation. Among other elements, the amendments proposed by CARB and partially authorized by the Environmental Protection Agency (EPA) create new emission standards and compliance dates depending on vessel category and engine model year and expand the types of vessels covered by the regulation (e.g. commercial fishing boats). (Under the Clean Air Act, the EPA may authorize California to adopt and enforce standards relating to the control of emissions from nonroad vehicles or engines if those standards meet certain requirements.) Specifically, the joint resolution nullifies the EPA authorization decision titled California State Nonroad Engine Pollution Control Standards; Commercial Harbor Craft Regulations; Notice of Decision .",
       "url": "https://www.congress.gov/bill/119th-congress/house-joint-resolution/213"
     },
@@ -2800,7 +2829,14 @@
           "type": "IntroReferral"
         }
       ],
-      "votes": [],
+      "votes": [
+        {
+          "chamber": "Senate",
+          "date": "2026-06-16T19:59:29Z",
+          "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00174.xml",
+          "action": "Motion to discharge Senate Committee on Foreign Relations rejected by Yea-Nay Vote. 47 - 48. Record Vote Number: 174."
+        }
+      ],
       "crsSummary": "This joint resolution directs the President to remove U.S. Armed Forces from hostilities within or against Iran unless a declaration of war or authorization to use military force for such purpose has been enacted. The resolution specifies that it shall not be construed to prevent the United States from defending against an attack on the United States or its personnel or facilities in other nations.",
       "url": "https://www.congress.gov/bill/119th-congress/senate-joint-resolution/172"
     },
@@ -2885,7 +2921,14 @@
           "type": "IntroReferral"
         }
       ],
-      "votes": [],
+      "votes": [
+        {
+          "chamber": "Senate",
+          "date": "2026-03-18T23:52:57Z",
+          "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00058.xml",
+          "action": "Motion to discharge Senate Committee on Foreign Relations rejected by Yea-Nay Vote. 47 - 53. Record Vote Number: 58."
+        }
+      ],
       "crsSummary": "This joint resolution directs the President to remove U.S. Armed Forces from hostilities within or against Iran unless a declaration of war or authorization to use military force for such purpose has been enacted. The resolution specifies that it shall not be construed to prevent the United States from defending against an attack on the United States or its personnel or facilities in other nations.",
       "url": "https://www.congress.gov/bill/119th-congress/senate-joint-resolution/118"
     },
@@ -3120,6 +3163,138 @@
       "url": "https://www.congress.gov/bill/119th-congress/senate-bill/5268"
     },
     {
+      "id": "119-hr-2270",
+      "congress": 119,
+      "type": "hr",
+      "number": 2270,
+      "title": "Empowering Employer Child and Elder Care Solutions Act",
+      "originChamber": "House",
+      "introducedDate": "2025-03-21",
+      "updateDate": "2026-07-18T00:00:26Z",
+      "status": "in-committee",
+      "policyArea": "Labor and Employment",
+      "sponsor": {
+        "name": "Rep. Messmer, Mark [R-IN-8]",
+        "party": "R",
+        "state": "IN"
+      },
+      "cosponsorCount": 0,
+      "committees": [
+        "Education and Workforce Committee"
+      ],
+      "latestAction": {
+        "date": "2026-01-13",
+        "text": "POSTPONED PROCEEDINGS - Pursuant to clause 1(c) of rule XIX, the Chair announced that further proceedings on H.R. 2270 is postponed."
+      },
+      "actions": [
+        {
+          "date": "2026-01-13",
+          "text": "POSTPONED PROCEEDINGS - Pursuant to clause 1(c) of rule XIX, the Chair announced that further proceedings on H.R. 2270 is postponed.",
+          "type": "Floor"
+        },
+        {
+          "date": "2026-01-13",
+          "text": "On motion to recommit Failed by the Yeas and Nays: 209 - 213 (Roll no. 20).",
+          "type": "Floor"
+        },
+        {
+          "date": "2026-01-13",
+          "text": "Considered as unfinished business. (consideration: CR H693-694)",
+          "type": "Floor"
+        },
+        {
+          "date": "2026-01-13",
+          "text": "POSTPONED PROCEEDINGS - At the conclusion of debate on H.R. 2270, the Chair put the question on motion to recommit and by voice vote, announced the noes had prevailed. Ms. Lee (PA) demanded the yeas and nays and the Chair postponed further proceedings until a time to be announced.",
+          "type": "Floor"
+        },
+        {
+          "date": "2026-01-13",
+          "text": "The previous question on the motion to recommit was ordered pursuant to clause 2(b) of rule XIX.",
+          "type": "Floor"
+        },
+        {
+          "date": "2026-01-13",
+          "text": "Ms. Lee (PA) moved to recommit to the Committee on Education and Workforce. (text: CR H684-685)",
+          "type": "Floor"
+        },
+        {
+          "date": "2026-01-13",
+          "text": "The previous question was ordered pursuant to the rule.",
+          "type": "Floor"
+        },
+        {
+          "date": "2026-01-13",
+          "text": "DEBATE - The House proceeded with one hour of debate on H.R. 2270.",
+          "type": "Floor"
+        },
+        {
+          "date": "2026-01-13",
+          "text": "Rule provides for consideration of H.R. 2988, H.R. 2262, H.R. 2270, H.R. 2312 and H.R. 4366. The resolution provides for consideration of H.R. 2988 under a structured rule, and H.R. 2262, H.R. 2270, H.R. 2312, and H.R. 4366 under a closed rule. The rule provides for one hour of general debate and one motion to recommit on each bill.",
+          "type": "Floor"
+        },
+        {
+          "date": "2026-01-13",
+          "text": "Considered under the provisions of rule H. Res. 988. (consideration: CR H681-685; text of amendment in the nature of a substitute: CR H681)",
+          "type": "Floor"
+        },
+        {
+          "date": "2026-01-12",
+          "text": "Rules Committee Resolution H. Res. 988 Reported to House. Rule provides for consideration of H.R. 2988, H.R. 2262, H.R. 2270, H.R. 2312 and H.R. 4366. The resolution provides for consideration of H.R. 2988 under a structured rule, and H.R. 2262, H.R. 2270, H.R. 2312, and H.R. 4366 under a closed rule. The rule provides for one hour of general debate and one motion to recommit on each bill.",
+          "type": "Floor"
+        },
+        {
+          "date": "2025-12-18",
+          "text": "Placed on the Union Calendar, Calendar No. 359.",
+          "type": "Calendars"
+        },
+        {
+          "date": "2025-12-18",
+          "text": "Reported (Amended) by the Committee on Education and Workforce. H. Rept. 119-413.",
+          "type": "Committee"
+        },
+        {
+          "date": "2025-12-18",
+          "text": "Reported (Amended) by the Committee on Education and Workforce. H. Rept. 119-413.",
+          "type": "Committee"
+        },
+        {
+          "date": "2025-04-09",
+          "text": "Ordered to be Reported (Amended) by the Yeas and Nays: 18 - 13.",
+          "type": "Committee"
+        },
+        {
+          "date": "2025-04-09",
+          "text": "Committee Consideration and Mark-up Session Held",
+          "type": "Committee"
+        },
+        {
+          "date": "2025-03-21",
+          "text": "Referred to the House Committee on Education and Workforce.",
+          "type": "IntroReferral"
+        },
+        {
+          "date": "2025-03-21",
+          "text": "Introduced in House",
+          "type": "IntroReferral"
+        },
+        {
+          "date": "2025-03-21",
+          "text": "Introduced in House",
+          "type": "IntroReferral"
+        }
+      ],
+      "votes": [
+        {
+          "chamber": "House",
+          "date": "2026-01-13T22:58:26Z",
+          "url": "https://clerk.house.gov/evs/2026/roll020.xml",
+          "action": "On motion to recommit Failed by the Yeas and Nays: 209 - 213 (Roll no. 20)."
+        }
+      ],
+      "crsSummary": "Empowering Employer Child and Elder Care Solutions Act This bill excludes the value of employer-funded child or dependent care from being used in calculating an eligible employee's overtime pay. Under current law, overtime hours must be paid at one and a half times an employee's regular rate of pay. This rate is an average hourly rate that must include certain types of pay, such as commissions. The bill specifies that an employer can provide or pay for child or dependent care services without the value of the services being included in this calculation.",
+      "url": "https://www.congress.gov/bill/119th-congress/house-bill/2270"
+    },
+    {
       "id": "119-s-4551",
       "congress": 119,
       "type": "s",
@@ -3157,6 +3332,50 @@
       ],
       "votes": [],
       "url": "https://www.congress.gov/bill/119th-congress/senate-bill/4551"
+    },
+    {
+      "id": "119-hr-1962",
+      "congress": 119,
+      "type": "hr",
+      "number": 1962,
+      "title": "Guaranteeing Overtime for Truckers Act",
+      "originChamber": "House",
+      "introducedDate": "2025-03-06",
+      "updateDate": "2026-04-10T08:05:48Z",
+      "status": "in-committee",
+      "policyArea": "Labor and Employment",
+      "sponsor": {
+        "name": "Rep. Van Drew, Jefferson [R-NJ-2]",
+        "party": "R",
+        "state": "NJ"
+      },
+      "cosponsorCount": 0,
+      "committees": [
+        "Education and Workforce Committee"
+      ],
+      "latestAction": {
+        "date": "2025-03-06",
+        "text": "Referred to the House Committee on Education and Workforce."
+      },
+      "actions": [
+        {
+          "date": "2025-03-06",
+          "text": "Referred to the House Committee on Education and Workforce.",
+          "type": "IntroReferral"
+        },
+        {
+          "date": "2025-03-06",
+          "text": "Introduced in House",
+          "type": "IntroReferral"
+        },
+        {
+          "date": "2025-03-06",
+          "text": "Introduced in House",
+          "type": "IntroReferral"
+        }
+      ],
+      "votes": [],
+      "url": "https://www.congress.gov/bill/119th-congress/house-bill/1962"
     },
     {
       "id": "119-s-1158",

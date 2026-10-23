@@ -178,7 +178,8 @@ function Detail({ id }: { id?: string }) {
           <li>Record last updated: {day(b.updateDate)}</li>
           {b.votes.map((v) => (
             <li key={v.url}>
-              {v.chamber} recorded vote, {day(v.date)}:{" "}
+              {v.chamber} recorded vote, {day(v.date)}
+              {v.action ? ` (official action text: “${v.action}”)` : ""}:{" "}
               <a href={v.url} target="_blank" rel="noreferrer">
                 official roll call
               </a>

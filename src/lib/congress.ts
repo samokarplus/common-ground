@@ -83,7 +83,8 @@ export const BillSchema = z.object({
   committees: z.array(z.string()),
   latestAction: z.object({ date: z.string(), text: z.string() }).optional(),
   actions: z.array(z.object({ date: z.string(), text: z.string(), type: z.string().optional() })),
-  votes: z.array(z.object({ chamber: z.string(), date: z.string(), url: z.string().url() })),
+  /** Recorded roll calls. `action` is the official action text, which usually states the tally. */
+  votes: z.array(z.object({ chamber: z.string(), date: z.string(), url: z.string().url(), action: z.string().optional() })),
   crsSummary: z.string().optional(),
   url: z.string().url(),
 });
@@ -106,6 +107,21 @@ export function mapStatus(actions: { text: string; type?: string }[], hasLaw: bo
   if (passed.size === 1) return "passed-one-chamber";
   if (actions.some((a) => a.type === "Committee" || /referred to/i.test(a.text))) return "in-committee";
   return "introduced";
+}
+
+/** Recorded votes appear on the bill and, in real BILLSTATUS files, nested inside action items. */
+function collectVotes(bill: XNode) {
+  const seen = new Set<string>();
+  const out: { chamber: string; date: string; url: string; action?: string }[] = [];
+  const add = (v: XNode, action?: string) => {
+    const url = txt(v, "url");
+    if (!url || seen.has(url)) return;
+    seen.add(url);
+    out.push({ chamber: txt(v, "chamber") ?? "", date: txt(v, "date") ?? "", url, ...(action ? { action } : {}) });
+  };
+  for (const v of items(bill, "recordedVotes")) add(v);
+  for (const a of items(bill, "actions")) for (const v of items(a, "recordedVotes")) add(v, txt(a, "text"));
+  return out.sort((x, y) => y.date.localeCompare(x.date));
 }
 
 export function parseBillStatus(xml: string): Bill {
@@ -140,7 +156,7 @@ export function parseBillStatus(xml: string): Bill {
     committees: items(bill, "committees").map((c) => txt(c, "name")).filter(Boolean),
     latestAction: la ? { date: txt(la, "actionDate"), text: txt(la, "text") } : undefined,
     actions,
-    votes: items(bill, "recordedVotes").map((v) => ({ chamber: txt(v, "chamber"), date: txt(v, "date"), url: txt(v, "url") })),
+    votes: collectVotes(bill),
     crsSummary: summary?.t ? stripHtml(summary.t).slice(0, 1500) : undefined,
     url: txt(bill, "legislationUrl"),
   });
