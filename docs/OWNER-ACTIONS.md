@@ -9,7 +9,10 @@ The refresh has **never run on GitHub Actions**, so it must not be described as 
 3. Actions tab → "Refresh official research snapshots" → **Run workflow**. Only a green run, plus a bot commit or a "no change" result, counts as working. Then tell a development session so docs can be updated.
 Details: `docs/enable-automation.md`.
 
-## 2. HTTPS and domain
+## 2. Domain: keep Common Ground separate from samo.karplus.org
+Common Ground is currently reachable under `samo.karplus.org` only because your account's user site has that custom domain and GitHub applies it to all project sites; this repository does not set it. See "Keeping Common Ground separate" in `docs/deployment-and-domain.md` for three options (remove the domain from the user site, give Common Ground its own domain, or move the repo to another account or organization). Pick one; sessions will not change DNS or account settings.
+
+### HTTPS
 `https://samokarplus.github.io/common-ground/` redirects to `http://samo.karplus.org/...` then to `https://samo.karplus.org/common-ground/`. In the `samokarplus/samokarplus.github.io` repository check Settings → Pages → custom domain and **Enforce HTTPS**. Details: `docs/deployment-and-domain.md`. Development sessions do not change DNS or account settings.
 
 ## 3. Human review
