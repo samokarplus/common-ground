@@ -8,7 +8,7 @@ import { localDebate } from "@/lib/local-debate";
 import HelpMeVote, { election } from "./help-me-vote";
 const Congress = lazy(() => import("./congress"));
 import Corrections from "./corrections";
-import { applyFeedFilters } from "@/lib/feed-filter";
+import { agencyOptions, applyFeedFilters } from "@/lib/feed-filter";
 import { daysUntil, electionPhase } from "@/lib/election";
 import {
   ArrowUpRight,
@@ -165,6 +165,7 @@ export default function CommonGround({
     [filter, setFilter] = useState("All actions"),
     [openOnly, setOpenOnly] = useState(false),
     [sinceDays, setSinceDays] = useState(0),
+    [agency, setAgency] = useState(""),
     [saved, setSaved] = useState<string[]>([]),
     [mobile, setMobile] = useState(false),
     [selected, setSelected] = useState<Action | null>(null),
@@ -219,7 +220,8 @@ export default function CommonGround({
     localStorage.setItem("cg-saved", JSON.stringify(next));
   }
   const actions = feed?.actions || [];
-  const filtered = applyFeedFilters(actions, { query, status: filter, openForComment: openOnly, sinceDays }, new Date());
+  const filtered = applyFeedFilters(actions, { query, status: filter, openForComment: openOnly, sinceDays, agency }, new Date());
+  const agencies = agencyOptions(actions);
   const lead =
     filtered.find((a) => a.abstract && a.abstract.length > 100) || filtered[0];
   const current =
@@ -696,6 +698,9 @@ export default function CommonGround({
                 setOpenOnly={setOpenOnly}
                 sinceDays={sinceDays}
                 setSinceDays={setSinceDays}
+                agency={agency}
+                setAgency={setAgency}
+                agencies={agencies}
               />
               <FeedStatus feed={feed} />
               <div className="results-count">
@@ -999,6 +1004,9 @@ function SearchPanel({
   setOpenOnly,
   sinceDays,
   setSinceDays,
+  agency,
+  setAgency,
+  agencies,
 }: {
   query: string;
   setQuery: (s: string) => void;
@@ -1008,6 +1016,9 @@ function SearchPanel({
   setOpenOnly: (b: boolean) => void;
   sinceDays: number;
   setSinceDays: (n: number) => void;
+  agency: string;
+  setAgency: (s: string) => void;
+  agencies: string[];
 }) {
   useEffect(() => {
     const q = new URLSearchParams(routeSearch()).get("q");
@@ -1036,6 +1047,12 @@ function SearchPanel({
           "Presidential document",
           "Agency notice",
         ].map((x) => (
+          <option key={x}>{x}</option>
+        ))}
+      </select>
+      <select aria-label="Agency" value={agency} onChange={(e) => setAgency(e.target.value)}>
+        <option value="">Any agency in this feed</option>
+        {agencies.map((x) => (
           <option key={x}>{x}</option>
         ))}
       </select>

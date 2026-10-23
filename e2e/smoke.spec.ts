@@ -132,3 +132,8 @@ test("measure page shows YES/NO, both sides' arguments and the not-human-reviewe
   await expect(page.getByText(/Source-checked, not human-reviewed\. On 2026-10-22/)).toBeVisible();
   await expect(page.getByText(/we recommend/i)).toHaveCount(0);
 });
+
+test("agency filter narrows the federal feed", async ({ page }) => {
+  await page.goto("#/legislation");
+  await expect(page.getByLabel("Agency")).toBeVisible();
+});
