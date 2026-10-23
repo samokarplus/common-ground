@@ -154,7 +154,7 @@ test("debate map separates claim types, filters them and keeps steelman text on 
   await page.goto("#/debate/maps/mail-ballot-id");
   await expect(page.getByRole("heading", { name: "Facts both sides can start from" })).toBeVisible();
   await page.getByRole("button", { name: "Value judgment" }).click();
-  await expect(page.getByText("Factual question").first()).toBeHidden().catch(() => undefined);
+  await expect(page.locator(".yes-no .tag").filter({ hasText: "Factual question" })).toBeHidden();
   await expect(page.locator(".yes-no .tag").first()).toContainText("Value judgment");
   await page.getByLabel(/Supporters of requiring ID information: the strongest/).fill("my private draft");
   expect(await page.evaluate(() => JSON.stringify({ ...localStorage }))).not.toContain("my private draft");
@@ -192,7 +192,7 @@ test("status page shows research health with freshness for each source and the r
   await page.goto("#/status");
   await expect(page.getByRole("heading", { name: "Research health" })).toBeVisible();
   await expect(page.getByText("Congress bills, GovInfo")).toBeVisible();
-  await expect(page.getByText(/not yet active/)).toBeVisible();
+  await expect(page.getByText(/Scheduled automation is unverified/)).toBeVisible();
   await expect(page.getByText(/Source-checked by an AI-assisted process/)).toBeVisible();
 });
 
@@ -297,7 +297,7 @@ test("a bill page offers editorial related reading that is labeled as such, and 
   await more.click();
   expect(await page.locator("a.measure-card").count()).toBeGreaterThan(before);
   await page.locator("a.measure-card").first().click();
-  await expect(page.getByText(/Editorial suggestions based on the bill's official policy area|Related reading/).first()).toBeVisible().catch(() => undefined);
+  await expect(page.getByRole('heading', { name: 'Related reading' })).toBeVisible();
 });
 
 test("a measure links to its debate map and to related Atlas ideas; an Atlas idea links back to the ballot", async ({ page }) => {
@@ -306,4 +306,23 @@ test("a measure links to its debate map and to related Atlas ideas; an Atlas ide
   await expect(page.getByRole("link", { name: /Thought Atlas: Distributive justice/ })).toBeVisible();
   await page.goto("#/atlas?node=distributive-justice");
   await expect(page.getByRole("heading", { name: /Where this shows up on Colorado's ballot/ })).toBeVisible();
+});
+
+test("a bill outside the snapshot has a useful official-record fallback", async ({ page }) => {
+  await page.goto("#/congress/bill/119-hr-999999");
+  await expect(page.getByRole("heading", { level: 1, name: "Bill outside this snapshot" })).toBeVisible();
+  await expect(page.getByRole("link", { name: /Search the official Congress.gov record/ })).toHaveAttribute("href", "https://www.congress.gov/search");
+});
+
+test("a long bill timeline can expand to the full official action record", async ({ page }) => {
+  const { readFileSync } = await import("node:fs");
+  const data = JSON.parse(readFileSync("data/congress/bills.json", "utf8"));
+  const bill = data.bills.find((b: { actions: unknown[] }) => b.actions.length > 25);
+  expect(bill).toBeTruthy();
+  await page.goto(`#/congress/bill/${bill.id}`);
+  await expect(page.locator(".timeline li")).toHaveCount(25);
+  await page.getByRole("button", { name: /Show all .* official actions/ }).click();
+  await expect(page.locator(".timeline li")).toHaveCount(bill.actions.length);
+  await page.getByRole("button", { name: "Show only the 25 most recent actions" }).click();
+  await expect(page.locator(".timeline li")).toHaveCount(25);
 });

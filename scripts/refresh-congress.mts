@@ -31,7 +31,7 @@ async function get(url: string, accept?: string, attempts = 3): Promise<string> 
 
 const parseStamp = (s: string) => Date.parse(s.replace(/(\d+)-(\w+)-(\d+) /, "$1 $2 $3 ") + " UTC") || 0;
 
-type Status = Record<string, { lastSuccess?: string; lastFailure?: string; lastError?: string; lastChange?: string }>;
+type Status = Record<string, { lastSuccess?: string; lastCheckedAt?: string; lastFailure?: string; lastError?: string; lastChange?: string }>;
 async function recordStatus(patch: Status[string]) {
   if (dryRun) return;
   let status: Status = {};
@@ -74,7 +74,7 @@ try {
   if (problem) throw new Error(`refusing to replace the snapshot: ${problem}`);
   if (JSON.stringify(prev.bills) === JSON.stringify(bills)) {
     console.log("No change in official bill data. Nothing written.");
-    await recordStatus({ lastSuccess: today, lastError: undefined });
+    await recordStatus({ lastSuccess: today, lastError: undefined, lastCheckedAt: new Date().toISOString() });
   } else if (dryRun) {
     console.log(`Dry run: would write ${bills.length} bills.`);
   } else {
@@ -92,7 +92,7 @@ try {
     await mkdir("data/changelog", { recursive: true });
     const log = (await readFile(CHANGELOG, "utf8").catch(() => "")) + JSON.stringify({ at: snapshot.retrievedAt, changes }) + "\n";
     await writeFile(CHANGELOG, log);
-    await recordStatus({ lastSuccess: today, lastChange: snapshot.retrievedAt, lastError: undefined });
+    await recordStatus({ lastSuccess: today, lastChange: snapshot.retrievedAt, lastError: undefined, lastCheckedAt: new Date().toISOString() });
     console.log(`Wrote ${bills.length} bills to ${OUT}.`);
   }
 } catch (e) {

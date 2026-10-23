@@ -4,7 +4,7 @@ const root = resolve(".");
 const findings = [];
 let files = 0;
 let bytes = 0;
-const skip = new Set(["node_modules", ".git", ".outputs", "coverage"]);
+const skip = new Set(["node_modules", ".git", ".outputs", "coverage", "test-results", "playwright-report"]);
 const patterns = [
   /-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----/,
   /\b(?:gh[pousr]_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,}|sk-[A-Za-z0-9_-]{20,}|AKIA[A-Z0-9]{16}|art_v2_[A-Za-z0-9_]{15,})\b/,
