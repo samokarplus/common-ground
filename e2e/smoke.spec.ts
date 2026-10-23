@@ -19,6 +19,7 @@ const routes = [
   "#/congress",
   "#/debate/maps",
   "#/paths",
+  "#/credits",
   "#/review",
   "#/vote/colorado/how-elections-work",
   "#/vote/colorado/compare",
@@ -325,4 +326,27 @@ test("a long bill timeline can expand to the full official action record", async
   await expect(page.locator(".timeline li")).toHaveCount(bill.actions.length);
   await page.getByRole("button", { name: "Show only the 25 most recent actions" }).click();
   await expect(page.locator(".timeline li")).toHaveCount(25);
+});
+
+test("the home page greets visitors with a photo hero, a clear first action and photo credits in the footer", async ({ page }) => {
+  await page.goto("#/");
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("Make sense of the world");
+  await expect(page.locator(".hero img")).toBeVisible();
+  await expect(page.getByRole("link", { name: /Understand my ballot/ })).toHaveAttribute("href", /#\/vote$/);
+  await page.getByRole("link", { name: "Photo credits" }).click();
+  await expect(page.getByRole("heading", { name: /photographs on this site/i })).toBeVisible();
+  await expect(page.getByText(/Carol M\. Highsmith/)).toBeVisible();
+});
+
+test("page headers carry a room photograph and the mobile menu opens and closes", async ({ page, isMobile }) => {
+  await page.goto("#/vote/colorado");
+  const bg = await page.locator(".page-title").first().evaluate((el) => getComputedStyle(el).backgroundImage);
+  expect(bg).toContain("images/");
+  if (isMobile) {
+    const toggle = page.getByRole("button", { name: "Toggle navigation" });
+    await expect(toggle).toHaveAttribute("aria-expanded", "false");
+    await toggle.click();
+    await expect(toggle).toHaveAttribute("aria-expanded", "true");
+    await expect(page.getByRole("navigation", { name: "Main navigation" }).getByRole("link", { name: "Congress" })).toBeVisible();
+  }
 });
