@@ -22,6 +22,8 @@ const routes = [
   "#/debate",
   "#/debate/maps",
   "#/paths",
+  "#/review",
+  "#/vote/colorado/how-elections-work",
   "#/search?q=tax",
   "#/chain",
   "#/atlas?node=distributive-justice",

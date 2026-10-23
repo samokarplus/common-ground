@@ -1,0 +1,227 @@
+{
+  "checkedOn": "2026-10-23",
+  "summary": {
+    "total": 54,
+    "ok": 49,
+    "dead": 0,
+    "inconclusive": 5
+  },
+  "results": [
+    {
+      "url": "https://amandaforcolorado.com/",
+      "status": "ok"
+    },
+    {
+      "url": "https://baisleyforsenate.com/",
+      "status": "ok"
+    },
+    {
+      "url": "https://baisleyforsenate.com/issues/",
+      "status": "ok"
+    },
+    {
+      "url": "https://bridgesforcolorado.com/",
+      "status": "ok"
+    },
+    {
+      "url": "https://citizensforkevingrantham.com/",
+      "status": "ok"
+    },
+    {
+      "url": "https://clerk.house.gov/evs/2025/roll145.xml",
+      "status": "ok"
+    },
+    {
+      "url": "https://clerk.house.gov/evs/2025/roll190.xml",
+      "status": "ok"
+    },
+    {
+      "url": "https://coloradosun.com/2026/10/07/james-wiley-amanda-gonzalez-secretary-of-state-voter-guide/",
+      "status": "ok"
+    },
+    {
+      "url": "https://content.leg.colorado.gov/sites/default/files/2026-blue-book-en-accessible.pdf",
+      "status": "ok"
+    },
+    {
+      "url": "https://content.leg.colorado.gov/sites/default/files/2026-blue-book-es-accessible.pdf",
+      "status": "ok"
+    },
+    {
+      "url": "https://content.leg.colorado.gov/sites/default/files/2026-fiscal-impact-statements-english-accessible.pdf",
+      "status": "ok"
+    },
+    {
+      "url": "https://hickenlooper.com/",
+      "status": "ok"
+    },
+    {
+      "url": "https://hickenlooper.com/about/",
+      "status": "ok"
+    },
+    {
+      "url": "https://jenaforcolorado.com/",
+      "status": "ok"
+    },
+    {
+      "url": "https://jenaforcolorado.com/about",
+      "status": "ok"
+    },
+    {
+      "url": "https://judicialperformance.colorado.gov/know-your-judges/2026-judicial-performance-evaluations",
+      "status": "inconclusive"
+    },
+    {
+      "url": "https://leg.colorado.gov/bill_files/116503/download",
+      "status": "ok"
+    },
+    {
+      "url": "https://leg.colorado.gov/bills/SB26-172",
+      "status": "inconclusive"
+    },
+    {
+      "url": "https://michaelallenforcolorado.com/",
+      "status": "ok"
+    },
+    {
+      "url": "https://myctbl.cde.state.co.us/legislative-blue-book",
+      "status": "inconclusive"
+    },
+    {
+      "url": "https://philforcolorado.com/",
+      "status": "ok"
+    },
+    {
+      "url": "https://philforcolorado.com/about/",
+      "status": "ok"
+    },
+    {
+      "url": "https://philforcolorado.com/issue/affordable-homes-and-communities/",
+      "status": "ok"
+    },
+    {
+      "url": "https://philforcolorado.com/issue/healthcare/",
+      "status": "ok"
+    },
+    {
+      "url": "https://philforcolorado.com/issue/public-safety/",
+      "status": "ok"
+    },
+    {
+      "url": "https://vote.gov",
+      "status": "inconclusive"
+    },
+    {
+      "url": "https://wileyforcolorado.com/",
+      "status": "ok"
+    },
+    {
+      "url": "https://www.coloradopolitics.com/2026/10/16/judicial-retention-judges-on-the-ballot-in-2026/",
+      "status": "ok"
+    },
+    {
+      "url": "https://www.coloradosos.gov/pubs/elections/Initiatives/ballot/contacts/2026.html",
+      "status": "ok"
+    },
+    {
+      "url": "https://www.coloradosos.gov/pubs/elections/Initiatives/titleBoard/filings/2025-2026/108Final.pdf",
+      "status": "ok"
+    },
+    {
+      "url": "https://www.coloradosos.gov/pubs/elections/Initiatives/titleBoard/filings/2025-2026/109Final.pdf",
+      "status": "ok"
+    },
+    {
+      "url": "https://www.coloradosos.gov/pubs/elections/Initiatives/titleBoard/filings/2025-2026/110Final.pdf",
+      "status": "ok"
+    },
+    {
+      "url": "https://www.coloradosos.gov/pubs/elections/Initiatives/titleBoard/filings/2025-2026/177Final.pdf",
+      "status": "ok"
+    },
+    {
+      "url": "https://www.coloradosos.gov/pubs/elections/Initiatives/titleBoard/filings/2025-2026/195Final.pdf",
+      "status": "ok"
+    },
+    {
+      "url": "https://www.coloradosos.gov/pubs/elections/Initiatives/titleBoard/filings/2025-2026/232FinalCorrected.pdf",
+      "status": "ok"
+    },
+    {
+      "url": "https://www.coloradosos.gov/pubs/elections/Initiatives/titleBoard/filings/2025-2026/234Final.pdf",
+      "status": "ok"
+    },
+    {
+      "url": "https://www.coloradosos.gov/pubs/elections/Initiatives/titleBoard/filings/2025-2026/256Final.pdf",
+      "status": "ok"
+    },
+    {
+      "url": "https://www.coloradosos.gov/pubs/elections/Initiatives/titleBoard/filings/2025-2026/302Final.pdf",
+      "status": "ok"
+    },
+    {
+      "url": "https://www.coloradosos.gov/pubs/elections/Initiatives/titleBoard/filings/2025-2026/308Final.pdf",
+      "status": "ok"
+    },
+    {
+      "url": "https://www.coloradosos.gov/pubs/elections/Initiatives/titleBoard/filings/2025-2026/362Final.pdf",
+      "status": "ok"
+    },
+    {
+      "url": "https://www.coloradosos.gov/pubs/elections/Initiatives/titleBoard/filings/2025-2026/85Final.pdf",
+      "status": "ok"
+    },
+    {
+      "url": "https://www.coloradosos.gov/pubs/elections/Initiatives/titleBoard/filings/2025-2026/95Final.pdf",
+      "status": "ok"
+    },
+    {
+      "url": "https://www.coloradosos.gov/pubs/elections/Resources/CountyElectionOffices.html",
+      "status": "ok"
+    },
+    {
+      "url": "https://www.coloradosos.gov/pubs/elections/vote/generalCandidates.html",
+      "status": "ok"
+    },
+    {
+      "url": "https://www.coloradosos.gov/pubs/newsRoom/pressReleases/2026/PR20260904BallotCertification.html",
+      "status": "ok"
+    },
+    {
+      "url": "https://www.congress.gov/bill/119th-congress/house-bill/1",
+      "status": "inconclusive"
+    },
+    {
+      "url": "https://www.denvergazette.com/2026/10/02/gonzales-wiley-vadney-landry-secretary-of-state/",
+      "status": "ok"
+    },
+    {
+      "url": "https://www.denvergazette.com/2026/10/02/state-treasurer-grantham-bridges-barr-seek-top-financial-position-3/",
+      "status": "ok"
+    },
+    {
+      "url": "https://www.frprdistrict.com",
+      "status": "ok"
+    },
+    {
+      "url": "https://www.govotecolorado.gov/",
+      "status": "ok"
+    },
+    {
+      "url": "https://www.leg.colorado.gov/legislators/jeff-bridges",
+      "status": "ok"
+    },
+    {
+      "url": "https://www.leg.colorado.gov/legislators/mark-baisley",
+      "status": "ok"
+    },
+    {
+      "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_00372.xml",
+      "status": "ok"
+    },
+    {
+      "url": "https://www.victor2026.com/",
+      "status": "ok"
+    }
+  ]
+}

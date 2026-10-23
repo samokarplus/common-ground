@@ -17,6 +17,7 @@ import {
   Vote,
 } from "lucide-react";
 import Link, { routeSearch } from "./link";
+import ElectionProcess from "./election-process";
 import raw from "../../data/elections/colorado-2026.json";
 import { LOCAL_RACE_TYPES } from "@/lib/local-races";
 import { JURISDICTIONS, coverageOf, officialElectionOffices } from "@/lib/states";
@@ -458,6 +459,9 @@ function Overview() {
           <li><strong>Match it to this page.</strong> Statewide items on your sample ballot are covered above. For anything else, use the list below to see what it is.</li>
           <li><strong>Ask your county.</strong> Your <a href="https://www.coloradosos.gov/pubs/elections/Resources/CountyElectionOffices.html" target="_blank" rel="noreferrer">county election office</a> can answer questions about your districts.</li>
         </ol>
+        <p>
+          New to voting in Colorado? Read <Link href="/vote/colorado/how-elections-work">how Colorado elections work, step by step</Link>.
+        </p>
         <h3>Races and questions that may appear on your ballot but are not covered here</h3>
         <ul>
           {LOCAL_RACE_TYPES.map((r) => (
@@ -575,7 +579,7 @@ function MeasureList() {
         <div className="eyebrow">COLORADO 2026 · BALLOT MEASURES</div>
         <h1>What you're being asked to decide.</h1>
         <p>
-          Every statewide measure, grouped by type. Constitutional amendments need 55% to pass; statutory propositions need a
+          Every statewide measure, grouped by type. Constitutional amendments need 55% to pass, except Amendment 87, which the Blue Book says needs only a majority; statutory propositions need a
           simple majority.
         </p>
       </div>
@@ -1350,6 +1354,7 @@ export default function HelpMeVote({ parts }: { parts: string[] }) {
   if (b === "contests") return <ContestList />;
   if (b === "contest") return <ContestDetail id={c} />;
   if (b === "judges") return <JudicialGuide />;
+  if (b === "how-elections-work") return <ElectionProcess />;
   if (b === "candidate") return <CandidateProfile contestId={c} name={parts[3]} />;
   return <NotFound />;
 }

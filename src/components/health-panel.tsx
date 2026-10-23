@@ -1,4 +1,5 @@
 import raw from "../../data/research-health.json";
+import linkRaw from "../../data/link-status.json";
 import { freshness } from "@/lib/freshness";
 const fmtDay = (d: string, opts: Intl.DateTimeFormatOptions = {}) =>
   new Date(d + "T12:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric", ...opts });
@@ -16,6 +17,8 @@ const ROWS: [id: string, label: string, kind: "automated" | "manual", maxAge: nu
   ["govinfo-billstatus", "Congress bills, GovInfo (refresh script)", "automated", 3],
   ["colorado-2026-election", "Colorado 2026 election data (manual, machine-checked)", "manual", 7],
 ];
+
+const links = linkRaw as { checkedOn: string; summary: { total: number; ok: number; dead: number; inconclusive: number }; results: { url: string; status: string }[] };
 
 export default function HealthPanel() {
   const now = new Date();
@@ -49,6 +52,26 @@ export default function HealthPanel() {
           );
         })}
       </div>
+      <h3>Citation links</h3>
+      <p>
+        Checked {links.checkedOn}: {links.summary.ok} of {links.summary.total} cited links responded normally, {links.summary.dead} are broken,
+        {" "}{links.summary.inconclusive} could not be confirmed. "Could not confirm" usually means the site blocks automated requests (a person can
+        usually still open it); it is not a verdict. The check runs by hand with <code>npm run check:links</code>.
+      </p>
+      {links.results.filter((r) => r.status !== "ok").length > 0 && (
+        <ul>
+          {links.results
+            .filter((r) => r.status !== "ok")
+            .map((r) => (
+              <li key={r.url}>
+                {r.status === "dead" ? "Broken" : "Unconfirmed"}:{" "}
+                <a href={r.url} target="_blank" rel="noreferrer">
+                  {r.url}
+                </a>
+              </li>
+            ))}
+        </ul>
+      )}
       <h3>Editorial review queue (Colorado measure explanations)</h3>
       <ul>
         <li>Drafts, hidden: {q.draft ?? 0}</li>

@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "date": "2026-10-22",
+    "page": "/vote/colorado/measure/amendment-87",
+    "type": "incorrect",
+    "was": "Needs at least 55% of votes cast to pass",
+    "now": "Passes with a majority vote",
+    "sourceUrl": "https://content.leg.colorado.gov/sites/default/files/2026-blue-book-en-accessible.pdf"
+  }
+]

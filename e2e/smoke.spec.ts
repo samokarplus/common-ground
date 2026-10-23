@@ -19,6 +19,8 @@ const routes = [
   "#/congress",
   "#/debate/maps",
   "#/paths",
+  "#/review",
+  "#/vote/colorado/how-elections-work",
   "#/search?q=tax",
   "#/chain",
   "#/atlas?node=distributive-justice",
@@ -236,4 +238,36 @@ test("candidates without a profile show an explicit research note, not a blank",
   await page.goto("#/vote/colorado/contest/secretary-of-state");
   await expect(page.getByText(/did not respond/).first()).toBeVisible();
   await expect(page.getByRole("link", { name: /Research profile/ }).first()).toBeVisible();
+});
+
+test("review dashboard lists items with sources and questions; decisions need a name and notes, and download a file", async ({ page }) => {
+  await page.goto("#/review");
+  await expect(page.getByRole("heading", { name: /still needs a human reviewer/ })).toBeVisible();
+  await expect(page.getByText("Outstanding questions").first()).toBeVisible();
+  const download = page.getByRole("button", { name: /Download decisions file/ });
+  await expect(download).toBeDisabled();
+  const first = page.locator("section.panel[aria-labelledby^='r-measure']").first();
+  await first.getByRole("button", { name: "Request corrections" }).click();
+  await page.getByLabel(/Your name/).fill("Test Editor");
+  await expect(download).toBeDisabled(); // a note is required
+  await first.getByLabel(/What needs to change/).fill("Check the fiscal note");
+  await expect(download).toBeEnabled();
+  const [file] = await Promise.all([page.waitForEvent("download"), download.click()]);
+  const text = await (await import("node:fs/promises")).readFile(await file.path(), "utf8");
+  const decisions = JSON.parse(text);
+  expect(decisions).toHaveLength(1);
+  expect(decisions[0]).toMatchObject({ decision: "request-changes", reviewer: "Test Editor", note: "Check the fiscal note" });
+  expect(await page.evaluate(() => JSON.stringify({ ...localStorage }))).not.toContain("Test Editor");
+});
+
+test("the Colorado election-process explainer cites official sources for each step", async ({ page }) => {
+  await page.goto("#/vote/colorado/how-elections-work");
+  await expect(page.getByRole("heading", { name: /How voting works in Colorado/ })).toBeVisible();
+  await expect(page.locator('a[href*="coloradosos.gov"]').first()).toBeVisible();
+  await expect(page.getByText(/Amendment 87.*only a majority/)).toBeVisible();
+});
+
+test("Amendment 87 shows the Blue Book's majority threshold", async ({ page }) => {
+  await page.goto("#/vote/colorado/measure/amendment-87");
+  await expect(page.getByText("Needs more than 50% of votes cast to pass").first()).toBeVisible();
 });

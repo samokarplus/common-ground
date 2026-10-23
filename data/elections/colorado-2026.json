@@ -490,7 +490,7 @@
       "kind": "constitutional-and-statutory",
       "origin": "citizen-initiated",
       "initiativeNumber": "2025-2026 #195",
-      "threshold": "55-percent",
+      "threshold": "majority",
       "topic": "Taxes & budget",
       "officialTextUrl": "https://www.coloradosos.gov/pubs/elections/Initiatives/titleBoard/filings/2025-2026/195Final.pdf",
       "blueBookPages": {
@@ -527,7 +527,8 @@
             "fiscal-statements"
           ],
           "checkNotes": [
-            "Summary, YES/NO meaning, fiscal items and arguments compared with the English Blue Book text and the English fiscal impact statements PDF (2026-10-22). Every dollar and percent figure was machine-matched against those two documents; figures present only in the Blue Book are its rounded versions. Spanish editions and the full legal text of each measure were not checked."
+            "Summary, YES/NO meaning, fiscal items and arguments compared with the English Blue Book text and the English fiscal impact statements PDF (2026-10-22). Every dollar and percent figure was machine-matched against those two documents; figures present only in the Blue Book are its rounded versions. Spanish editions and the full legal text of each measure were not checked.",
+            "Corrected on 2026-10-22: the vote threshold was recorded as 55 percent; the Blue Book's quick reference and analysis both say Amendment 87 passes with a majority vote."
           ]
         },
         "arguments": {
@@ -1297,9 +1298,9 @@
     },
     {
       "on": "2026-10-22",
-      "scope": "Statewide candidate names",
-      "method": "Read the Secretary of State's general-election candidate page through a summarizing fetch tool.",
-      "result": "Every name listed for U.S. Senate, Governor, Secretary of State, Treasurer and Attorney General is in our data. Withdrawals (marked by strikethrough in the official file) cannot be seen by this method, and two U.S. Senate write-ins in our data were not mentioned in the summary."
+      "scope": "Statewide candidates and withdrawals",
+      "method": "Downloaded the Secretary of State's official general-election candidate spreadsheet and compared it, including cell formatting, with our data.",
+      "result": "U.S. Senate, Governor and Lt. Governor running mates, Secretary of State, Treasurer, Attorney General and Court of Appeals match exactly on names, parties and write-in flags. The only withdrawal (strikethrough) in the whole file is a State Senate District 35 candidate, not a statewide race. The Supreme Court justice is not in that file and was not otherwise verified."
     },
     {
       "on": "2026-10-22",
@@ -1318,6 +1319,18 @@
       "scope": "Candidate profiles",
       "method": "Candidates' own campaign sites, read through a summarizing fetch tool.",
       "result": "Statements are paraphrased and attributed to the campaigns. Not independently fact-checked."
+    },
+    {
+      "on": "2026-10-22",
+      "scope": "Spanish-language Blue Book",
+      "method": "Extracted the Spanish edition's text and compared the numeric figures and the number of arguments on each side with the English edition for all 14 statewide measures.",
+      "result": "Figures and argument counts agree for all 14 (differences were only unit formatting, such as $1.972 billion versus 1,972 millones). This is a screen for number and structure mismatches, not a translation audit; wording and meaning were not compared."
+    },
+    {
+      "on": "2026-10-22",
+      "scope": "Vote thresholds",
+      "method": "Compared every measure's 'Passes with' line in the Blue Book's quick reference and analysis with our data.",
+      "result": "One error found and fixed: Amendment 87 passes with a majority vote, not 55 percent. The other 13 statewide measures and Ballot Issue 7A match."
     }
   ]
 }

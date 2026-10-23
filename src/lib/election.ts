@@ -84,7 +84,9 @@ export const MeasureSchema = z
   .superRefine((m, ctx) => {
     if (m.scope === "district" && !m.district)
       ctx.addIssue({ code: "custom", message: `${m.id}: district measures must name the district` });
-    if (m.kind.startsWith("constitutional") && m.threshold !== "55-percent")
+    // A purely constitutional initiative needs 55 percent. A measure that also changes statutes may pass by majority,
+    // so for that kind the threshold comes from the official Blue Book and is not forced here.
+    if (m.kind === "constitutional" && m.threshold !== "55-percent")
       ctx.addIssue({ code: "custom", message: `${m.id}: constitutional amendments need 55 percent` });
     if (m.kind === "statutory" && m.threshold !== "majority")
       ctx.addIssue({ code: "custom", message: `${m.id}: statutory measures pass by majority` });

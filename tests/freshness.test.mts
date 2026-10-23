@@ -38,3 +38,23 @@ test("the committed health report agrees with the data it summarizes", async () 
   // the hand-edited election data is compared strictly with the committed report here.
   assert.ok(fr.retrievedAt);
 });
+
+test("the citation-link report covers every source and profile URL currently in the data", async () => {
+  const { readFileSync } = await import("node:fs");
+  const status = JSON.parse(readFileSync("data/link-status.json", "utf8")) as { results: { url: string; status: string }[]; summary: { total: number; ok: number; dead: number; inconclusive: number } };
+  const checked = new Set(status.results.map((r) => r.url));
+  const e = JSON.parse(readFileSync("data/elections/colorado-2026.json", "utf8"));
+  const profiles = JSON.parse(readFileSync("data/elections/colorado-2026-profiles.json", "utf8"));
+  const wanted = [...e.sources.map((s: { url: string }) => s.url), ...profiles.flatMap((p: { claims: { sourceUrl: string }[] }) => p.claims.map((c) => c.sourceUrl))];
+  const missing = wanted.filter((u: string) => !checked.has(u));
+  assert.deepEqual(missing, [], "run `npm run check:links` and commit data/link-status.json");
+  assert.equal(status.summary.total, status.results.length);
+  assert.equal(status.summary.dead, status.results.filter((r) => r.status === "dead").length);
+});
+
+test("no source in the election data is past its freshness window", async () => {
+  const { readFileSync } = await import("node:fs");
+  const e = JSON.parse(readFileSync("data/elections/colorado-2026.json", "utf8"));
+  const age = (iso: string) => (Date.parse("2026-11-04") - Date.parse(iso)) / 86400000;
+  for (const s of e.sources) assert.ok(age(s.retrievedAt) < 60, `${s.id} was last retrieved ${s.retrievedAt}`);
+});

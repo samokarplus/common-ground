@@ -13,6 +13,7 @@ import HealthPanel from "./health-panel";
 const ChainPage = lazy(() => import("./chain"));
 const Pathways = lazy(() => import("./pathways"));
 const SiteSearch = lazy(() => import("./site-search"));
+const Review = lazy(() => import("./review"));
 import { agencyOptions, applyFeedFilters } from "@/lib/feed-filter";
 import { TENSIONS } from "@/lib/values-tradeoffs";
 import { daysUntil, electionPhase } from "@/lib/election";
@@ -803,6 +804,11 @@ export default function CommonGround({
               <Congress parts={parts.slice(1)} />
             </Suspense>
           )}
+          {section === "review" && (
+            <Suspense fallback={<p className="empty">Loading…</p>}>
+              <Review />
+            </Suspense>
+          )}
           {section === "search" && (
             <Suspense fallback={<p className="empty">Loading…</p>}>
               <SiteSearch />
@@ -944,6 +950,7 @@ export default function CommonGround({
             "chain",
             "paths",
             "search",
+            "review",
             "methodology",
             "privacy",
             "status",
@@ -958,6 +965,7 @@ export default function CommonGround({
             <span>Common Ground · An independent space for understanding</span>
             <Link href="/methodology">Methodology</Link>
             <Link href="/status">Source status</Link>
+            <Link href="/review">Editorial review</Link>
             <Link href="/paths">Pathways</Link>
             <Link href="/corrections">Report a correction</Link>
             <Link href="/privacy">Privacy</Link>

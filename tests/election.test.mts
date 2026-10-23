@@ -51,7 +51,7 @@ test("every record links to official https sources that exist in the source list
 
 test("constitutional amendments require 55 percent and propositions a majority", () => {
   for (const m of e.measures) {
-    if (m.kind.startsWith("constitutional")) assert.equal(m.threshold, "55-percent", m.id);
+    if (m.kind === "constitutional") assert.equal(m.threshold, "55-percent", m.id);
     if (m.kind === "statutory") assert.equal(m.threshold, "majority", m.id);
   }
   const bad = clone();
@@ -242,4 +242,13 @@ test("the judicial guide attributes press-reported facts and never states an ind
   assert.match(ui, /not verified against the official site/);
   assert.match(ui, /coloradopolitics\.com\/2026\/10\/16/);
   assert.ok(!/(Hood|Freyre|Harris|Lum|Moultrie|Schock|Sullivan)[^.<]{0,40}(meets performance standards|recommended for retention)/i.test(ui));
+});
+
+test("Amendment 87 is recorded as passing by majority, as the Blue Book states, and the correction is logged", async () => {
+  const { readFileSync } = await import("node:fs");
+  const m = e.measures.find((x) => x.id === "amendment-87")!;
+  assert.equal(m.kind, "constitutional-and-statutory");
+  assert.equal(m.threshold, "majority");
+  const log = JSON.parse(readFileSync("data/corrections.json", "utf8"));
+  assert.ok(log.some((c: { page: string; type: string }) => c.page.endsWith("amendment-87") && c.type === "incorrect"));
 });
