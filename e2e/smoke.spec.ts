@@ -97,3 +97,11 @@ test("measure search narrows the list and can be emptied", async ({ page }) => {
   expect(await cards.count()).toBeGreaterThan(0);
   expect(await cards.count()).toBeLessThan(all);
 });
+
+test("state picker covers Colorado and honestly declines other states", async ({ page }) => {
+  await page.goto("#/vote");
+  await page.getByLabel("Choose your state").selectOption("TX");
+  await expect(page.getByText(/not verified ballot information for Texas/)).toBeVisible();
+  await page.getByLabel("Choose your state").selectOption("CO");
+  await expect(page.getByRole("link", { name: /Open the Colorado guide/ })).toBeVisible();
+});

@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import Link, { routeSearch } from "./link";
 import raw from "../../data/elections/colorado-2026.json";
+import { JURISDICTIONS, coverageOf, officialElectionOffices } from "@/lib/states";
 import rawProfiles from "../../data/elections/colorado-2026-profiles.json";
 import { CLAIM_KINDS, CLAIM_LABEL, RESEARCH_AREAS, completeness, validateProfiles, type Profile } from "@/lib/candidate";
 import {
@@ -273,6 +274,47 @@ function BackLink({ href, label }: { href: string; label: string }) {
 
 /* ---------- Pages ---------- */
 
+function StatePicker() {
+  const [code, setCode] = useState("");
+  const name = JURISDICTIONS.find(([c]) => c === code)?.[1];
+  return (
+    <div className="panel">
+      <h2>Another state?</h2>
+      <label className="field-label" htmlFor="state-pick">
+        Choose your state
+      </label>
+      <select id="state-pick" value={code} onChange={(e) => setCode(e.target.value)}>
+        <option value="">Select a state…</option>
+        {JURISDICTIONS.map(([c, n]) => (
+          <option key={c} value={c}>
+            {n}
+            {coverageOf(c) === "statewide-verified" ? " — covered" : ""}
+          </option>
+        ))}
+      </select>
+      <div aria-live="polite">
+        {name &&
+          (coverageOf(code) === "statewide-verified" ? (
+            <p>
+              <Link href="/vote/colorado">Open the {name} guide <ArrowRight size={14} /></Link>
+            </p>
+          ) : (
+            <p>
+              We have not verified ballot information for {name} yet, and we won't show unverified information. Your state election
+              office has your official ballot and deadlines.
+            </p>
+          ))}
+      </div>
+      <a href={officialElectionOffices} target="_blank" rel="noreferrer" className="button secondary">
+        Find your state election office <ExternalLink size={14} />
+      </a>
+      <p className="muted">
+        Or use <a href="https://vote.gov" target="_blank" rel="noreferrer">vote.gov</a> to register or check your registration.
+      </p>
+    </div>
+  );
+}
+
 function Landing() {
   const now = new Date();
   const phase = electionPhase(election, now);
@@ -305,19 +347,7 @@ function Landing() {
             Start with Colorado <ArrowRight size={15} />
           </span>
         </Link>
-        <div className="panel">
-          <h2>Another state?</h2>
-          <p>
-            We haven't verified other states yet, and we won't show unverified ballot information. Your state's election office has
-            your official ballot and deadlines.
-          </p>
-          <a href="https://www.usa.gov/state-election-office" target="_blank" rel="noreferrer" className="button secondary">
-            Find your state election office <ExternalLink size={14} />
-          </a>
-          <p className="muted">
-            Or use <a href="https://vote.gov" target="_blank" rel="noreferrer">vote.gov</a> to register or check your registration.
-          </p>
-        </div>
+        <StatePicker />
       </div>
       <div className="panel">
         <h2>How this works</h2>

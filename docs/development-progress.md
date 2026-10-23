@@ -51,3 +51,6 @@ Factual log. Only items marked verified were checked in the session that wrote t
 
 ## Live verification after delayed push (2026-10-22)
 - Pushes failed intermittently ("remote end hung up") and landed after a backoff loop; origin/main contained `e0176c8` afterwards. Live site served `index-DJpjbNZI.js` (matching the local build). The suite ran against the live URL (desktop and mobile): 82/82 passed, including the judicial guide, corrections page, measure search and the candidate "0 of 5 areas" labels. The candidate **profile pages** themselves are not live because no profiles exist yet.
+
+## Multi-state architecture (session 3)
+- `src/lib/states.ts` lists all 50 states and DC; only Colorado is `statewide-verified`. The Help Me Vote landing has a state picker that opens the Colorado guide or honestly declines other states and links to the official election office. `docs/election-architecture.md` documents how to add a state. Tests: 61 unit, 126 browser, all passing locally.
