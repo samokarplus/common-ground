@@ -22,6 +22,7 @@ const routes = [
   "#/debate",
   "#/debate/maps",
   "#/paths",
+  "#/credits",
   "#/review",
   "#/vote/colorado/how-elections-work",
   "#/vote/colorado/compare",
