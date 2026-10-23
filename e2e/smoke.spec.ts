@@ -163,3 +163,9 @@ test("values explorer: tradeoffs link to real measures; reflections can be expor
   await page.getByRole("button", { name: "Yes, delete" }).click();
   expect(await page.evaluate(() => localStorage.getItem("cg-values"))).toBeNull();
 });
+
+test("an unknown federal document id shows a clear heading and explanation, not a blank page", async ({ page }) => {
+  await page.goto("#/action/0000-00000");
+  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+  await expect(page.getByRole("link", { name: /Federal actions/ })).toBeVisible();
+});

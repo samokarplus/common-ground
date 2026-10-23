@@ -1134,11 +1134,20 @@ function ActionDetail({
   const [tab, setTab] = useState("Overview");
   if (!a)
     return (
-      <div className="empty">
-        {busy
-          ? "Retrieving official document…"
-          : "Document unavailable. Search the Federal Register by document ID or try again."}
-      </div>
+      <>
+        <Link href="/legislation" className="back-link">
+          <ChevronLeft size={15} /> Federal actions
+        </Link>
+        <PageTitle
+          eyebrow="FEDERAL DOCUMENT"
+          title={busy ? "Retrieving the official document…" : "This document is unavailable."}
+          text={
+            busy
+              ? "Fetching the record from the Federal Register."
+              : "The Federal Register could not be reached or has no document with this ID. Search the feed by document ID, or try again later."
+          }
+        />
+      </>
     );
   const claims = metadataClaims(a);
   return (

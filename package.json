@@ -11,6 +11,7 @@
     "e2e": "playwright test",
     "refresh:congress": "node --experimental-strip-types scripts/refresh-congress.mts",
     "check:atlas": "node --experimental-strip-types scripts/check-atlas-links.mts",
+    "check:links": "node --experimental-strip-types scripts/check-links.mts",
     "scan": "node scripts/scan-publication.mjs",
     "typecheck": "tsc --noEmit",
     "lint": "eslint src tests",
