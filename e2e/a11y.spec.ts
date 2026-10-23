@@ -11,6 +11,7 @@ const routes = [
   "#/vote/colorado/judges",
   "#/vote/my-guide",
   "#/congress",
+  "#/legislation",
   "#/corrections",
   "#/congress/how-it-works",
   "#/policy",

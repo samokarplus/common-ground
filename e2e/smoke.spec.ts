@@ -105,3 +105,10 @@ test("state picker covers Colorado and honestly declines other states", async ({
   await page.getByLabel("Choose your state").selectOption("CO");
   await expect(page.getByRole("link", { name: /Open the Colorado guide/ })).toBeVisible();
 });
+
+test("federal feed offers comment-window and date filters", async ({ page }) => {
+  await page.goto("#/legislation");
+  await expect(page.getByLabel("Published within")).toBeVisible();
+  await page.getByLabel("Open for public comment").check();
+  await expect(page.getByText(/records in this feed/)).toBeVisible();
+});

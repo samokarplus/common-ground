@@ -54,3 +54,6 @@ Factual log. Only items marked verified were checked in the session that wrote t
 
 ## Multi-state architecture (session 3)
 - `src/lib/states.ts` lists all 50 states and DC; only Colorado is `statewide-verified`. The Help Me Vote landing has a state picker that opens the Colorado guide or honestly declines other states and links to the official election office. `docs/election-architecture.md` documents how to add a state. Tests: 61 unit, 126 browser, all passing locally.
+
+## Federal Register feed filters (session 3)
+- Added "Published within" (7/30 days) and "Open for public comment" filters on the Federal Register feed, with a tested pure helper (`src/lib/feed-filter.ts`). Filters apply only to records loaded in the current feed (40 per page), and the date window uses each record's publication date. Agency selection beyond keyword search, pagination controls, document-type timelines and topic filters remain undone. 65 unit and 132 browser checks pass locally.

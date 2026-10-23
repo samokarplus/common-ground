@@ -8,6 +8,7 @@ import { localDebate } from "@/lib/local-debate";
 import HelpMeVote, { election } from "./help-me-vote";
 const Congress = lazy(() => import("./congress"));
 import Corrections from "./corrections";
+import { applyFeedFilters } from "@/lib/feed-filter";
 import { daysUntil, electionPhase } from "@/lib/election";
 import {
   ArrowUpRight,
@@ -162,6 +163,8 @@ export default function CommonGround({
       () => new URLSearchParams(routeSearch()).get("q") || "",
     ),
     [filter, setFilter] = useState("All actions"),
+    [openOnly, setOpenOnly] = useState(false),
+    [sinceDays, setSinceDays] = useState(0),
     [saved, setSaved] = useState<string[]>([]),
     [mobile, setMobile] = useState(false),
     [selected, setSelected] = useState<Action | null>(null),
@@ -216,13 +219,7 @@ export default function CommonGround({
     localStorage.setItem("cg-saved", JSON.stringify(next));
   }
   const actions = feed?.actions || [];
-  const filtered = actions.filter(
-    (a) =>
-      (filter === "All actions" || a.status === filter) &&
-      `${a.title} ${a.document_number} ${a.agencies.map((x) => x.name).join(" ")}`
-        .toLowerCase()
-        .includes(query.toLowerCase()),
-  );
+  const filtered = applyFeedFilters(actions, { query, status: filter, openForComment: openOnly, sinceDays }, new Date());
   const lead =
     filtered.find((a) => a.abstract && a.abstract.length > 100) || filtered[0];
   const current =
@@ -695,6 +692,10 @@ export default function CommonGround({
                 setQuery={setQuery}
                 filter={filter}
                 setFilter={setFilter}
+                openOnly={openOnly}
+                setOpenOnly={setOpenOnly}
+                sinceDays={sinceDays}
+                setSinceDays={setSinceDays}
               />
               <FeedStatus feed={feed} />
               <div className="results-count">
@@ -994,11 +995,19 @@ function SearchPanel({
   setQuery,
   filter,
   setFilter,
+  openOnly,
+  setOpenOnly,
+  sinceDays,
+  setSinceDays,
 }: {
   query: string;
   setQuery: (s: string) => void;
   filter: string;
   setFilter: (s: string) => void;
+  openOnly: boolean;
+  setOpenOnly: (b: boolean) => void;
+  sinceDays: number;
+  setSinceDays: (n: number) => void;
 }) {
   useEffect(() => {
     const q = new URLSearchParams(routeSearch()).get("q");
@@ -1030,6 +1039,14 @@ function SearchPanel({
           <option key={x}>{x}</option>
         ))}
       </select>
+      <select aria-label="Published within" value={sinceDays} onChange={(e) => setSinceDays(Number(e.target.value))}>
+        <option value={0}>Any date in this feed</option>
+        <option value={7}>Last 7 days</option>
+        <option value={30}>Last 30 days</option>
+      </select>
+      <label className="check-label">
+        <input type="checkbox" checked={openOnly} onChange={(e) => setOpenOnly(e.target.checked)} /> Open for public comment
+      </label>
     </div>
   );
 }
