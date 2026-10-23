@@ -1,1 +1,126 @@
-[]
+[
+  {
+    "contestId": "governor",
+    "name": "Phil Weiser",
+    "campaignWebsite": "https://philforcolorado.com/",
+    "lastVerifiedOn": "2026-10-22",
+    "checkedNothingFound": [],
+    "claims": [
+      {
+        "kind": "own-statement",
+        "area": "positions",
+        "text": "Housing: the campaign's plan aims to add 40,000 owner-occupied homes Coloradans can afford, cutting the existing shortfall of such homes in half, with faster permitting, lower fees on homes under $600,000, down payment help, renter protections, and oversight of out-of-state investors and corporate landlords.",
+        "sourceUrl": "https://philforcolorado.com/issue/affordable-homes-and-communities/",
+        "sourceTitle": "Campaign site: Affordable Homes and Communities",
+        "retrievedOn": "2026-10-22"
+      },
+      {
+        "kind": "own-statement",
+        "area": "positions",
+        "text": "Health care: the campaign's 'Healthy Colorado Plan' emphasizes prevention and primary care, more affordable insurance options, cheaper prescriptions, protections against surprise bills and medical debt, and a task force to shield care from federal cuts.",
+        "sourceUrl": "https://philforcolorado.com/issue/healthcare/",
+        "sourceTitle": "Campaign site: Healthcare",
+        "retrievedOn": "2026-10-22"
+      },
+      {
+        "kind": "own-statement",
+        "area": "positions",
+        "text": "Public safety: the campaign says he would support police hiring and training, sign and defend gun safety laws, send trained co-responders to addiction and mental health crises, tie bail decisions to public safety risk rather than finances, and create a Governor's Office of Safe Communities.",
+        "sourceUrl": "https://philforcolorado.com/issue/public-safety/",
+        "sourceTitle": "Campaign site: Public Safety",
+        "retrievedOn": "2026-10-22"
+      },
+      {
+        "kind": "own-statement",
+        "area": "government-experience",
+        "text": "The campaign's biography page says he is Colorado's Attorney General, clerked for U.S. Supreme Court Justice Ruth Bader Ginsburg, worked at the U.S. Department of Justice and the White House in the Clinton and Obama administrations, and chaired Governor Ritter's Innovation Council.",
+        "sourceUrl": "https://philforcolorado.com/about/",
+        "sourceTitle": "Campaign site: Meet Phil",
+        "retrievedOn": "2026-10-22"
+      }
+    ]
+  },
+  {
+    "contestId": "governor",
+    "name": "Victor Marx",
+    "campaignWebsite": "https://www.victor2026.com/",
+    "lastVerifiedOn": "2026-10-22",
+    "checkedNothingFound": [],
+    "claims": [
+      {
+        "kind": "own-statement",
+        "area": "positions",
+        "text": "The campaign's home page lists these priorities: government accountability and transparency (ending waste and corruption); housing and cost of living; jobs, taxes and economic growth (cutting taxes); and law, order and public safety (backing law enforcement and putting victims first). Faith, freedom and nature appear as further headings with little detail on the page read.",
+        "sourceUrl": "https://www.victor2026.com/",
+        "sourceTitle": "Campaign site: home page",
+        "retrievedOn": "2026-10-22"
+      },
+      {
+        "kind": "own-statement",
+        "area": "background",
+        "text": "The campaign's home page describes him as a husband, father and community servant who has overcome personal adversity, and says he has spent decades on front-line work supporting veterans, rescuing vulnerable people and building programs. It lists no prior elected office.",
+        "sourceUrl": "https://www.victor2026.com/",
+        "sourceTitle": "Campaign site: home page",
+        "retrievedOn": "2026-10-22"
+      }
+    ]
+  },
+  {
+    "contestId": "us-senate",
+    "name": "John Hickenlooper",
+    "campaignWebsite": "https://hickenlooper.com/",
+    "lastVerifiedOn": "2026-10-22",
+    "checkedNothingFound": [],
+    "claims": [
+      {
+        "kind": "own-statement",
+        "area": "positions",
+        "text": "The campaign's biography page lists these priorities: lowering health care and prescription drug costs; reducing gun violence; protecting Colorado's public lands while addressing climate change; and working across party lines.",
+        "sourceUrl": "https://hickenlooper.com/about/",
+        "sourceTitle": "Campaign site: Meet John",
+        "retrievedOn": "2026-10-22"
+      },
+      {
+        "kind": "own-statement",
+        "area": "government-experience",
+        "text": "The campaign's biography page says he served as Mayor of Denver and as Governor of Colorado, and that he began as a geologist before opening Colorado's first brewpub and starting other small businesses. Term dates are not given on the page.",
+        "sourceUrl": "https://hickenlooper.com/about/",
+        "sourceTitle": "Campaign site: Meet John",
+        "retrievedOn": "2026-10-22"
+      }
+    ]
+  },
+  {
+    "contestId": "us-senate",
+    "name": "Mark Baisley",
+    "campaignWebsite": "https://baisleyforsenate.com/",
+    "lastVerifiedOn": "2026-10-22",
+    "checkedNothingFound": [],
+    "claims": [
+      {
+        "kind": "own-statement",
+        "area": "positions",
+        "text": "The campaign's issues page says he supports lower federal taxes, fewer regulations and more domestic energy production; more funding for law enforcement and opposition to early release of violent offenders; the current legal immigration system with an emphasis on self-sufficiency and assimilation; and fewer regulatory burdens and market-based solutions for agriculture.",
+        "sourceUrl": "https://baisleyforsenate.com/issues/",
+        "sourceTitle": "Campaign site: Issues",
+        "retrievedOn": "2026-10-22"
+      },
+      {
+        "kind": "own-statement",
+        "area": "background",
+        "text": "The campaign's home page describes a career as an aerospace engineer and leading a Colorado software company, and says he was elected to the Colorado House in 2018 and the Colorado Senate in 2022.",
+        "sourceUrl": "https://baisleyforsenate.com/",
+        "sourceTitle": "Campaign site: home page",
+        "retrievedOn": "2026-10-22"
+      },
+      {
+        "kind": "documented-action",
+        "area": "government-experience",
+        "text": "The Colorado General Assembly's member page lists him as a Republican state senator for District 4 with assignments to the Joint Technology, Local Government & Housing, and Transportation & Energy committees. The page read did not state service dates.",
+        "sourceUrl": "https://www.leg.colorado.gov/legislators/mark-baisley",
+        "sourceTitle": "Colorado General Assembly: Senator Mark Baisley",
+        "retrievedOn": "2026-10-22"
+      }
+    ]
+  }
+]

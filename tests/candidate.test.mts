@@ -42,3 +42,16 @@ test("shipped profile data validates against the Colorado dataset", async () => 
   const e = parseElection(JSON.parse(readFileSync("data/elections/colorado-2026.json", "utf8")));
   validateProfiles(JSON.parse(readFileSync("data/elections/colorado-2026-profiles.json", "utf8")), e.contests);
 });
+
+test("shipped profiles only cite https sources and mark every claim with a kind", async () => {
+  const { readFileSync } = await import("node:fs");
+  const list = JSON.parse(readFileSync("data/elections/colorado-2026-profiles.json", "utf8"));
+  assert.ok(list.length >= 4);
+  for (const p of list) {
+    assert.ok(p.claims.length > 0, p.name);
+    for (const c of p.claims) {
+      assert.match(c.sourceUrl, /^https:\/\//);
+      assert.match(c.retrievedOn, /^2026-/);
+    }
+  }
+});

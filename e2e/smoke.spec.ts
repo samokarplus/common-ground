@@ -9,6 +9,7 @@ const routes = [
   "#/vote/colorado/contests",
   "#/vote/colorado/contest/governor",
   "#/vote/colorado/judges",
+  "#/vote/colorado/candidate/governor/Phil%20Weiser",
   "#/vote/colorado/contest/supreme-court-retention",
   "#/vote/my-guide",
   "#/vote/how-to-read",
@@ -111,4 +112,13 @@ test("federal feed offers comment-window and date filters", async ({ page }) => 
   await expect(page.getByLabel("Published within")).toBeVisible();
   await page.getByLabel("Open for public comment").check();
   await expect(page.getByText(/records in this feed/)).toBeVisible();
+});
+
+test("candidate profile shows labeled own statements, sources and the not-fact-checked notice", async ({ page }) => {
+  await page.goto("#/vote/colorado/contest/governor");
+  await page.getByRole("link", { name: /Research profile/ }).first().click();
+  await expect(page.getByText(/not independently fact-checked/)).toBeVisible();
+  await expect(page.getByRole("heading", { name: "The candidate's own statement" })).toBeVisible();
+  await expect(page.locator('a[href^="https://"][target="_blank"]').first()).toBeVisible();
+  await expect(page.getByText(/not yet researched/).first()).toBeVisible();
 });

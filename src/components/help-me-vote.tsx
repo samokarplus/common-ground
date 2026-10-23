@@ -1201,6 +1201,12 @@ function CandidateProfile({ contestId, name }: { contestId?: string; name?: stri
           no position is inferred from party.
         </p>
       </div>
+      <div className="notice">
+        <Info size={18} /> Read this first: statements below are what the candidate or an official record says, paraphrased by Common Ground
+        from the linked page on {p.lastVerifiedOn}. They are not independently fact-checked, and the exact wording is on the linked page.
+        Candidates choose what to publish, so a short list does not mean a candidate has no other positions. Common Ground does not rank,
+        score or recommend candidates.
+      </div>
       <article className="panel longform">
         {p.campaignWebsite && (
           <p>
