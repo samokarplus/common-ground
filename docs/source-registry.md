@@ -83,4 +83,4 @@ Integration types: **automated** (scheduled refresh), **browser-live** (fetched 
 - **Format / access:** XML bulk data · Keyless bulk download
 - **Updates:** Several times daily · **Integration:** manual-reviewed
 - **Terms:** U.S. government work; public domain
-- **Known gaps:** Refresh script exists (npm run refresh:congress) but is run by hand until the owner applies docs/proposed-refresh-workflow.yml (needs a token with workflow scope). Snapshot holds only the 15 most recently updated bills of each type (H.R., S., H.J.Res., S.J.Res.) of the 119th Congress; no concurrent/simple resolutions; vote tallies not parsed; status is derived from the action log.
+- **Known gaps:** Refresh script exists (npm run refresh:congress) but is run by hand until the owner applies docs/proposed-refresh-workflow.yml (needs a token with workflow scope). Snapshot holds only the 40 most recently updated bills of each type (H.R., S., H.J.Res., S.J.Res.) of the 119th Congress; no concurrent/simple resolutions; vote tallies not parsed; status is derived from the action log.

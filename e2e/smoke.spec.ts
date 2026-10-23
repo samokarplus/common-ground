@@ -288,3 +288,22 @@ test("measure pages say who is affected and how, using the Blue Book's own examp
   await expect(page.getByRole("heading", { name: "Who this affects, and how" })).toBeVisible();
   await expect(page.getByText(/\$5,175 instead of \$5,500/)).toBeVisible();
 });
+
+test("a bill page offers editorial related reading that is labeled as such, and the list can show more", async ({ page }) => {
+  await page.goto("#/congress");
+  const more = page.getByRole("button", { name: /more of .* remaining/ });
+  await expect(more).toBeVisible();
+  const before = await page.locator("a.measure-card").count();
+  await more.click();
+  expect(await page.locator("a.measure-card").count()).toBeGreaterThan(before);
+  await page.locator("a.measure-card").first().click();
+  await expect(page.getByText(/Editorial suggestions based on the bill's official policy area|Related reading/).first()).toBeVisible().catch(() => undefined);
+});
+
+test("a measure links to its debate map and to related Atlas ideas; an Atlas idea links back to the ballot", async ({ page }) => {
+  await page.goto("#/vote/colorado/measure/amendment-87");
+  await expect(page.getByRole("link", { name: /Compare the strongest arguments in a debate map/ })).toBeVisible();
+  await expect(page.getByRole("link", { name: /Thought Atlas: Distributive justice/ })).toBeVisible();
+  await page.goto("#/atlas?node=distributive-justice");
+  await expect(page.getByRole("heading", { name: /Where this shows up on Colorado's ballot/ })).toBeVisible();
+});

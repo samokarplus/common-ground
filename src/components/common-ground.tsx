@@ -52,6 +52,7 @@ import type { Action } from "@/lib/domain";
 import { clearPrivate, metadataClaims } from "@/lib/domain";
 import { topics, scenarios } from "@/lib/content";
 import { atlasNodes, atlasEdges } from "@/lib/atlas";
+import { ATLAS_BALLOT_LINKS } from "@/lib/crosslinks";
 import type { Feed } from "@/lib/free-source";
 const nav = [
   ["today", "Today", Sun],
@@ -2506,6 +2507,18 @@ function Atlas() {
                 </button>
               );
             })}
+          {ATLAS_BALLOT_LINKS[node.id] && (
+            <>
+              <h3>Where this shows up on Colorado's ballot</h3>
+              <ul>
+                {ATLAS_BALLOT_LINKS[node.id].map((m) => (
+                  <li key={m}>
+                    <Link href={`/vote/colorado/measure/${m}`}>{election.measures.find((x) => x.id === m)?.designation}: {election.measures.find((x) => x.id === m)?.shortTitle}</Link>
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
           {node.context && (
             <>
               <h3>Historical context</h3>

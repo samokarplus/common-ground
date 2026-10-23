@@ -4,6 +4,8 @@ import Link from "./link";
 import raw from "../../data/congress/bills.json";
 import { BillSchema, BILL_STATUSES, STATUS_LABEL, type Bill, type BillStatus } from "@/lib/congress";
 import { z } from "zod";
+import { POLICY_AREA_IDEAS } from "@/lib/crosslinks";
+import { atlasNodes } from "@/lib/atlas";
 import { freshness } from "@/lib/freshness";
 
 const snapshot = z
@@ -66,6 +68,7 @@ function List() {
   const [status, setStatus] = useState<BillStatus | "all">("all");
   const [chamber, setChamber] = useState("all");
   const [q, setQ] = useState("");
+  const [limit, setLimit] = useState(30);
   const list = useMemo(
     () =>
       snapshot.bills.filter(
@@ -110,7 +113,7 @@ function List() {
         {list.length} of {snapshot.bills.length} bills
       </p>
       <div className="measure-grid">
-        {list.map((b) => (
+        {list.slice(0, limit).map((b) => (
           <Link key={b.id} href={`/congress/bill/${b.id}`} className="measure-card">
             <div className="card-meta">
               <span className="tag">{label(b)}</span>
@@ -127,6 +130,11 @@ function List() {
           </Link>
         ))}
       </div>
+      {list.length > limit && (
+        <button className="button secondary load-more" onClick={() => setLimit(limit + 30)}>
+          Show {Math.min(30, list.length - limit)} more of {list.length - limit} remaining
+        </button>
+      )}
       {list.length === 0 && <p className="empty">No bills in this snapshot match those filters.</p>}
     </>
   );
@@ -201,6 +209,29 @@ function Detail({ id }: { id?: string }) {
         </ol>
         {b.actions.length > 25 && <p className="card-meta">Showing the 25 most recent of {b.actions.length} actions.</p>}
       </section>
+      {b.policyArea && (
+        <section>
+          <h2>Related reading</h2>
+          <p className="muted">Editorial suggestions based on the bill's official policy area, "{b.policyArea}". They are not an analysis of this bill.</p>
+          <ul>
+            {(POLICY_AREA_IDEAS[b.policyArea] ?? []).map((id) => {
+              const n = atlasNodes.find((x) => x.id === id);
+              return n ? (
+                <li key={id}>
+                  <Link href={`/atlas?node=${id}`}>Thought Atlas: {n.name}</Link>
+                </li>
+              ) : null;
+            })}
+            <li>
+              <Link href={`/legislation?q=${encodeURIComponent(b.policyArea.split(/[ ,]+/)[0])}`}>Federal Register documents mentioning “{b.policyArea.split(/[ ,]+/)[0]}”</Link>{" "}
+              <span className="muted">(keyword match, not related by analysis)</span>
+            </li>
+            <li>
+              <Link href="/chain">See how a bill's journey is recorded, stage by stage</Link>
+            </li>
+          </ul>
+        </section>
+      )}
       <p>
         <a className="button secondary" href={b.url} target="_blank" rel="noreferrer">
           Read on Congress.gov <ExternalLink size={14} />

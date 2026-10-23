@@ -10,7 +10,7 @@ const HEALTH = "data/source-status.json";
 const ID = "govinfo-billstatus";
 const CONGRESS = 119;
 const TYPES = ["hr", "s", "hjres", "sjres"];
-const PER_TYPE = 15;
+const PER_TYPE = Number(process.env.CONGRESS_PER_TYPE ?? 40);
 const dryRun = process.argv.includes("--dry-run");
 const UA = { "User-Agent": "CommonGround-civic-education (+https://github.com/samokarplus/common-ground)" };
 

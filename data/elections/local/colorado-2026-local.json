@@ -1,0 +1,30 @@
+{
+  "state": "CO",
+  "electionDate": "2026-11-03",
+  "jurisdictions": [
+    {
+      "id": "front-range-passenger-rail-district",
+      "name": "Front Range Passenger Rail District",
+      "level": "special-district",
+      "state": "CO",
+      "electionOffice": {
+        "name": "Designated election official: Front Range Passenger Rail District (see the district notice in the Blue Book, p. 100)",
+        "url": "https://content.leg.colorado.gov/sites/default/files/2026-blue-book-en-accessible.pdf"
+      },
+      "coverage": "verified-items",
+      "note": "Only voters who live inside the district see Ballot Issue 7A. Which voters those are depends on exact address; use your official sample ballot."
+    }
+  ],
+  "items": [
+    {
+      "id": "issue-7a",
+      "jurisdictionId": "front-range-passenger-rail-district",
+      "kind": "measure",
+      "title": "Ballot Issue 7A: Colorado Connector passenger rail tax and debt",
+      "officialUrl": "https://content.leg.colorado.gov/sites/default/files/2026-blue-book-en-accessible.pdf",
+      "sourceTitle": "2026 Colorado Blue Book, district notice, p. 100",
+      "retrievedOn": "2026-10-22",
+      "measureId": "issue-7a"
+    }
+  ]
+}

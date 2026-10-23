@@ -19,6 +19,8 @@ import {
 import Link, { routeSearch } from "./link";
 import ElectionProcess from "./election-process";
 import Compare from "./compare";
+import { ATLAS_BALLOT_LINKS, DEBATE_FOR_MEASURE } from "@/lib/crosslinks";
+import { atlasNodes } from "@/lib/atlas";
 import raw from "../../data/elections/colorado-2026.json";
 import { LOCAL_RACE_TYPES } from "@/lib/local-races";
 import { JURISDICTIONS, coverageOf, officialElectionOffices } from "@/lib/states";
@@ -758,6 +760,25 @@ function MeasureDetail({ id }: { id?: string }) {
                   </div>
                 </>
               )}
+              <h2>Go deeper</h2>
+              <ul>
+                {DEBATE_FOR_MEASURE[m.id] && (
+                  <li>
+                    <Link href={`/debate/maps/${DEBATE_FOR_MEASURE[m.id]}`}>Compare the strongest arguments in a debate map</Link>
+                  </li>
+                )}
+                {Object.entries(ATLAS_BALLOT_LINKS)
+                  .filter(([, ms]) => ms.includes(m.id))
+                  .map(([node]) => (
+                    <li key={node}>
+                      <Link href={`/atlas?node=${node}`}>Thought Atlas: {atlasNodes.find((n) => n.id === node)?.name}</Link>{" "}
+                      <span className="muted">(an idea people have argued about that this measure touches)</span>
+                    </li>
+                  ))}
+                <li>
+                  <Link href="/values">Explore the values this measure puts in tension</Link>
+                </li>
+              </ul>
               {isHumanReviewed(m) ? (
                 <p className="muted">
                   Reviewed by {explanation.review.reviewer} on {explanation.review.reviewedOn}. Prepared from the official Blue Book and

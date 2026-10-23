@@ -4,6 +4,7 @@ import { readdirSync, readFileSync } from "node:fs";
 import { JURISDICTIONS, coverageOf } from "../src/lib/states.ts";
 import { parseElection } from "../src/lib/election.ts";
 import { validateProfiles } from "../src/lib/candidate.ts";
+import { LocalDatasetSchema } from "../src/lib/local-elections.ts";
 
 const dir = "data/elections";
 let failed = false;
@@ -24,6 +25,15 @@ for (const f of readdirSync(dir).filter((x) => /^[a-z-]+-\d{4}\.json$/.test(x)))
   } catch (err) {
     failed = true;
     console.error(`FAIL ${f}: ${(err as Error).message}`);
+  }
+}
+for (const f of readdirSync(`${dir}/local`).filter((x) => x.endsWith(".json"))) {
+  try {
+    const l = LocalDatasetSchema.parse(JSON.parse(readFileSync(`${dir}/local/${f}`, "utf8")));
+    console.log(`OK local/${f}: ${l.state}, ${l.jurisdictions.length} jurisdictions, ${l.items.length} items`);
+  } catch (err) {
+    failed = true;
+    console.error(`FAIL local/${f}: ${(err as Error).message}`);
   }
 }
 process.exit(failed ? 1 : 0);
