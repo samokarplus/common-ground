@@ -7,6 +7,7 @@ import { getFeed, getDocument } from "@/lib/free-source";
 import { localDebate } from "@/lib/local-debate";
 import HelpMeVote, { election } from "./help-me-vote";
 const Congress = lazy(() => import("./congress"));
+const DebateMaps = lazy(() => import("./debate-maps"));
 import Corrections from "./corrections";
 import { agencyOptions, applyFeedFilters } from "@/lib/feed-filter";
 import { daysUntil, electionPhase } from "@/lib/election";
@@ -781,7 +782,14 @@ export default function CommonGround({
           )}
           {section === "policy" && <PolicyExplorer />}
           {section === "values" && <ValuesExplorer />}
-          {section === "debate" && <DebateLab actions={actions} />}
+          {section === "debate" &&
+            (parts[1] === "maps" ? (
+              <Suspense fallback={<p className="empty">Loading…</p>}>
+                <DebateMaps id={parts[2]} />
+              </Suspense>
+            ) : (
+              <DebateLab actions={actions} />
+            ))}
           {section === "atlas" && <Atlas />}
           {(section === "vote" || section === "ballot") && (
             <HelpMeVote parts={section === "vote" ? parts.slice(1) : []} />
@@ -1880,6 +1888,13 @@ function DebateLab({ actions }: { actions: Action[] }) {
         title="A better kind of disagreement."
         text="Examine a position. Give a counterargument a fair hearing. See what becomes clearer."
       />
+      <div className="notice">
+        <Info size={18} />{" "}
+        <span>
+          New: <Link href="/debate/maps">Debate maps</Link> lay out the strongest arguments on real Colorado ballot questions, separating
+          facts, predictions, definitions and values.
+        </span>
+      </div>
       <div className="debate-layout">
         <div>
           <form onSubmit={submit} className="panel">

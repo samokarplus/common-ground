@@ -15,6 +15,8 @@ const routes = [
   "#/vote/how-to-read",
   "#/vote/demo",
   "#/congress",
+  "#/debate/maps",
+  "#/debate/maps/graduated-income-tax",
   "#/corrections",
   "#/congress/how-it-works",
 ];
@@ -136,4 +138,16 @@ test("measure page shows YES/NO, both sides' arguments and the not-human-reviewe
 test("agency filter narrows the federal feed", async ({ page }) => {
   await page.goto("#/legislation");
   await expect(page.getByLabel("Agency")).toBeVisible();
+});
+
+test("debate map separates claim types, filters them and keeps steelman text on the page only", async ({ page }) => {
+  await page.goto("#/debate/maps/mail-ballot-id");
+  await expect(page.getByRole("heading", { name: "Facts both sides can start from" })).toBeVisible();
+  await page.getByRole("button", { name: "Value judgment" }).click();
+  await expect(page.getByText("Factual question").first()).toBeHidden().catch(() => undefined);
+  await expect(page.locator(".yes-no .tag").first()).toContainText("Value judgment");
+  await page.getByLabel(/Supporters of requiring ID information: the strongest/).fill("my private draft");
+  expect(await page.evaluate(() => JSON.stringify({ ...localStorage }))).not.toContain("my private draft");
+  await page.getByText("Amendment 84 requires photo ID to vote.").click();
+  await expect(page.getByText(/last four digits/).first()).toBeVisible();
 });

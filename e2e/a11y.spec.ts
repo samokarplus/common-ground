@@ -20,6 +20,8 @@ const routes = [
   "#/policy",
   "#/values",
   "#/debate",
+  "#/debate/maps",
+  "#/debate/maps/graduated-income-tax",
   "#/atlas",
   "#/methodology",
   "#/privacy",
