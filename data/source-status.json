@@ -1,10 +1,12 @@
 {
   "federal-register": {
-    "lastSuccess": "2026-10-22",
-    "lastChange": "2026-10-22T22:59:45.615Z"
+    "lastSuccess": "2026-10-23",
+    "lastChange": "2026-10-22T22:59:45.615Z",
+    "lastCheckedAt": "2026-10-23T03:12:54.175Z"
   },
   "govinfo-billstatus": {
     "lastSuccess": "2026-10-23",
-    "lastChange": "2026-10-23T02:04:28.583Z"
+    "lastChange": "2026-10-23T02:04:28.583Z",
+    "lastCheckedAt": "2026-10-23T03:13:56.316Z"
   }
 }
