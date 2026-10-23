@@ -4,6 +4,7 @@
     "federal-register": {
       "snapshotRetrievedAt": "2026-10-22T22:59:45.615Z",
       "snapshotAgeDays": 0,
+      "lastCheckAgeDays": 0,
       "stale": false,
       "lastSuccess": "2026-10-23",
       "lastChange": {
@@ -18,6 +19,7 @@
     "govinfo-billstatus": {
       "snapshotRetrievedAt": "2026-10-23T02:04:28.583Z",
       "snapshotAgeDays": 0,
+      "lastCheckAgeDays": 0,
       "stale": false,
       "billCount": 160,
       "lastSuccess": "2026-10-23",
