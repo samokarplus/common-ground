@@ -21,3 +21,10 @@ So visitors end on HTTPS. The redirect is not configured in this repository: the
 1. In the **user-site** repository (`samokarplus/samokarplus.github.io`): Settings → Pages → confirm the custom domain is `samo.karplus.org` and **Enforce HTTPS** is ticked.
 2. Share and bookmark the `https://samo.karplus.org/common-ground/` URL, and use it as `E2E_BASE_URL` when testing the live site (`E2E_BASE_URL=https://samo.karplus.org/common-ground/ npm run e2e`).
 3. Decide whether to add a `<link rel="canonical">` for the custom domain. It was not added, because it hard-codes a domain decision.
+
+## Keeping Common Ground separate from `samo.karplus.org` (owner decision)
+Nothing in this repository puts Common Ground on `samo.karplus.org`: there is no `CNAME` file. GitHub serves every project site of an account under that account's user-site custom domain, so `samokarplus.github.io/common-ground/` is forwarded to `samo.karplus.org/common-ground/` automatically. To make it fully separate, one of these account-level changes is needed (development sessions do not make them):
+1. **Remove the custom domain from the user site** (`samokarplus/samokarplus.github.io` → Settings → Pages). Common Ground then lives at `https://samokarplus.github.io/common-ground/` again. This also stops `samo.karplus.org` from serving it, but affects anything else that domain serves.
+2. **Give Common Ground its own domain**: add a `CNAME` file containing that domain to `docs/` in this repository, set the domain in this repository's Settings → Pages, and point its DNS at GitHub Pages. A project site with its own custom domain is no longer served under the user-site domain. A domain you own is required.
+3. **Move the repository** to a different GitHub account or organization that has no custom domain (for example an organization created for Common Ground), then enable Pages there.
+Tell a development session which option you choose so docs, links and the live-test URL can be updated. Until then, `E2E_BASE_URL=https://samo.karplus.org/common-ground/` is only the address the site currently resolves to.
