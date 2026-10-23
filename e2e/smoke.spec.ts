@@ -21,6 +21,8 @@ const routes = [
   "#/paths",
   "#/review",
   "#/vote/colorado/how-elections-work",
+  "#/vote/colorado/compare",
+  "#/vote/colorado/compare/secretary-of-state",
   "#/search?q=tax",
   "#/chain",
   "#/atlas?node=distributive-justice",
@@ -270,4 +272,19 @@ test("the Colorado election-process explainer cites official sources for each st
 test("Amendment 87 shows the Blue Book's majority threshold", async ({ page }) => {
   await page.goto("#/vote/colorado/measure/amendment-87");
   await expect(page.getByText("Needs more than 50% of votes cast to pass").first()).toBeVisible();
+});
+
+test("candidate comparison asks every candidate the same questions in alphabetical order and shows gaps", async ({ page }) => {
+  await page.goto("#/vote/colorado/compare/state-treasurer");
+  const heads = await page.locator("thead th a").allInnerTexts();
+  expect(heads).toEqual(["Jodie Barr", "Jeff Bridges", "Kevin Grantham", "Marilee Langner Sturgis"]);
+  await expect(page.getByRole("rowheader", { name: "Public positions" })).toBeVisible();
+  await expect(page.getByText(/No candidate-authored or official source was located/).first()).toBeVisible();
+  await expect(page.getByText(/not fact-checked/).first()).toBeVisible();
+});
+
+test("measure pages say who is affected and how, using the Blue Book's own examples", async ({ page }) => {
+  await page.goto("#/vote/colorado/measure/amendment-87");
+  await expect(page.getByRole("heading", { name: "Who this affects, and how" })).toBeVisible();
+  await expect(page.getByText(/\$5,175 instead of \$5,500/)).toBeVisible();
 });

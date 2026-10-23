@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import Link, { routeSearch } from "./link";
 import ElectionProcess from "./election-process";
+import Compare from "./compare";
 import raw from "../../data/elections/colorado-2026.json";
 import { LOCAL_RACE_TYPES } from "@/lib/local-races";
 import { JURISDICTIONS, coverageOf, officialElectionOffices } from "@/lib/states";
@@ -52,8 +53,8 @@ import {
 } from "@/lib/election";
 
 export const election: Election = parseElection(raw);
-const profiles: Profile[] = validateProfiles(rawProfiles, election.contests);
-const gaps = validateGaps(rawGaps, election.contests, profiles);
+export const profiles: Profile[] = validateProfiles(rawProfiles, election.contests);
+export const gaps = validateGaps(rawGaps, election.contests, profiles);
 const gapFor = (contestId: string, name: string) => gaps.find((g) => g.contestId === contestId && g.name === name);
 const profileFor = (contestId: string, name: string) => profiles.find((p) => p.contestId === contestId && p.name === name);
 const AREA_LABEL: Record<(typeof RESEARCH_AREAS)[number], string> = {
@@ -718,6 +719,13 @@ function MeasureDetail({ id }: { id?: string }) {
                   </div>
                 </div>
               )}
+              {explanation.affects && explanation.affects.length > 0 && (
+                <>
+                  <h2>Who this affects, and how</h2>
+                  <ul>{explanation.affects.map((f) => <li key={f}>{f}</li>)}</ul>
+                  <p className="muted">From the Blue Book's analysis and fiscal tables. Examples use the Blue Book's own assumptions; your situation may differ.</p>
+                </>
+              )}
               {explanation.fiscal.length > 0 && (
                 <>
                   <h2>Money and practical effects</h2>
@@ -964,6 +972,13 @@ function ContestDetail({ id }: { id?: string }) {
                 <Info size={18} /> Party affiliation tells you a candidate's listed party, not their position on any specific issue. We
                 haven't yet compiled sourced candidate positions; the cells above say so rather than guess.
               </div>
+              {profiles.some((p) => p.contestId === c.id) && (
+                <p>
+                  <Link className="button primary" href={`/vote/colorado/compare/${c.id}`}>
+                    Compare candidates side by side <ArrowRight size={14} />
+                  </Link>
+                </p>
+              )}
               <GuideControls id={c.id} label={c.office} />
             </>
           )}
@@ -1355,6 +1370,7 @@ export default function HelpMeVote({ parts }: { parts: string[] }) {
   if (b === "contest") return <ContestDetail id={c} />;
   if (b === "judges") return <JudicialGuide />;
   if (b === "how-elections-work") return <ElectionProcess />;
+  if (b === "compare") return <Compare contestId={c} />;
   if (b === "candidate") return <CandidateProfile contestId={c} name={parts[3]} />;
   return <NotFound />;
 }

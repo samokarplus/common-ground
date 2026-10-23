@@ -2895,3 +2895,81 @@ input:not([type]),
 input[type="search"] {
   min-height: 44px;
 }
+
+.compare-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+}
+.compare-grid {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 640px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.compare-grid th,
+.compare-grid td {
+  text-align: left;
+  vertical-align: top;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--line);
+}
+.compare-grid thead th {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  font-size: 15px;
+}
+.compare-grid tbody th {
+  width: 140px;
+  font-weight: 600;
+  color: var(--muted);
+}
+.compare-claims {
+  margin: 0;
+  padding-left: 16px;
+}
+@media (max-width: 700px) {
+  /* Stack each question with one labelled answer per candidate instead of a cramped wide table. */
+  .compare-wrap {
+    overflow: visible;
+    border: 0;
+    background: transparent;
+  }
+  .compare-grid,
+  .compare-grid tbody,
+  .compare-grid tr,
+  .compare-grid th,
+  .compare-grid td {
+    display: block;
+    min-width: 0;
+    width: 100%;
+  }
+  .compare-grid thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+  .compare-grid tr {
+    margin-bottom: 16px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: #fff;
+    overflow: hidden;
+  }
+  .compare-grid tbody th {
+    width: 100%;
+    background: var(--soft);
+    color: var(--ink);
+  }
+  .compare-grid td::before {
+    content: attr(data-label);
+    display: block;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+}

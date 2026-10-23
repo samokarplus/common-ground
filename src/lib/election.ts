@@ -78,6 +78,8 @@ export const MeasureSchema = z
       unclear: z.array(z.string()),
       /** Arguments as summarized from the Blue Book's "Arguments For and Against" sections. */
       arguments: z.object({ for: z.array(z.string()), against: z.array(z.string()) }).optional(),
+      /** Who is affected and how, from the Blue Book analysis and fiscal tables (including its official examples). */
+      affects: z.array(z.string()).optional(),
       review: ReviewSchema,
     }),
   })

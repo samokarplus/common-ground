@@ -198,7 +198,11 @@
             "Reporting people before a court decides guilt undermines due process and the presumption of innocence, and people who are lawfully present or not guilty could be swept up if they cannot prove status within 72 hours.",
             "Terms such as 'reasonable effort' and 'lawful presence' are undefined, leaving enforcement to officer discretion, which opponents say could erode community trust and deter crime reporting."
           ]
-        }
+        },
+        "affects": [
+          "People charged with a crime of violence, or charged with any crime after any prior felony conviction, whose lawful presence is not confirmed: their charging would be reported to federal immigration authorities within 72 hours.",
+          "Police, corrections and district attorney personnel, who would have to make the notifications (most of the work falls on district attorney offices)."
+        ]
       }
     },
     {
@@ -254,7 +258,11 @@
           "against": [
             "Burning natural gas contributes to climate change and air pollution and should not be protected in the constitution; opponents say it limits efforts to cut emissions and local communities' ability to set health and energy priorities."
           ]
-        }
+        },
+        "affects": [
+          "Customers who use or want natural gas for cooking or heating at home or work, and the utilities and distributors that sell it.",
+          "Cities and counties with building codes that limit gas appliances, which may have to change them."
+        ]
       }
     },
     {
@@ -309,7 +317,11 @@
           "against": [
             "Constitutions should protect fundamental rights, not recreation; Colorado already manages wildlife well. Opponents say it favors one management method, may limit guardrails on hunting, fishing and trapping, and its vague language could cause costly legal challenges."
           ]
-        }
+        },
+        "affects": [
+          "Hunters and anglers, and Colorado Parks and Wildlife, whose rules for licenses, seasons and limits could be tested against the new right.",
+          "The right would not cover nongame species, endangered species, or species illegal to hunt under federal law."
+        ]
       }
     },
     {
@@ -365,7 +377,12 @@
           "against": [
             "It adds a burden without meaningfully improving security, and eligible ballots could go uncounted over minor mistakes. Opponents say voters with privacy concerns or without the required ID may be discouraged from voting by mail, and that signature verification already works."
           ]
-        }
+        },
+        "affects": [
+          "Every voter who returns a mail ballot in a federal or statewide election: you would write the last four digits of a Social Security number, Colorado driver's license number or Colorado ID number on the return, in addition to signing.",
+          "If the number is missing or does not match, your county would contact you and you would have until eight days after Election Day to fix it, for example by sending a copy of an ID.",
+          "In-person voting ID rules do not change. In 2024, 92 percent of Colorado ballots were cast by mail."
+        ]
       }
     },
     {
@@ -423,7 +440,11 @@
             "State law already requires plain-language titles; the measure adds a constitutional standard with no guidance on how it differs, which could invite more title challenges.",
             "Vague, undefined wording could block laws that add helpful information to titles, and could prompt challenges to existing laws that explain how a vote affects programs and funding."
           ]
-        }
+        },
+        "affects": [
+          "Voters reading ballot titles for citizen initiatives, and the Title Board and petitioners who write them.",
+          "Laws that require specific wording in an initiative's title, such as tax-change disclosure language, could be challenged."
+        ]
       }
     },
     {
@@ -478,7 +499,11 @@
           "against": [
             "It creates a constitutional barrier if voters ever want new districts in an off-cycle year, for example in response to other states' redistricting, and the same commission that drew the maps would shape any redo. Opponents say voters should have the final word."
           ]
-        }
+        },
+        "affects": [
+          "Voters in all eight congressional districts, if anyone ever proposes redrawing them between censuses.",
+          "The independent redistricting commission and the Colorado Supreme Court, which would have to approve and adopt any such change."
+        ]
       }
     },
     {
@@ -542,7 +567,11 @@
             "Opponents say it undermines the fair, predictable flat tax that TABOR guarantees, and that the state should better prioritize the money it already collects.",
             "They also argue it permanently expands government and spending, and that policy should instead cut taxes for everyone or fund specific proven programs."
           ]
-        }
+        },
+        "affects": [
+          "Taxpayers with Colorado taxable income below about $510,834 would owe less income tax, by at most $325 a year; taxpayers above it would owe more. In the Blue Book's example, a taxpayer with $125,000 of taxable income would owe $5,175 instead of $5,500.",
+          "Students, patients and families who use K-12 schools, health care and early childhood programs, which would receive the new revenue (the legislature decides the split)."
+        ]
       }
     },
     {
@@ -601,7 +630,11 @@
             "Opponents call it effectively a tax increase because it permanently eliminates or reduces TABOR refunds, which they describe as a taxpayer right.",
             "They say it eventually hands the state over $5 billion a year, note school funding rose 25 percent in five years while enrollment declines, and want proof of waste reduction first."
           ]
-        }
+        },
+        "affects": [
+          "Taxpayers who receive TABOR refunds. Under current estimates, TABOR refunds would be $0 in 2027 and 2028. In the Blue Book's examples, a single filer with $50,000 of adjusted gross income would otherwise get about $21 in 2027 and $39 in 2028, and one with $100,000 would get about $28 and $68.",
+          "School districts, charter schools and families, who would receive money for teacher pay, class sizes and career courses, and children's programs such as preschool and child care."
+        ]
       }
     },
     {
@@ -659,7 +692,11 @@
           "against": [
             "Opponents say it is unlikely to reduce fentanyl use, crime or overdose deaths, may discourage people from seeking treatment or calling for help during overdoses, treats people who distribute trace amounts like major dealers, and shifts money from treatment to prisons."
           ]
-        }
+        },
+        "affects": [
+          "People charged with possessing or distributing fentanyl, who would face felony charges and mandatory prison sentences for any distribution.",
+          "Courts, public defenders, prisons and county-funded district attorneys, whose costs would rise."
+        ]
       }
     },
     {
@@ -715,7 +752,10 @@
           "against": [
             "Opponents say harsher sentences are unlikely to deter trafficking and may punish victims who are pressured to commit crimes, may make victims less likely to report, remove a judge's ability to weigh the case facts, and divert resources from prevention."
           ]
-        }
+        },
+        "affects": [
+          "People convicted of child sex trafficking, who would face life in prison without parole, and people who buy sexual activity with a minor, who would be covered by the offense."
+        ]
       }
     },
     {
@@ -775,7 +815,11 @@
             "Opponents say it turns eligibility into a body inspection that could subject many athletes to invasive or expensive testing, because the measure sets a standard but no method, leaving schools to create uneven policies.",
             "They say it targets an at-risk group of students, can lead to harassment and exclusion, and applies even to young children who just want to play with friends."
           ]
-        }
+        },
+        "affects": [
+          "Students and athletes on school-based teams, from elementary school through college, including intramural and after-school programs at public, charter, private and religious schools.",
+          "Schools, districts and colleges, which would have to designate teams and set their own verification procedures. Youth sports outside schools are not covered."
+        ]
       }
     },
     {
@@ -836,7 +880,11 @@
             "Opponents say the ban is overly broad, affecting both transgender and non-transgender minors, and its narrow exceptions and purpose-based wording create uncertainty for patients, doctors and insurers.",
             "They say it delays medically recommended care even when parents, patients and providers agree, may worsen mental health outcomes for transgender youth, and that these decisions belong with patients, families and providers."
           ]
-        }
+        },
+        "affects": [
+          "Minors considering surgeries intended to alter biological sex characteristics in response to a perception of sex or gender, and their families.",
+          "Surgeons and hospitals, and public and private insurers, which could not provide or pay for the prohibited surgeries."
+        ]
       }
     },
     {
@@ -891,7 +939,10 @@
           "against": [
             "Opponents say it is designed to put Amendment 87 in legal jeopardy and cause a costly legal fight, and that after 2026 it has no effect because raising tax rates already requires voter approval."
           ]
-        }
+        },
+        "affects": [
+          "No one's tax bill changes: it sets the current 4.4 percent income tax rate as a maximum in statute. Its effect depends on what voters decide about Amendment 87."
+        ]
       }
     },
     {
@@ -949,7 +1000,11 @@
             "Opponents call it a tax increase in disguise because it reduces or eliminates future TABOR refunds and every retained dollar is one less for refunds or other priorities such as health care and education.",
             "They say it directs money to entities with limited accountability to the legislature or voters and reduces flexibility to respond to changing conservation needs."
           ]
-        }
+        },
+        "affects": [
+          "Shoppers: the measure redirects part of existing sales tax revenue from sporting goods and does not create a new tax, according to the Blue Book analysis.",
+          "State conservation, wildfire-mitigation and outdoor recreation programs, which would receive an estimated $175.0 million in 2027-28, and taxpayers, whose TABOR refunds could fall in years when revenue exceeds the limit."
+        ]
       }
     },
     {
@@ -995,7 +1050,10 @@
           "checkNotes": [
             "Summary, fiscal items and ballot title compared with the district notice on Blue Book p. 100. The fiscal impact statements PDF covers statewide measures only."
           ]
-        }
+        },
+        "affects": [
+          "Voters inside the Front Range Passenger Rail District, who would pay a 0.333% sales and use tax (with exemptions for gasoline, food, residential electricity and gas, prescription drugs and medical supplies), and the district, which could borrow $580 million."
+        ]
       }
     }
   ],

@@ -252,3 +252,11 @@ test("Amendment 87 is recorded as passing by majority, as the Blue Book states, 
   const log = JSON.parse(readFileSync("data/corrections.json", "utf8"));
   assert.ok(log.some((c: { page: string; type: string }) => c.page.endsWith("amendment-87") && c.type === "incorrect"));
 });
+
+test("every explanation says who is affected, and quoted dollar examples come from the official documents", async () => {
+  for (const m of e.measures) assert.ok((publishedExplanation(m)?.affects?.length ?? 0) > 0, m.id);
+  const one = (id: string) => (e.measures.find((x) => x.id === id)!.draft.affects ?? []).join(" ");
+  for (const t of ["$325", "$5,175", "$5,500", "$510,834"]) assert.ok(one("amendment-87").includes(t), t);
+  for (const t of ["$21", "$39", "$28", "$68"]) assert.ok(one("proposition-nn").includes(t), t);
+  assert.ok(!/you will|you must vote|your taxes will (rise|fall) by/i.test(JSON.stringify(e.measures.map((m) => m.draft.affects))));
+});

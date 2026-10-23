@@ -24,6 +24,8 @@ const routes = [
   "#/paths",
   "#/review",
   "#/vote/colorado/how-elections-work",
+  "#/vote/colorado/compare",
+  "#/vote/colorado/compare/secretary-of-state",
   "#/search?q=tax",
   "#/chain",
   "#/atlas?node=distributive-justice",
