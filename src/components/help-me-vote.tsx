@@ -18,6 +18,8 @@ import {
 } from "lucide-react";
 import Link, { routeSearch } from "./link";
 import raw from "../../data/elections/colorado-2026.json";
+import rawProfiles from "../../data/elections/colorado-2026-profiles.json";
+import { CLAIM_KINDS, CLAIM_LABEL, RESEARCH_AREAS, completeness, validateProfiles, type Profile } from "@/lib/candidate";
 import {
   COVERAGE,
   GUIDE_KEY,
@@ -45,6 +47,15 @@ import {
 } from "@/lib/election";
 
 export const election: Election = parseElection(raw);
+const profiles: Profile[] = validateProfiles(rawProfiles, election.contests);
+const profileFor = (contestId: string, name: string) => profiles.find((p) => p.contestId === contestId && p.name === name);
+const AREA_LABEL: Record<(typeof RESEARCH_AREAS)[number], string> = {
+  background: "Background",
+  "government-experience": "Government experience",
+  positions: "Public positions",
+  "voting-record": "Voting record",
+  "campaign-website": "Official campaign website",
+};
 const allIds = guideItemIds(election);
 const sourceById = new Map(election.sources.map((s) => [s.id, s]));
 
@@ -784,6 +795,11 @@ function ContestDetail({ id }: { id?: string }) {
                 <Info size={18} /> Colorado's Office of Judicial Performance Evaluation publishes an independent evaluation of each judge
                 standing for retention. Common Ground does not rate judges or recommend retention votes.
               </div>
+              <p>
+                <Link className="button primary" href="/vote/colorado/judges">
+                  How judicial retention works <ArrowRight size={14} />
+                </Link>
+              </p>
               <a className="button secondary" href={sourceById.get("judicial-performance")!.url} target="_blank" rel="noreferrer">
                 Read the official evaluations <ExternalLink size={14} />
               </a>
@@ -804,7 +820,15 @@ function ContestDetail({ id }: { id?: string }) {
                     <span role="cell"><strong>{x.name}</strong></span>
                     {c.candidates.some((y) => y.runningMate) && <span role="cell">{x.runningMate || "—"}</span>}
                     <span role="cell">{x.affiliation || "None listed"}</span>
-                    <span role="cell" className="muted">Not yet researched — not inferred from party</span>
+                    <span role="cell" className="muted">
+                      {profileFor(c.id, x.name) ? (
+                        <Link href={`/vote/colorado/candidate/${c.id}/${encodeURIComponent(x.name)}`}>
+                          Research profile · {completeness(profileFor(c.id, x.name)).covered.length} of {RESEARCH_AREAS.length} areas sourced
+                        </Link>
+                      ) : (
+                        "Not yet researched — 0 of 5 areas; not inferred from party"
+                      )}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -1056,6 +1080,130 @@ function NotFound() {
   );
 }
 
+function JudicialGuide() {
+  const jp = sourceById.get("judicial-performance")!;
+  const judges = election.contests.filter((c) => c.kind === "retention");
+  return (
+    <>
+      <BackLink href="/vote/colorado/contests" label="All offices & judges" />
+      <div className="page-title">
+        <div className="eyebrow">COLORADO 2026 · JUDICIAL RETENTION</div>
+        <h1>How to read the judges on your ballot.</h1>
+        <p>Judges are not elected the way other officials are. You get one yes-or-no question per judge: keep them, or not.</p>
+      </div>
+      <div className="notice">
+        <Info size={18} /> Verification status: the process described here is general civic background written by Common Ground from
+        the Office of Judicial Performance Evaluation's public materials as summarized in search excerpts on 2026-10-22. The
+        office's website blocks automated access, so a person should confirm details against its pages before this is treated as
+        verified. Individual judges' recommendations are deliberately not reproduced here.
+      </div>
+      <article className="panel longform">
+        <h2>What a YES or NO vote does</h2>
+        <p>
+          <strong>YES</strong> keeps the judge in office for another term. <strong>NO</strong> means the judge is not retained and a
+          replacement is chosen through the state's appointment process. A judge is retained unless a majority votes NO.
+          Retention questions have no party label.
+        </p>
+        <h2>How judges are evaluated</h2>
+        <p>
+          Independent judicial performance commissions evaluate judges before each retention election. There is a state commission
+          for appellate judges and a commission for each judicial district. Commissions draw on inputs such as surveys of lawyers and
+          others who have dealt with the judge, and they publish a narrative and a recommendation. The recommendation says whether the
+          commission found that the judge meets performance standards. The standards cover areas such as legal knowledge, integrity,
+          communication, temperament, and administration of cases.
+        </p>
+        <h2>What the evaluations can and cannot tell you</h2>
+        <ul>
+          <li>They are a structured, independent look at professional performance, with sources you can read.</li>
+          <li>They are not a list of rulings you may agree or disagree with, and they do not decide what a judge <em>should</em> have ruled.</li>
+          <li>Survey sample sizes vary, and some judges have few responses. Read the response counts.</li>
+          <li>Commissions very rarely recommend against retention, and voters very rarely vote a judge out. Whether that reflects good performance or a weak filter is something reasonable people debate.</li>
+          <li>Judges who expect poor reviews sometimes leave before the election, so the list of those who reach the ballot is itself filtered.</li>
+        </ul>
+        <h2>Questions you might ask</h2>
+        <ul>
+          <li>How many people answered the survey for this judge?</li>
+          <li>Does the commission's narrative mention specific strengths or concerns, and are they backed by details?</li>
+          <li>Which of my own concerns (fairness, speed, legal reasoning, courtroom conduct) does the evaluation actually speak to?</li>
+          <li>Am I basing my vote on a judge's performance, or on a ruling I heard about?</li>
+        </ul>
+        <h2>Judges on every Colorado ballot</h2>
+        {judges.map((c) => (
+          <p key={c.id}>
+            <strong>{c.office.replace(" — retention", "")}:</strong> {c.candidates.map((x) => x.name).join("; ")}
+          </p>
+        ))}
+        <p className="muted">
+          Common Ground does not summarize or score each judge's evaluation. Read each judge's full evaluation, including the commission's
+          recommendation and survey counts, at the official site. District and county judges depend on your address.
+        </p>
+        <p>
+          <a className="button primary" href={jp.url} target="_blank" rel="noreferrer">
+            Official judicial performance evaluations <ExternalLink size={14} />
+          </a>
+        </p>
+      </article>
+    </>
+  );
+}
+
+function CandidateProfile({ contestId, name }: { contestId?: string; name?: string }) {
+  const p = contestId && name ? profileFor(contestId, name) : undefined;
+  if (!p) return <NotFound />;
+  const done = completeness(p);
+  const contest = election.contests.find((c) => c.id === p.contestId)!;
+  return (
+    <>
+      <BackLink href={`/vote/colorado/contest/${p.contestId}`} label={contest.office} />
+      <div className="page-title">
+        <div className="eyebrow">CANDIDATE RESEARCH · LAST VERIFIED {p.lastVerifiedOn}</div>
+        <h1>{p.name}</h1>
+        <p>
+          {done.covered.length} of {RESEARCH_AREAS.length} research areas have sourced information. Anything not listed was not verified, and
+          no position is inferred from party.
+        </p>
+      </div>
+      <article className="panel longform">
+        {p.campaignWebsite && (
+          <p>
+            <a href={p.campaignWebsite} target="_blank" rel="noreferrer">
+              Official campaign website <ExternalLink size={14} />
+            </a>
+          </p>
+        )}
+        {CLAIM_KINDS.map((k) => {
+          const list = p.claims.filter((c) => c.kind === k);
+          return list.length === 0 ? null : (
+            <section key={k}>
+              <h2>{CLAIM_LABEL[k]}</h2>
+              <ul>
+                {list.map((c, i) => (
+                  <li key={i}>
+                    <span className="tag">{AREA_LABEL[c.area]}</span> {c.text}{" "}
+                    <a href={c.sourceUrl} target="_blank" rel="noreferrer">
+                      {c.sourceTitle}
+                    </a>{" "}
+                    <span className="muted">(retrieved {c.retrievedOn})</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          );
+        })}
+        <h2>Research status</h2>
+        <ul>
+          {RESEARCH_AREAS.map((a) => (
+            <li key={a}>
+              {AREA_LABEL[a]}:{" "}
+              {done.covered.includes(a) ? "sourced" : done.notFound.includes(a) ? "checked, nothing verifiable found" : "not yet researched"}
+            </li>
+          ))}
+        </ul>
+      </article>
+    </>
+  );
+}
+
 export default function HelpMeVote({ parts }: { parts: string[] }) {
   const [a, b, c] = parts;
   if (!a) return <Landing />;
@@ -1068,5 +1216,7 @@ export default function HelpMeVote({ parts }: { parts: string[] }) {
   if (b === "measure") return <MeasureDetail id={c} />;
   if (b === "contests") return <ContestList />;
   if (b === "contest") return <ContestDetail id={c} />;
+  if (b === "judges") return <JudicialGuide />;
+  if (b === "candidate") return <CandidateProfile contestId={c} name={parts[3]} />;
   return <NotFound />;
 }
