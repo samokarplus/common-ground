@@ -48,3 +48,6 @@ Factual log. Only items marked verified were checked in the session that wrote t
 ## Corrections process (session 3)
 - `#/corrections` page, footer link, `data/corrections.json` (empty history), and pre-filled GitHub issue links for the five problem types. Links carry only the page route and type, never notes or guide entries (unit-tested). Requires a GitHub account to post; there is no private or anonymous channel yet. 59 unit and 120 browser checks pass locally.
 - Candidate research was **not** attempted: campaign sites could not be located or fetched with available tools, and press-summary search results include allegations about named people that should not be published without direct, reviewed sources. Needs a human researcher or direct page access.
+
+## Live verification after delayed push (2026-10-22)
+- Pushes failed intermittently ("remote end hung up") and landed after a backoff loop; origin/main contained `e0176c8` afterwards. Live site served `index-DJpjbNZI.js` (matching the local build). The suite ran against the live URL (desktop and mobile): 82/82 passed, including the judicial guide, corrections page, measure search and the candidate "0 of 5 areas" labels. The candidate **profile pages** themselves are not live because no profiles exist yet.
