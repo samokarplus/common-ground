@@ -44,3 +44,7 @@ Factual log. Only items marked verified were checked in the session that wrote t
 - Statewide candidate names for U.S. Senate, Governor, Secretary of State, Treasurer and Attorney General were compared with the Secretary of State's candidate-list page as read through a summarizing fetch tool: every name on that page is in the dataset, with no omissions. The dataset has two additional U.S. Senate write-ins (Powers, Apelbaum) that the summary did not mention; not resolved. Withdrawals (strikethrough in the official XLSX) still cannot be seen by this tooling.
 - The 7 deadlines match the dates reported by a web search of press and county pages that repeat the Secretary of State's calendar; the official calendar itself was not read directly. `dataVerifiedAt` was **not** changed.
 - Added: search box on the measures list (e2e covered). 57 unit and 114 browser checks pass locally.
+
+## Corrections process (session 3)
+- `#/corrections` page, footer link, `data/corrections.json` (empty history), and pre-filled GitHub issue links for the five problem types. Links carry only the page route and type, never notes or guide entries (unit-tested). Requires a GitHub account to post; there is no private or anonymous channel yet. 59 unit and 120 browser checks pass locally.
+- Candidate research was **not** attempted: campaign sites could not be located or fetched with available tools, and press-summary search results include allegations about named people that should not be published without direct, reviewed sources. Needs a human researcher or direct page access.

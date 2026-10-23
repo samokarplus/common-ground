@@ -7,6 +7,7 @@ import { getFeed, getDocument } from "@/lib/free-source";
 import { localDebate } from "@/lib/local-debate";
 import HelpMeVote, { election } from "./help-me-vote";
 const Congress = lazy(() => import("./congress"));
+import Corrections from "./corrections";
 import { daysUntil, electionPhase } from "@/lib/election";
 import {
   ArrowUpRight,
@@ -784,6 +785,7 @@ export default function CommonGround({
               <Congress parts={parts.slice(1)} />
             </Suspense>
           )}
+          {section === "corrections" && <Corrections />}
           {section === "methodology" && <Methodology />}
           {section === "privacy" && <Privacy onClear={() => setSaved([])} />}
           {section === "status" && (
@@ -904,6 +906,7 @@ export default function CommonGround({
             "ballot",
             "vote",
             "congress",
+            "corrections",
             "methodology",
             "privacy",
             "status",
@@ -918,6 +921,7 @@ export default function CommonGround({
             <span>Common Ground · An independent space for understanding</span>
             <Link href="/methodology">Methodology</Link>
             <Link href="/status">Source status</Link>
+            <Link href="/corrections">Report a correction</Link>
             <Link href="/privacy">Privacy</Link>
           </footer>
         </main>

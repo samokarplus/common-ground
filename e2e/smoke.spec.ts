@@ -14,6 +14,7 @@ const routes = [
   "#/vote/how-to-read",
   "#/vote/demo",
   "#/congress",
+  "#/corrections",
   "#/congress/how-it-works",
 ];
 
