@@ -15,7 +15,13 @@ const Pathways = lazy(() => import("./pathways"));
 const SiteSearch = lazy(() => import("./site-search"));
 const Review = lazy(() => import("./review"));
 const Credits = lazy(() => import("./credits"));
-import { BrandMark, BookStack, Speech, Sprig, Scroll } from "./art";
+const HomeBody = lazy(() => import("./home"));
+const Government = lazy(() => import("./government"));
+const Briefing = lazy(() => import("./briefing").then((m) => ({ default: m.BriefingPage })));
+const IssuesIndex = lazy(() => import("./briefing").then((m) => ({ default: m.IssuesIndex })));
+const DataHub = lazy(() => import("./hubs").then((m) => ({ default: m.DataHub })));
+const ExploreHub = lazy(() => import("./hubs").then((m) => ({ default: m.ExploreHub })));
+import { BrandMark } from "./art";
 const IMG = import.meta.env.BASE_URL + "images/";
 // CSS custom properties resolve url() against the stylesheet, so the page-header photo needs an absolute address.
 const IMG_ABS = new URL(IMG, document.baseURI).href;
@@ -38,13 +44,8 @@ import {
   ArrowUpRight,
   ArrowRight,
   Search,
-  Sun,
   Landmark,
-  Layers,
   Compass,
-  MessageCircle,
-  Vote,
-  Network,
   Bookmark,
   ShieldCheck,
   ChevronLeft,
@@ -67,18 +68,21 @@ import { topics, scenarios } from "@/lib/content";
 import { atlasNodes, atlasEdges } from "@/lib/atlas";
 import { ATLAS_BALLOT_LINKS } from "@/lib/crosslinks";
 import type { Feed } from "@/lib/free-source";
-const nav = [
-  ["today", "Today", Sun],
-  ["vote", "Help Me Vote", Vote],
-  ["congress", "Congress", Landmark],
-  ["legislation", "Federal Register", Landmark],
-  ["policy", "Policy Explorer", Layers],
-  ["values", "My Values", Compass],
-  ["debate", "Debate Lab", MessageCircle],
-  ["atlas", "Thought Atlas", Network],
-  ["saved", "Reading List", Bookmark],
+/** Five destinations. Each lists the sections that belong under it so the right tab stays highlighted. */
+const NAV = [
+  { id: "today", label: "Today", href: "/", sections: ["today"] },
+  { id: "issues", label: "Issues", href: "/issues", sections: ["issues", "policy"] },
+  { id: "government", label: "Government", href: "/government", sections: ["government", "congress", "legislation", "action", "chain"] },
+  { id: "data", label: "Data", href: "/data", sections: ["data"] },
+  { id: "explore", label: "Explore", href: "/explore", sections: ["explore", "debate", "values", "atlas", "paths"] },
 ] as const;
-const FEED_SECTIONS = ["today", "legislation", "saved", "action", "status", "debate"];
+const TITLES: Record<string, string> = {
+  today: "Today", issues: "Issues", government: "Government", data: "Data", explore: "Explore", vote: "Help Me Vote", ballot: "Help Me Vote",
+  congress: "Congress", legislation: "Federal Register", policy: "Policy guides", values: "My Values", debate: "Debate Lab", atlas: "Thought Atlas",
+  saved: "Reading list", action: "Federal action", methodology: "Our methodology", status: "Source status", privacy: "Your privacy",
+  corrections: "Corrections", chain: "Promises, votes and outcomes", paths: "Pathways", search: "Search", review: "Editorial review", credits: "Photo credits",
+};
+const FEED_SECTIONS = ["legislation", "saved", "action", "status", "debate"];
 const fmt = (d: string) =>
   new Date(d.length === 10 ? d + "T12:00:00" : d).toLocaleDateString("en-US", {
     month: "short",
@@ -177,18 +181,7 @@ export default function CommonGround({
   const actions = feed?.actions || [];
   const filtered = applyFeedFilters(actions, { query, status: filter, openForComment: openOnly, sinceDays, agency }, new Date());
   const agencies = agencyOptions(actions);
-  const lead =
-    filtered.find((a) => a.abstract && a.abstract.length > 100) || filtered[0];
-  const current =
-    nav.find((n) => n[0] === section)?.[1] ||
-    {
-      action: "Federal action",
-      ballot: "Help Me Vote",
-      methodology: "Our Methodology",
-      status: "Source Status",
-      privacy: "Your Privacy",
-    }[section] ||
-    "Page not found";
+  const current = TITLES[section] || "Page not found";
   useEffect(() => {
     document.title = section === "today" ? "Common Ground" : `${current} · Common Ground`;
   }, [section, current]);
@@ -215,19 +208,19 @@ export default function CommonGround({
             </span>
           </Link>
           <nav id="site-nav" className={"site-nav " + (mobile ? "open" : "")} aria-label="Main navigation">
-            {nav.map(([id, label, Icon]) => (
-              <Link
-                href={id === "today" ? "/" : "/" + id}
-                key={id}
-                onClick={() => setMobile(false)}
-                className={"nav-link " + (section === id ? "active" : "") + (id === "saved" ? " nav-saved" : "")}
-                aria-current={section === id ? "page" : undefined}
-              >
-                <Icon size={18} />
-                <span>{label}</span>
-                {id === "saved" && saved.length > 0 && <span className="count">{saved.length}</span>}
+            {NAV.map((n) => {
+              const active = (n.sections as readonly string[]).includes(section);
+              return (
+                <Link href={n.href} key={n.id} onClick={() => setMobile(false)} className={"nav-link " + (active ? "active" : "")} aria-current={active ? "page" : undefined}>
+                  <span>{n.label}</span>
+                </Link>
+              );
+            })}
+            {electionPhase(election, new Date()).phase !== "after" && (
+              <Link href="/vote" onClick={() => setMobile(false)} className={"nav-link nav-vote " + (section === "vote" || section === "ballot" ? "active" : "")} aria-current={section === "vote" || section === "ballot" ? "page" : undefined}>
+                <span>Help Me Vote</span>
               </Link>
-            ))}
+            )}
           </nav>
           <div className="header-tools">
             <form
@@ -294,227 +287,35 @@ export default function CommonGround({
           {section === "today" && (
             <>
               <section className="hero" aria-labelledby="hero-title">
-                <img
-                  src={IMG + "reading-room.jpg"}
-                  srcSet={`${IMG}reading-room-sm.jpg 720w, ${IMG}reading-room.jpg 1400w`}
-                  sizes="100vw"
-                  alt=""
-                  fetchPriority="high"
-                />
+                <img src={IMG + "reading-room.jpg"} srcSet={`${IMG}reading-room-sm.jpg 720w, ${IMG}reading-room.jpg 1400w`} sizes="100vw" alt="" fetchPriority="high" />
                 <div className="hero-inner">
-                  <div className="eyebrow">A WARM PLACE TO UNDERSTAND THE WORLD</div>
+                  <div className="eyebrow">NONPARTISAN · EVIDENCE FIRST</div>
                   <h1 id="hero-title">
-                    Make sense of the world. <em>Make up your own mind.</em>
+                    Understand what's happening. <em>Make up your own mind.</em>
                   </h1>
                   <p>
-                    Pull up a chair. Read the sources behind the headlines, weigh the best arguments on every side, and decide for yourself, in
-                    private and at your own pace.
+                    Less noise, more understanding. Plain-language, sourced explanations of what Washington is doing, where the money goes and what the numbers
+                    actually show, with the original documents one click away.
                   </p>
                   <div className="hero-actions">
-                    <Link className="button primary" href="/vote">
-                      Understand my ballot <ArrowRight size={16} />
+                    <Link className="button primary" href="/government">
+                      See what the government is doing <ArrowRight size={16} />
                     </Link>
-                    <Link className="button light" href="/atlas">
-                      Wander the library
+                    <Link className="button light" href="/issues">
+                      Read a briefing
                     </Link>
                   </div>
                   <div className="hero-meta">
                     <span>
                       {new Date().toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric", timeZone: "America/Denver" })}
                     </span>
-                    <Link href="/status" className="live-status">
-                      <span className={"tiny-dot " + (!feed ? "gray" : "")} />
-                      {busy
-                        ? "Connecting to official sources"
-                        : feed?.mode === "live"
-                          ? "Official source connected"
-                          : feed?.mode === "cache"
-                            ? "Cached official records"
-                            : "Dated source snapshot"}
-                    </Link>
+                    <Link href="/methodology">How we separate fact from opinion</Link>
                   </div>
                 </div>
               </section>
-
-              <div className="home-wrap">
-                <HomeVoteBanner />
-
-                <section className="section-space" aria-labelledby="rooms-title">
-                  <div className="section-intro">
-                    <div className="eyebrow">THE ROOMS OF THE LIBRARY</div>
-                    <h2 id="rooms-title">Wander in. Stay as long as you like.</h2>
-                    <p>Each room explains something differently. None of them tells you what to think.</p>
-                  </div>
-                  <nav className="rooms" aria-label="Start exploring">
-                    <Link href="/debate" className="room a">
-                      <img src={IMG + "market-sm.jpg"} srcSet={`${IMG}market-sm.jpg 720w, ${IMG}market.jpg 1400w`} sizes="(max-width: 820px) 100vw, 58vw" alt="" loading="lazy" />
-                      <h3>Debate Lab</h3>
-                      <p>Hear the strongest case for each side, then test your own reasoning. Facts, predictions and values, kept apart.</p>
-                      <span className="go">Enter the Debate Lab →</span>
-                    </Link>
-                    <Link href="/values" className="room b">
-                      <img src={IMG + "open-book-sm.jpg"} srcSet={`${IMG}open-book-sm.jpg 720w, ${IMG}open-book.jpg 1400w`} sizes="(max-width: 820px) 100vw, 42vw" alt="" loading="lazy" />
-                      <h3>My Values</h3>
-                      <p>A private place to think about what matters to you. Reflection, not a quiz score.</p>
-                      <span className="go">Begin reflecting →</span>
-                    </Link>
-                    <Link href="/congress" className="room c">
-                      <img src={IMG + "us-capitol-sm.jpg"} srcSet={`${IMG}us-capitol-sm.jpg 720w, ${IMG}us-capitol.jpg 1400w`} sizes="(max-width: 820px) 100vw, 33vw" alt="" loading="lazy" />
-                      <h3>Congress</h3>
-                      <p>Real bills, real votes, and how a bill becomes law.</p>
-                      <span className="go">Follow a bill →</span>
-                    </Link>
-                    <Link href="/atlas" className="room d paper">
-                      <BookStack className="art" />
-                      <div>
-                        <h3>Thought Atlas</h3>
-                        <p>Eighty-six ideas, from liberalism to the social contract, and how they connect.</p>
-                        <span className="go">Browse the ideas →</span>
-                      </div>
-                    </Link>
-                    <Link href="/policy" className="room e clay">
-                      <Scroll className="art" />
-                      <div>
-                        <h3>Policy Explorer</h3>
-                        <p>The questions underneath public choices: goals, mechanisms and tradeoffs.</p>
-                        <span className="go">Explore a question →</span>
-                      </div>
-                    </Link>
-                  </nav>
-                </section>
-
-                <section className="section-space" aria-labelledby="latest-title">
-                  <div className="section-intro">
-                    <div className="eyebrow">FROM THE FEDERAL REGISTER</div>
-                    <h2 id="latest-title">The latest, in context.</h2>
-                    <p>Official government documents, explained plainly, with the original always one click away.</p>
-                  </div>
-                  <div className="topic-tabs" role="group" aria-label="Filter federal feed">
-                    {["All actions", "Final rule", "Proposed rule", "Presidential document", "Agency notice"].map((t) => (
-                      <button key={t} className={filter === t ? "selected" : ""} aria-pressed={filter === t} onClick={() => setFilter(t)}>
-                        {t === "All actions" ? "All actions" : t === "Final rule" ? "Final rules" : t === "Proposed rule" ? "Proposals" : t === "Agency notice" ? "Notices" : "Presidential actions"}
-                      </button>
-                    ))}
-                  </div>
-                  <div className="latest">
-                    {busy && !lead ? (
-                      <div className="skeleton lead-skeleton" />
-                    ) : (
-                      lead && (
-                        <article className="lead-card">
-                          <Link href={"/action/" + lead.document_number} className="lead-visual" aria-hidden="true" tabIndex={-1}>
-                            <img src={IMG + "us-capitol-sm.jpg"} alt="" loading="lazy" />
-                            <span className="visual-caption">WASHINGTON, D.C. · FEDERAL ACTIONS</span>
-                          </Link>
-                          <div className="lead-content">
-                            <div className="card-meta">
-                              <span className="tag">{lead.status}</span>
-                              <span>{fmt(lead.publication_date)}</span>
-                              <button
-                                className={"icon-button " + (saved.includes(lead.document_number) ? "is-saved" : "")}
-                                aria-label="Save featured action"
-                                onClick={() => save(lead.document_number)}
-                              >
-                                <Bookmark size={17} fill={saved.includes(lead.document_number) ? "currentColor" : "none"} />
-                              </button>
-                            </div>
-                            <Link href={"/action/" + lead.document_number}>
-                              <h2>{lead.title}</h2>
-                            </Link>
-                            <p>{lead.abstract}</p>
-                            <div className="lead-footer">
-                              <SourceBadge />
-                              <Link href={"/action/" + lead.document_number}>
-                                Understand this action <ArrowRight size={16} />
-                              </Link>
-                            </div>
-                          </div>
-                        </article>
-                      )
-                    )}
-                    <div className="action-list">
-                      {filtered
-                        .filter((a) => a.document_number !== lead?.document_number)
-                        .slice(0, 3)
-                        .map((a) => (
-                          <ActionRow key={a.document_number} action={a} saved={saved.includes(a.document_number)} onSave={() => save(a.document_number)} />
-                        ))}
-                      {filtered.length === 0 && !busy && <p className="empty">No records match this filter.</p>}
-                      <Link href="/legislation" className="button secondary">
-                        All federal actions <ArrowRight size={15} />
-                      </Link>
-                    </div>
-                  </div>
-                </section>
-              </div>
-
-              <section className="quote-band" aria-label="A question to take with you">
-                <img src={IMG + "meadow-sm.jpg"} srcSet={`${IMG}meadow-sm.jpg 720w, ${IMG}meadow.jpg 1400w`} sizes="100vw" alt="" loading="lazy" />
-                <blockquote>
-                  <p>“What would change your mind?”</p>
-                  <cite>A good question is often more useful than a quick answer.</cite>
-                  <div>
-                    <Link href="/debate" className="button light">
-                      Take it to the Debate Lab <ArrowRight size={15} />
-                    </Link>
-                  </div>
-                </blockquote>
-              </section>
-
-              <div className="home-wrap">
-                <section className="section-space" aria-labelledby="promise-title">
-                  <div className="section-intro">
-                    <div className="eyebrow">WHY COMMON GROUND</div>
-                    <h2 id="promise-title">A few promises we keep.</h2>
-                  </div>
-                  <div className="promise">
-                    <div>
-                      <Sprig className="art" />
-                      <h3>Start from the source.</h3>
-                      <p>Official documents first. When something is uncertain, we say so, and we label what a machine checked and what a person did.</p>
-                    </div>
-                    <div>
-                      <Speech className="art" />
-                      <h3>Every side, fairly put.</h3>
-                      <p>Strong arguments from different perspectives, with facts, predictions and values kept apart. No scores, no hidden agenda.</p>
-                    </div>
-                    <div>
-                      <ShieldCheck size={44} strokeWidth={1.6} />
-                      <h3>Your thinking is yours.</h3>
-                      <p>No accounts, no tracking. Your notes stay on your device unless you choose otherwise, and you can delete them any time.</p>
-                    </div>
-                  </div>
-                </section>
-
-                <section className="section-space" aria-labelledby="gov-guide">
-                  <div className="section-intro">
-                    <div className="eyebrow">START HERE IN THREE MINUTES</div>
-                    <h2 id="gov-guide">How government action actually happens.</h2>
-                    <p>Headlines blur these steps. Each means something different, and only some of them change the law.</p>
-                  </div>
-                  <ol className="journey">
-                    {[
-                      ["Bills", "Proposed laws. Most never pass. A bill becomes law only after both chambers pass the same text and the executive signs it, or a veto is overridden."],
-                      ["Laws", "Enacted statutes. They set the rules and often direct agencies to fill in the details."],
-                      ["Rulemaking", "Agencies propose rules, take public comment, then publish final rules. A proposed rule is not in force."],
-                      ["Executive orders", "Presidential directives to the executive branch. They can't override statutes and a later president can revoke them."],
-                      ["Courts", "Judges decide whether laws and rules are lawful. A ruling can pause or block an action."],
-                      ["Implementation", "What agencies and officials actually do. Effective dates, funding and enforcement can lag well behind an announcement."],
-                      ["Ballot measures", "In states like Colorado, voters can change the constitution or state law directly."],
-                    ].map(([t, d]) => (
-                      <li key={t}>
-                        <h3>{t}</h3>
-                        <p>{d}</p>
-                      </li>
-                    ))}
-                  </ol>
-                </section>
-
-                <div className="home-end">
-                  <p>Understand the world. Understand yourself. Decide for yourself.</p>
-                  <span>No ads. No outrage. No agenda.</span>
-                </div>
-              </div>
+              <Suspense fallback={<div className="home-wrap"><div className="skeleton lead-skeleton" /></div>}>
+                <HomeBody />
+              </Suspense>
             </>
           )}
           {(section === "legislation" || section === "saved") && (
@@ -648,6 +449,26 @@ export default function CommonGround({
           {section === "congress" && (
             <Suspense fallback={<p className="empty">Loading…</p>}>
               <Congress parts={parts.slice(1)} />
+            </Suspense>
+          )}
+          {section === "issues" && (
+            <Suspense fallback={<p className="empty">Loading…</p>}>
+              {parts[1] ? <Briefing id={parts[1]} /> : <IssuesIndex />}
+            </Suspense>
+          )}
+          {section === "government" && (
+            <Suspense fallback={<p className="empty">Loading…</p>}>
+              <Government />
+            </Suspense>
+          )}
+          {section === "data" && (
+            <Suspense fallback={<p className="empty">Loading…</p>}>
+              <DataHub />
+            </Suspense>
+          )}
+          {section === "explore" && (
+            <Suspense fallback={<p className="empty">Loading…</p>}>
+              <ExploreHub />
             </Suspense>
           )}
           {section === "credits" && (
@@ -803,6 +624,10 @@ export default function CommonGround({
             "search",
             "review",
             "credits",
+            "issues",
+            "government",
+            "data",
+            "explore",
             "methodology",
             "privacy",
             "status",
@@ -850,50 +675,6 @@ export default function CommonGround({
         </footer>
       </div>
     </div>
-  );
-}
-function HomeVoteBanner() {
-  const phase = electionPhase(election, new Date());
-  if (phase.phase === "after") return null;
-  const statewide = election.measures.filter((m) => m.scope === "statewide").length;
-  return (
-    <section className="section-space" aria-labelledby="vote-feature">
-      <div className="election-feature">
-        <figure className="arch-photo">
-          <img src={IMG + "aspens-sm.jpg"} srcSet={`${IMG}aspens-sm.jpg 720w, ${IMG}aspens.jpg 1400w`} sizes="(max-width: 820px) 90vw, 46vw" alt="Golden aspen trees below red mountain peaks in Colorado" loading="lazy" />
-        </figure>
-        <div>
-          <span className="countdown">
-            <Vote size={18} />
-            {phase.phase === "election-day"
-              ? "It's Election Day. Ballots are due by 7 p.m."
-              : `Colorado votes November 3 · ${phase.days} ${phase.days === 1 ? "day" : "days"} to go`}
-          </span>
-          <h2 id="vote-feature">Your ballot, explained like a friend would.</h2>
-          <p className="lede">
-            Every statewide measure and race, with the official numbers, the strongest arguments on each side, and a private notebook for your own
-            thinking. We never tell you how to vote.
-          </p>
-          <div className="fact-trio">
-            <div>
-              <strong>{statewide}</strong>
-              <span>statewide measures explained</span>
-            </div>
-            <div>
-              <strong>13</strong>
-              <span>candidate profiles, each sourced</span>
-            </div>
-            <div>
-              <strong>0</strong>
-              <span>addresses collected</span>
-            </div>
-          </div>
-          <Link className="button primary" href="/vote">
-            Start with my ballot <ArrowRight size={16} />
-          </Link>
-        </div>
-      </div>
-    </section>
   );
 }
 function PageTitle({

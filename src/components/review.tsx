@@ -7,6 +7,7 @@ import rawLog from "../../data/review/decisions.json";
 import { validateProfiles } from "@/lib/candidate";
 import { DEBATES } from "@/lib/debates";
 import { atlasNodes } from "@/lib/atlas";
+import { BRIEFINGS } from "./briefings-data";
 import { buildQueue, type Decision, type ItemKind, type ItemState } from "@/lib/review";
 
 const STATE_LABEL: Record<ItemState, string> = {
@@ -26,6 +27,7 @@ const KIND_LABEL: Record<ItemKind, string> = {
   record: "Promises, votes and outcomes",
   pathways: "Pathways",
   explainer: "Explainers",
+  briefing: "Evidence briefings",
 };
 type Choice = "" | Decision["decision"];
 
@@ -37,6 +39,7 @@ export default function Review() {
         profiles: validateProfiles(rawProfiles, election.contests),
         debates: DEBATES,
         atlasCount: atlasNodes.length,
+        briefings: BRIEFINGS,
         log: rawLog as Decision[],
         builtOn: election.dataVerifiedAt.slice(0, 10),
       }),

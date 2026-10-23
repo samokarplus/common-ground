@@ -1,10 +1,10 @@
 {
   "checkedOn": "2026-10-23",
   "summary": {
-    "total": 54,
-    "ok": 49,
+    "total": 59,
+    "ok": 53,
     "dead": 0,
-    "inconclusive": 5
+    "inconclusive": 6
   },
   "results": [
     {
@@ -49,6 +49,14 @@
     },
     {
       "url": "https://content.leg.colorado.gov/sites/default/files/2026-fiscal-impact-statements-english-accessible.pdf",
+      "status": "ok"
+    },
+    {
+      "url": "https://fiscaldata.treasury.gov/datasets/debt-to-the-penny/debt-to-the-penny",
+      "status": "ok"
+    },
+    {
+      "url": "https://fiscaldata.treasury.gov/datasets/monthly-treasury-statement/summary-of-receipts-and-outlays-of-the-u-s-government",
       "status": "ok"
     },
     {
@@ -113,6 +121,10 @@
     },
     {
       "url": "https://wileyforcolorado.com/",
+      "status": "ok"
+    },
+    {
+      "url": "https://www.cdc.gov/mmwr/volumes/73/ss/ss7307a1.htm",
       "status": "ok"
     },
     {
@@ -200,8 +212,16 @@
       "status": "ok"
     },
     {
+      "url": "https://www.everycrsreport.com/reports/R47275.html",
+      "status": "ok"
+    },
+    {
       "url": "https://www.frprdistrict.com",
       "status": "ok"
+    },
+    {
+      "url": "https://www.gao.gov/products/gao-05-734sp",
+      "status": "inconclusive"
     },
     {
       "url": "https://www.govotecolorado.gov/",

@@ -8,9 +8,6 @@ import CommonGround from "./components/common-ground";
 import "@fontsource/fraunces/latin-400.css";
 import "@fontsource/fraunces/latin-400-italic.css";
 import "@fontsource/fraunces/latin-600.css";
-import "@fontsource/newsreader/latin-400.css";
-import "@fontsource/newsreader/latin-400-italic.css";
-import "@fontsource/newsreader/latin-600.css";
 import "./styles.css";
 import "./warm.css";
 function App() {

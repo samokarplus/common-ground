@@ -21,7 +21,7 @@ export const DecisionSchema = z
 export type Decision = z.infer<typeof DecisionSchema>;
 export const DecisionFileSchema = z.array(DecisionSchema).min(1);
 
-export type ItemKind = "measure" | "profile" | "debate" | "atlas" | "values" | "guide" | "record" | "pathways" | "explainer";
+export type ItemKind = "measure" | "profile" | "debate" | "atlas" | "values" | "guide" | "record" | "pathways" | "explainer" | "briefing";
 export type ItemState = "draft-hidden" | "machine-checked" | "human-reviewed" | "changes-requested" | "rejected";
 
 export type ReviewItem = {
@@ -55,6 +55,8 @@ export type QueueInput = {
   profiles: Profile[];
   debates: { id: string; question: string; facts: { sourceUrl: string; sourceLabel: string }[] }[];
   atlasCount: number;
+  /** Evidence briefings, queued for review under their own ids (`briefing:<id>`). */
+  briefings?: { id: string; question: string; sourceCheckedOn: string; sources: { label: string; url: string }[]; limitations: string[] }[];
   log: Decision[];
   builtOn: string;
 };
@@ -114,6 +116,23 @@ export function buildQueue(i: QueueInput): ReviewItem[] {
       sources: uniq(d.facts.map((f) => ({ label: f.sourceLabel, url: f.sourceUrl }))),
       verifiedOn: i.builtOn,
       outstanding: ["Claim-type tags and evidence notes are Common Ground's editorial judgment.", "Only Blue Book facts are used; no outside studies were consulted."],
+    });
+  }
+  for (const b of i.briefings ?? []) {
+    const id = `briefing:${b.id}`;
+    items.push({
+      id,
+      kind: "briefing",
+      title: b.question,
+      href: `/issues/${b.id}`,
+      state: fromLog(id, log),
+      sources: uniq(b.sources.map((x) => ({ label: x.label, url: x.url }))),
+      verifiedOn: b.sourceCheckedOn,
+      outstanding: [
+        "Numbers are generated from committed snapshots; compare them with the linked original tables.",
+        "Plain-language wording, 'what people disagree about' and the factual/values split are editorial judgments.",
+        ...b.limitations.slice(0, 3),
+      ],
     });
   }
   const single = (id: string, kind: ItemKind, title: string, href: string, sources: { label: string; url: string }[], outstanding: string[]) =>

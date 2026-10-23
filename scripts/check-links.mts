@@ -6,12 +6,15 @@ import { readFileSync, writeFileSync } from "node:fs";
 const files = [
   "data/elections/colorado-2026.json",
   "data/elections/colorado-2026-profiles.json",
+  "data/fiscal/ukraine-appropriations.json",
+  "data/stats/abortion-cdc.json",
   "data/elections/colorado-2026-gaps.json",
   "src/lib/pathways.ts",
   "src/lib/chain.ts",
   "src/components/election-process.tsx",
   "src/components/help-me-vote.tsx",
   "src/lib/debates.ts",
+  "src/lib/briefings.ts",
   "src/lib/atlas.ts",
 ];
 const urls = new Set<string>();

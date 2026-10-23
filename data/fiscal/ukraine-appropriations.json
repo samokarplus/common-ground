@@ -1,0 +1,27 @@
+{
+  "measure": "Emergency supplemental appropriations enacted for the U.S. response to Russia's 2022 invasion of Ukraine",
+  "measureType": "Appropriations (budget authority provided by Congress). NOT obligations, outlays or amounts delivered to Ukraine.",
+  "source": {
+    "publisher": "Congressional Research Service",
+    "title": "Department of State, Foreign Operations, and Related Programs (SFOPS) Supplemental Funding for Ukraine: In Brief (R47275)",
+    "url": "https://www.everycrsreport.com/reports/R47275.html",
+    "version": "Updated April 26, 2024",
+    "retrievedOn": "2026-10-23"
+  },
+  "unit": "billions of nominal U.S. dollars",
+  "statedTotal": { "billions": 174.2, "period": "FY2022 through FY2024", "asOf": "2024-04-26", "note": "CRS states this total. The five act totals below sum to 174.1 because each is rounded to a tenth." },
+  "stateDepartmentAndForeignOperationsTotal": { "billions": 58.4, "note": "Part of the total above that went to State Department and foreign operations accounts, per CRS." },
+  "acts": [
+    { "id": "fy22-usaa", "name": "Ukraine Supplemental Appropriations Act, 2022", "citation": "P.L. 117-103, Division N", "enacted": "2022-03-15", "billions": 13.6, "fiscalYear": 2022 },
+    { "id": "fy22-ausaa", "name": "Additional Ukraine Supplemental Appropriations Act, 2022", "citation": "P.L. 117-128", "enacted": "2022-05-21", "billions": 40.1, "fiscalYear": 2022 },
+    { "id": "fy23-usaa", "name": "Ukraine Supplemental Appropriations Act, 2023 (in the continuing resolution)", "citation": "P.L. 117-180, Division B", "enacted": "2022-09-30", "billions": 12.3, "fiscalYear": 2023 },
+    { "id": "fy23-ausaa", "name": "Additional Ukraine Supplemental Appropriations Act, 2023 (in the Consolidated Appropriations Act, 2023)", "citation": "P.L. 117-328, Division M", "enacted": "2022-12", "billions": 47.3, "fiscalYear": 2023 },
+    { "id": "fy24-ussaa", "name": "Ukraine Security Supplemental Appropriations Act, 2024", "citation": "P.L. 118-50, Division B", "enacted": "2024-04", "billions": 60.8, "fiscalYear": 2024 }
+  ],
+  "whatThisCoversPerCrs": "Foreign assistance for Ukraine and other countries affected by the war, U.S. European Command operations and related support for the U.S. military, and administration of other agencies' responses (legal enforcement, sanctions, refugee and entrant assistance).",
+  "notCovered": [
+    "Appropriations enacted after CRS's April 26, 2024 update.",
+    "How much was obligated, spent (outlays) or disbursed, and how much stayed in the United States, for example to replace U.S. military stocks.",
+    "Estimated value of equipment transferred from U.S. stocks."
+  ]
+}

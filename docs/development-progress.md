@@ -187,3 +187,8 @@ Fetched current history in a separate branch/worktree and incorporated c4c370c c
 - New visual layer (`src/warm.css`, `docs/design-system.md`): warm palette, Fraunces/Newsreader/DM Sans, masthead header with a mobile menu, photo-backed page headers, a redesigned home page, new footer, `#/credits` page, illustrations. Eight photographs (public domain or CC BY/BY-SA from Wikimedia Commons, credited) total about 2.5 MB.
 - Behavior, data, privacy and review safeguards are unchanged. 135 unit tests and 300 browser checks (including axe on every route at three widths) pass locally.
 - Not redone: the Thought Atlas graph and status/health tables keep their older internal layout (the status table is dense on phones); inner pages share one photo per section rather than bespoke art.
+
+## Evidence-first refocus (session 4, branch `product/evidence-first`)
+- Added five-destination navigation, calm home, briefing system and schema, three briefings (federal spending, Ukraine appropriations, abortion statistics), Government actions explorer, Data and Explore hubs, rule-selected developments. Details: `docs/product-refocus.md`.
+- Verified in this session: 158 unit tests pass; lint and `tsc` clean; Playwright suite (desktop/tablet/mobile incl. axe on new routes) passing after fixes (scrollable region focus, link underline, home copy); link check 53 ok / 0 dead / 6 inconclusive.
+- Not done: immigration briefing, executive-order refresh (IP blocked), human review of anything, scheduled fiscal refresh.

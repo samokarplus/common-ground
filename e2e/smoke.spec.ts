@@ -19,6 +19,13 @@ const routes = [
   "#/congress",
   "#/debate/maps",
   "#/paths",
+  "#/issues",
+  "#/issues/federal-spending",
+  "#/issues/ukraine-assistance",
+  "#/issues/abortion-statistics",
+  "#/government",
+  "#/data",
+  "#/explore",
   "#/credits",
   "#/review",
   "#/vote/colorado/how-elections-work",
@@ -330,9 +337,10 @@ test("a long bill timeline can expand to the full official action record", async
 
 test("the home page greets visitors with a photo hero, a clear first action and photo credits in the footer", async ({ page }) => {
   await page.goto("#/");
-  await expect(page.getByRole("heading", { level: 1 })).toContainText("Make sense of the world");
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("Understand what's happening");
   await expect(page.locator(".hero img")).toBeVisible();
-  await expect(page.getByRole("link", { name: /Understand my ballot/ })).toHaveAttribute("href", /#\/vote$/);
+  await expect(page.getByRole("link", { name: /See what the government is doing/ })).toHaveAttribute("href", /#\/government$/);
+  await expect(page.getByRole("link", { name: /Help Me Vote/ }).first()).toHaveAttribute("href", /#\/vote$/);
   await page.getByRole("link", { name: "Photo credits" }).click();
   await expect(page.getByRole("heading", { name: /photographs on this site/i })).toBeVisible();
   await expect(page.getByText(/Carol M\. Highsmith/)).toBeVisible();
@@ -349,4 +357,70 @@ test("page headers carry a room photograph and the mobile menu opens and closes"
     await expect(toggle).toHaveAttribute("aria-expanded", "true");
     await expect(page.getByRole("navigation", { name: "Main navigation" }).getByRole("link", { name: "Congress" })).toBeVisible();
   }
+});
+
+test("five destinations plus the seasonal Help Me Vote link, with the right one highlighted", async ({ page }) => {
+  await page.goto("#/government");
+  const toggle = page.getByRole("button", { name: "Toggle navigation" });
+  const openMenu = async () => {
+    if (!(await toggle.isVisible())) return;
+    if ((await toggle.getAttribute("aria-expanded")) !== "true") await toggle.click();
+    await expect(toggle).toHaveAttribute("aria-expanded", "true");
+  };
+  await openMenu();
+  const nav = page.getByRole("navigation", { name: "Main navigation" });
+  for (const name of ["Today", "Issues", "Government", "Data", "Explore"]) await expect(nav.getByRole("link", { name, exact: true })).toBeVisible();
+  await expect(nav.getByRole("link", { name: "Government", exact: true })).toHaveAttribute("aria-current", "page");
+  await expect(nav.getByRole("link", { name: "Help Me Vote" })).toBeVisible();
+  await page.goto("#/congress");
+  await openMenu();
+  await expect(nav.getByRole("link", { name: "Government", exact: true })).toHaveAttribute("aria-current", "page");
+});
+
+test("a briefing shows the short answer, typed claims, sources, limitations and a data table behind every chart", async ({ page }) => {
+  await page.goto("#/issues/federal-spending");
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("spend, collect and borrow");
+  await expect(page.getByRole("heading", { name: "The short answer" })).toBeVisible();
+  await expect(page.getByText("Machine-checked, not human-reviewed").first()).toBeVisible();
+  for (const h of ["The evidence", "Historical context", "What changed recently", "What happens next", "What people disagree about", "Original sources", "Limitations"]) await expect(page.getByRole("heading", { name: h, exact: true })).toBeVisible();
+  const charts = page.locator("figure.chart");
+  expect(await charts.count()).toBeGreaterThanOrEqual(4);
+  await expect(charts.first().locator("svg[role=img] desc")).toContainText("Line chart");
+  await charts.first().getByText("View the data as a table").click();
+  await expect(charts.first().locator("table tbody tr").first()).toBeVisible();
+  await expect(page.locator('a[href*="fiscaldata.treasury.gov"]').first()).toBeVisible();
+});
+
+test("the Ukraine briefing says appropriations are not money delivered and shows no spending total", async ({ page }) => {
+  await page.goto("#/issues/ukraine-assistance");
+  await expect(page.getByText(/not money delivered to Ukraine/).first()).toBeVisible();
+  await expect(page.getByText(/174\.2 billion/).first()).toBeVisible();
+  await expect(page.getByText(/Words that are not interchangeable/)).toBeVisible();
+});
+
+test("the abortion briefing says the figures are not a national total and shows a table with all years", async ({ page }) => {
+  await page.goto("#/issues/abortion-statistics");
+  await expect(page.getByText(/not a national total/).first()).toBeVisible();
+  await page.locator("figure.chart").first().getByText("View the data as a table").click();
+  await expect(page.locator("figure.chart").first().locator("tbody tr")).toHaveCount(10);
+});
+
+test("the government explorer places actions on a ladder, filters them, and keeps executive orders apart from laws", async ({ page }) => {
+  await page.goto("#/government");
+  await expect(page.getByRole("heading", { name: "Announced is not enacted: the stages" })).toBeVisible();
+  await expect(page.getByText(/Selected, not comprehensive/)).toBeVisible();
+  await page.getByRole("button", { name: "Signed into law" }).click();
+  const items = page.locator(".action-item");
+  expect(await items.count()).toBeGreaterThan(0);
+  for (const t of await items.locator(".tag").allInnerTexts()) expect(t).not.toBe("Executive order");
+  await page.getByRole("button", { name: "Presidential action" }).click();
+  await expect(page.getByText(/not a law passed by Congress/).first()).toBeVisible();
+});
+
+test("the home page shows rule-selected developments with originals and why each was chosen", async ({ page }) => {
+  await page.goto("#/");
+  await expect(page.getByRole("heading", { name: /recent developments/ })).toBeVisible();
+  expect(await page.locator(".dev").count()).toBeGreaterThanOrEqual(4);
+  await expect(page.getByText(/Why this one:/).first()).toBeVisible();
+  await expect(page.getByRole("heading", { name: /Where the numbers come from/ })).toBeVisible();
 });

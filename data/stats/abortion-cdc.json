@@ -1,0 +1,41 @@
+{
+  "measure": "Abortions reported to the CDC by 47 areas that reported every year from 2013 through 2022",
+  "source": {
+    "publisher": "Centers for Disease Control and Prevention",
+    "title": "Abortion Surveillance — United States, 2022 (MMWR Surveillance Summaries 73(7))",
+    "url": "https://www.cdc.gov/mmwr/volumes/73/ss/ss7307a1.htm",
+    "published": "2024-11",
+    "retrievedOn": "2026-10-23",
+    "transcription": "Table 1 values were transcribed from the report page through a summarizing tool. 2021 and 2022 values and the report's stated overall changes were cross-checked against a second source; every other year passes the report's stated change checks but should be confirmed by a person against Table 1."
+  },
+  "areas": 47,
+  "series": [
+    { "year": 2013, "abortions": 640154, "ratePer1000Women15to44": 12.4, "ratioPer1000LiveBirths": 198 },
+    { "year": 2014, "abortions": 625668, "ratePer1000Women15to44": 12.0, "ratioPer1000LiveBirths": 190 },
+    { "year": 2015, "abortions": 613911, "ratePer1000Women15to44": 11.8, "ratioPer1000LiveBirths": 187 },
+    { "year": 2016, "abortions": 599001, "ratePer1000Women15to44": 11.5, "ratioPer1000LiveBirths": 184 },
+    { "year": 2017, "abortions": 587611, "ratePer1000Women15to44": 11.2, "ratioPer1000LiveBirths": 184 },
+    { "year": 2018, "abortions": 591884, "ratePer1000Women15to44": 11.2, "ratioPer1000LiveBirths": 188 },
+    { "year": 2019, "abortions": 603168, "ratePer1000Women15to44": 11.4, "ratioPer1000LiveBirths": 194 },
+    { "year": 2020, "abortions": 592939, "ratePer1000Women15to44": 11.1, "ratioPer1000LiveBirths": 197 },
+    { "year": 2021, "abortions": 622108, "ratePer1000Women15to44": 11.6, "ratioPer1000LiveBirths": 204 },
+    { "year": 2022, "abortions": 609360, "ratePer1000Women15to44": 11.2, "ratioPer1000LiveBirths": 199 }
+  ],
+  "reportStatedChanges": {
+    "2013to2022": { "number": -5, "rate": -10, "ratio": 1, "unit": "percent" },
+    "2021to2022": { "number": -2, "rate": -3, "ratio": -2, "unit": "percent" }
+  },
+  "all48AreasIn2022": { "abortions": 613383, "note": "The 48 areas that reported for 2022 include one that did not report every year; rates and ratios apply to the 47-area group." },
+  "notReporting": "California, Maryland and New Hampshire did not report in any year 2013-2022 and New Jersey did not report in 2021 and 2022; the District of Columbia did not report in 2016. Together the four states were about 20 percent of U.S. abortions in 2020 according to the report, citing Guttmacher Institute data.",
+  "medication": { "earlyMedicationShare2022Percent": 53.3, "definition": "Early medication abortions at 9 weeks of gestation or less, as a percentage of abortions in 2022 for the areas that report this." },
+  "definitions": {
+    "rate": "Abortions per 1,000 women aged 15 to 44",
+    "ratio": "Abortions per 1,000 live births"
+  },
+  "limitations": [
+    "Reporting to CDC is voluntary and requirements differ by area, so CDC cannot report the total number of abortions in the United States.",
+    "Data are organized by where the abortion occurred, not where the woman lives, so rates are likely too high where many patients travel in and too low where many travel out.",
+    "Telehealth abortions may be reported inconsistently across areas.",
+    "The report does not count self-managed abortions and does not analyze effects of the 2022 Dobbs decision."
+  ]
+}
