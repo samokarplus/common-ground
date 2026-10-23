@@ -2,7 +2,7 @@
 // Usage: npm run refresh:congress   (add --dry-run to report without writing)
 // Takes the most recently updated bills per type. Leaves the snapshot untouched on any failure.
 import { readFile, writeFile, mkdir } from "node:fs/promises";
-import { diffBills, parseBillStatus, type Bill } from "../src/lib/congress.ts";
+import { diffBills, parseBillStatus, refreshProblem, type Bill } from "../src/lib/congress.ts";
 
 const OUT = "data/congress/bills.json";
 const CHANGELOG = "data/changelog/congress.jsonl";
@@ -70,6 +70,8 @@ try {
   } catch {
     /* first run */
   }
+  const problem = refreshProblem(prev.bills, bills);
+  if (problem) throw new Error(`refusing to replace the snapshot: ${problem}`);
   if (JSON.stringify(prev.bills) === JSON.stringify(bills)) {
     console.log("No change in official bill data. Nothing written.");
     await recordStatus({ lastSuccess: today, lastError: undefined });

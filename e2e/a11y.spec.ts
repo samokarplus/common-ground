@@ -24,6 +24,7 @@ const routes = [
   "#/debate/maps/graduated-income-tax",
   "#/atlas",
   "#/methodology",
+  "#/status",
   "#/privacy",
 ];
 

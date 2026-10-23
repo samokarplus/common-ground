@@ -9,6 +9,7 @@ import HelpMeVote, { election } from "./help-me-vote";
 const Congress = lazy(() => import("./congress"));
 const DebateMaps = lazy(() => import("./debate-maps"));
 import Corrections from "./corrections";
+import HealthPanel from "./health-panel";
 import { agencyOptions, applyFeedFilters } from "@/lib/feed-filter";
 import { TENSIONS } from "@/lib/values-tradeoffs";
 import { daysUntil, electionPhase } from "@/lib/election";
@@ -810,6 +811,7 @@ export default function CommonGround({
                 title="A clear view of our sources."
                 text="Source health, retrieval times, and what is—and isn’t—connected."
               />
+              <HealthPanel />
               <FeedStatus feed={feed} />
               <div className="panel">
                 <div className="section-heading">

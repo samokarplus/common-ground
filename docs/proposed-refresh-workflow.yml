@@ -43,9 +43,9 @@ jobs:
       - name: Verify before publishing
         if: steps.diff.outputs.changed == 'true'
         run: |
+          npm run health
           npm test
           npm run lint
-          npm run health
           npm run build
           npm run scan
       - name: Commit and push

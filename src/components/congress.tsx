@@ -4,6 +4,7 @@ import Link from "./link";
 import raw from "../../data/congress/bills.json";
 import { BillSchema, BILL_STATUSES, STATUS_LABEL, type Bill, type BillStatus } from "@/lib/congress";
 import { z } from "zod";
+import { freshness } from "@/lib/freshness";
 
 const snapshot = z
   .object({ source: z.string(), sourceUrl: z.string(), congress: z.number(), retrievedAt: z.string(), selection: z.string(), bills: z.array(BillSchema) })
@@ -14,8 +15,10 @@ const label = (b: Bill) => `${TYPE_LABEL[b.type] ?? b.type.toUpperCase()} ${b.nu
 const day = (d: string) => new Date(d.slice(0, 10) + "T12:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
 
 function Snapshot() {
+  const f = freshness(snapshot.retrievedAt, new Date(), 3);
   return (
-    <p className="note" role="note">
+    <p className={"note" + (f.stale ? " stale" : "")} role="note">
+      {f.stale && <strong>Out of date: this snapshot is {f.label}. Check Congress.gov for current status. </strong>}
       <Info size={15} aria-hidden="true" /> Dated snapshot of the {snapshot.bills.length} most recently updated bills from{" "}
       <a href={snapshot.sourceUrl} target="_blank" rel="noreferrer">
         GovInfo BILLSTATUS

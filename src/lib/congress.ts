@@ -177,3 +177,16 @@ export function diffBills(prev: Bill[], next: Bill[]): BillChange[] {
   }
   return out;
 }
+
+/**
+ * Guard against replacing a good snapshot with a bad one. Returns a reason to refuse the refresh,
+ * or null if it looks sane. Never silently shrinks or duplicates data.
+ */
+export function refreshProblem(prev: Bill[] | undefined, next: Bill[]): string | null {
+  if (next.length === 0) return "refresh returned no bills";
+  const ids = next.map((b) => b.id);
+  if (new Set(ids).size !== ids.length) return "refresh contains duplicate bill ids";
+  if (prev && prev.length >= 20 && next.length < prev.length * 0.5)
+    return `refresh returned ${next.length} bills, fewer than half of the previous ${prev.length}`;
+  return null;
+}

@@ -2879,3 +2879,8 @@ details > summary:focus-visible {
   outline: 2px solid var(--green);
   outline-offset: 2px;
 }
+
+.note.stale {
+  border-color: #b3541e;
+  background: #fff4ec;
+}

@@ -7,7 +7,7 @@ _Generated 2026-10-22 by `npm run health`. Regenerated automatically when the sc
 | Source | Last updated in repo | Age | Status |
 | --- | --- | --- | --- |
 | Federal Register (automated) | 2026-10-22 | 0 days | OK |
-| Congress bills, GovInfo (script; scheduled run pending) | 2026-10-22 | 0 days | OK |
+| Congress bills, GovInfo (script; scheduled run pending) | 2026-10-23 | 0 days | OK |
 | Colorado 2026 election (manual, reviewed) | 2026-10-22 | 0 days | OK |
 
 "Last updated in repo" is when official content last changed. A check that finds no change writes nothing, so its time shows in the workflow run history, not here.
@@ -18,8 +18,9 @@ _Generated 2026-10-22 by `npm run health`. Regenerated automatically when the sc
 
 ## Editorial review queue (Colorado measures)
 
-- Draft, hidden from the site: **15**
-- Reviewed and published: **0**
+- Draft, hidden from the site: **0**
+- Source-checked against the Blue Book, shown with a "not human-reviewed" label: **15**
+- Human-reviewed and published: **0**
 - Needs re-review after an official change: **0**
 
 See `editorial-review.md`.
@@ -28,6 +29,7 @@ See `editorial-review.md`.
 
 - 2026-10-26 (in 4 days): Last day to register and still be mailed a ballot. After this, you can still register and vote in person.
 - 2026-10-26 (in 4 days): Last suggested day to return a ballot by mail. After this, use a drop box or voting center.
+- 2026-10-27 (in 5 days): Suggested: return your ballot to a voting center or drop box, or vote in person, from this date through Election Day.
 - 2026-11-03 (in 12 days): Election Day. Ballots must be received, or you must be in line, by 7 p.m.
 
 ## Unresolved discrepancies

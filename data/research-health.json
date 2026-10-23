@@ -15,18 +15,20 @@
       }
     },
     "govinfo-billstatus": {
-      "snapshotRetrievedAt": "2026-10-22T23:01:40.418Z",
+      "snapshotRetrievedAt": "2026-10-23T00:58:15.089Z",
       "snapshotAgeDays": 0,
       "stale": false,
       "billCount": 60,
-      "lastSuccess": "2026-10-22"
+      "lastSuccess": "2026-10-23",
+      "lastChange": "2026-10-23T00:58:15.089Z"
     },
     "colorado-2026-election": {
-      "dataVerifiedAt": "2026-10-22T22:30:00Z",
+      "dataVerifiedAt": "2026-10-22T23:00:00Z",
       "ageDays": 0,
       "stale": false,
       "reviewQueue": {
-        "draft": 15,
+        "draft": 0,
+        "source-checked": 15,
         "reviewed": 0,
         "needs-re-review": 0
       }
@@ -44,6 +46,12 @@
       "label": "Last suggested day to return a ballot by mail. After this, use a drop box or voting center.",
       "sourceId": "sos-certification",
       "inDays": 4
+    },
+    {
+      "date": "2026-10-27",
+      "label": "Suggested: return your ballot to a voting center or drop box, or vote in person, from this date through Election Day.",
+      "sourceId": "sos-certification",
+      "inDays": 5
     },
     {
       "date": "2026-11-03",
