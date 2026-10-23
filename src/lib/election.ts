@@ -239,8 +239,8 @@ export function isStale(e: Pick<Election, "dataVerifiedAt" | "staleAfterDays">, 
 
 export const COVERAGE = {
   verifiedStatewide: {
-    label: "Verified statewide",
-    detail: "On every Colorado ballot. Checked against official state sources.",
+    label: "On every Colorado ballot",
+    detail: "Statewide, so it appears for every Colorado voter. What we checked, and what we could not, is listed under \"How we checked this\" on the Colorado overview.",
   },
   district: {
     label: "Only in some areas",

@@ -129,3 +129,11 @@ Factual log. Only items marked verified were checked in the session that wrote t
 - **Values Explorer:** each real tradeoff now has session-only choices ("X weighs more for me here", "It depends", "I'm unsure"); included only in the optional download, cleared by delete, and never scored or stored.
 - **Pathways:** `#/paths` has three guided routes connecting ballot measures, debate maps, values, Atlas ideas, the Congress tracker, the bill record and the Federal Register. A test checks every link resolves to a real route, measure, debate or Atlas idea.
 - Also fixed a lint error left in `src/lib/local-races.ts` from Phase 3 (the earlier push had not been lint-clean). 97 unit and 225 browser checks pass locally.
+
+## Phase 6 — usability and quality (2026-10-22)
+- **Visual review:** screenshots of the home, Help Me Vote, measure and profile pages at 390px and 1360px were inspected; layouts are clean and readable.
+- **Honest badge:** the "Verified statewide" badge on measures implied verification beyond what was done; it now reads "On every Colorado ballot" and points to the dated "How we checked this" list.
+- **Site search:** the header search now opens `#/search`, which searches ballot measures, offices and candidates, Atlas ideas, debate maps, pathways and pages entirely in the browser (accent- and case-insensitive, all terms must match, capped per group) with a helpful empty state that offers a Federal Register search. 101 unit tests cover it.
+- **Performance:** vendor libraries (React, zod, icons) are split into separate cached chunks; the app chunk fell from about 560 kB to about 314 kB. Route-level lazy chunks now exist for Congress, debate maps, record chain, pathways and search.
+- **Tests:** 101 unit and 234 browser checks (smoke, axe on about 30 routes at 3 widths, voter flow, privacy network audit) pass locally.
+- **Not done:** no real-user testing with people unfamiliar with politics; no screen-reader or keyboard-only manual pass; the Atlas map view is still dense at its default; the Policy Explorer's topic cards are still conceptual guides, not data-driven.

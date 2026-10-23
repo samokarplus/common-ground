@@ -12,6 +12,7 @@ import Corrections from "./corrections";
 import HealthPanel from "./health-panel";
 const ChainPage = lazy(() => import("./chain"));
 const Pathways = lazy(() => import("./pathways"));
+const SiteSearch = lazy(() => import("./site-search"));
 import { agencyOptions, applyFeedFilters } from "@/lib/feed-filter";
 import { TENSIONS } from "@/lib/values-tradeoffs";
 import { daysUntil, electionPhase } from "@/lib/election";
@@ -321,15 +322,14 @@ export default function CommonGround({
             className="global-search"
             onSubmit={(e) => {
               e.preventDefault();
-              window.location.hash =
-                "/legislation?q=" + encodeURIComponent(query);
+              window.location.hash = "/search?q=" + encodeURIComponent(query);
             }}
           >
             <Search size={16} />
             <input
-              aria-label="Search actions and ideas"
+              aria-label="Search Common Ground"
               name="q"
-              placeholder="Search actions, topics, ideas…"
+              placeholder="Search measures, ideas, bills…"
               defaultValue={query}
               onChange={(e) => setQuery(e.target.value)}
             />
@@ -803,6 +803,11 @@ export default function CommonGround({
               <Congress parts={parts.slice(1)} />
             </Suspense>
           )}
+          {section === "search" && (
+            <Suspense fallback={<p className="empty">Loading…</p>}>
+              <SiteSearch />
+            </Suspense>
+          )}
           {section === "paths" && (
             <Suspense fallback={<p className="empty">Loading…</p>}>
               <Pathways />
@@ -938,6 +943,7 @@ export default function CommonGround({
             "corrections",
             "chain",
             "paths",
+            "search",
             "methodology",
             "privacy",
             "status",

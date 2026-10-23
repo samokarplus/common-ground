@@ -22,6 +22,7 @@ const routes = [
   "#/debate",
   "#/debate/maps",
   "#/paths",
+  "#/search?q=tax",
   "#/chain",
   "#/atlas?node=distributive-justice",
   "#/debate/maps/graduated-income-tax",

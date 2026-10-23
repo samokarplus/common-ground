@@ -17,6 +17,7 @@ const routes = [
   "#/congress",
   "#/debate/maps",
   "#/paths",
+  "#/search?q=tax",
   "#/chain",
   "#/atlas?node=distributive-justice",
   "#/debate/maps/graduated-income-tax",
@@ -215,4 +216,16 @@ test("values tradeoff choices are interactive, session-only and cleared by delet
   await page.getByRole("button", { name: /Delete all/ }).click();
   await page.getByRole("button", { name: "Yes, delete" }).click();
   await expect(first.getByRole("button", { name: "It depends" })).toHaveAttribute("aria-pressed", "false");
+});
+
+test("site search finds measures, ideas and debate maps, and explains an empty result", async ({ page }) => {
+  await page.goto("#/");
+  await page.getByLabel("Search Common Ground").fill("mail ballot");
+  await page.getByLabel("Search Common Ground").press("Enter");
+  await expect(page.getByRole("heading", { name: /Results for/ })).toBeVisible();
+  await expect(page.getByRole("link", { name: /Amendment 84/ })).toBeVisible();
+  await expect(page.getByRole("link", { name: /require ID information/ })).toBeVisible();
+  await page.goto("#/search?q=zzzzzz");
+  await expect(page.getByText(/Nothing on this site matches/)).toBeVisible();
+  await expect(page.getByRole("link", { name: /search the Federal Register/i }).first()).toBeVisible();
 });

@@ -7,11 +7,11 @@ Last verified against official sources: **October 22, 2026**. The site shows a s
 
 | Area | Coverage | Source |
 | --- | --- | --- |
-| Statewide ballot measures (14) | **Verified statewide**: designation, short title, type, how it qualified, vote threshold, official text link, Blue Book page references | Secretary of State certification (Sept. 4, 2026) and measures page; 2026 Blue Book |
+| Statewide ballot measures (14) | **Statewide, machine-checked**: designation, short title, type, how it qualified, vote threshold, official text link, Blue Book page references | Secretary of State certification (Sept. 4, 2026) and measures page; 2026 Blue Book |
 | Ballot Issue 7A (Front Range Passenger Rail District) | **Listed, district-only**: shown with a district warning, never as statewide | SoS certification; Blue Book p. 100 |
 | Plain-language summaries, YES/NO meaning, fiscal notes | **Drafted, hidden until reviewed** | Blue Book; fiscal impact statements |
-| U.S. Senate, Governor/Lt. Governor, Secretary of State, Treasurer, Attorney General | **Verified statewide**: candidate names and listed affiliations, write-in flags | SoS official candidate list (updated Sept. 15, 2026) |
-| Colorado Supreme Court and Court of Appeals retention | **Verified statewide**: judge names; links to official performance evaluations; no ratings from us | SoS candidate list; Office of Judicial Performance Evaluation |
+| U.S. Senate, Governor/Lt. Governor, Secretary of State, Treasurer, Attorney General | **Statewide, machine-checked**: candidate names and listed affiliations, write-in flags | SoS official candidate list (updated Sept. 15, 2026) |
+| Colorado Supreme Court and Court of Appeals retention | **Statewide**: judge names (from the SoS list; not re-verified in the 2026-10-22 check because the official evaluation site blocks automated access); links to official performance evaluations; no ratings from us | SoS candidate list; Office of Judicial Performance Evaluation |
 | Key dates and deadlines | **Verified**: shown as passed, today, or upcoming in Mountain Time | SoS certification |
 | U.S. House, state legislature, State Board of Education, CU Regents | **Not covered**: depends on address | Use the official sample ballot |
 | County offices, district attorneys, district and county judges | **Not covered** | Use the official sample ballot |
