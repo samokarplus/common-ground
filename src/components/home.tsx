@@ -3,6 +3,8 @@ import { ArrowRight, ExternalLink, Vote } from "lucide-react";
 import Link from "./link";
 import { allActions } from "./government";
 import { BRIEFINGS } from "./briefings-data";
+import { ISSUES } from "@/lib/issues";
+import { COMPARISONS } from "./compare-data";
 import { SourceFreshness } from "./hubs";
 import election from "../../data/elections/colorado-2026.json";
 import treasury from "../../data/fiscal/treasury.json";
@@ -17,7 +19,8 @@ export default function HomeBody() {
   const today = new Date().toISOString().slice(0, 10);
   const dev = useMemo(() => selectDevelopments(allActions(today), treasury as unknown as TreasuryData, today), [today]);
   const phase = electionPhase(parseElection(election), new Date());
-  const [spending, ukraine, abortion] = BRIEFINGS;
+  const pick = (id: string) => BRIEFINGS.find((b) => b.id === id)!;
+  const [spending, prices, abortion, ukraine] = [pick("federal-spending"), pick("consumer-prices"), pick("abortion-statistics"), pick("ukraine-assistance")];
   return (
     <div className="home-wrap">
       {phase.phase !== "after" && (
@@ -29,6 +32,24 @@ export default function HomeBody() {
           <span className="go">Help Me Vote <ArrowRight size={15} aria-hidden="true" /></span>
         </Link>
       )}
+
+      <section className="section-space" aria-labelledby="start-issue">
+        <div className="section-intro">
+          <div className="eyebrow">START WITH WHAT YOU CARE ABOUT</div>
+          <h2 id="start-issue">Pick an issue. See the evidence, the arguments and what government is doing.</h2>
+        </div>
+        <ul className="issue-pills">
+          {ISSUES.map((i) => (
+            <li key={i.id}><Link href={`/issues/${i.id}`}><strong>{i.title}</strong><span>{i.blurb}</span></Link></li>
+          ))}
+        </ul>
+        <p>
+          <Link className="button secondary" href={`/compare/${COMPARISONS[0].id}`}>
+            Compare candidates: {COMPARISONS[0].people.map((p) => p.name).join(" and ")} <ArrowRight size={15} aria-hidden="true" />
+          </Link>{" "}
+          <Link className="button secondary" href="/government/president">What has the President been doing? <ArrowRight size={15} aria-hidden="true" /></Link>
+        </p>
+      </section>
 
       <section className="section-space" aria-labelledby="happening">
         <div className="section-intro">
@@ -68,7 +89,7 @@ export default function HomeBody() {
           <h2 id="briefings">Big questions, answered with the evidence in view.</h2>
         </div>
         <div className="featured-briefings">
-          {[spending, ukraine, abortion].map((b, i) => (
+          {[prices, spending, abortion].map((b, i) => (
             <Link key={b.id} href={`/issues/${b.id}`} className={"briefing-card" + (i === 0 ? " lead" : "")}>
               <span className="eyebrow">{b.topic.toUpperCase()}</span>
               <h3>{b.question}</h3>

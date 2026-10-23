@@ -96,3 +96,13 @@ test("evidence briefings are queued as machine-checked and are only human-review
   const q2 = buildQueue({ election, profiles, debates: DEBATES, atlasCount: 86, briefings, log: [{ itemId: "briefing:federal-spending", decision: "approve", reviewer: "Test Reviewer", on: "2026-10-23" }], builtOn: "2026-10-22" });
   assert.equal(q2.find((x) => x.id === "briefing:federal-spending")!.state, "human-reviewed");
 });
+
+test("comparisons and presidential explanations are queued as machine-checked and only a decision makes them human-reviewed", () => {
+  const comparisons = [{ id: "texas-senate-2026", title: "Texas", asOf: "2026-10-23", limitations: ["L1", "L2"], sourceUrls: [{ label: "x", url: "https://example.org/" }] }];
+  const presidentialAnnotations = { count: 5, sources: [{ label: "wh", url: "https://www.whitehouse.gov/presidential-actions/2026/10/x/" }] };
+  const q = buildQueue({ election, profiles, debates: DEBATES, atlasCount: 86, comparisons, presidentialAnnotations, log: [], builtOn: "2026-10-23" });
+  for (const id of ["comparison:texas-senate-2026", "annotations:presidential"]) assert.equal(q.find((x) => x.id === id)!.state, "machine-checked");
+  const q2 = buildQueue({ election, profiles, debates: DEBATES, atlasCount: 86, comparisons, presidentialAnnotations, log: [{ itemId: "comparison:texas-senate-2026", decision: "approve", reviewer: "Test Reviewer", on: "2026-10-24" }], builtOn: "2026-10-23" });
+  assert.equal(q2.find((x) => x.id === "comparison:texas-senate-2026")!.state, "human-reviewed");
+  assert.equal(q2.find((x) => x.id === "annotations:presidential")!.state, "machine-checked");
+});

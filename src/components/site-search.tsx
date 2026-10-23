@@ -8,7 +8,12 @@ import { PATHWAYS } from "@/lib/pathways";
 import { searchSite } from "@/lib/site-search";
 import { routeSearch } from "./link";
 
+import { ISSUES } from "@/lib/issues";
+import { COMPARISONS } from "./compare-data";
 const PAGES = [
+  ...ISSUES.map((i) => ({ href: `/issues/${i.id}`, title: i.title, about: `${i.question} ${i.blurb}` })),
+  ...COMPARISONS.map((c) => ({ href: `/compare/${c.id}`, title: `Compare ${c.people.map((p) => p.name).join(" and ")}`, about: `${c.title} candidate comparison, ${c.office}` })),
+  { href: "/government/president", title: "Presidential actions, dated", about: "What the President has been doing: executive orders, proclamations, memoranda" },
   { href: "/vote", title: "Help Me Vote", about: "Understand your ballot, Colorado 2026" },
   { href: "/congress", title: "Congress tracker", about: "Follow federal bills and votes" },
   { href: "/legislation", title: "Federal Register", about: "Official federal rules and notices" },

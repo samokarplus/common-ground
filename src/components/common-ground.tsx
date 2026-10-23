@@ -17,8 +17,9 @@ const Review = lazy(() => import("./review"));
 const Credits = lazy(() => import("./credits"));
 const HomeBody = lazy(() => import("./home"));
 const Government = lazy(() => import("./government"));
-const Briefing = lazy(() => import("./briefing").then((m) => ({ default: m.BriefingPage })));
-const IssuesIndex = lazy(() => import("./briefing").then((m) => ({ default: m.IssuesIndex })));
+const President = lazy(() => import("./president"));
+const ComparePage = lazy(() => import("./candidate-compare").then((m) => ({ default: m.ComparePage })));
+const IssueRoute = lazy(() => import("./issues").then((m) => ({ default: m.IssueRoute })));
 const DataHub = lazy(() => import("./hubs").then((m) => ({ default: m.DataHub })));
 const ExploreHub = lazy(() => import("./hubs").then((m) => ({ default: m.ExploreHub })));
 import { BrandMark } from "./art";
@@ -72,12 +73,12 @@ import type { Feed } from "@/lib/free-source";
 const NAV = [
   { id: "today", label: "Today", href: "/", sections: ["today"] },
   { id: "issues", label: "Issues", href: "/issues", sections: ["issues", "policy"] },
-  { id: "government", label: "Government", href: "/government", sections: ["government", "congress", "legislation", "action", "chain"] },
+  { id: "government", label: "Government", href: "/government", sections: ["government", "congress", "legislation", "action", "chain", "compare"] },
   { id: "data", label: "Data", href: "/data", sections: ["data"] },
   { id: "explore", label: "Explore", href: "/explore", sections: ["explore", "debate", "values", "atlas", "paths"] },
 ] as const;
 const TITLES: Record<string, string> = {
-  today: "Today", issues: "Issues", government: "Government", data: "Data", explore: "Explore", vote: "Help Me Vote", ballot: "Help Me Vote",
+  today: "Today", issues: "Issues", government: "Government", compare: "Compare candidates", data: "Data", explore: "Explore", vote: "Help Me Vote", ballot: "Help Me Vote",
   congress: "Congress", legislation: "Federal Register", policy: "Policy guides", values: "My Values", debate: "Debate Lab", atlas: "Thought Atlas",
   saved: "Reading list", action: "Federal action", methodology: "Our methodology", status: "Source status", privacy: "Your privacy",
   corrections: "Corrections", chain: "Promises, votes and outcomes", paths: "Pathways", search: "Search", review: "Editorial review", credits: "Photo credits",
@@ -453,12 +454,17 @@ export default function CommonGround({
           )}
           {section === "issues" && (
             <Suspense fallback={<p className="empty">Loading…</p>}>
-              {parts[1] ? <Briefing id={parts[1]} /> : <IssuesIndex />}
+              <IssueRoute id={parts[1]} />
             </Suspense>
           )}
           {section === "government" && (
             <Suspense fallback={<p className="empty">Loading…</p>}>
-              <Government />
+              {parts[1] === "president" ? <President /> : <Government />}
+            </Suspense>
+          )}
+          {section === "compare" && (
+            <Suspense fallback={<p className="empty">Loading…</p>}>
+              <ComparePage id={parts[1]} />
             </Suspense>
           )}
           {section === "data" && (
@@ -626,6 +632,7 @@ export default function CommonGround({
             "credits",
             "issues",
             "government",
+            "compare",
             "data",
             "explore",
             "methodology",

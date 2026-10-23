@@ -1,10 +1,10 @@
 {
   "checkedOn": "2026-10-23",
   "summary": {
-    "total": 59,
-    "ok": 53,
+    "total": 92,
+    "ok": 81,
     "dead": 0,
-    "inconclusive": 6
+    "inconclusive": 11
   },
   "results": [
     {
@@ -52,6 +52,14 @@
       "status": "ok"
     },
     {
+      "url": "https://crsreports.congress.gov/",
+      "status": "inconclusive"
+    },
+    {
+      "url": "https://fiscaldata.treasury.gov/",
+      "status": "ok"
+    },
+    {
       "url": "https://fiscaldata.treasury.gov/datasets/debt-to-the-penny/debt-to-the-penny",
       "status": "ok"
     },
@@ -65,6 +73,38 @@
     },
     {
       "url": "https://hickenlooper.com/about/",
+      "status": "ok"
+    },
+    {
+      "url": "https://jamestalarico.com/",
+      "status": "ok"
+    },
+    {
+      "url": "https://jamestalarico.com/issue/corruption-democracy/",
+      "status": "ok"
+    },
+    {
+      "url": "https://jamestalarico.com/issue/energy-environment/",
+      "status": "ok"
+    },
+    {
+      "url": "https://jamestalarico.com/issue/foreign-policy/",
+      "status": "ok"
+    },
+    {
+      "url": "https://jamestalarico.com/issue/freedom-family-faith/",
+      "status": "ok"
+    },
+    {
+      "url": "https://jamestalarico.com/issue/health-care/",
+      "status": "ok"
+    },
+    {
+      "url": "https://jamestalarico.com/issue/immigration-border-security/",
+      "status": "ok"
+    },
+    {
+      "url": "https://jamestalarico.com/issue/taxes-cost-of-living/",
       "status": "ok"
     },
     {
@@ -96,6 +136,14 @@
       "status": "inconclusive"
     },
     {
+      "url": "https://news.ballotpedia.org/2026/06/03/james-talarico-d-ken-paxton-r-and-five-other-candidates-are-running-in-the-general-election-for-u-s-senate-in-texas-on-november-3-2026/",
+      "status": "ok"
+    },
+    {
+      "url": "https://ohss.dhs.gov/",
+      "status": "ok"
+    },
+    {
       "url": "https://philforcolorado.com/",
       "status": "ok"
     },
@@ -124,7 +172,39 @@
       "status": "ok"
     },
     {
+      "url": "https://www.blm.gov/",
+      "status": "ok"
+    },
+    {
+      "url": "https://www.bls.gov/cpi/",
+      "status": "inconclusive"
+    },
+    {
+      "url": "https://www.bls.gov/eci/",
+      "status": "inconclusive"
+    },
+    {
+      "url": "https://www.cbo.gov/",
+      "status": "inconclusive"
+    },
+    {
+      "url": "https://www.cbp.gov/newsroom/stats",
+      "status": "ok"
+    },
+    {
       "url": "https://www.cdc.gov/mmwr/volumes/73/ss/ss7307a1.htm",
+      "status": "ok"
+    },
+    {
+      "url": "https://www.cdc.gov/reproductive-health/",
+      "status": "ok"
+    },
+    {
+      "url": "https://www.census.gov/topics/health/health-insurance.html",
+      "status": "ok"
+    },
+    {
+      "url": "https://www.cms.gov/data-research/statistics-trends-and-reports/national-health-expenditure-data",
       "status": "ok"
     },
     {
@@ -212,7 +292,19 @@
       "status": "ok"
     },
     {
+      "url": "https://www.eia.gov/",
+      "status": "ok"
+    },
+    {
+      "url": "https://www.epa.gov/ghgemissions",
+      "status": "ok"
+    },
+    {
       "url": "https://www.everycrsreport.com/reports/R47275.html",
+      "status": "ok"
+    },
+    {
+      "url": "https://www.fec.gov/data/",
       "status": "ok"
     },
     {
@@ -228,6 +320,18 @@
       "status": "ok"
     },
     {
+      "url": "https://www.kenpaxton.com/",
+      "status": "ok"
+    },
+    {
+      "url": "https://www.kenpaxton.com/issues",
+      "status": "ok"
+    },
+    {
+      "url": "https://www.kvpr.org/2026-05-29/texas-state-democratic-rep-james-talarico-on-race-to-flip-senate-seat",
+      "status": "ok"
+    },
+    {
       "url": "https://www.leg.colorado.gov/legislators/jeff-bridges",
       "status": "ok"
     },
@@ -236,7 +340,35 @@
       "status": "ok"
     },
     {
+      "url": "https://www.nps.gov/subjects/socialscience/visitor-use-statistics.htm",
+      "status": "ok"
+    },
+    {
+      "url": "https://www.oge.gov/",
+      "status": "ok"
+    },
+    {
       "url": "https://www.senate.gov/legislative/LIS/roll_call_votes/vote1191/vote_119_1_00372.xml",
+      "status": "ok"
+    },
+    {
+      "url": "https://www.state.gov/",
+      "status": "inconclusive"
+    },
+    {
+      "url": "https://www.texasattorneygeneral.gov/news/releases",
+      "status": "ok"
+    },
+    {
+      "url": "https://www.texasattorneygeneral.gov/news/releases/attorney-general-ken-paxton-sues-activist-new-york-doctor-illegally-providing-abortion-drugs-across",
+      "status": "ok"
+    },
+    {
+      "url": "https://www.texasattorneygeneral.gov/news/releases/attorney-general-ken-paxton-sues-biden-administration-over-destruction-texas-border-barrier",
+      "status": "ok"
+    },
+    {
+      "url": "https://www.texastribune.org/2023/09/16/ken-paxton-acquitted-impeachment-texas/",
       "status": "ok"
     },
     {

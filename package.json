@@ -20,7 +20,9 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint src tests",
     "refresh:fr": "node --experimental-strip-types scripts/refresh-federal-register.mts",
-    "health": "node --experimental-strip-types scripts/research-health.mts"
+    "health": "node --experimental-strip-types scripts/research-health.mts",
+    "refresh:presidential": "node --experimental-strip-types scripts/refresh-presidential.mts",
+    "refresh:cpi": "node --experimental-strip-types scripts/refresh-cpi.mts"
   },
   "dependencies": {
     "@fontsource/dm-sans": "^5.2.8",

@@ -51,3 +51,21 @@ Two font families (Fraunces headings, DM Sans body), warm palette, real photogra
 - Abortion Table 1 was transcribed with a summarizing fetch tool; the 2021–22 values and the stated 5-year changes were cross-checked in tests, other cells need a human check against the PDF. Figures are not a national total (California, DC, Maryland, New Hampshire, New Jersey and others missing or partial).
 - Nothing is human-reviewed. No administration-comparison data. Scheduled refresh for fiscal data is not active (workflow changes need the owner's `workflow` token scope; see `docs/OWNER-ACTIONS.md`).
 - Source-freshness table is dense on narrow screens (scrolls horizontally, keyboard-focusable).
+
+## Refinement: issues at the centre, candidates, presidential actions (branch `product/issues-and-comparison`)
+
+**Chain:** issue → numbers → government action → candidate → competing arguments → original source. Implemented as follows.
+
+| Piece | Route | Notes |
+| --- | --- | --- |
+| Nine issues | `#/issues`, `#/issues/<issue>` | Cost of living, health care, immigration, abortion, climate/energy, spending/debt, corruption/ethics, public lands, foreign policy. Each page: what is happening and the numbers (from a briefing if one exists, otherwise an explicit "No evidence briefing yet"), government actions tagged to the issue, what people argue, candidate positions, official data pointers. |
+| Briefings | `#/issues/consumer-prices` (new), plus the earlier three | The prices briefing uses BLS CPI-U (`npm run refresh:cpi`). October 2025 was never published (lapse in appropriations) and is stored as null, shown as "Not reported". Every briefing page now ends with the connected government actions and candidate positions for its issue. |
+| Presidential actions | `#/government/president` | whitehouse.gov Presidential Actions listing, newest 60 documents (`npm run refresh:presidential`), grouped by month, filter by issue/type, commemorative proclamations hidden by default (title heuristic). Five items have an explanation (what changes, effective date, outcomes, uncertainty), drafted by Claude from the official text, **not human-reviewed**. The Federal Register list is still blocked (HTTP 403), so this is the primary source. |
+| Candidate comparison | `#/compare`, `#/compare/texas-senate-2026` | Reusable schema (`src/lib/compare.ts`). Each entry is typed (own statement, documented action, independent finding, allegation, opinion), sourced and dated. Each issue has an editorial relation label (differ, overlap, different focus, one undocumented, neither documented) that the schema checks against the entries. "Nothing documented here" is never turned into "no position". No scores, rankings or recommendations; a test scans editorial text for advice words. |
+| Review queue | `#/review` | Comparisons, presidential explanations and (previously missing from `review:apply`) briefings are queued as machine-checked and become human-reviewed only through a decisions file. |
+
+**Issue tagging:** by CRS policy area or title keyword (`src/lib/issues.ts`). The page says so; it can miss or misplace items.
+
+**Texas comparison coverage:** all nine issues. Candidate statements come from each campaign's issue pages (read 2026-10-23), plus a few dated official records: Paxton's 2023 impeachment acquittal (Texas Tribune), and Attorney General lawsuits (Texas AG news releases, whose pages our tool could not open; wording follows search excerpts and is flagged on each entry). Talarico's dated legislative examples are his own descriptions and are labelled as such. Voting records and sponsored bills were not compiled.
+
+**Known gaps:** only one race; no immigration or health-care briefing (official data pointers only); no state or federal legislator pages; executive-order status (challenged, blocked) not checked; Federal Register blocked; the five explanations are AI drafts; Paxton's issue page is undated.

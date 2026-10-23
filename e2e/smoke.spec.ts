@@ -26,6 +26,12 @@ const routes = [
   "#/government",
   "#/data",
   "#/explore",
+  "#/issues/cost-of-living",
+  "#/issues/immigration",
+  "#/issues/consumer-prices",
+  "#/government/president",
+  "#/compare",
+  "#/compare/texas-senate-2026",
   "#/credits",
   "#/review",
   "#/vote/colorado/how-elections-work",
@@ -423,4 +429,65 @@ test("the home page shows rule-selected developments with originals and why each
   expect(await page.locator(".dev").count()).toBeGreaterThanOrEqual(4);
   await expect(page.getByText(/Why this one:/).first()).toBeVisible();
   await expect(page.getByRole("heading", { name: /Where the numbers come from/ })).toBeVisible();
+});
+
+test("the issues hub lists nine issues, says which have a briefing, and an issue page connects numbers, government and candidates", async ({ page }) => {
+  await page.goto("#/issues");
+  await expect(page.locator(".issue-card")).toHaveCount(9);
+  await expect(page.getByText("Evidence briefing: not yet written").first()).toBeVisible();
+  await page.goto("#/issues/immigration");
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("Immigration");
+  await expect(page.getByText("No evidence briefing yet.")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "What government is doing about this" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "What candidates have said about this" })).toBeVisible();
+  await expect(page.locator('a[href^="https://ohss.dhs.gov"]')).toBeVisible();
+  await page.goto("#/issues/cost-of-living");
+  await expect(page.getByRole("link", { name: /Read the full briefing/ })).toBeVisible();
+});
+
+test("a briefing page carries what government is doing and what candidates have said", async ({ page }) => {
+  await page.goto("#/issues/consumer-prices");
+  await expect(page.getByRole("heading", { name: "What government is doing about this" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "What candidates have said about this" })).toBeVisible();
+  await page.locator("figure.chart").first().getByText("View the data as a table").click();
+  await expect(page.locator("figure.chart").first().locator("tbody tr").first()).toBeVisible();
+});
+
+test("the presidential timeline is dated, separates stages from outcomes and marks unreviewed explanations", async ({ page }) => {
+  await page.goto("#/government/president");
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("What has the President been doing");
+  await expect(page.getByText(/not been human-reviewed/).first()).toBeVisible();
+  expect(await page.locator(".tl-item").count()).toBeGreaterThan(10);
+  const first = page.locator(".tl-item").filter({ hasText: "Emergency Tax Relief on Diesel Fuel" });
+  await first.getByText("What it changes, what is unknown").click();
+  await expect(first.getByText("Still uncertain")).toBeVisible();
+  await expect(first.getByText(/Measurable outcomes/)).toBeVisible();
+  await expect(first.locator('a[href^="https://www.whitehouse.gov/presidential-actions/"]')).toBeVisible();
+  await page.getByRole("combobox").first().selectOption("health-care");
+  await expect(page.locator(".tl-item").first()).toBeVisible();
+});
+
+test("the candidate comparison shows both people side by side, with sources, undocumented gaps and no recommendation", async ({ page }) => {
+  await page.goto("#/compare");
+  await page.getByRole("searchbox").fill("paxton");
+  await page.getByRole("link", { name: /Compare them/ }).click();
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("James Talarico and Ken Paxton");
+  await expect(page.getByText("Information, not advice.")).toBeVisible();
+  await page.getByRole("button", { name: "Immigration" }).click();
+  const block = page.locator(".issue-compare");
+  await expect(block).toHaveCount(1);
+  await expect(block.getByRole("heading", { name: "James Talarico" })).toBeVisible();
+  await expect(block.getByRole("heading", { name: "Ken Paxton" })).toBeVisible();
+  await block.locator("details summary").first().click();
+  await expect(block.locator('a[href^="https://"]').first()).toBeVisible();
+  await page.getByRole("button", { name: "National parks and public lands" }).click();
+  await expect(page.getByText(/Nothing documented here/).first()).toBeVisible();
+  await expect(page.getByText(/recommend|endorse|score/i).first()).toHaveText(/no scores|not a recommendation|endorsements|recommendations/i);
+});
+
+test("candidate and issue searches find the new pages", async ({ page }) => {
+  await page.goto("#/search?q=talarico");
+  await expect(page.getByRole("link", { name: /Compare James Talarico and Ken Paxton/ })).toBeVisible();
+  await page.goto("#/search?q=health");
+  await expect(page.getByRole("link", { name: "Health care" }).first()).toBeVisible();
 });

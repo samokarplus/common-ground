@@ -282,3 +282,103 @@ export function buildAbortionBriefing(a: AbortionData): Briefing {
     review: { status: "machine-checked", note: "Figures are transcribed from the CDC report and checked for internal consistency by a script. No human editor has reviewed the wording." },
   });
 }
+
+export type CpiData = {
+  source: { title: string; publisher: string; url: string };
+  retrievedAt: string;
+  series: Record<"allItems" | "food" | "shelter" | "energy", { month: string; value: number | null }[]>;
+};
+
+/** Percent change in the index over twelve months ending in `month`, or null if either month was not published. */
+export function yearOverYear(series: { month: string; value: number | null }[], month: string): number | null {
+  const [y, m] = month.split("-");
+  const now = series.find((p) => p.month === month)?.value;
+  const then = series.find((p) => p.month === `${Number(y) - 1}-${m}`)?.value;
+  return now == null || then == null ? null : (now / then - 1) * 100;
+}
+
+const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const monthName = (ym: string) => `${MONTHS[Number(ym.slice(5)) - 1]} ${ym.slice(0, 4)}`;
+
+export function buildPricesBriefing(c: CpiData): Briefing {
+  const a = c.series.allItems;
+  const lastMonth = [...a].reverse().find((p) => p.value !== null)!.month;
+  const m = lastMonth.slice(5);
+  const yr = Number(lastMonth.slice(0, 4));
+  const yoy = (s: keyof CpiData["series"], month = lastMonth) => yearOverYear(c.series[s], month);
+  const now = yoy("allItems")!;
+  const yearAgo = yoy("allItems", `${yr - 1}-${m}`)!;
+  const idx = (month: string) => a.find((p) => p.month === month)!.value!;
+  const since = (years: number) => (idx(lastMonth) / idx(`${yr - years}-${m}`) - 1) * 100;
+  const sepYears = Array.from({ length: 9 }, (_, i) => yr - 8 + i);
+  const pts = sepYears.map((y) => ({ x: String(y), y: Number(yearOverYear(a, `${y}-${m}`)!.toFixed(1)) }));
+  const peak = pts.reduce((p, q) => (q.y > p.y ? q : p));
+  const f = (x: number) => `${x.toFixed(1)}%`;
+  const missing = a.filter((p) => p.value === null).map((p) => monthName(p.month));
+  const cats: [string, keyof CpiData["series"]][] = [["All items", "allItems"], ["Food", "food"], ["Shelter", "shelter"], ["Energy", "energy"]];
+  const retrieved = c.retrievedAt.slice(0, 10);
+  const cmp = now > yearAgo ? "higher than" : now < yearAgo ? "lower than" : "the same as";
+  return BriefingSchema.parse({
+    id: "consumer-prices",
+    topic: "Cost of living",
+    sections: ["issues", "data"],
+    question: "Are prices rising faster than they were, and which prices are driving it?",
+    shortAnswer: [
+      { text: `Consumer prices in ${monthName(lastMonth)} were ${f(now)} higher than a year earlier, according to the Bureau of Labor Statistics' Consumer Price Index. A year before, in ${monthName(`${yr - 1}-${m}`)}, the figure was ${f(yearAgo)}, so the pace of increase is ${cmp} it was.`, kind: "fact", sourceIds: ["bls"] },
+      { text: `Prices are not falling: a slower inflation rate means prices still rise, just less quickly. Prices overall are ${since(5).toFixed(1)}% higher than five years earlier.`, kind: "fact", sourceIds: ["bls"] },
+      { text: `The categories differ a lot. Over the same twelve months energy rose ${f(yoy("energy")!)}, shelter ${f(yoy("shelter")!)} and food ${f(yoy("food")!)}. These numbers do not show why prices moved.`, kind: "fact", sourceIds: ["bls"] },
+    ],
+    dataThrough: `${monthName(lastMonth)} (published by BLS; retrieved ${retrieved})`,
+    sourceCheckedOn: retrieved,
+    evidence: [
+      { type: "stats", items: [
+        { label: `Prices vs. a year earlier, ${monthName(lastMonth)}`, value: f(now), note: `${monthName(`${yr - 1}-${m}`)}: ${f(yearAgo)}`, kind: "fact", sourceIds: ["bls"] },
+        { label: `Prices vs. five years earlier`, value: `${since(5).toFixed(1)}% higher`, note: `${monthName(`${yr - 5}-${m}`)} to ${monthName(lastMonth)}`, kind: "fact", sourceIds: ["bls"] },
+        { label: `Energy vs. a year earlier`, value: f(yoy("energy")!), note: "Energy swings more than other categories", kind: "fact", sourceIds: ["bls"] },
+      ] },
+      { type: "chart", chart: {
+        id: "cpi-yoy", title: `Yearly price increase, each ${MONTHS[Number(m) - 1]} (all items)`, kind: "line", format: "percent1",
+        xLabel: "Year", yLabel: "Price increase over the previous twelve months, %", baseline: "zero",
+        series: [{ id: "cpi", label: "All items", estimate: false, points: pts }],
+        dateRange: `${MONTHS[Number(m) - 1]} ${sepYears[0]} to ${MONTHS[Number(m) - 1]} ${yr}`,
+        definition: "The percent change in the Consumer Price Index for All Urban Consumers (CPI-U) from the same month one year earlier. One month per year is shown so the picture stays readable; the monthly series is in the source.",
+        sourceIds: ["bls"],
+      } },
+      { type: "chart", chart: {
+        id: "cpi-categories", title: `Yearly price increase by category, ${monthName(lastMonth)}`, kind: "bar", format: "percent1",
+        xLabel: "Category", yLabel: "Price increase over the previous twelve months, %", baseline: "zero",
+        series: [{ id: "cat", label: `Increase to ${monthName(lastMonth)}`, estimate: false, points: cats.map(([label, k]) => ({ x: label, y: Number(yoy(k)!.toFixed(1)) })) }],
+        dateRange: `${monthName(`${yr - 1}-${m}`)} to ${monthName(lastMonth)}`,
+        definition: "How much average prices in each category rose over twelve months. Shelter is mostly rent and the cost of owning a home as measured by the CPI. Energy is fuel and electricity and natural gas for the home.",
+        sourceIds: ["bls"],
+      } },
+    ],
+    context: [
+      { text: `Since ${sepYears[0]}, the highest ${MONTHS[Number(m) - 1]}-to-${MONTHS[Number(m) - 1]} increase shown is ${f(peak.y)} (${peak.x}). Today's ${f(now)} is ${now > yearAgo ? "above" : "below"} last year's reading and ${now < peak.y ? "below" : "above"} that peak.`, kind: "fact", sourceIds: ["bls"] },
+      { text: `Prices are ${since(2).toFixed(1)}% higher than two years earlier and ${since(5).toFixed(1)}% higher than five years earlier. Whether incomes kept pace is not shown here, because wages are a separate measure.`, kind: "fact", sourceIds: ["bls"] },
+    ],
+    recent: [
+      { date: "2025-10", text: `BLS did not publish an October 2025 index because of a lapse in federal appropriations. It appears as "Not reported" in the data tables, not as zero, and the twelve-month changes that depend on it are blank.`, sourceIds: ["bls"] },
+    ],
+    next: [{ text: "BLS publishes a new CPI report each month. The next release date was not checked for this page, so none is stated.", kind: "unknown", sourceIds: [] }],
+    disagreements: {
+      factual: [
+        { text: "What is causing price changes is debated: energy markets, trade policy and tariffs, supply disruptions, wages and demand are all cited, and economists weigh them differently. This briefing's numbers describe prices; they do not show which cause matters most.", kind: "interpretation", sourceIds: [] },
+        { text: "Whether the CPI matches what households feel is debated. It measures the average change in prices of a fixed set of goods and services for urban consumers; a household that spends more on housing or fuel than average can face a different rate.", kind: "interpretation", sourceIds: ["bls"] },
+      ],
+      values: [
+        { text: "How much to tolerate higher prices to protect jobs or to protect an industry, who should bear the cost, and how government should respond are judgments about tradeoffs. Statistics cannot settle them.", kind: "opinion", sourceIds: [] },
+      ],
+    },
+    sources: [{ id: "bls", label: c.source.title, publisher: c.source.publisher, url: c.source.url, retrievedOn: retrieved, kind: "official" }],
+    limitations: [
+      "The CPI-U covers urban consumers (about 93% of the U.S. population by BLS's description), not rural households separately, and it is not seasonally adjusted here, so month-to-month changes are noisier than published adjusted figures. Yearly changes avoid most of that.",
+      `Missing month: ${missing.join(", ") || "none"}. Gaps are shown as not reported, never as zero.`,
+      "This page shows national averages. Prices differ by city, and individual experiences differ from averages.",
+      "Wages, income and what households can afford are not covered here, so this page cannot say whether people are better or worse off.",
+      "No causes are measured. The categories shown are four of many CPI components.",
+    ],
+    related: [{ label: "Government spending and the debt", href: "/issues/federal-spending" }],
+    review: { status: "machine-checked", note: "Figures come from the BLS API and are computed by script; the wording has not been human-reviewed." },
+  });
+}

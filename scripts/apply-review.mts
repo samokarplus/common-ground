@@ -7,6 +7,10 @@ import { parseElection } from "../src/lib/election.ts";
 import { validateProfiles } from "../src/lib/candidate.ts";
 import { DEBATES } from "../src/lib/debates.ts";
 import { atlasNodes } from "../src/lib/atlas.ts";
+import { buildAbortionBriefing, buildMoneyBriefing, buildPricesBriefing, buildUkraineBriefing } from "../src/lib/briefings.ts";
+import { parseComparison } from "../src/lib/compare.ts";
+
+const json = (f: string) => JSON.parse(readFileSync(f, "utf8"));
 
 const file = process.argv.find((a, i) => i >= 2 && !a.startsWith("--"));
 if (!file) {
@@ -25,7 +29,9 @@ if (!parsed.success) {
   console.error("Invalid decisions file:\n" + parsed.error.issues.map((i) => `  ${i.path.join(".")}: ${i.message}`).join("\n"));
   process.exit(1);
 }
-const queue = buildQueue({ election, profiles, debates: DEBATES, atlasCount: atlasNodes.length, log, builtOn: "" });
+const briefings = [buildMoneyBriefing(json("data/fiscal/treasury.json")), buildUkraineBriefing(json("data/fiscal/ukraine-appropriations.json")), buildAbortionBriefing(json("data/stats/abortion-cdc.json")), buildPricesBriefing(json("data/stats/cpi-bls.json"))];
+const comparisons = [parseComparison(json("data/compare/texas-senate-2026.json"))].map((c) => ({ id: c.id, title: c.title, asOf: c.asOf, limitations: c.limitations, sourceUrls: [] }));
+const queue = buildQueue({ election, profiles, debates: DEBATES, atlasCount: atlasNodes.length, briefings, comparisons, presidentialAnnotations: { count: json("data/government/annotations.json").length, sources: [] }, log, builtOn: "" });
 const result = applyDecisions(election, log, parsed.data, queue.map((q) => q.id));
 if (result.errors.length) {
   console.error("Refusing to apply:\n" + result.errors.map((e) => `  ${e}`).join("\n"));
