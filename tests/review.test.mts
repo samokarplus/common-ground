@@ -78,6 +78,7 @@ test("no source file other than the apply script writes review decisions or mark
     const text = readFileSync(f, "utf8");
     if (f.endsWith("scripts/apply-review.mts") || f.endsWith("src/lib/review.ts")) continue;
     assert.ok(!/status\s*=\s*["']reviewed["']/.test(text), `${f} sets status reviewed`);
-    assert.ok(!/review\/decisions\.json/.test(text) || f.includes("review"), `${f} touches the decision log`);
+    // Reading the log (for the dashboard or the health report) is fine; writing it is reserved to the apply script.
+    assert.ok(!/write\w*\([^)]*decisions\.json/.test(text), `${f} writes the decision log`);
   }
 });

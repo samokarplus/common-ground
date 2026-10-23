@@ -169,3 +169,10 @@ Factual log. Only items marked verified were checked in the session that wrote t
 - **Cross-connections:** bill pages show editorial "related reading" from the bill's official policy area (Atlas ideas, a labeled keyword-match Federal Register search, the record framework); measure pages link to their debate map and related Atlas ideas; Atlas ideas link back to the Colorado measures where the same tension appears. Tests verify every link target exists and that each debate map is reachable from its measure.
 - **Promises framework:** `docs/promises-framework.md` sets evidence standards and the rules the code enforces. Still one worked example and no recorded promises.
 - 123 unit and 288 browser checks pass locally.
+
+## Cycle 2, Priority 5 — reliability and deployment (2026-10-23)
+- **Deployment safeguards (tests on the committed `/docs` build):** index.html references only existing assets; every lazy chunk the app can request exists; no stale unreferenced build files; the content security policy still limits connections to this site and www.federalregister.gov and has no `unsafe-eval`; no source maps or env files are published. `npm run verify` runs lint, typecheck, unit tests, the election validator, the build and the secret scan in one command.
+- **Status accuracy:** the health report and the in-app status page now include citation-link results and human-review decisions (none), and tests compare the committed health report with the data. The page states the scheduled refresh is not active; it has never run on GitHub and is not claimed to be operational.
+- **No-auto-approval guard** refined: other code may read the decision log but only the apply script may write it (tested across all source files).
+- **Owner actions** consolidated in `docs/OWNER-ACTIONS.md` (workflow activation, HTTPS/domain, human review, sources only a person can get, pre-election re-checks) and linked from the README.
+- 128 unit and 288 browser checks pass locally.

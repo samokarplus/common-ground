@@ -25,6 +25,14 @@ _Generated 2026-10-22 by `npm run health`. Regenerated automatically when the sc
 
 See `editorial-review.md`.
 
+## Citation links
+
+Checked 2026-10-23: 49 of 54 cited links responded normally, 0 broken, 5 could not be confirmed (often sites that block automated requests). Run `npm run check:links` to refresh.
+
+## Human review decisions recorded
+
+None. Nothing has been human-reviewed; see `editorial-workflow.md`.
+
 ## Upcoming election deadlines
 
 - 2026-10-26 (in 4 days): Last day to register and still be mailed a ballot. After this, you can still register and vote in person.

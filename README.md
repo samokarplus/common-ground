@@ -48,3 +48,10 @@ No accounts, analytics, advertising, location detection, or address collection. 
 ## Limits
 
 No Congress tracker yet (planned via a keyless or maintainer-run snapshot). Candidate positions aren't compiled. District and local races aren't covered — the site sends voters to their official sample ballot. Other states aren't covered. No accessibility certification is claimed. Only this sanitized static project is public; a separate private server beta is excluded.
+
+
+## Maintainer notes
+
+- What needs the owner: [`docs/OWNER-ACTIONS.md`](docs/OWNER-ACTIONS.md)
+- Editorial review workflow: [`docs/editorial-workflow.md`](docs/editorial-workflow.md)
+- Before pushing, run `npm run verify`.

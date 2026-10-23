@@ -14,6 +14,8 @@ const changelog = (await readFile("data/changelog/federal-register.jsonl", "utf8
   .filter(Boolean)
   .map((l) => JSON.parse(l));
 const congress = await readJSON("data/congress/bills.json");
+const links = await readJSON("data/link-status.json").catch(() => null);
+const decisions = await readJSON("data/review/decisions.json").catch(() => []);
 const election = parseElection(await readJSON("data/elections/colorado-2026.json"));
 
 const ageDays = (iso: string) => Math.floor((now.getTime() - Date.parse(iso)) / 86400000);
@@ -91,6 +93,14 @@ ${
 - Needs re-review after an official change: **${review["needs-re-review"]}**
 
 See \`editorial-review.md\`.
+
+## Citation links
+
+${links ? `Checked ${links.checkedOn}: ${links.summary.ok} of ${links.summary.total} cited links responded normally, ${links.summary.dead} broken, ${links.summary.inconclusive} could not be confirmed (often sites that block automated requests). Run \`npm run check:links\` to refresh.` : "Not yet checked. Run `npm run check:links`."}
+
+## Human review decisions recorded
+
+${decisions.length ? `${decisions.length} decision(s) recorded in \`data/review/decisions.json\`.` : "None. Nothing has been human-reviewed; see `editorial-workflow.md`."}
 
 ## Upcoming election deadlines
 
