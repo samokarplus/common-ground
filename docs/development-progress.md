@@ -192,3 +192,7 @@ Fetched current history in a separate branch/worktree and incorporated c4c370c c
 - Added five-destination navigation, calm home, briefing system and schema, three briefings (federal spending, Ukraine appropriations, abortion statistics), Government actions explorer, Data and Explore hubs, rule-selected developments. Details: `docs/product-refocus.md`.
 - Verified in this session: 158 unit tests pass; lint and `tsc` clean; Playwright suite (desktop/tablet/mobile incl. axe on new routes) passing after fixes (scrollable region focus, link underline, home copy); link check 53 ok / 0 dead / 6 inconclusive.
 - Not done: immigration briefing, executive-order refresh (IP blocked), human review of anything, scheduled fiscal refresh.
+
+## Issues, candidate comparison, presidential actions (session 4, branch `product/issues-and-comparison`)
+- Added nine-issue hub and pages, consumer-prices briefing (BLS CPI), presidential actions timeline (whitehouse.gov), Texas Senate comparison (Talarico/Paxton), connected panels on briefings, review-queue entries. Details: `docs/product-refocus.md`.
+- Fixed: `review:apply` did not know briefing ids; it now builds the same queue as the review page.

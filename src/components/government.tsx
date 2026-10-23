@@ -4,23 +4,30 @@ import Link, { routeSearch } from "./link";
 import billsRaw from "../../data/congress/bills.json";
 import frRaw from "../../data/federal-register.json";
 import { freshness } from "@/lib/freshness";
-import { STAGES, applyFilters, facets, fromBill, fromFederalRegister, sortNewest, type Filters, type FrRecord, type GovAction, type StageId } from "@/lib/gov-actions";
+import presidentialRaw from "../../data/government/presidential-actions.json";
+import type { PresidentialAction } from "@/lib/presidential";
+import { ISSUES } from "@/lib/issues";
+import { STAGES, applyFilters, facets, mergeActions, type Filters, type FrRecord, type GovAction, type StageId } from "@/lib/gov-actions";
 import type { Bill } from "@/lib/congress";
 
 const bills = billsRaw as unknown as { retrievedAt: string; bills: Bill[] };
+const presidential = presidentialRaw as unknown as { retrievedAt: string; actions: PresidentialAction[] };
 const fr = frRaw as unknown as { retrievedAt: string; results: FrRecord[] };
-const KIND: Record<GovAction["kind"], string> = { bill: "Bill", law: "Law", "executive-order": "Executive order", "presidential-document": "Presidential document", "proposed-rule": "Proposed rule", "final-rule": "Final rule", notice: "Notice" };
+const KIND: Record<GovAction["kind"], string> = { bill: "Bill", law: "Law", "executive-order": "Executive order", "presidential-document": "Presidential document", proclamation: "Proclamation", memorandum: "Memorandum", "proposed-rule": "Proposed rule", "final-rule": "Final rule", notice: "Notice" };
 const fmt = (iso: string) => new Date(iso + "T12:00:00Z").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
 
 export function allActions(today: string) {
-  return sortNewest([...bills.bills.map(fromBill), ...fr.results.map((r) => fromFederalRegister(r, today))]);
+  return mergeActions(bills.bills, fr.results, presidential.actions, today);
 }
 
 export default function Government() {
   const today = new Date().toISOString().slice(0, 10);
-  const all = useMemo(() => allActions(today), [today]);
+  const everything = useMemo(() => allActions(today), [today]);
+  const all = useMemo(() => everything.filter((a) => !a.ceremonial), [everything]);
+  const hiddenCeremonial = everything.length - all.length;
   const initial = new URLSearchParams(routeSearch()).get("stage") as StageId | null;
-  const [f, setF] = useState<Filters>({ stage: initial && STAGES.some((s) => s.id === initial) ? initial : "all", branch: "all", agencyOrTopic: "", sinceDays: 0, query: "" });
+  const initialIssue = new URLSearchParams(routeSearch()).get("issue");
+  const [f, setF] = useState<Filters>({ stage: initial && STAGES.some((s) => s.id === initial) ? initial : "all", branch: "all", agencyOrTopic: "", sinceDays: 0, query: "", issue: ISSUES.some((i) => i.id === initialIssue) ? (initialIssue as string) : undefined });
   const [limit, setLimit] = useState(24);
   const shown = useMemo(() => applyFilters(all, f, today), [all, f, today]);
   const set = (p: Partial<Filters>) => {
@@ -29,6 +36,7 @@ export default function Government() {
   };
   const fc = freshness(bills.retrievedAt, new Date(), 3);
   const ff = freshness(fr.retrievedAt, new Date(), 3);
+  const fp = freshness(presidential.retrievedAt, new Date(), 3);
   return (
     <>
       <div className="page-title">
@@ -36,6 +44,11 @@ export default function Government() {
         <h1>What is the federal government doing?</h1>
         <p>Laws from Congress, presidential actions and agency rules, placed on one ladder so you can see how far each has actually gotten, and what it is not.</p>
       </div>
+      <nav className="subnav" aria-label="Government views">
+        <Link href="/government" aria-current="page">All actions</Link>
+        <Link href="/government/president">Presidential actions, dated</Link>
+        <Link href="/compare">Compare candidates</Link>
+      </nav>
 
       <section aria-labelledby="ladder" className="panel">
         <h2 id="ladder">Announced is not enacted: the stages</h2>
@@ -55,10 +68,10 @@ export default function Government() {
 
       <section aria-labelledby="explore-actions">
         <h2 id="explore-actions">Recent actions</h2>
-        <div className={"note" + (fc.stale || ff.stale ? " stale" : "")} role="note">
+        <div className={"note" + (fc.stale || ff.stale || fp.stale ? " stale" : "")} role="note">
           <Info size={15} aria-hidden="true" />{" "}
-          <strong>Selected, not comprehensive.</strong> Congress: the {bills.bills.length} most recently updated bills, retrieved {fmt(bills.retrievedAt.slice(0, 10))} ({fc.label}). Federal Register: the {fr.results.length} newest documents, retrieved {fmt(fr.retrievedAt.slice(0, 10))} ({ff.label}).
-          {(fc.stale || ff.stale) && " One of these snapshots is out of date."} For complete lists use{" "}
+          <strong>Selected, not comprehensive.</strong> Congress: the {bills.bills.length} most recently updated bills, retrieved {fmt(bills.retrievedAt.slice(0, 10))} ({fc.label}). Federal Register: the {fr.results.length} newest documents, retrieved {fmt(fr.retrievedAt.slice(0, 10))} ({ff.label}). Presidential actions: the {presidential.actions.length} newest on whitehouse.gov, retrieved {fmt(presidential.retrievedAt.slice(0, 10))} ({fp.label}).{hiddenCeremonial > 0 && ` ${hiddenCeremonial} commemorative proclamations are hidden (picked by title, so the rule can be wrong).`}
+          {(fc.stale || ff.stale || fp.stale) && " One of these snapshots is out of date."} For complete lists use{" "}
           <a href="https://www.congress.gov/" target="_blank" rel="noreferrer">Congress.gov</a> and{" "}
           <a href="https://www.federalregister.gov/" target="_blank" rel="noreferrer">the Federal Register</a>.
         </div>
@@ -66,6 +79,17 @@ export default function Government() {
           <label className="topic-select">
             <span className="sr-only">Search</span>
             <input type="search" placeholder="Search titles, agencies, topics" value={f.query} onChange={(e) => set({ query: e.target.value })} />
+          </label>
+          <label className="topic-select">
+            <span className="sr-only">Issue</span>
+            <select value={f.issue ?? ""} onChange={(e) => set({ issue: e.target.value || undefined })}>
+              <option value="">Any issue</option>
+              {ISSUES.map((i) => (
+                <option key={i.id} value={i.id}>
+                  {i.title}
+                </option>
+              ))}
+            </select>
           </label>
           <label className="topic-select">
             <span className="sr-only">Stage</span>

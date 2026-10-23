@@ -15,6 +15,8 @@ const files = [
   "src/components/help-me-vote.tsx",
   "src/lib/debates.ts",
   "src/lib/briefings.ts",
+  "src/lib/issues.ts",
+  "data/compare/texas-senate-2026.json",
   "src/lib/atlas.ts",
 ];
 const urls = new Set<string>();

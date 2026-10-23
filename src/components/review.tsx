@@ -8,6 +8,8 @@ import { validateProfiles } from "@/lib/candidate";
 import { DEBATES } from "@/lib/debates";
 import { atlasNodes } from "@/lib/atlas";
 import { BRIEFINGS } from "./briefings-data";
+import { COMPARISONS } from "./compare-data";
+import annotations from "../../data/government/annotations.json";
 import { buildQueue, type Decision, type ItemKind, type ItemState } from "@/lib/review";
 
 const STATE_LABEL: Record<ItemState, string> = {
@@ -28,6 +30,8 @@ const KIND_LABEL: Record<ItemKind, string> = {
   pathways: "Pathways",
   explainer: "Explainers",
   briefing: "Evidence briefings",
+  comparison: "Candidate comparisons",
+  annotations: "Presidential action explanations",
 };
 type Choice = "" | Decision["decision"];
 
@@ -40,6 +44,8 @@ export default function Review() {
         debates: DEBATES,
         atlasCount: atlasNodes.length,
         briefings: BRIEFINGS,
+        comparisons: COMPARISONS.map((c) => ({ id: c.id, title: c.title, asOf: c.asOf, limitations: c.limitations, sourceUrls: [...new Map(c.issues.flatMap((b) => Object.values(b.positions).flat()).map((e) => [e.sourceUrl, { label: e.sourceTitle, url: e.sourceUrl }])).values()] })),
+        presidentialAnnotations: { count: annotations.length, sources: annotations.map((a) => ({ label: "whitehouse.gov", url: a.url })) },
         log: rawLog as Decision[],
         builtOn: election.dataVerifiedAt.slice(0, 10),
       }),

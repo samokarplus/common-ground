@@ -2,6 +2,8 @@ import { ChevronLeft, ExternalLink, Info } from "lucide-react";
 import Link from "./link";
 import ChartView from "./chart";
 import { BRIEFINGS, briefingById } from "./briefings-data";
+import { CandidatesForIssue, GovernmentForIssue } from "./connected";
+import { issuesForBriefing } from "@/lib/issues";
 import { CLAIM_KIND_LABEL, type Briefing, type Claim } from "@/lib/briefing";
 
 const day = (iso: string) => new Date((iso.length === 7 ? iso + "-15" : iso) + "T12:00:00Z").toLocaleDateString("en-US", { month: "long", day: iso.length === 7 ? undefined : "numeric", year: "numeric", timeZone: "UTC" });
@@ -181,6 +183,12 @@ export function BriefingPage({ id }: { id?: string }) {
           </ul>
         </div>
       </section>
+      {issuesForBriefing(b.id).map((i) => (
+        <div key={i}>
+          <GovernmentForIssue issue={i} />
+          <CandidatesForIssue issue={i} />
+        </div>
+      ))}
       {b.related.length > 0 && (
         <section aria-labelledby="more">
           <h2 id="more">Keep exploring</h2>

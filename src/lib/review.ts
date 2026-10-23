@@ -21,7 +21,7 @@ export const DecisionSchema = z
 export type Decision = z.infer<typeof DecisionSchema>;
 export const DecisionFileSchema = z.array(DecisionSchema).min(1);
 
-export type ItemKind = "measure" | "profile" | "debate" | "atlas" | "values" | "guide" | "record" | "pathways" | "explainer" | "briefing";
+export type ItemKind = "measure" | "profile" | "debate" | "atlas" | "values" | "guide" | "record" | "pathways" | "explainer" | "briefing" | "comparison" | "annotations";
 export type ItemState = "draft-hidden" | "machine-checked" | "human-reviewed" | "changes-requested" | "rejected";
 
 export type ReviewItem = {
@@ -57,6 +57,10 @@ export type QueueInput = {
   atlasCount: number;
   /** Evidence briefings, queued for review under their own ids (`briefing:<id>`). */
   briefings?: { id: string; question: string; sourceCheckedOn: string; sources: { label: string; url: string }[]; limitations: string[] }[];
+  /** Published candidate comparisons, queued as `comparison:<id>`. */
+  comparisons?: { id: string; title: string; sourceUrls: { label: string; url: string }[]; limitations: string[]; asOf: string }[];
+  /** Presidential-action explanations drafted by AI, queued as one item. */
+  presidentialAnnotations?: { count: number; sources: { label: string; url: string }[] };
   log: Decision[];
   builtOn: string;
 };
@@ -135,6 +139,12 @@ export function buildQueue(i: QueueInput): ReviewItem[] {
       ],
     });
   }
+  for (const c of i.comparisons ?? []) {
+    const id = `comparison:${c.id}`;
+    items.push({ id, kind: "comparison", title: c.title, href: `/compare/${c.id}`, state: fromLog(id, log), sources: uniq(c.sourceUrls), verifiedOn: c.asOf, outstanding: ["Campaign statements were read through a summarizing fetch tool, so each is a paraphrase; compare it with the page.", "Dated examples that come from a candidate's own posts were not checked against legislative records.", ...c.limitations.slice(0, 2)] });
+  }
+  if (i.presidentialAnnotations)
+    items.push({ id: "annotations:presidential", kind: "annotations", title: `Presidential action explanations (${i.presidentialAnnotations.count} drafts)`, href: "/government/president", state: fromLog("annotations:presidential", log), sources: uniq(i.presidentialAnnotations.sources), verifiedOn: i.builtOn, outstanding: ["Each explanation was summarized by AI from the official text; compare it with the document.", "'Uncertain' lists and stage notes are editorial judgments.", "Whether any order has been challenged in court was not checked."] });
   const single = (id: string, kind: ItemKind, title: string, href: string, sources: { label: string; url: string }[], outstanding: string[]) =>
     items.push({ id, kind, title, href, state: fromLog(id, log), sources, verifiedOn: i.builtOn, outstanding });
   single("atlas:all", "atlas", `Thought Atlas (${i.atlasCount} ideas)`, "/atlas", [{ label: "Stanford Encyclopedia of Philosophy (linked per idea)", url: "https://plato.stanford.edu/" }], [

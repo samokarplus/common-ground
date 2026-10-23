@@ -1,0 +1,124 @@
+[
+  {
+    "url": "https://www.whitehouse.gov/presidential-actions/2026/10/decreasing-housing-costs-for-the-american-people/",
+    "number": null,
+    "signed": "2026-10-22",
+    "effective": "No separate effective date is stated. Several steps depend on a later decision by the Federal Housing Finance Agency (FHFA) Director.",
+    "changes": [
+      "Lets the FHFA Director direct Fannie Mae and Freddie Mac to start a pilot that uses automated valuation to find borrowers who may qualify to have mortgage insurance cancelled; it would cover only mortgages made after the pilot begins.",
+      "Creates a Task Force on Manufactured Housing Innovation that must give the President recommendations on factory-built housing within 180 days.",
+      "Lets the FHFA Director expand a pilot that replaces lender title insurance with automated title review on eligible refinances, and tells lenders to pass savings to borrowers.",
+      "Directs the Agriculture and Veterans Affairs Secretaries to lower interest rates on their direct single-family home loans, consistent with law and available appropriations."
+    ],
+    "uncertain": [
+      "The order sets no numeric target for how much costs or rates should fall.",
+      "Most steps say an official 'may' act, so whether and when they happen is not decided by the order itself.",
+      "Whether any step will be challenged in court has not been checked."
+    ],
+    "outcomes": "None measured yet; the order is dated the day this page was written.",
+    "stageNote": "Signed. In effect as a directive to agencies; its parts still require agency decisions.",
+    "issues": [],
+    "draft": {
+      "by": "Claude",
+      "basis": "Summarized from the official text on whitehouse.gov, read 2026-10-23",
+      "humanReviewed": false
+    }
+  },
+  {
+    "url": "https://www.whitehouse.gov/presidential-actions/2026/10/emergency-tax-relief-on-diesel-fuel/",
+    "number": "14435",
+    "signed": "2026-10-05",
+    "effective": "Relief period runs October 5 through December 31, 2026.",
+    "changes": [
+      "Directs the Treasury Secretary to decide within 5 days whether tax relief is authorized under 26 U.S.C. 7508A.",
+      "Defers certain federal diesel excise tax payments incurred from October 5 through December 31, 2026, with no penalties or interest on the deferred amounts, to the extent the law allows.",
+      "Directs the IRS to announce within 5 days that it will not impose certain penalties for dyed diesel used on highways during the period.",
+      "Asks the Treasury Secretary to explore options, including legislation, to eliminate the obligation to pay the deferred amounts."
+    ],
+    "uncertain": [
+      "The order does not say when deferred taxes must be paid; that is left to later guidance.",
+      "It states no target for fuel prices, so whether it lowers prices is not something the order claims.",
+      "Whether Treasury and the IRS issued the required determination and announcement has not been checked."
+    ],
+    "outcomes": "None measured. The order states no numeric goal.",
+    "stageNote": "Signed. A deferral, not a cancellation, unless Congress or later guidance changes that.",
+    "issues": [],
+    "draft": {
+      "by": "Claude",
+      "basis": "Summarized from the official text on whitehouse.gov, read 2026-10-23",
+      "humanReviewed": false
+    }
+  },
+  {
+    "url": "https://www.whitehouse.gov/presidential-actions/2026/10/adjusting-imports-of-wind-turbines-and-their-parts-and-components-into-the-united-states/",
+    "number": null,
+    "signed": "2026-10-22",
+    "effective": "No separate effective date is stated.",
+    "changes": [
+      "Finds that imports of wind turbines and their parts threaten to impair national security (Section 232 of the Trade Expansion Act of 1962).",
+      "Directs Commerce and the U.S. Trade Representative to pursue or continue negotiations with trading partners and to report an update within 180 days.",
+      "Sets no new tariff or quota. It leaves existing steel, aluminum and copper tariffs in place, which apply to some turbine components.",
+      "Says the President may consider other remedies depending on the outcome of negotiations."
+    ],
+    "uncertain": [
+      "Because no tariff is set here, the immediate cost effect on turbines is not stated in the text.",
+      "Any later tariff would be a separate action."
+    ],
+    "outcomes": "None yet.",
+    "stageNote": "Signed. A finding plus a negotiation directive; it does not itself impose a duty.",
+    "issues": [],
+    "draft": {
+      "by": "Claude",
+      "basis": "Summarized from the official text on whitehouse.gov, read 2026-10-23",
+      "humanReviewed": false
+    }
+  },
+  {
+    "url": "https://www.whitehouse.gov/presidential-actions/2026/10/advancing-womens-health-to-improve-outcomes-in-all-phases-of-life/",
+    "number": "14437",
+    "signed": "2026-10-19",
+    "effective": "No separate effective date is stated. The NIH division is due within 90 days.",
+    "changes": [
+      "Directs HHS, through NIH, to create a Women's Health Division within 90 days.",
+      "Creates a White House Women's Health Task Force co-chaired by the HHS Secretary and the White House Chief of Staff.",
+      "Revokes Executive Order 14120 (March 18, 2024) and a November 13, 2023 presidential memorandum on women's health research."
+    ],
+    "uncertain": [
+      "The order authorizes no new money; implementation is subject to appropriations.",
+      "It sets no numeric targets.",
+      "How the new division differs in practice from the revoked order has not been analyzed here."
+    ],
+    "outcomes": "None yet.",
+    "stageNote": "Signed. Directs agencies; creates no new law.",
+    "issues": [],
+    "draft": {
+      "by": "Claude",
+      "basis": "Summarized from the official text on whitehouse.gov, read 2026-10-23",
+      "humanReviewed": false
+    }
+  },
+  {
+    "url": "https://www.whitehouse.gov/presidential-actions/2026/10/implementing-the-lindsey-o-graham-sanctioning-russia-and-iran-act-of-2026/",
+    "number": "14436",
+    "signed": "2026-10-16",
+    "effective": "The 100 percent increase for purchases of Russian-origin oil or gas applies to new purchases on or after October 18, 2026. Waivers have no fixed end date.",
+    "changes": [
+      "Implements a law that the order says the President signed on September 18, 2026 (the Lindsey O. Graham Sanctioning Russia and Iran Act of 2026).",
+      "Raises duties on goods from Russia by 500 percent ad valorem, and by 100 percent on goods from certain countries that knowingly make new purchases of Russian oil or gas or that facilitate sanctions evasion.",
+      "Also contains waivers of some duties and sanctions in the Act, and says a certification and report went to Congress."
+    ],
+    "uncertain": [
+      "The order both raises duties and waives 'duties provided for in this order' and the Act's sections 112 and 113. Read together, it is not clear from this summary how much of the increase is in force; the full text should be consulted.",
+      "Which countries are covered, and whether any pays the higher duty, has not been checked.",
+      "How Congress voted on the underlying Act is not stated in the order and was not checked."
+    ],
+    "outcomes": "None measured.",
+    "stageNote": "Signed. Implements a law Congress passed; the order itself is an executive action.",
+    "issues": [],
+    "draft": {
+      "by": "Claude",
+      "basis": "Summarized from the official text on whitehouse.gov, read 2026-10-23",
+      "humanReviewed": false
+    }
+  }
+]

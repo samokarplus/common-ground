@@ -4,6 +4,8 @@
  * thing has gotten, never whether it is good policy, and keeps executive orders, bills and rules distinct.
  */
 import type { Bill } from "./congress.ts";
+import { issuesFor } from "./issues.ts";
+import { isCeremonial, isPolicyAction, normalizeTitle, presidentialKind, type PresidentialAction } from "./presidential.ts";
 
 export const STAGES = [
   { id: "introduced", label: "Introduced", means: "A member of Congress formally filed a bill. Most bills never go further.", notThis: "Not a law and not a vote." },
@@ -19,7 +21,7 @@ export type StageId = (typeof STAGES)[number]["id"];
 
 export type GovAction = {
   id: string;
-  kind: "bill" | "law" | "executive-order" | "presidential-document" | "proposed-rule" | "final-rule" | "notice";
+  kind: "bill" | "law" | "executive-order" | "proclamation" | "memorandum" | "presidential-document" | "proposed-rule" | "final-rule" | "notice";
   branch: "Congress" | "President" | "Agencies";
   stage: StageId;
   title: string;
@@ -32,6 +34,9 @@ export type GovAction = {
   sourceUrl: string; // official source
   commentsCloseOn?: string;
   effectiveOn?: string;
+  /** Issues this touches, by CRS policy area or title keyword (see issues.ts). */
+  issues?: string[];
+  ceremonial?: boolean;
 };
 
 export type FrRecord = {
@@ -79,7 +84,7 @@ export function fromFederalRegister(r: FrRecord, today: string): GovAction {
   return { ...base, branch: "Agencies", kind: "notice", stage: "notice", dateLabel: "Published", detail: "Agency notice." };
 }
 
-export type Filters = { stage: StageId | "all"; branch: GovAction["branch"] | "all"; agencyOrTopic: string; sinceDays: number; query: string };
+export type Filters = { stage: StageId | "all"; branch: GovAction["branch"] | "all"; agencyOrTopic: string; sinceDays: number; query: string; issue?: string };
 
 export function applyFilters(items: GovAction[], f: Filters, today: string): GovAction[] {
   const q = f.query.trim().toLowerCase();
@@ -90,6 +95,7 @@ export function applyFilters(items: GovAction[], f: Filters, today: string): Gov
       (f.branch === "all" || a.branch === f.branch) &&
       (!f.agencyOrTopic || a.agency === f.agencyOrTopic || a.topic === f.agencyOrTopic) &&
       (!cutoff || a.date >= cutoff) &&
+      (!f.issue || a.issues?.includes(f.issue)) &&
       (!q || `${a.title} ${a.agency ?? ""} ${a.topic ?? ""}`.toLowerCase().includes(q)),
   );
 }
@@ -98,4 +104,34 @@ export const facets = (items: GovAction[]) => [...new Set(items.flatMap((a) => [
 
 export function sortNewest(items: GovAction[]) {
   return [...items].sort((a, b) => b.date.localeCompare(a.date) || a.id.localeCompare(b.id));
+}
+
+export function fromPresidential(p: PresidentialAction): GovAction {
+  const k = presidentialKind(p);
+  const kind = k === "other" ? "presidential-document" : k;
+  const what = { "executive-order": "Executive order", proclamation: "Proclamation", memorandum: "Presidential memorandum", "presidential-document": "Presidential document" }[kind];
+  return {
+    id: p.url.replace(/^https:\/\/www\.whitehouse\.gov\/presidential-actions\//, "").replace(/\/$/, ""),
+    kind,
+    branch: "President",
+    stage: "executive-action",
+    title: p.title,
+    date: p.date,
+    dateLabel: "Signed",
+    detail: `${what}, signed ${p.date}. It directs the executive branch; it is not a law passed by Congress.`,
+    href: "/government/president",
+    sourceUrl: p.url,
+    ceremonial: isCeremonial(p),
+  };
+}
+
+/** Attach issue tags. */
+export const withIssues = (a: GovAction): GovAction => ({ ...a, issues: issuesFor(a.title, a.topic) });
+
+/** White House records are preferred over Federal Register copies of the same presidential document. */
+export function mergeActions(bills: Bill[], fr: FrRecord[], presidential: PresidentialAction[], today: string): GovAction[] {
+  const wh = presidential.filter(isPolicyAction).map(fromPresidential);
+  const seen = new Set(wh.map((a) => normalizeTitle(a.title)));
+  const frActions = fr.map((r) => fromFederalRegister(r, today)).filter((a) => !(a.branch === "President" && seen.has(normalizeTitle(a.title))));
+  return sortNewest([...bills.map(fromBill), ...frActions, ...wh]).map(withIssues);
 }

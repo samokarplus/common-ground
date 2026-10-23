@@ -117,3 +117,21 @@ test("every briefing separates factual disagreements from value judgments", () =
     for (const c of b.disagreements.values) assert.ok(["opinion", "interpretation"].includes(c.kind), b.id);
   }
 });
+
+import { buildPricesBriefing, yearOverYear, type CpiData } from "../src/lib/briefings.ts";
+import cpiRaw from "../data/stats/cpi-bls.json" with { type: "json" };
+
+test("prices briefing: the headline number is computed from the index and a missing month is never zero", () => {
+  const cpi = cpiRaw as unknown as CpiData;
+  const b = buildPricesBriefing(cpi);
+  const a = cpi.series.allItems;
+  const last = a.filter((p) => p.value !== null).at(-1)!;
+  const expected = yearOverYear(a, last.month)!.toFixed(1);
+  assert.match(b.shortAnswer[0].text, new RegExp(`${expected.replace(".", "\\.")}% higher than a year earlier`));
+  assert.equal(yearOverYear(a, "2025-10"), null);
+  assert.equal(a.find((p) => p.month === "2025-10")?.value, null);
+  const chart = b.evidence.find((e) => e.type === "chart")!;
+  assert.ok(chart.type === "chart" && chart.chart.baseline === "zero");
+  assert.match(b.limitations.join(" "), /October 2025/);
+  assert.equal(b.review.status, "machine-checked");
+});
