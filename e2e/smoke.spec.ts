@@ -192,7 +192,7 @@ test("status page shows research health with freshness for each source and the r
   await page.goto("#/status");
   await expect(page.getByRole("heading", { name: "Research health" })).toBeVisible();
   await expect(page.getByText("Congress bills, GovInfo")).toBeVisible();
-  await expect(page.getByText(/Scheduled automation is unverified/)).toBeVisible();
+  await expect(page.getByText(/not yet active|Scheduled automation is unverified/)).toBeVisible();
   await expect(page.getByText(/Source-checked by an AI-assisted process/)).toBeVisible();
 });
 

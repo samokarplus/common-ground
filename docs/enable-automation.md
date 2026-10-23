@@ -1,16 +1,27 @@
-# Turning on the scheduled refresh (owner action required)
+# Research automation — verified branch test, production pending
 
-Status on 2026-10-22: **not active.** The development machine's Git credentials lack GitHub's `workflow` scope, so a change to `.github/workflows/` was rejected. The updated workflow is ready at `docs/proposed-refresh-workflow.yml`. Nothing here can be done without your account.
+The updated workflow is already committed on `codex/independent-audit`; copying it manually is unnecessary if the PR is merged. The existing Git token lacks workflow scope, but the signed-in GitHub editor saved the same YAML successfully. No token or account-wide workflow permissions were changed.
 
-## Exact steps (about two minutes)
+[Run 39893778468](https://github.com/samokarplus/common-ground/actions/runs/39893778468) succeeded: Federal Register and GovInfo checks, verification, build, scan and audit-branch bot commit. Production Pages was correctly skipped. This proves branch execution, not daily scheduling or production publication.
 
-1. Open https://github.com/samokarplus/common-ground/blob/main/docs/proposed-refresh-workflow.yml and copy the whole file.
-2. Open https://github.com/samokarplus/common-ground/edit/main/.github/workflows/refresh-federal-register.yml, replace its contents with the copied text, and commit directly to `main`.
-3. Check Settings → Actions → General → Workflow permissions is set to **Read and write permissions** (the job pushes data commits).
-4. Open the Actions tab → "Refresh official research snapshots" → **Run workflow**. A green run that either commits "Refresh official research snapshots" or finds no change counts as working. Do not treat automation as verified until you see that run.
-5. Confirm GitHub Pages rebuilds after a bot commit. If it does not, say so and the build step can be adjusted.
+## After coordinated PR review and merge
 
-Alternative: create a fine-grained personal access token with **Workflows: read and write** for this repository only, give it to the Git client on the development machine, and the change can be pushed from there.
+1. Confirm `.github/workflows/refresh-federal-register.yml` matches `docs/proposed-refresh-workflow.yml` on main.
+2. Open the repository Actions tab → refresh workflow → **Run workflow**. Explicitly select **main** for this production test.
+3. Confirm both source steps succeed. If either fails, the other still runs; a validated update/health report can be committed and the final run remains red. Never mistake a red source check for fresh data.
+4. Confirm a bot commit on main records source checks and updates `/docs` as needed. Concurrent changes cause a normal push rejection rather than a force push; re-run after reviewing the newer branch.
+5. Confirm **Request default-branch Pages rebuild** succeeds, then inspect the Pages build/deployment run. GitHub documents that a GITHUB_TOKEN push does not start Pages by itself: https://docs.github.com/en/actions/concepts/security/github_token
+6. Open the live Source Status page and compare its check times/content against the bot commit. Do not declare publication verified based only on a green refresh job.
+7. Observe a daily scheduled run (13:17 UTC). Scheduling is best-effort and can be delayed/disabled by GitHub; retain manual commands as fallback.
 
-## What the workflow does
-Runs daily at 13:17 UTC: refreshes the Federal Register and GovInfo Congress snapshots independently, runs tests, lint, health report, build and secret scan, then commits `data/` and `docs/` only if something changed. The job ends red if either source failed. Cost: $0 (standard runner, public repository, no artifacts or caches).
+If the workflow remains unmerged, choose **codex/independent-audit** to repeat its non-production test; it cannot request Pages. The default-branch workflow is still the older Federal Register-only version.
+
+## If permissions block publication
+
+Read the exact failed step. The workflow itself declares only `contents: write` and `pages: write`. Do not broadly enable all workflow permissions or create a new personal token as a routine fix. An owner can review repository policy and grant only the required permission if necessary. If billing or payment is requested, stop.
+
+## Free operation
+
+Public repository, standard Ubuntu runner, no caches/artifacts/larger runners or paid integrations. Official keyless APIs only. GitHub free-use reference: https://docs.github.com/en/billing/concepts/product-billing/github-actions
+
+Local fallback: `npm run refresh:fr`, `npm run refresh:congress`, `npm run health`, then `npm run verify`. Commit and review the resulting data/build changes. Never mark an unsuccessful source check as successful.

@@ -1,3 +1,5 @@
+> Historical handoff/baseline: the feature counts and missing-feature statements below are superseded by [the independent audit](independent-audit.md). Preserve this record as history, not current release status.
+
 # Current state — Common Ground public edition
 
 _Audit date: October 22, 2026. Updated as features ship. This file describes what was tested, not what the README claims._

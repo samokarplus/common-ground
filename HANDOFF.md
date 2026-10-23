@@ -1,3 +1,5 @@
+> Historical handoff/baseline: the feature counts and missing-feature statements below are superseded by [the independent audit](docs/independent-audit.md). Preserve this record as history, not current release status.
+
 # HANDOFF — Common Ground 2.2 (Live Civic Research + Help Me Vote)
 
 _Written Oct. 22, 2026, ~4:55 p.m. Mountain Time, at the end of a Claude Code session, for the next session that takes over._
