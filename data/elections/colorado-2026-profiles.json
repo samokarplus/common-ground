@@ -122,5 +122,55 @@
         "retrievedOn": "2026-10-22"
       }
     ]
+  },
+  {
+    "contestId": "attorney-general",
+    "name": "Jena Griswold",
+    "campaignWebsite": "https://jenaforcolorado.com/",
+    "lastVerifiedOn": "2026-10-22",
+    "checkedNothingFound": [],
+    "claims": [
+      {
+        "kind": "own-statement",
+        "area": "positions",
+        "text": "The campaign's About page emphasizes her record as Secretary of State on election security and access (it cites laws penalizing threats against election workers and making tampering with voting equipment a felony, expanded drop boxes and in-person voting, and automatic voter registration), says she will defend the rights and freedoms of all Coloradans, and criticizes President Trump.",
+        "sourceUrl": "https://jenaforcolorado.com/about",
+        "sourceTitle": "Campaign site: About",
+        "retrievedOn": "2026-10-22"
+      },
+      {
+        "kind": "own-statement",
+        "area": "government-experience",
+        "text": "The campaign's About page says she was elected Colorado's 39th Secretary of State in 2018 and reelected in 2022, earlier directed the Colorado governor's Washington, D.C. office, practiced international anti-corruption law, and earned a law degree from the University of Pennsylvania.",
+        "sourceUrl": "https://jenaforcolorado.com/about",
+        "sourceTitle": "Campaign site: About",
+        "retrievedOn": "2026-10-22"
+      }
+    ]
+  },
+  {
+    "contestId": "attorney-general",
+    "name": "Michael J. Allen",
+    "campaignWebsite": "https://michaelallenforcolorado.com/",
+    "lastVerifiedOn": "2026-10-22",
+    "checkedNothingFound": [],
+    "claims": [
+      {
+        "kind": "own-statement",
+        "area": "positions",
+        "text": "The campaign's home page lists these priorities: public safety and victims (holding repeat offenders accountable and working with local law enforcement); cost of living and taxpayers (reviewing state spending and cutting waste); investigating corruption and fraud; consumer protection, especially against scams targeting older adults; defending Colorado's water rights; and challenging federal overreach when Colorado's interests are harmed.",
+        "sourceUrl": "https://michaelallenforcolorado.com/",
+        "sourceTitle": "Campaign site: home page",
+        "retrievedOn": "2026-10-22"
+      },
+      {
+        "kind": "own-statement",
+        "area": "government-experience",
+        "text": "The campaign's home page says he served eight years in the U.S. Navy, has worked in prosecution for more than 20 years including as a consumer protection prosecutor in the Kansas Attorney General's Office, and was elected District Attorney of the Fourth Judicial District (El Paso and Teller counties) in 2020 and re-elected in 2024.",
+        "sourceUrl": "https://michaelallenforcolorado.com/",
+        "sourceTitle": "Campaign site: home page",
+        "retrievedOn": "2026-10-22"
+      }
+    ]
   }
 ]

@@ -55,3 +55,16 @@ test("shipped profiles only cite https sources and mark every claim with a kind"
     }
   }
 });
+
+test("profile parity: a contest's major-party candidates are either all profiled or none are published", async () => {
+  const { readFileSync } = await import("node:fs");
+  const e = JSON.parse(readFileSync("data/elections/colorado-2026.json", "utf8"));
+  const profiles = JSON.parse(readFileSync("data/elections/colorado-2026-profiles.json", "utf8"));
+  const major = new Set(["Democratic", "Republican"]);
+  for (const c of e.contests) {
+    const mine = profiles.filter((p: { contestId: string }) => p.contestId === c.id);
+    if (mine.length === 0) continue;
+    const majors = c.candidates.filter((x: { affiliation: string | null; status: string }) => x.status === "on-ballot" && x.affiliation && major.has(x.affiliation));
+    for (const m of majors) assert.ok(mine.some((p: { name: string }) => p.name === m.name), `${c.id}: ${m.name} lacks a profile while a rival has one`);
+  }
+});
