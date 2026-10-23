@@ -169,3 +169,11 @@ test("an unknown federal document id shows a clear heading and explanation, not 
   await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
   await expect(page.getByRole("link", { name: /Federal actions/ })).toBeVisible();
 });
+
+test("Colorado overview says the guide is not personalized and explains address-dependent races", async ({ page }) => {
+  await page.goto("#/vote/colorado");
+  await expect(page.getByRole("heading", { name: "Your address decides most of your ballot" })).toBeVisible();
+  await expect(page.getByText("not personalized").first()).toBeVisible();
+  await expect(page.getByRole("heading", { name: /How we checked this/ })).toBeVisible();
+  await expect(page.getByText(/Not verified against the official pages/)).toBeVisible();
+});

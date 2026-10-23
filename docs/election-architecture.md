@@ -9,3 +9,10 @@ How to add a state without loosening the editorial rules.
 5. **Freshness.** Each dataset carries `dataVerifiedAt` and `staleAfterDays`; the UI warns when data is stale and `npm run health` reports it.
 
 Currently supported: Colorado (statewide only). The other 50 jurisdictions are unsupported.
+
+## Onboarding checklist for a new state
+1. Create `data/elections/<state>-<year>.json` (and optionally `-profiles.json`) following the Colorado files.
+2. Run `npm run validate:elections`. It parses every dataset with the same schema, checks the jurisdiction, and refuses a dataset whose state is not yet marked supported.
+3. Have a human check the dataset against the state's official election office; record what was checked in `verificationLog`, including what could not be checked.
+4. Only then flip the state's entry in `src/lib/states.ts`. `tests/states.test.mts` fails if coverage claims and datasets disagree.
+5. List address-dependent races in a `notCovered` array and add the state's sample-ballot tool link; never claim a personalized ballot (see `docs/address-lookup-design.md`).

@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import Link, { routeSearch } from "./link";
 import raw from "../../data/elections/colorado-2026.json";
+import { LOCAL_RACE_TYPES } from "@/lib/local-races";
 import { JURISDICTIONS, coverageOf, officialElectionOffices } from "@/lib/states";
 import rawProfiles from "../../data/elections/colorado-2026-profiles.json";
 import { CLAIM_KINDS, CLAIM_LABEL, RESEARCH_AREAS, completeness, validateProfiles, type Profile } from "@/lib/candidate";
@@ -442,6 +443,28 @@ function Overview() {
           </div>
         </div>
       </div>
+      <section className="panel" aria-labelledby="your-address">
+        <h2 id="your-address">Your address decides most of your ballot</h2>
+        <p>
+          This guide is <strong>not personalized</strong>. It covers what every Colorado voter sees. Many other races and questions on your
+          ballot depend on exactly where you live, and we do not ask for your address, guess your districts from a city name, or show a
+          sample ballot.
+        </p>
+        <ol className="how-list">
+          <li><strong>Get your official sample ballot.</strong> Use <a href="https://www.govotecolorado.gov/" target="_blank" rel="noreferrer">GoVoteColorado</a>; your address is entered on the official site, not here.</li>
+          <li><strong>Match it to this page.</strong> Statewide items on your sample ballot are covered above. For anything else, use the list below to see what it is.</li>
+          <li><strong>Ask your county.</strong> Your <a href="https://www.coloradosos.gov/pubs/elections/Resources/CountyElectionOffices.html" target="_blank" rel="noreferrer">county election office</a> can answer questions about your districts.</li>
+        </ol>
+        <h3>Races and questions that may appear on your ballot but are not covered here</h3>
+        <ul>
+          {LOCAL_RACE_TYPES.map((r) => (
+            <li key={r.id}>
+              <strong>{r.name}.</strong> {r.what} <span className="muted">Depends on: {r.dependsOn}</span>
+            </li>
+          ))}
+        </ul>
+        <p className="muted">These descriptions are general civic background written by Common Ground, not a list of what is on your ballot.</p>
+      </section>
       {election.verificationLog && (
         <section className="panel" aria-labelledby="how-checked">
           <h2 id="how-checked">How we checked this, and what we couldn't</h2>

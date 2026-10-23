@@ -12,6 +12,7 @@
     "refresh:congress": "node --experimental-strip-types scripts/refresh-congress.mts",
     "check:atlas": "node --experimental-strip-types scripts/check-atlas-links.mts",
     "check:links": "node --experimental-strip-types scripts/check-links.mts",
+    "validate:elections": "node --experimental-strip-types scripts/validate-elections.mts",
     "scan": "node scripts/scan-publication.mjs",
     "typecheck": "tsc --noEmit",
     "lint": "eslint src tests",
