@@ -1,51 +1,67 @@
-# Daily refresh of the bundled Federal Register snapshot.
-# Cost: $0 — standard GitHub-hosted runner in a public repository; no artifacts,
-# caches, larger runners, or paid services. Scheduling is best-effort: GitHub may
-# delay or skip scheduled runs, and may pause schedules in inactive repositories.
-# Fallback: run `npm run refresh:fr` locally, or use "Run workflow" in the Actions tab.
-name: Refresh Federal Register snapshot
+# $0: public repository + standard Ubuntu runner only. No artifacts, caches, paid APIs or services.
+# A branch dispatch updates only that branch. Pages can be rebuilt only from the default branch.
+name: Refresh official research snapshots
 
 on:
   schedule:
-    - cron: "17 13 * * *" # 13:17 UTC daily (morning in Colorado)
+    - cron: "17 13 * * *"
   workflow_dispatch: {}
 
 permissions:
   contents: write
+  pages: write
 
 concurrency:
-  group: research-refresh
+  group: research-refresh-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
   refresh:
+    if: github.repository == 'samokarplus/common-ground' && github.event.repository.private == false
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
       - run: npm ci --ignore-scripts --no-audit --no-fund
-      - name: Fetch, validate, and diff official records
+      - name: Federal Register — fetch, validate, and diff
+        id: fr
+        continue-on-error: true
         run: npm run refresh:fr
-      - name: Detect changes
+      - name: Congress — fetch, validate, and diff
+        id: congress
+        continue-on-error: true
+        run: npm run refresh:congress
+      - name: Verify and build snapshots and source health
+        run: |
+          npm run health
+          npm run verify
+      - name: Detect changes (including new files and unchanged-content checks)
         id: diff
         run: |
-          if git diff --quiet -- data/; then echo "changed=false" >> "$GITHUB_OUTPUT"; else echo "changed=true" >> "$GITHUB_OUTPUT"; fi
-      - name: Verify before publishing
-        if: steps.diff.outputs.changed == 'true'
-        run: |
-          npm test
-          npm run lint
-          npm run health
-          npm run build
-          npm run scan
-      - name: Commit and push
+          if [ -z "$(git status --porcelain -- data/ docs/)" ]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Commit to the checked-out branch without overwriting concurrent changes
         if: steps.diff.outputs.changed == 'true'
         run: |
           git config user.name "common-ground-research-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/ docs/
-          git commit -m "Refresh Federal Register snapshot from official API"
+          git commit -m "Refresh official research snapshots and source health"
           git push
+      # GITHUB_TOKEN pushes do not themselves start a Pages build.
+      - name: Request default-branch Pages rebuild
+        if: steps.diff.outputs.changed == 'true' && github.ref_name == github.event.repository.default_branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method POST "repos/$GITHUB_REPOSITORY/pages/builds"
+      - name: Report source failures after preserving the other source's update
+        if: steps.fr.outcome == 'failure' || steps.congress.outcome == 'failure'
+        run: |
+          echo "Federal Register: ${{ steps.fr.outcome }}; Congress: ${{ steps.congress.outcome }}"
+          exit 1
