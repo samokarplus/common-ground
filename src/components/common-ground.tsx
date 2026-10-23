@@ -10,6 +10,8 @@ const Congress = lazy(() => import("./congress"));
 const DebateMaps = lazy(() => import("./debate-maps"));
 import Corrections from "./corrections";
 import HealthPanel from "./health-panel";
+const ChainPage = lazy(() => import("./chain"));
+const Pathways = lazy(() => import("./pathways"));
 import { agencyOptions, applyFeedFilters } from "@/lib/feed-filter";
 import { TENSIONS } from "@/lib/values-tradeoffs";
 import { daysUntil, electionPhase } from "@/lib/election";
@@ -801,6 +803,16 @@ export default function CommonGround({
               <Congress parts={parts.slice(1)} />
             </Suspense>
           )}
+          {section === "paths" && (
+            <Suspense fallback={<p className="empty">Loading…</p>}>
+              <Pathways />
+            </Suspense>
+          )}
+          {section === "chain" && (
+            <Suspense fallback={<p className="empty">Loading…</p>}>
+              <ChainPage />
+            </Suspense>
+          )}
           {section === "corrections" && <Corrections />}
           {section === "methodology" && <Methodology />}
           {section === "privacy" && <Privacy onClear={() => setSaved([])} />}
@@ -924,6 +936,8 @@ export default function CommonGround({
             "vote",
             "congress",
             "corrections",
+            "chain",
+            "paths",
             "methodology",
             "privacy",
             "status",
@@ -938,6 +952,7 @@ export default function CommonGround({
             <span>Common Ground · An independent space for understanding</span>
             <Link href="/methodology">Methodology</Link>
             <Link href="/status">Source status</Link>
+            <Link href="/paths">Pathways</Link>
             <Link href="/corrections">Report a correction</Link>
             <Link href="/privacy">Privacy</Link>
           </footer>
@@ -1589,7 +1604,13 @@ type Reflection = {
   change: string;
   tension: string;
 };
-function TradeoffsPanel() {
+function TradeoffsPanel({
+  choices,
+  setChoices,
+}: {
+  choices: Record<string, string>;
+  setChoices: (c: Record<string, string>) => void;
+}) {
   return (
     <div className="panel">
       <div className="eyebrow">VALUES MEET REAL CHOICES</div>
@@ -1606,6 +1627,23 @@ function TradeoffsPanel() {
             <span className="sr-only"> versus </span> {t.values[1]}
           </h3>
           <p>{t.question}</p>
+          <div className="filter-row" role="group" aria-label={`Your thinking on ${t.values[0]} versus ${t.values[1]}`}>
+            {[
+              [`${t.values[0]} weighs more for me here`, "a"],
+              [`${t.values[1]} weighs more for me here`, "b"],
+              ["It depends", "depends"],
+              ["I'm unsure", "unsure"],
+            ].map(([label, key]) => (
+              <button
+                key={key}
+                className={choices[t.id] === key ? "selected" : ""}
+                aria-pressed={choices[t.id] === key}
+                onClick={() => setChoices({ ...choices, [t.id]: choices[t.id] === key ? "" : key })}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
           <ul>
             {t.measures.map((m) => {
               const measure = election.measures.find((x) => x.id === m.id);
@@ -1618,6 +1656,10 @@ function TradeoffsPanel() {
           </ul>
         </section>
       ))}
+      <p className="muted">
+        Your selections stay on this page for this visit, are never scored or sent anywhere, and are included only if you download your
+        reflections. They are not saved unless you add them to your own notes.
+      </p>
       <p>
         Want to test your reasoning on one of these? Open a <Link href="/debate/maps">debate map</Link>.
       </p>
@@ -1631,6 +1673,7 @@ function ValuesExplorer() {
     [journal, setJournal] = useState(false),
     [tradeoffs, setTradeoffs] = useState(false),
     [confirmDelete, setConfirmDelete] = useState(false),
+    [choices, setChoices] = useState<Record<string, string>>({}),
     [notice, setNotice] = useState("");
   useEffect(() => {
     try {
@@ -1685,7 +1728,7 @@ function ValuesExplorer() {
           className="button secondary"
           onClick={() => {
             const blob = new Blob(
-              [JSON.stringify({ exportedFrom: "Common Ground Values Explorer", note: "Your own reflections only. No scores or labels.", reflections: answers }, null, 2)],
+              [JSON.stringify({ exportedFrom: "Common Ground Values Explorer", note: "Your own reflections only. No scores or labels.", reflections: answers, tradeoffThinking: choices }, null, 2)],
               { type: "application/json" },
             );
             const url = URL.createObjectURL(blob);
@@ -1709,6 +1752,7 @@ function ValuesExplorer() {
               className="button danger"
               onClick={() => {
                 setAnswers({});
+                setChoices({});
                 setPersist(false);
                 try {
                   localStorage.removeItem("cg-values");
@@ -1768,7 +1812,7 @@ function ValuesExplorer() {
         </aside>
         <div>
           {tradeoffs ? (
-            <TradeoffsPanel />
+            <TradeoffsPanel choices={choices} setChoices={setChoices} />
           ) : journal ? (
             <div className="panel journal">
               <div className="eyebrow">IN YOUR OWN WORDS</div>
@@ -2172,7 +2216,10 @@ function DebateLab({ actions }: { actions: Action[] }) {
 function Atlas() {
   const [query, setQuery] = useState(""),
     [period, setPeriod] = useState("All traditions"),
-    [selected, setSelected] = useState("justice"),
+    [selected, setSelected] = useState(() => {
+      const n = new URLSearchParams(routeSearch()).get("node");
+      return n && atlasNodes.some((x) => x.id === n) ? n : "justice";
+    }),
     [zoom, setZoom] = useState(1),
     [offset, setOffset] = useState({ x: 0, y: 0 }),
     [list, setList] = useState(false),
@@ -2445,6 +2492,22 @@ function Atlas() {
                 </button>
               );
             })}
+          {node.context && (
+            <>
+              <h3>Historical context</h3>
+              <p>{node.context}</p>
+            </>
+          )}
+          {node.reading && (
+            <>
+              <h3>Further reading</h3>
+              <ul>
+                {node.reading.map((r) => (
+                  <li key={r}>{r}</li>
+                ))}
+              </ul>
+            </>
+          )}
           {node.thinkers && (
             <>
               <h3>Key thinkers</h3>

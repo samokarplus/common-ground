@@ -37,3 +37,11 @@ test("conceptual entries carry contested views", () => {
     if (["Tradition", "Institution", "Ethics"].includes(n.period)) assert.ok(n.contested, `${n.id} lacks competing interpretations`);
   }
 });
+
+test("historical context and readings are attached to real nodes, with dated works", () => {
+  const withContext = atlasNodes.filter((n) => n.context);
+  assert.ok(withContext.length >= 25, `only ${withContext.length} nodes have context`);
+  const withReading = atlasNodes.filter((n) => n.reading?.length);
+  assert.ok(withReading.length >= 40, `only ${withReading.length} nodes have readings`);
+  for (const n of withReading) for (const r of n.reading ?? []) assert.match(r, /\((?:c\. )?[\d\-, ]+(?:th century(?: BCE)?)?\)|\((?:4th century BCE)\)/, `${n.id}: reading lacks a date: ${r}`);
+});

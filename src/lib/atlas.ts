@@ -16,6 +16,10 @@ export type AtlasNode = {
   thinkers?: string[];
   contested?: string;
   example?: string;
+  /** Short historical background. Editorial draft. */
+  context?: string;
+  /** Well-known primary or classic works, each with a date. */
+  reading?: string[];
 };
 
 const sep = (slug: string) => `https://plato.stanford.edu/entries/${slug}/`;
@@ -106,7 +110,65 @@ const extra: AtlasNode[] = rows.map(([id, name, period, slug, description, think
   ...(example ? { example } : {}),
 }));
 
-export const atlasNodes: AtlasNode[] = [...baseNodes, ...extra];
+
+/** Historical context and classic readings, kept deliberately modest and conventional. Not peer reviewed. */
+const ENRICH: Record<string, { context?: string; reading?: string[] }> = {
+  liberalism: { context: "Modern liberalism grew out of early modern debates over religious toleration and limits on royal power in 17th- and 18th-century Europe and North America.", reading: ["John Locke, Two Treatises of Government (1689)", "J. S. Mill, On Liberty (1859)", "John Rawls, Political Liberalism (1993)"] },
+  conservatism: { context: "Modern conservatism is often traced to reactions to the French Revolution of 1789 and to Edmund Burke's critique of it.", reading: ["Edmund Burke, Reflections on the Revolution in France (1790)", "Michael Oakeshott, Rationalism in Politics (1962)"] },
+  libertarianism: { context: "Libertarian ideas draw on classical liberal thought and became a distinct movement in the 20th century.", reading: ["Robert Nozick, Anarchy, State, and Utopia (1974)"] },
+  socialism: { context: "Socialist ideas developed in the 19th century in response to industrialization and its working conditions.", reading: ["Karl Marx and Friedrich Engels, The Communist Manifesto (1848)"] },
+  "social-democracy": { context: "Social democratic parties emerged in late 19th-century Europe and later helped build welfare states in several countries.", reading: ["Eduard Bernstein, Evolutionary Socialism (1899)"] },
+  anarchism: { context: "Modern anarchist thought took shape in the 19th century alongside socialism.", reading: ["Peter Kropotkin, The Conquest of Bread (1892)"] },
+  republicanism: { context: "Civic republicanism draws on ancient Roman and Renaissance Italian thought about self-government.", reading: ["Niccolo Machiavelli, Discourses on Livy (1531)", "Philip Pettit, Republicanism (1997)"] },
+  communitarianism: { context: "Communitarian arguments gained attention in the 1980s as a response to liberal theories of justice.", reading: ["Michael Sandel, Liberalism and the Limits of Justice (1982)", "Alasdair MacIntyre, After Virtue (1981)"] },
+  "feminism-political": { context: "Arguments for women's equality in politics appear in the 18th and 19th centuries and developed through successive movements.", reading: ["Mary Wollstonecraft, A Vindication of the Rights of Woman (1792)", "J. S. Mill, The Subjection of Women (1869)"] },
+  nationalism: { context: "Nationalism rose in 18th- and 19th-century Europe and shaped the creation of many modern states." },
+  cosmopolitanism: { context: "The idea of being a citizen of the world is associated with the ancient Cynics and Stoics and was revived by Enlightenment thinkers.", reading: ["Immanuel Kant, Perpetual Peace (1795)"] },
+  democracy: { context: "In ancient Athens citizens decided many matters directly; most modern democracies rely on elected representatives.", reading: ["Robert Dahl, Democracy and Its Critics (1989)"] },
+  constitutionalism: { context: "Written constitutions spread widely after the United States (1787) and France (1791) adopted theirs.", reading: ["The Federalist Papers (1787-1788)"] },
+  federalism: { context: "The U.S. Constitution (1787) created a federal system, which the Federalist Papers defended.", reading: ["The Federalist Papers (1787-1788)"] },
+  "separation-of-powers": { context: "Montesquieu described separated powers in 1748, and the framers of the U.S. Constitution built on that idea.", reading: ["Montesquieu, The Spirit of the Laws (1748)", "The Federalist Nos. 47-51 (1788)"] },
+  "rule-of-law": { context: "The idea has roots in ancient Greek and Roman thought and was influentially restated in the 19th century.", reading: ["A. V. Dicey, Introduction to the Study of the Law of the Constitution (1885)", "Lon Fuller, The Morality of Law (1964)"] },
+  "civil-disobedience": { context: "Thoreau's 1849 essay, Gandhi's campaigns and the U.S. civil rights movement shaped modern thinking on the subject.", reading: ["Henry David Thoreau, Resistance to Civil Government (1849)", "Martin Luther King Jr., Letter from Birmingham Jail (1963)"] },
+  toleration: { context: "Calls for religious toleration grew after the wars of religion in 16th- and 17th-century Europe.", reading: ["John Locke, A Letter Concerning Toleration (1689)"] },
+  "free-speech": { context: "Free-speech arguments were developed in 17th- to 19th-century Europe, and the U.S. First Amendment was ratified in 1791.", reading: ["J. S. Mill, On Liberty (1859)"] },
+  property: { context: "Debates over private property run from ancient philosophy through Locke's labor-based account to modern theories of distribution.", reading: ["John Locke, Two Treatises of Government (1689)"] },
+  punishment: { context: "Modern penal reform arguments took off in the 18th century.", reading: ["Cesare Beccaria, On Crimes and Punishments (1764)"] },
+  "just-war": { context: "The tradition draws on Christian thinkers such as Augustine and Aquinas, and later international law codified rules of war in the Hague and Geneva Conventions.", reading: ["Michael Walzer, Just and Unjust Wars (1977)"] },
+  utilitarianism: { context: "Systematic utilitarianism emerged in 18th- and 19th-century Britain with Bentham and Mill.", reading: ["Jeremy Bentham, An Introduction to the Principles of Morals and Legislation (1789)", "J. S. Mill, Utilitarianism (1861)"] },
+  "virtue-ethics": { context: "Virtue ethics goes back to Aristotle and was revived in 20th-century philosophy.", reading: ["Aristotle, Nicomachean Ethics (4th century BCE)", "G. E. M. Anscombe, Modern Moral Philosophy (1958)"] },
+  contractualism: { context: "Contemporary contractualism developed in the late 20th century from social contract theory.", reading: ["T. M. Scanlon, What We Owe to Each Other (1998)"] },
+  "social-contract": { context: "Social contract theory flourished in 17th- and 18th-century Europe and was revived by Rawls in the 20th century.", reading: ["Thomas Hobbes, Leviathan (1651)", "Jean-Jacques Rousseau, The Social Contract (1762)", "John Rawls, A Theory of Justice (1971)"] },
+  "natural-law": { context: "Natural law thinking runs from ancient Greek and Roman philosophy through medieval thinkers such as Aquinas.", reading: ["Thomas Aquinas, Summa Theologiae (1265-1274)"] },
+  "capability-approach": { context: "Amartya Sen developed the approach from the 1980s, and Martha Nussbaum later extended it.", reading: ["Amartya Sen, Development as Freedom (1999)", "Martha Nussbaum, Creating Capabilities (2011)"] },
+  meritocracy: { context: "Michael Young coined the term in a 1958 satire; it later became a standard political ideal.", reading: ["Michael Young, The Rise of the Meritocracy (1958)"] },
+  "social-choice": { context: "Modern social choice theory began with Kenneth Arrow's 1951 impossibility theorem.", reading: ["Kenneth Arrow, Social Choice and Individual Values (1951)"] },
+  neoliberalism: { context: "Market-oriented thinkers organized in the 1940s, and policies associated with the term spread in the late 20th century.", reading: ["Friedrich Hayek, The Road to Serfdom (1944)"] },
+  "public-reason": { context: "The idea was developed in 20th-century political philosophy, notably by Rawls and Habermas.", reading: ["John Rawls, Political Liberalism (1993)"] },
+  pluralism: { reading: ["Isaiah Berlin, Four Essays on Liberty (1969)"] },
+  hobbes: { reading: ["Thomas Hobbes, Leviathan (1651)"] },
+  locke: { reading: ["John Locke, Two Treatises of Government (1689)", "John Locke, A Letter Concerning Toleration (1689)"] },
+  rousseau: { reading: ["Jean-Jacques Rousseau, The Social Contract (1762)"] },
+  mill: { reading: ["J. S. Mill, On Liberty (1859)", "J. S. Mill, Utilitarianism (1861)"] },
+  marx: { reading: ["Karl Marx and Friedrich Engels, The Communist Manifesto (1848)", "Karl Marx, Capital, Volume 1 (1867)"] },
+  rawls: { reading: ["John Rawls, A Theory of Justice (1971)", "John Rawls, Political Liberalism (1993)"] },
+  arendt: { reading: ["Hannah Arendt, The Origins of Totalitarianism (1951)", "Hannah Arendt, The Human Condition (1958)"] },
+  kant: { reading: ["Immanuel Kant, Groundwork of the Metaphysics of Morals (1785)", "Immanuel Kant, Perpetual Peace (1795)"] },
+  burke: { reading: ["Edmund Burke, Reflections on the Revolution in France (1790)"] },
+  wollstonecraft: { reading: ["Mary Wollstonecraft, A Vindication of the Rights of Woman (1792)"] },
+  machiavelli: { reading: ["Niccolo Machiavelli, The Prince (1532)", "Niccolo Machiavelli, Discourses on Livy (1531)"] },
+  montesquieu: { reading: ["Montesquieu, The Spirit of the Laws (1748)"] },
+  hume: { reading: ["David Hume, A Treatise of Human Nature (1739-1740)"] },
+  bentham: { reading: ["Jeremy Bentham, An Introduction to the Principles of Morals and Legislation (1789)"] },
+  berlin: { reading: ["Isaiah Berlin, Two Concepts of Liberty (1958)"] },
+  habermas: { reading: ["Jurgen Habermas, The Structural Transformation of the Public Sphere (1962)"] },
+  dewey: { reading: ["John Dewey, The Public and Its Problems (1927)"] },
+  aquinas: { reading: ["Thomas Aquinas, Summa Theologiae (1265-1274)"] },
+  plato: { reading: ["Plato, Republic (4th century BCE)"] },
+  aristotle: { reading: ["Aristotle, Politics (4th century BCE)", "Aristotle, Nicomachean Ethics (4th century BCE)"] },
+};
+
+export const atlasNodes: AtlasNode[] = [...baseNodes, ...extra].map((n) => ({ ...n, ...(ENRICH[n.id] ?? {}) }));
 
 const more: [string, string][] = [
   ["liberalism", "locke"], ["liberalism", "mill"], ["liberalism", "kant"], ["liberalism", "rawls"], ["liberalism", "toleration"], ["liberalism", "libertarianism"], ["liberalism", "egalitarianism"],

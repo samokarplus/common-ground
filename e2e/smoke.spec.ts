@@ -16,6 +16,9 @@ const routes = [
   "#/vote/demo",
   "#/congress",
   "#/debate/maps",
+  "#/paths",
+  "#/chain",
+  "#/atlas?node=distributive-justice",
   "#/debate/maps/graduated-income-tax",
   "#/corrections",
   "#/congress/how-it-works",
@@ -184,4 +187,32 @@ test("status page shows research health with freshness for each source and the r
   await expect(page.getByText("Congress bills, GovInfo")).toBeVisible();
   await expect(page.getByText(/not yet active/)).toBeVisible();
   await expect(page.getByText(/Source-checked by an AI-assisted process/)).toBeVisible();
+});
+
+test("a pathway deep-links into the Atlas on the right idea, with context and readings", async ({ page }) => {
+  await page.goto("#/paths");
+  await page.getByRole("link", { name: /Explore political representation/ }).click();
+  await expect(page.getByRole("heading", { name: "Political representation", level: 2 })).toBeVisible();
+  await page.goto("#/atlas?node=social-contract");
+  await expect(page.getByRole("heading", { name: "Further reading" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Historical context" })).toBeVisible();
+});
+
+test("the promise-to-outcome record separates stages and marks undocumented ones", async ({ page }) => {
+  await page.goto("#/chain");
+  await expect(page.getByRole("heading", { name: /from introduction to law/i })).toBeVisible();
+  await expect(page.getByText("Not documented here.").first()).toBeVisible();
+  await expect(page.locator('a[href^="https://clerk.house.gov"]').first()).toBeVisible();
+});
+
+test("values tradeoff choices are interactive, session-only and cleared by delete", async ({ page }) => {
+  await page.goto("#/values");
+  await page.getByRole("button", { name: "Real tradeoffs on the ballot" }).click();
+  const first = page.locator("section.journal-entry").first();
+  await first.getByRole("button", { name: "It depends" }).click();
+  await expect(first.getByRole("button", { name: "It depends" })).toHaveAttribute("aria-pressed", "true");
+  expect(await page.evaluate(() => JSON.stringify({ ...localStorage }))).not.toContain("depends");
+  await page.getByRole("button", { name: /Delete all/ }).click();
+  await page.getByRole("button", { name: "Yes, delete" }).click();
+  await expect(first.getByRole("button", { name: "It depends" })).toHaveAttribute("aria-pressed", "false");
 });

@@ -24,4 +24,4 @@ export const LOCAL_RACE_TYPES: LocalRaceType[] = [
 ];
 
 /** The statewide data never personalizes a ballot. Flip only when district eligibility is verified per voter. */
-export const BALLOT_PERSONALIZATION: "none" = "none";
+export const BALLOT_PERSONALIZATION = "none" as const;

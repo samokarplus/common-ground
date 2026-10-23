@@ -40,6 +40,8 @@ test("figures quoted in facts appear in the matching source-checked measure expl
     "amendment-84": ["$2.7 million", "$1.2 million"],
     "amendment-87": ["$958.4 million", "$1.972 billion", "$2.7 billion"],
     "proposition-nn": ["$329.9 million", "$521.0 million", "$4.6 billion"],
+    "proposition-132": ["$876,488", "$8,923,227", "$68.2 million"],
+    "amendment-86": ["$370,000"],
   };
   for (const d of DEBATES) {
     const m = election.measures.find((x: { id: string }) => x.id === d.relatedMeasureId);

@@ -330,6 +330,278 @@ export const DEBATES: Debate[] = [
       "Which of the two sides' strongest empirical claims could you check yourself, and where would you look?",
     ],
   },
+  {
+    id: "fentanyl-penalties",
+    question: "Should Colorado make possession of any amount of fentanyl a felony and require prison for any distribution?",
+    relatedMeasureId: "proposition-132",
+    framing:
+      "Proposition 132 raises penalties and limits judges' discretion. People on both sides want fewer overdose deaths; they disagree about what works and what justice requires.",
+    facts: [
+      {
+        text: "Fentanyl is the leading cause of drug overdose deaths in both Colorado and the United States, because it can be fatal in very small amounts and is often mixed into other drugs without a user's knowledge.",
+        ...bb("Proposition 132 analysis"),
+      },
+      {
+        text: "Today the most serious fentanyl crimes carry a mandatory minimum of 8 years and a maximum of 32 (for example, distributing to a minor, more than 50 grams of a substance, or at least 4 grams that caused a death). In other cases state law allows probation and treatment, and a judge may weigh the circumstances of the case.",
+        ...bb("Proposition 132 analysis"),
+      },
+      {
+        text: "Proposition 132 would make possession of any amount of fentanyl a felony, require a prison sentence of 8 to 32 years for distributing any amount, remove reduced penalties for distribution in 'Good Samaritan' overdose-reporting cases, and limit judges' ability to weigh mitigating factors. Possession of less than one gram could be reduced to a misdemeanor after successful court-ordered treatment.",
+        ...bb("Proposition 132 analysis"),
+      },
+      {
+        text: "The Blue Book projects state spending of $876,488 in 2026-27, $8,923,227 in 2027-28 and, by year five, an increase of about $68.2 million as prison costs build. No funding source is specified.",
+        ...bb("Proposition 132 fiscal impact"),
+      },
+    ],
+    sides: [
+      {
+        label: "Supporters of Proposition 132",
+        arguments: [
+          {
+            text: "Fentanyl is so potent and deadly that it warrants stronger penalties than other drugs, and mandatory prison for dealers would keep them off the street.",
+            type: "forecast",
+            evidenceNote: "The danger of fentanyl is documented; the effect of longer sentences on supply is a prediction the Blue Book does not quantify.",
+          },
+          {
+            text: "Tougher penalties may deter use and help reduce overdose deaths.",
+            type: "forecast",
+            evidenceNote: "Studies of deterrence and of penalty changes elsewhere could inform this; the Blue Book offers no estimate.",
+          },
+          {
+            text: "Mandatory sentences give victims and their families a greater sense of justice and hold users and dealers accountable.",
+            type: "value",
+            evidenceNote: "A judgment about the purposes of punishment (accountability and retribution) and how to weigh them against other goals.",
+          },
+        ],
+      },
+      {
+        label: "Opponents of Proposition 132",
+        arguments: [
+          {
+            text: "The measure is unlikely to reduce fentanyl use, lower crime or prevent overdose deaths.",
+            type: "forecast",
+            evidenceNote: "A prediction; evidence on how penalties affect use and deaths would inform it. The Blue Book does not quantify it.",
+          },
+          {
+            text: "People may be discouraged from seeking treatment or calling for help during an overdose for fear of prosecution, and the measure treats people who distribute trace amounts like major dealers.",
+            type: "forecast",
+            evidenceNote: "Whether help-seeking falls depends on how people respond to the changes; the measure removes 'Good Samaritan' reductions in distribution cases, which is checkable in the text.",
+          },
+          {
+            text: "Money for longer prison terms would be better spent on treatment, education and other services.",
+            type: "value",
+            evidenceNote: "A judgment about priorities; the cost figures are in the Blue Book, but what the same money would achieve elsewhere is not.",
+          },
+        ],
+      },
+    ],
+    agreements: [
+      "Both sides treat fentanyl as deadly and want fewer overdose deaths.",
+      "Both sides accept that the measure would raise state costs; they disagree about whether the costs are justified.",
+    ],
+    uncertainties: [
+      "The Blue Book does not estimate how the measure would change drug use, supply, crime or deaths.",
+      "How many more people would be charged and sentenced, and how much prison space would be needed, depends on enforcement and charging choices.",
+    ],
+    misconceptions: [
+      {
+        myth: "Proposition 132 means prison for anyone who possesses fentanyl.",
+        correction:
+          "It makes possession of any amount a felony, but does not mandate prison for possession; possession of less than one gram could be reduced to a misdemeanor after successful court-ordered treatment. The mandatory 8 to 32 year sentence applies to distribution.",
+        sourceUrl: BB,
+      },
+      {
+        myth: "Current Colorado law has no serious penalties for fentanyl.",
+        correction: "Current law already requires 8 to 32 years for the most serious offenses; Proposition 132 extends mandatory sentences to any distribution and limits judges' discretion.",
+        sourceUrl: BB,
+      },
+    ],
+    reflection: [
+      "Which of these claims could data settle, and which rest on how you weigh accountability against treatment?",
+      "What evidence about deterrence would change your mind, and who would you trust to gather it?",
+      "Is there a version of the policy you would support that neither side proposed?",
+    ],
+  },
+  {
+    id: "off-cycle-redistricting",
+    question: "Should Colorado require an independent commission and the state Supreme Court to approve any mid-decade change to congressional districts?",
+    relatedMeasureId: "amendment-86",
+    framing:
+      "Amendment 86 does not redraw any map. It sets the rules for any future change to congressional districts made outside the normal once-a-decade process.",
+    facts: [
+      {
+        text: "Colorado has eight congressional districts. Since a 2018 constitutional amendment, an independent commission redraws them after each census; the next commission will meet in 2031.",
+        ...bb("Amendment 86 analysis"),
+      },
+      {
+        text: "Colorado's constitution does not currently establish a process specifically for changing congressional districts between censuses. Since 2025, at least ten states have changed their congressional maps this way.",
+        ...bb("Amendment 86 analysis"),
+      },
+      {
+        text: "Amendment 86 would require the commission to approve, and the Colorado Supreme Court to adopt, any off-cycle change; the commission would hold at least three public hearings; and changes could not intentionally favor a political party or unnecessarily divide communities of interest.",
+        ...bb("Amendment 86 analysis"),
+      },
+      {
+        text: "The Blue Book estimates about $370,000 in costs in any year the commission convenes for an off-cycle review.",
+        ...bb("Amendment 86 fiscal impact"),
+      },
+    ],
+    sides: [
+      {
+        label: "Supporters of Amendment 86",
+        arguments: [
+          {
+            text: "It protects public participation by requiring hearings and independent review of any mid-decade change.",
+            type: "empirical",
+            evidenceNote: "The hearing and review requirements are in the Blue Book's description of the measure; how well they would work in practice is not testable until used.",
+          },
+          {
+            text: "Politicians in other states have changed districts in their own favor with limited public input, and Colorado should guard against that.",
+            type: "empirical",
+            evidenceNote: "The count of states changing maps is in the Blue Book; the characterization of those changes is contested and depends on the case.",
+          },
+          {
+            text: "It keeps partisan politics out of the process and affirms the voters' intent in creating an independent commission in 2018.",
+            type: "value",
+            evidenceNote: "A judgment about what the 2018 vote meant and how much weight it carries.",
+          },
+        ],
+      },
+      {
+        label: "Opponents of Amendment 86",
+        arguments: [
+          {
+            text: "If voters ever want new districts in an off-cycle year, for example in response to partisan redistricting elsewhere, the measure would stand in their way as a new constitutional barrier.",
+            type: "forecast",
+            evidenceNote: "A prediction about future circumstances. The measure's text shows which routes it closes; whether voters would want them is unknown.",
+          },
+          {
+            text: "The same commission that drew the maps during the regular process should not control any redo if voters conclude the districts no longer meet the state's needs.",
+            type: "value",
+            evidenceNote: "A judgment about who should hold the pen in a revision.",
+          },
+          {
+            text: "Voters should always have the final word on whether congressional districts still reflect the state's needs.",
+            type: "value",
+            evidenceNote: "A judgment about direct voter control versus protecting an independent process.",
+          },
+        ],
+      },
+    ],
+    agreements: [
+      "Both sides say they want districts drawn fairly and want voters to have a role.",
+      "Both sides accept that the measure applies only to changes made outside the regular post-census process.",
+    ],
+    uncertainties: [
+      "Whether an off-cycle redistricting would ever be proposed in Colorado is unknown.",
+      "How courts would apply 'intentionally favor a political party' and 'unnecessarily divide communities of interest' is not described in the Blue Book.",
+    ],
+    misconceptions: [
+      {
+        myth: "Amendment 86 redraws Colorado's congressional districts.",
+        correction: "It changes no map. It sets approval rules for any future off-cycle change.",
+        sourceUrl: BB,
+      },
+      {
+        myth: "Amendment 86 changes the regular redistricting scheduled for 2031.",
+        correction: "The regular post-census process is unchanged; the measure addresses changes outside it.",
+        sourceUrl: BB,
+      },
+    ],
+    reflection: [
+      "Should the rules for changing districts be fixed in advance, before anyone knows who benefits from a particular change?",
+      "What would a fair test of 'favoring a party' look like, and who should apply it?",
+      "Which matters more to you here: protecting an independent process or keeping every option open for voters?",
+    ],
+  },
+  {
+    id: "natural-gas-right",
+    question: "Should the Colorado constitution protect a right to buy and sell natural gas for homes and businesses?",
+    relatedMeasureId: "amendment-82",
+    framing:
+      "Amendment 82 would put a right to purchase and sell natural gas in the constitution. The debate is about energy costs and reliability, climate and air quality, and who gets to decide: the state constitution, the state, or local governments.",
+    facts: [
+      {
+        text: "Natural gas, primarily methane, powers furnaces, water heaters, stoves and other appliances. Electricity and propane are other common household energy sources in Colorado.",
+        ...bb("Amendment 82 analysis"),
+      },
+      {
+        text: "The state regulates investor-owned gas utilities through the Public Utilities Commission, which in December 2025 required plans for a 41 percent greenhouse gas reduction by 2035 compared with 2015. Some municipalities, such as Crested Butte, restrict gas appliances in new construction.",
+        ...bb("Amendment 82 analysis"),
+      },
+      {
+        text: "The measure would create a constitutional right for consumers to buy natural gas for cooking or heating and for distributors and utilities to sell it. The Blue Book says it may limit state and local governments' ability to enforce existing or future regulations.",
+        ...bb("Amendment 82 analysis"),
+      },
+      {
+        text: "The Blue Book says state costs may increase minimally (for example, for building-code guidance), and local governments with gas-related building codes may face legal and code-update costs; no dollar amount is given.",
+        ...bb("Amendment 82 fiscal impact"),
+      },
+    ],
+    sides: [
+      {
+        label: "Supporters of Amendment 82",
+        arguments: [
+          {
+            text: "Natural gas is affordable, widely available and reliable in extreme cold, and most Colorado households use it as their primary heating source.",
+            type: "empirical",
+            evidenceNote: "Checkable against utility and energy-cost data; the Blue Book does not report costs or household shares.",
+          },
+          {
+            text: "Gas appliances are proven technology, and access should continue without interference from state or local governments.",
+            type: "value",
+            evidenceNote: "A judgment about whether and when governments should limit a household's energy choices.",
+          },
+        ],
+      },
+      {
+        label: "Opponents of Amendment 82",
+        arguments: [
+          {
+            text: "Burning natural gas contributes to climate change and air pollution.",
+            type: "empirical",
+            evidenceNote: "Emissions and air quality can be measured, and the Blue Book states the point as an argument; the size of local effects and the available alternatives are debated.",
+          },
+          {
+            text: "A constitution should not protect a particular energy source, because that limits efforts to cut emissions, improve air quality and adopt options such as wind, solar and geothermal.",
+            type: "value",
+            evidenceNote: "A judgment about what belongs in a constitution versus ordinary law.",
+          },
+          {
+            text: "Local communities should be able to decide their own public health priorities, energy needs and climate goals.",
+            type: "value",
+            evidenceNote: "A judgment about local control versus statewide uniformity.",
+          },
+        ],
+      },
+    ],
+    agreements: [
+      "Both sides agree the measure could constrain state and local regulation of natural gas.",
+      "Both sides discuss reliability and cost of home energy, and both discuss environmental effects, though they weigh them differently.",
+    ],
+    uncertainties: [
+      "How courts would apply a constitutional right to existing local building codes is uncertain.",
+      "The Blue Book gives no figures for household energy costs under different fuels or for emissions effects.",
+    ],
+    misconceptions: [
+      {
+        myth: "Amendment 82 only affects cooking stoves.",
+        correction: "It covers consumers' purchase of natural gas for cooking or heating in homes and businesses and utilities' and distributors' right to sell it.",
+        sourceUrl: BB,
+      },
+      {
+        myth: "Amendment 82 automatically cancels every local gas restriction.",
+        correction: "The Blue Book says it may limit the ability to enforce existing or future regulations; the effect would depend on how courts interpret it.",
+        sourceUrl: BB,
+      },
+    ],
+    reflection: [
+      "Which parts are about measurable cost and emissions, and which are about who should decide?",
+      "Should a household's energy choices be protected from local rules, or should communities be able to set standards for new buildings?",
+      "What evidence about reliability in cold snaps and about emissions would you want before deciding?",
+    ],
+  },
 ];
 
 export const debateById = (id: string) => DEBATES.find((d) => d.id === id);
