@@ -85,3 +85,14 @@ test("unresearched candidates are labeled as such, not as having no position", a
   await page.goto("#/vote/colorado/contest/governor");
   await expect(page.getByText(/Not yet researched/).first()).toBeVisible();
 });
+
+test("measure search narrows the list and can be emptied", async ({ page }) => {
+  await page.goto("#/vote/colorado/measures");
+  const cards = page.locator("a.measure-card");
+  const all = await cards.count();
+  await page.getByLabel("Search measures").fill("zzzz-no-match");
+  await expect(page.getByText("No measures match this filter.")).toBeVisible();
+  await page.getByLabel("Search measures").fill("amendment 81");
+  expect(await cards.count()).toBeGreaterThan(0);
+  expect(await cards.count()).toBeLessThan(all);
+});

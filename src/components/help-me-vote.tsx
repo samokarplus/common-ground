@@ -475,6 +475,7 @@ function Overview() {
 function MeasureList() {
   const initial = new URLSearchParams(routeSearch()).get("filter") || "all";
   const [filter, setFilter] = useState(initial);
+  const [q, setQ] = useState("");
   const { guide } = useGuide();
   const groups: [string, string, (m: Measure) => boolean][] = [
     ["all", "All", () => true],
@@ -486,7 +487,10 @@ function MeasureList() {
   const test =
     groups.find((g) => g[0] === filter)?.[2] ||
     ((m: Measure) => m.topic === filter);
-  const list = election.measures.filter(test);
+  const needle = q.trim().toLowerCase();
+  const list = election.measures.filter(
+    (m) => test(m) && (!needle || `${m.designation} ${m.shortTitle} ${m.blueBookTitle} ${m.topic}`.toLowerCase().includes(needle)),
+  );
   const progress = guideProgress(guide, election.measures.map((m) => m.id));
   return (
     <>
@@ -507,6 +511,10 @@ function MeasureList() {
             {label}
           </button>
         ))}
+        <label className="topic-select">
+          <span className="sr-only">Search measures</span>
+          <input type="search" placeholder="Search measures" value={q} onChange={(e) => setQ(e.target.value)} />
+        </label>
         <label className="topic-select">
           <span className="sr-only">Filter by topic</span>
           <select value={topics.includes(filter) ? filter : ""} onChange={(e) => setFilter(e.target.value || "all")}>

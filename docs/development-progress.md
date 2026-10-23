@@ -39,3 +39,8 @@ Factual log. Only items marked verified were checked in the session that wrote t
 - Candidate profile system: `src/lib/candidate.ts` (typed claims: own statement, documented action, independent finding, allegation, opinion; each needs an https source and retrieval date; completeness separates sourced / checked-nothing-found / unresearched), data file `data/elections/colorado-2026-profiles.json` (**currently empty**), profile page `#/vote/colorado/candidate/:contest/:name`, validation tests. Candidate rows now say "Not yet researched — 0 of 5 areas" rather than implying no position.
 - Not done: no candidate has actually been researched yet, so no profile pages exist in the live data. Research should come from official sources and candidates' own sites by a human or reviewed session.
 - Tests: 57 unit, 111 browser (smoke + axe) passing locally.
+
+## Colorado data spot-check (2026-10-22, partial)
+- Statewide candidate names for U.S. Senate, Governor, Secretary of State, Treasurer and Attorney General were compared with the Secretary of State's candidate-list page as read through a summarizing fetch tool: every name on that page is in the dataset, with no omissions. The dataset has two additional U.S. Senate write-ins (Powers, Apelbaum) that the summary did not mention; not resolved. Withdrawals (strikethrough in the official XLSX) still cannot be seen by this tooling.
+- The 7 deadlines match the dates reported by a web search of press and county pages that repeat the Secretary of State's calendar; the official calendar itself was not read directly. `dataVerifiedAt` was **not** changed.
+- Added: search box on the measures list (e2e covered). 57 unit and 114 browser checks pass locally.
