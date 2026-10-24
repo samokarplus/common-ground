@@ -9,7 +9,7 @@ import { issueById } from "@/lib/issues";
 const fmt = (iso: string) => new Date(iso + "T12:00:00Z").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
 
 /** "What government is doing" for an issue: newest tagged actions across Congress, the President and agencies. */
-export function GovernmentForIssue({ issue, limit = 6 }: { issue: string; limit?: number }) {
+export function GovernmentForIssue({ issue, limit = 4 }: { issue: string; limit?: number }) {
   const today = new Date().toISOString().slice(0, 10);
   const items = allActions(today).filter((a) => !a.ceremonial && a.issues?.includes(issue));
   const shown = items.slice(0, limit);
@@ -27,7 +27,7 @@ export function GovernmentForIssue({ issue, limit = 6 }: { issue: string; limit?
                 <span className="tag stage">{STAGES.find((s) => s.id === a.stage)!.label}</span>
                 <span>{fmt(a.date)}</span>
               </div>
-              <h3>{a.title}</h3>
+              <h3 title={a.title} className="clamp-3">{a.title}</h3>
               <p className="muted">
                 {a.detail} <a href={a.sourceUrl} target="_blank" rel="noreferrer">Official record <ExternalLink size={12} /></a>
               </p>

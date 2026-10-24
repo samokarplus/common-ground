@@ -8,12 +8,17 @@ import { freshness } from "@/lib/freshness";
 const day = (iso: string) => new Date(iso.slice(0, 10) + "T12:00:00Z").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
 
 /** Where each data set comes from and how fresh it is. Ages are computed when the page opens. */
+import cpiRaw from "../../data/stats/cpi-bls.json";
+import presRaw from "../../data/government/presidential-actions.json";
+
 export function SourceFreshness() {
   const now = new Date();
   const rows: [string, string, string, string, number][] = [
     ["Federal debt and budget totals", "U.S. Treasury (Fiscal Data)", (treasuryRaw as { retrievedAt: string }).retrievedAt, "Refreshed by script (npm run refresh:fiscal)", 35],
     ["Congress bills", "GovInfo bill status data", (billsRaw as { retrievedAt: string }).retrievedAt, "Refreshed by script; scheduling not yet active", 3],
     ["Federal Register documents", "Federal Register API", (frRaw as { retrievedAt: string }).retrievedAt, "Refreshed by script; scheduling not yet active", 3],
+    ["Consumer prices (CPI)", "Bureau of Labor Statistics", (cpiRaw as { retrievedAt: string }).retrievedAt, "Refreshed by script (npm run refresh:cpi)", 45],
+    ["Presidential actions", "whitehouse.gov Presidential Actions", (presRaw as { retrievedAt: string }).retrievedAt, "Refreshed by script (npm run refresh:presidential)", 3],
     ["Ukraine appropriations", "Congressional Research Service (April 2024 update)", "2026-10-23", "Static; not updated automatically", 9999],
     ["Abortion statistics", "CDC surveillance report (2022 data)", "2026-10-23", "Static; CDC publishes about once a year", 9999],
   ];

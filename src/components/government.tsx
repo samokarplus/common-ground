@@ -50,8 +50,8 @@ export default function Government() {
         <Link href="/compare">Compare candidates</Link>
       </nav>
 
-      <section aria-labelledby="ladder" className="panel">
-        <h2 id="ladder">Announced is not enacted: the stages</h2>
+      <details className="disclosure ladder-box" open={typeof window !== "undefined" && window.matchMedia?.("(min-width: 900px)").matches}>
+        <summary><h2 id="ladder">Announced is not enacted: the stages</h2></summary>
         <p className="muted">A headline can describe any of these. They are different things, and only some change the law.</p>
         <ol className="ladder">
           {STAGES.map((s) => (
@@ -64,7 +64,7 @@ export default function Government() {
             </li>
           ))}
         </ol>
-      </section>
+      </details>
 
       <section aria-labelledby="explore-actions">
         <h2 id="explore-actions">Recent actions</h2>

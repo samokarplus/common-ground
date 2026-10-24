@@ -1,0 +1,1 @@
+import{_ as e,b as t,i as n,j as r,n as i,o as a,u as o,v as s,x as c}from"./icons-Dh7m-0sX.js";var l={"cost-of-living":i,"health-care":t,immigration:n,abortion:r,"climate-energy":e,"spending-debt":s,"corruption-ethics":o,"public-lands":a,"foreign-policy":c};export{l as t};

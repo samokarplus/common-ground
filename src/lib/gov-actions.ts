@@ -118,7 +118,7 @@ export function fromPresidential(p: PresidentialAction): GovAction {
     title: p.title,
     date: p.date,
     dateLabel: "Signed",
-    detail: `${what}, signed ${p.date}. It directs the executive branch; it is not a law passed by Congress.`,
+    detail: `${what}. It directs the executive branch; it is not a law passed by Congress.`,
     href: "/government/president",
     sourceUrl: p.url,
     ceremonial: isCeremonial(p),

@@ -12,6 +12,7 @@ const snapshot = presidentialRaw as unknown as { retrievedAt: string; actions: P
 const annotations = new Map(validateAnnotations(annotationsRaw, snapshot.actions).map((a) => [a.url, a]));
 const KIND = { "executive-order": "Executive order", proclamation: "Proclamation", memorandum: "Memorandum", "presidential-document": "Presidential document" } as const;
 const day = (iso: string) => new Date(iso + "T12:00:00Z").toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" });
+const fmtShort = (iso: string) => new Date(iso + "T12:00:00Z").toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
 const month = (iso: string) => new Date(iso + "T12:00:00Z").toLocaleDateString("en-US", { month: "long", year: "numeric", timeZone: "UTC" });
 
 export default function President() {
@@ -75,8 +76,8 @@ export default function President() {
         </div>
         <p className="results-count" aria-live="polite">{shown.length} of {all.length} documents</p>
         {groups.map((g) => (
-          <div key={g.m} className="tl-month">
-            <h3>{month(g.m + "-15")}</h3>
+          <details key={g.m + issue + kind} className="tl-month" open={g.m === groups[0].m || !!issue || !!kind}>
+            <summary><h3>{month(g.m + "-15")}</h3><span className="muted">{g.items.length} document{g.items.length === 1 ? "" : "s"}</span></summary>
             <ol className="timeline">
               {g.items.map((a) => {
                 const ann = annotations.get(a.sourceUrl);
@@ -93,7 +94,11 @@ export default function President() {
                         {a.issues.map((id) => (<Link key={id} href={"/issues/" + id} className="chip">{issueById(id)?.title}</Link>))}
                       </p>
                     )}
-                    <p className="muted">Stage: <strong>{ann?.stageNote ?? "Signed presidential document. Whether it is in effect, challenged or carried out is not recorded here."}</strong></p>
+                    <p className="status-row" aria-label="Status">
+                      <span className="status-chip ok">Signed {fmtShort(a.date)}</span>
+                      <span className="status-chip unknown">In effect, challenged or blocked: not recorded</span>
+                    </p>
+                    <p className="stage-note">{ann?.stageNote ?? "A signed presidential document. We have not checked whether it is in effect, being carried out, or challenged in court."}</p>
                     {ann && (
                       <details>
                         <summary>What it changes, what is unknown</summary>
@@ -111,7 +116,7 @@ export default function President() {
                 );
               })}
             </ol>
-          </div>
+          </details>
         ))}
         {shown.length === 0 && <p className="note">Nothing in this window matches. Try removing a filter.</p>}
       </section>

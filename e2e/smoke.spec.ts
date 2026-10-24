@@ -388,7 +388,7 @@ test("a briefing shows the short answer, typed claims, sources, limitations and 
   await expect(page.getByRole("heading", { level: 1 })).toContainText("spend, collect and borrow");
   await expect(page.getByRole("heading", { name: "The short answer" })).toBeVisible();
   await expect(page.getByText("Machine-checked, not human-reviewed").first()).toBeVisible();
-  for (const h of ["The evidence", "Historical context", "What changed recently", "What happens next", "What people disagree about", "Original sources", "Limitations"]) await expect(page.getByRole("heading", { name: h, exact: true })).toBeVisible();
+  for (const h of ["The evidence", "Why it matters, and how to read it", "What changed recently", "What happens next", "What people disagree about", "Original sources and limits", "Limitations"]) await expect(page.getByRole("heading", { name: h, exact: true })).toBeVisible();
   const charts = page.locator("figure.chart");
   expect(await charts.count()).toBeGreaterThanOrEqual(4);
   await expect(charts.first().locator("svg[role=img] desc")).toContainText("Line chart");
@@ -414,6 +414,8 @@ test("the abortion briefing says the figures are not a national total and shows 
 test("the government explorer places actions on a ladder, filters them, and keeps executive orders apart from laws", async ({ page }) => {
   await page.goto("#/government");
   await expect(page.getByRole("heading", { name: "Announced is not enacted: the stages" })).toBeVisible();
+  const ladder = page.locator("details.ladder-box");
+  if (!(await ladder.evaluate((e) => (e as HTMLDetailsElement).open))) await ladder.locator("summary").click();
   await expect(page.getByText(/Selected, not comprehensive/)).toBeVisible();
   await page.getByRole("button", { name: "Signed into law" }).click();
   const items = page.locator(".action-item");
@@ -425,10 +427,13 @@ test("the government explorer places actions on a ladder, filters them, and keep
 
 test("the home page shows rule-selected developments with originals and why each was chosen", async ({ page }) => {
   await page.goto("#/");
-  await expect(page.getByRole("heading", { name: /recent developments/ })).toBeVisible();
+  await expect(page.getByRole("heading", { name: /Recent developments/ })).toBeVisible();
   expect(await page.locator(".dev").count()).toBeGreaterThanOrEqual(4);
   await expect(page.getByText(/Why this one:/).first()).toBeVisible();
-  await expect(page.getByRole("heading", { name: /Where the numbers come from/ })).toBeVisible();
+  await expect(page.getByRole("heading", { name: /Pick an issue/ })).toBeVisible();
+  await expect(page.locator(".issue-pills li")).toHaveCount(9);
+  await page.locator("#freshness summary").click();
+  await expect(page.getByRole("columnheader", { name: "Source" })).toBeVisible();
 });
 
 test("the issues hub lists nine issues, says which have a briefing, and an issue page connects numbers, government and candidates", async ({ page }) => {
@@ -481,7 +486,7 @@ test("the candidate comparison shows both people side by side, with sources, und
   await block.locator("details summary").first().click();
   await expect(block.locator('a[href^="https://"]').first()).toBeVisible();
   await page.getByRole("button", { name: "National parks and public lands" }).click();
-  await expect(page.getByText(/Nothing documented here/).first()).toBeVisible();
+  await expect(page.locator(".undocumented").first()).toBeVisible();
   await expect(page.getByText(/recommend|endorse|score/i).first()).toHaveText(/no scores|not a recommendation|endorsements|recommendations/i);
 });
 

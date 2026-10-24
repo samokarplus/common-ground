@@ -1,4 +1,5 @@
 import { Info } from "lucide-react";
+import { ISSUE_ICON } from "./issue-icons";
 import Link from "./link";
 import { BRIEFINGS, briefingById } from "./briefings-data";
 import { BriefingPage } from "./briefing";
@@ -32,6 +33,7 @@ export function IssuesHub() {
           const cand = COMPARISONS.filter((c) => c.issues.some((x) => x.issue === i.id && Object.values(x.positions).some((p) => p.length))).length;
           return (
             <Link key={i.id} href={`/issues/${i.id}`} className="briefing-card issue-card">
+              <span className="pill-icon" aria-hidden="true">{(() => { const Icon = ISSUE_ICON[i.id]; return <Icon size={22} />; })()}</span>
               <h3>{i.title}</h3>
               <p>{i.blurb}</p>
               <ul className="has-list" aria-label={`What we have on ${i.title}`}>
@@ -56,24 +58,29 @@ export function IssuePage({ id }: { id: IssueId }) {
   const briefs = (BRIEFING_FOR_ISSUE[id] ?? []).map((b) => BRIEFINGS.find((x) => x.id === b)).filter((b): b is NonNullable<typeof b> => !!b);
   return (
     <>
-      <div className="page-title">
+      <nav className="crumbs" aria-label="Breadcrumb">
+        <Link href="/issues">Issues</Link>
+        <span aria-hidden="true"> / </span>
+        <span aria-current="page">{issue.title}</span>
+      </nav>
+      <div className="page-title issue-head">
         <div className="eyebrow">ISSUE</div>
         <h1>{issue.title}</h1>
         <p>{issue.question}</p>
       </div>
-      <nav className="subnav" aria-label="On this page">
-        <a href="#what-is-happening">What is happening</a>
-        <a href="#gov-section">What government is doing</a>
-        <a href="#sides">What people argue</a>
-        <a href="#cand-section">Candidates</a>
-        <a href="#sources-section">Sources</a>
+      <nav className="toc" aria-label="On this page">
+        {([["what-is-happening", "What is happening"], ["gov-section", "Government"], ["sides", "Different views"], ["cand-section", "Candidates"], ["sources-section", "Sources"]] as const).map(([h, l]) => (
+          <a key={h} href={`#${h}`} onClick={(e) => { e.preventDefault(); document.getElementById(h)?.scrollIntoView({ behavior: "smooth", block: "start" }); }}>{l}</a>
+        ))}
       </nav>
 
       <section id="what-is-happening" aria-labelledby="happening-h" className="connected">
         <h2 id="happening-h">What is happening, and what the numbers show</h2>
         {briefs.length === 0 ? (
-          <div className="note" role="note">
-            <Info size={15} aria-hidden="true" /> <strong>No evidence briefing yet.</strong> We have not yet checked and summarized the official numbers on this issue, so we are not summarizing them here. The official sources below are where to look; we would rather say nothing than guess.
+          <div className="empty-state" role="note">
+            <h3><Info size={18} aria-hidden="true" /> No evidence briefing yet.</h3>
+            <p>We have not yet checked and summarized the official numbers on this issue, so we are not summarizing them here. We would rather say nothing than guess.</p>
+            <p>The <a href="#sources-section">official sources below</a> are where to look. Government actions and candidate statements on this issue appear further down the page.</p>
           </div>
         ) : (
           briefs.map((b) => (
@@ -93,16 +100,16 @@ export function IssuePage({ id }: { id: IssueId }) {
         <h2 id="sides-h">What different people argue</h2>
         {briefs.length > 0 ? (
           briefs.map((b) => (
-            <div key={b.id} className="panel">
-              <h3>{b.question}</h3>
+            <details key={b.id} className="disclosure" open>
+              <summary>{b.question}</summary>
               <p><strong>Disagreements about facts:</strong></p>
               <ul>{b.disagreements.factual.map((c) => (<li key={c.text}>{c.text}</li>))}</ul>
               <p><strong>Disagreements about values:</strong></p>
               <ul>{b.disagreements.values.map((c) => (<li key={c.text}>{c.text}</li>))}</ul>
-            </div>
+            </details>
           ))
         ) : (
-          <p className="muted">Not yet written for this issue. In the meantime the <Link href="/debate/maps">Debate Lab</Link> maps arguments on ballot questions, and the <Link href="/atlas">Thought Atlas</Link> explains the ideas behind political disagreements.</p>
+          <div className="empty-state"><p>Not yet written for this issue. In the meantime the <Link href="/debate/maps">Debate Lab</Link> maps arguments on ballot questions, and the <Link href="/atlas">Thought Atlas</Link> explains the ideas behind political disagreements.</p></div>
         )}
       </section>
 

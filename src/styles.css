@@ -82,7 +82,7 @@ h3 {
 h1,
 h2,
 .briefing h3 {
-  font-family: "Libre Caslon Display", Georgia, serif;
+  font-family: var(--serif-head);
 }
 h1 {
   font-size: 49px;
@@ -140,7 +140,7 @@ button {
   width: 39px;
   min-width: 39px;
   height: 42px;
-  font-family: Arial, sans-serif;
+  font-family: var(--sans);
   font-size: 55px;
   font-weight: 400;
   letter-spacing: -16px;
@@ -154,13 +154,13 @@ button {
 }
 .nav-label,
 .eyebrow {
-  font-size: 12px;
+  font-size: 0.8125rem;
   letter-spacing: 1.65px;
   font-weight: 650;
   color: #55655a;
 }
 .nav-label {
-  font-size: 12px;
+  font-size: 0.8125rem;
   letter-spacing: 1.35px;
   padding-left: 13px;
   margin-bottom: 13px;
@@ -170,7 +170,7 @@ button {
   align-items: center;
   gap: 13px;
   padding: 12px 13px;
-  font-size: 12px;
+  font-size: 0.8125rem;
   font-weight: 500;
   margin-bottom: 4px;
   border-radius: 5px;
@@ -189,7 +189,7 @@ button {
 }
 .count {
   margin-left: auto;
-  font-size: 12px;
+  font-size: 0.8125rem;
 }
 .sidebar-bottom {
   margin-top: auto;
@@ -198,12 +198,12 @@ button {
 .sidebar-bottom > a {
   display: flex;
   gap: 9px;
-  font-size: 12px;
+  font-size: 0.8125rem;
   color: #646d64;
   margin-top: 17px;
 }
 .independent {
-  font-size: 12px;
+  font-size: 0.8125rem;
   color: #445c4c;
   font-weight: 550;
   border-bottom: 1px solid #dce1d3;
@@ -211,7 +211,7 @@ button {
   margin-bottom: 22px;
 }
 .independent p {
-  font-size: 12px;
+  font-size: 0.8125rem;
   line-height: 1.8;
   font-weight: 400;
   margin: 8px 0 0 12px;
@@ -229,7 +229,7 @@ button {
   background: #a5aaa0;
 }
 .version {
-  font-size: 12px;
+  font-size: 0.8125rem;
   color: #666b61;
   letter-spacing: 1.1px;
   margin-top: 27px;
@@ -251,7 +251,7 @@ button {
   display: flex;
   align-items: center;
   gap: 12px;
-  font-size: 12px;
+  font-size: 0.8125rem;
   color: #666b65;
 }
 .breadcrumb strong {
@@ -270,14 +270,14 @@ button {
   border: none;
   background: transparent;
   width: 100%;
-  font-size: 12px;
+  font-size: 0.8125rem;
   outline: 0;
 }
 .global-search kbd {
   border: 1px solid var(--line);
   border-radius: 4px;
   padding: 0 5px;
-  font-size: 12px;
+  font-size: 0.8125rem;
 }
 .top-bookmark {
   color: #636c5f;
@@ -290,7 +290,7 @@ button {
   width: 29px;
   height: 29px;
   background: #e9ede0;
-  font-size: 12px;
+  font-size: 0.8125rem;
   display: grid;
   place-items: center;
   font-weight: 600;
@@ -304,21 +304,21 @@ button {
 .edition-line {
   display: flex;
   justify-content: space-between;
-  font-size: 12px;
+  font-size: 0.8125rem;
   color: #666c63;
   letter-spacing: 0.3px;
 }
 .live-status {
   display: flex;
   align-items: center;
-  font-size: 12px;
+  font-size: 0.8125rem;
   color: #577055;
 }
 .home-intro {
   padding: 39px 0 36px;
 }
 .home-intro .eyebrow {
-  font-size: 12px;
+  font-size: 0.8125rem;
   margin-bottom: 15px;
 }
 .home-intro h1 {
@@ -331,7 +331,7 @@ button {
   color: #616f59;
 }
 .home-intro > p {
-  font-size: 12px;
+  font-size: 0.8125rem;
   line-height: 1.85;
   margin: 16px 0 0;
   color: #646b60;
@@ -347,7 +347,7 @@ button {
 }
 .topic-tabs button {
   padding: 12px 0 13px;
-  font-size: 12px;
+  font-size: 0.8125rem;
   color: #656c61;
   border-bottom: 2px solid transparent;
   flex-shrink: 0;
@@ -358,7 +358,7 @@ button {
   font-weight: 650;
 }
 .no-algorithm {
-  font-size: 12px;
+  font-size: 0.8125rem;
   color: #666c62;
   display: flex;
   gap: 6px;
@@ -380,8 +380,8 @@ button {
   gap: 14px;
 }
 .section-heading h2 {
-  font-family: "DM Sans", Arial;
-  font-size: 13px;
+  font-family: var(--sans);
+  font-size: 0.875rem;
   font-weight: 600;
   letter-spacing: -0.2px;
 }
@@ -390,7 +390,7 @@ button {
   align-items: center;
   gap: 7px;
   color: #5f6f55;
-  font-size: 12px;
+  font-size: 0.8125rem;
 }
 .lead-card {
   border: 1px solid #e0e4d7;
@@ -414,7 +414,7 @@ button {
   position: absolute;
   bottom: 13px;
   left: 21px;
-  font-size: 12px;
+  font-size: 0.8125rem;
   letter-spacing: 1.8px;
   color: #f8f8ed;
   background: #415b47b8;
@@ -428,7 +428,7 @@ button {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 12px;
+  font-size: 0.8125rem;
   color: #686d64;
   margin-bottom: 9px;
 }
@@ -437,14 +437,14 @@ button {
 }
 .tag {
   display: inline-block;
-  font-size: 12px;
+  font-size: 0.8125rem;
   letter-spacing: 0.4px;
   padding: 3px 7px;
   background: #ecf0e4;
   color: #58704e;
   border: 1px solid #e1e6d7;
   border-radius: 3px;
-  font-family: "DM Sans", Arial;
+  font-family: var(--sans);
   vertical-align: middle;
 }
 .lead-content h2 {
@@ -454,7 +454,7 @@ button {
   max-width: 600px;
 }
 .lead-content p {
-  font-size: 12px;
+  font-size: 0.8125rem;
   line-height: 1.8;
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -472,7 +472,7 @@ button {
   gap: 10px;
 }
 .source-badge {
-  font-size: 12px;
+  font-size: 0.8125rem;
   letter-spacing: 0.7px;
   color: #5e6f52;
   display: inline-flex;
@@ -481,7 +481,7 @@ button {
   font-weight: 550;
 }
 .lead-footer > a {
-  font-size: 12px;
+  font-size: 0.8125rem;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -522,7 +522,7 @@ button {
   color: #344539;
 }
 .action-text p {
-  font-size: 12px;
+  font-size: 0.8125rem;
   margin: 6px 0;
   color: #666b63;
   line-height: 1.5;
@@ -533,7 +533,7 @@ button {
 .type-label {
   color: #59714e;
   font-weight: 500;
-  font-size: 12px;
+  font-size: 0.8125rem;
 }
 .gold-text {
   color: #7b693d;
@@ -557,7 +557,7 @@ button {
   margin-top: 0;
 }
 .source-badge.small {
-  font-size: 12px;
+  font-size: 0.8125rem;
   letter-spacing: 0.5px;
 }
 .source-badge.small svg {
@@ -595,18 +595,18 @@ button {
   stroke-width: 1.25;
 }
 .topic-card .eyebrow {
-  font-size: 12px;
+  font-size: 0.8125rem;
   letter-spacing: 1px;
 }
 .topic-card h3 {
-  font-family: "Libre Caslon Display", Georgia;
+  font-family: var(--serif-head);
   font-size: 22px;
   font-weight: 400;
   line-height: 1.2;
   margin: 8px 0 18px;
 }
 .topic-card > span:last-child {
-  font-size: 12px;
+  font-size: 0.8125rem;
   display: flex;
   justify-content: space-between;
   color: #616e57;
@@ -643,7 +643,7 @@ button {
   opacity: 0.65;
 }
 .values-invite .eyebrow {
-  font-size: 12px;
+  font-size: 0.8125rem;
   letter-spacing: 1px;
   margin-bottom: 13px;
 }
@@ -654,7 +654,7 @@ button {
   letter-spacing: -0.3px;
 }
 .values-invite p {
-  font-size: 12px;
+  font-size: 0.8125rem;
   line-height: 1.9;
   margin: 14px 0 19px;
   color: #626d59;
@@ -666,7 +666,7 @@ button {
   gap: 12px;
   border-radius: 4px;
   padding: 11px 17px;
-  font-size: 12px;
+  font-size: 0.8125rem;
   font-weight: 500;
   line-height: 1.5;
   border: 1px solid transparent;
@@ -692,14 +692,14 @@ button {
 }
 .values-invite .button {
   width: 100%;
-  font-size: 12px;
+  font-size: 0.8125rem;
   justify-content: space-between;
   padding: 11px 14px;
 }
 .micro {
   display: block;
   color: #646d5c;
-  font-size: 12px;
+  font-size: 0.8125rem;
   margin-top: 11px;
 }
 .briefing {
@@ -709,7 +709,7 @@ button {
   margin-top: 25px;
 }
 .briefing .eyebrow {
-  font-size: 12px;
+  font-size: 0.8125rem;
   letter-spacing: 1px;
   display: flex;
   align-items: center;
@@ -721,12 +721,12 @@ button {
   line-height: 1.2;
 }
 .briefing p {
-  font-size: 12px;
+  font-size: 0.8125rem;
   line-height: 1.8;
   margin: 12px 0 15px;
 }
 .briefing a {
-  font-size: 12px;
+  font-size: 0.8125rem;
   display: flex;
   gap: 12px;
   align-items: center;
@@ -739,18 +739,18 @@ button {
   margin-bottom: 12px;
 }
 .source-promise h3 {
-  font-family: "Libre Caslon Display", Georgia;
+  font-family: var(--serif-head);
   font-size: 23px;
   font-weight: 400;
   line-height: 1.2;
 }
 .source-promise p {
-  font-size: 12px;
+  font-size: 0.8125rem;
   margin-top: 12px;
   line-height: 1.85;
 }
 .source-promise a {
-  font-size: 12px;
+  font-size: 0.8125rem;
 }
 .bottom-note {
   display: flex;
@@ -773,7 +773,7 @@ button {
 }
 .bottom-note p {
   margin: 0;
-  font-size: 12px;
+  font-size: 0.8125rem;
   color: #646d5e;
 }
 .bottom-note p strong {
@@ -782,7 +782,7 @@ button {
 }
 .bottom-note > span:last-child {
   margin-left: auto;
-  font-size: 12px;
+  font-size: 0.8125rem;
   color: #656b5e;
 }
 footer {
@@ -793,7 +793,7 @@ footer {
   gap: 20px;
   align-items: center;
   color: #5c655f;
-  font-size: 12px;
+  font-size: 0.8125rem;
 }
 footer > span {
   margin-right: auto;
@@ -824,7 +824,7 @@ footer > span {
   font-size: 47px;
 }
 .page-title p {
-  font-size: 13px;
+  font-size: 0.875rem;
   max-width: 710px;
   margin: 16px 0 0;
   line-height: 1.85;
@@ -837,7 +837,7 @@ footer > span {
   background: #edf1e6;
   border: 1px solid #dce5d3;
   border-radius: 5px;
-  font-size: 13px;
+  font-size: 0.875rem;
   color: #3f4a43;
   margin: 16px 0 24px;
   line-height: 1.8;
@@ -878,7 +878,7 @@ footer > span {
   border: 0;
   min-height: 44px;
   outline: 0;
-  font-size: 12px;
+  font-size: 0.8125rem;
 }
 .search-panel select,
 select {
@@ -886,11 +886,11 @@ select {
   background: var(--white);
   padding: 11px 13px;
   border-radius: 4px;
-  font-size: 12px;
+  font-size: 0.8125rem;
   color: #54694c;
 }
 .feed-status {
-  font-size: 12px;
+  font-size: 0.8125rem;
   color: #646e5b;
   display: flex;
   align-items: center;
@@ -904,7 +904,7 @@ select {
   padding-left: 18px;
 }
 .results-count {
-  font-size: 12px;
+  font-size: 0.8125rem;
   color: #666d60;
   margin-top: 18px;
 }
@@ -916,13 +916,13 @@ select {
 }
 .record-grid .card-meta,
 .record-grid .type-label {
-  font-size: 12px;
+  font-size: 0.8125rem;
 }
 .record-grid .action-text p {
-  font-size: 12px;
+  font-size: 0.8125rem;
 }
 .record-grid .source-badge {
-  font-size: 12px;
+  font-size: 0.8125rem;
 }
 .load-more {
   margin: 25px auto;
@@ -954,12 +954,12 @@ select {
   margin: 13px 0;
 }
 .panel p {
-  font-size: 12px;
+  font-size: 0.8125rem;
   line-height: 1.85;
 }
 .panel > a:not(.button) {
   color: #527148;
-  font-size: 12px;
+  font-size: 0.8125rem;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -997,10 +997,10 @@ select {
   font-size: 15px;
 }
 .policy-feature p {
-  font-size: 12px;
+  font-size: 0.8125rem;
 }
 .field-label {
-  font-size: 12px;
+  font-size: 0.8125rem;
   font-weight: 550;
   display: flex;
   flex-direction: column;
@@ -1024,7 +1024,7 @@ textarea,
   background: #fdfef9;
   border-radius: 4px;
   width: 100%;
-  font-size: 12px;
+  font-size: 0.8125rem;
   line-height: 1.8;
   font-weight: 400;
 }
@@ -1048,13 +1048,13 @@ textarea,
   border-radius: 5px;
   margin-bottom: 30px;
   color: #616f56;
-  font-size: 12px;
+  font-size: 0.8125rem;
 }
 .toggle-label {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 12px;
+  font-size: 0.8125rem;
   font-weight: 400;
 }
 .privacy-strip .toggle-label {
@@ -1074,7 +1074,7 @@ textarea,
   padding-top: 20px;
 }
 .steps > .eyebrow {
-  font-size: 12px;
+  font-size: 0.8125rem;
   margin-bottom: 22px;
 }
 .steps > button {
@@ -1083,7 +1083,7 @@ textarea,
   gap: 11px;
   width: 100%;
   text-align: left;
-  font-size: 12px;
+  font-size: 0.8125rem;
   padding: 12px 0;
   color: #626e58;
   margin-bottom: 12px;
@@ -1095,7 +1095,7 @@ textarea,
   place-items: center;
   border: 1px solid #d1dbc6;
   border-radius: 50%;
-  font-size: 12px;
+  font-size: 0.8125rem;
 }
 .steps > button.selected {
   color: #2e5e3c;
@@ -1128,11 +1128,11 @@ textarea,
   margin-bottom: 20px;
 }
 .scenario-text {
-  font-size: 13px !important;
+  font-size: 0.875rem !important;
   margin-bottom: 24px;
 }
 .scenario h3 {
-  font-size: 13px;
+  font-size: 0.875rem;
   line-height: 1.7;
 }
 .choices {
@@ -1150,7 +1150,7 @@ textarea,
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 12px;
+  font-size: 0.8125rem;
   gap: 10px;
 }
 .choices > button.selected {
@@ -1184,7 +1184,7 @@ textarea,
   align-items: center;
   gap: 7px;
   padding: 4px 0;
-  font-size: 12px;
+  font-size: 0.8125rem;
   color: #617059;
 }
 .journal-entry {
@@ -1192,12 +1192,12 @@ textarea,
   border-bottom: 1px solid var(--line);
 }
 .journal-entry h3 {
-  font-family: "Libre Caslon Display", Georgia;
+  font-family: var(--serif-head);
   font-size: 27px;
 }
 .muted {
   color: #676e60 !important;
-  font-size: 12px !important;
+  font-size: 0.8125rem !important;
 }
 .journal .eyebrow {
   margin-bottom: 14px;
@@ -1214,7 +1214,7 @@ textarea,
   gap: 14px;
 }
 .form-footer > span {
-  font-size: 12px;
+  font-size: 0.8125rem;
   color: #666e5c;
 }
 .coach-response > .eyebrow {
@@ -1232,7 +1232,7 @@ textarea,
   align-items: flex-start !important;
   padding: 16px 0;
   border-top: 1px solid var(--line);
-  font-size: 12px !important;
+  font-size: 0.8125rem !important;
 }
 .atlas-layout {
   display: grid;
@@ -1271,10 +1271,10 @@ textarea,
   box-shadow: 0 2px 5px #40502a10;
 }
 .graph-controls > button {
-  font-size: 12px;
+  font-size: 0.8125rem;
 }
 .graph-controls span {
-  font-size: 12px;
+  font-size: 0.8125rem;
   color: #646d58;
   margin-left: 15px;
 }
@@ -1285,7 +1285,7 @@ textarea,
   font-size: 34px;
 }
 .atlas-detail h3 {
-  font-size: 12px;
+  font-size: 0.8125rem;
   margin-top: 30px;
 }
 .atlas-detail > a {
@@ -1299,7 +1299,7 @@ textarea,
   width: 100%;
   padding: 11px 0;
   border-bottom: 1px solid var(--line);
-  font-size: 12px;
+  font-size: 0.8125rem;
   text-align: left;
 }
 .atlas-list {
@@ -1323,14 +1323,14 @@ textarea,
 .atlas-list button > span {
   float: right;
   color: #646f58;
-  font-size: 12px;
+  font-size: 0.8125rem;
 }
 .atlas-list p {
-  font-size: 12px;
+  font-size: 0.8125rem;
   margin-bottom: 0;
 }
 .atlas-detail .button {
-  font-size: 12px;
+  font-size: 0.8125rem;
   padding: 9px 10px;
 }
 .methodology-grid {
@@ -1357,7 +1357,7 @@ textarea,
 }
 .longform p,
 .longform li {
-  font-size: 13px;
+  font-size: 0.875rem;
   line-height: 1.9;
 }
 .longform ul {
@@ -1397,7 +1397,7 @@ textarea,
   display: grid;
   grid-template-columns: 150px 1fr;
   gap: 18px;
-  font-size: 12px;
+  font-size: 0.8125rem;
   margin: 26px 0;
 }
 .facts dt {
@@ -1410,7 +1410,7 @@ textarea,
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 13px;
+  font-size: 0.875rem;
   color: #4d6240;
   margin-top: 15px;
 }
@@ -1419,7 +1419,7 @@ textarea,
   flex-wrap: wrap;
   align-items: center;
   gap: 10px 22px;
-  font-size: 12px;
+  font-size: 0.8125rem;
   color: #616d55;
   margin-bottom: 18px;
 }
@@ -1444,12 +1444,12 @@ textarea,
   margin-top: 22px;
 }
 .source-panel dt {
-  font-size: 12px;
+  font-size: 0.8125rem;
   color: #636c57;
   margin-top: 15px;
 }
 .source-panel dd {
-  font-size: 12px;
+  font-size: 0.8125rem;
   margin: 3px 0;
   overflow-wrap: anywhere;
 }
@@ -1464,7 +1464,7 @@ textarea,
   top: 19px;
 }
 .timeline strong {
-  font-size: 12px;
+  font-size: 0.8125rem;
   color: #5c6f4b;
 }
 .timeline h3 {
@@ -1475,7 +1475,7 @@ textarea,
   border-bottom: 1px solid var(--line);
 }
 .evidence-claim > a {
-  font-size: 12px;
+  font-size: 0.8125rem;
   color: #597145;
 }
 .skeleton {
@@ -1508,7 +1508,7 @@ textarea,
     font-size: 34px;
   }
   .lead-content p {
-    font-size: 12px;
+    font-size: 0.8125rem;
   }
   .home-intro h1 {
     font-size: 60px;
@@ -1526,20 +1526,20 @@ textarea,
     font-size: 30px;
   }
   .values-invite p {
-    font-size: 12px;
+    font-size: 0.8125rem;
   }
   .values-invite .eyebrow {
-    font-size: 12px;
+    font-size: 0.8125rem;
   }
   .nav-link {
-    font-size: 13px;
+    font-size: 0.875rem;
   }
   .home-intro {
     padding-top: 45px;
   }
   .briefing p,
   .source-promise p {
-    font-size: 12px;
+    font-size: 0.8125rem;
   }
   .topic-card h3 {
     font-size: 26px;
@@ -1551,19 +1551,19 @@ textarea,
     padding: 25px;
   }
   .card-meta {
-    font-size: 12px;
+    font-size: 0.8125rem;
   }
   .action-text h3 {
     font-size: 16px;
   }
   .action-text p {
-    font-size: 12px;
+    font-size: 0.8125rem;
   }
   .type-label {
-    font-size: 12px;
+    font-size: 0.8125rem;
   }
   .global-search input {
-    font-size: 12px;
+    font-size: 0.8125rem;
   }
 }
 @media (max-width: 1180px) {
@@ -1652,7 +1652,7 @@ textarea,
     width: calc(100% - 180px);
   }
   .nav-link {
-    font-size: 12px;
+    font-size: 0.8125rem;
     gap: 10px;
   }
   .main-content {
@@ -1674,7 +1674,7 @@ textarea,
     height: 245px;
   }
   .home-intro > p {
-    font-size: 12px;
+    font-size: 0.8125rem;
   }
   .page-title h1 {
     font-size: 40px;
@@ -1715,7 +1715,7 @@ textarea,
     white-space: nowrap;
     margin: 0;
     width: auto;
-    font-size: 12px;
+    font-size: 0.8125rem;
   }
   .steps > button span {
     width: 23px;
@@ -1749,7 +1749,7 @@ textarea,
 }
 @media (max-width: 700px) {
   body {
-    font-size: 13px;
+    font-size: 0.875rem;
   }
   .sidebar {
     transform: translateX(-100%);
@@ -1786,7 +1786,7 @@ textarea,
     display: none;
   }
   .breadcrumb strong {
-    font-size: 12px;
+    font-size: 0.8125rem;
   }
   .global-search {
     width: auto;
@@ -1795,7 +1795,7 @@ textarea,
     margin-left: auto;
   }
   .global-search input {
-    font-size: 12px;
+    font-size: 0.8125rem;
     min-width: 0;
   }
   .global-search kbd {
@@ -1813,11 +1813,11 @@ textarea,
     padding: 24px 20px 0;
   }
   .edition-line {
-    font-size: 12px;
+    font-size: 0.8125rem;
     gap: 12px;
   }
   .live-status {
-    font-size: 12px;
+    font-size: 0.8125rem;
   }
   .home-intro {
     padding: 30px 0;
@@ -1827,24 +1827,24 @@ textarea,
     letter-spacing: -1px;
   }
   .home-intro .eyebrow {
-    font-size: 12px;
+    font-size: 0.8125rem;
     letter-spacing: 1.3px;
   }
   .home-intro p {
-    font-size: 12px;
+    font-size: 0.8125rem;
   }
   .topic-tabs {
     gap: 23px;
     margin-bottom: 23px;
   }
   .topic-tabs button {
-    font-size: 12px;
+    font-size: 0.8125rem;
   }
   .section-heading h2 {
-    font-size: 12px;
+    font-size: 0.8125rem;
   }
   .section-heading > a {
-    font-size: 12px;
+    font-size: 0.8125rem;
   }
   .lead-visual {
     height: 225px;
@@ -1856,19 +1856,19 @@ textarea,
     font-size: 29px;
   }
   .lead-content p {
-    font-size: 12px;
+    font-size: 0.8125rem;
   }
   .card-meta {
-    font-size: 12px;
+    font-size: 0.8125rem;
   }
   .tag {
-    font-size: 12px;
+    font-size: 0.8125rem;
   }
   .lead-footer > a {
-    font-size: 12px;
+    font-size: 0.8125rem;
   }
   .source-badge {
-    font-size: 12px;
+    font-size: 0.8125rem;
   }
   .action-row {
     gap: 12px;
@@ -1877,10 +1877,10 @@ textarea,
     font-size: 14px;
   }
   .action-text p {
-    font-size: 12px;
+    font-size: 0.8125rem;
   }
   .type-label {
-    font-size: 12px;
+    font-size: 0.8125rem;
   }
   .topic-grid {
     grid-template-columns: 1fr;
@@ -1900,7 +1900,7 @@ textarea,
   }
   .topic-card .eyebrow {
     grid-column: 2;
-    font-size: 12px;
+    font-size: 0.8125rem;
   }
   .topic-card h3 {
     grid-column: 2;
@@ -1911,7 +1911,7 @@ textarea,
     grid-column: 2;
     justify-content: start;
     gap: 14px;
-    font-size: 12px;
+    font-size: 0.8125rem;
   }
   .right-rail {
     display: block;
@@ -1933,20 +1933,20 @@ textarea,
     font-size: 33px;
   }
   .values-invite .eyebrow {
-    font-size: 12px;
+    font-size: 0.8125rem;
   }
   .values-invite p {
-    font-size: 12px;
+    font-size: 0.8125rem;
     max-width: 270px;
     margin: 17px auto;
   }
   .values-invite .button {
     max-width: 260px;
     margin: auto;
-    font-size: 12px;
+    font-size: 0.8125rem;
   }
   .values-invite .micro {
-    font-size: 12px;
+    font-size: 0.8125rem;
   }
   .home-columns {
     gap: 25px;
@@ -1955,7 +1955,7 @@ textarea,
     margin-top: 27px;
   }
   .bottom-note p {
-    font-size: 12px;
+    font-size: 0.8125rem;
     line-height: 1.8;
   }
   .bottom-note p strong {
@@ -1964,7 +1964,7 @@ textarea,
   footer {
     flex-wrap: wrap;
     gap: 13px;
-    font-size: 12px;
+    font-size: 0.8125rem;
   }
   footer > span {
     width: 100%;
@@ -1977,13 +1977,13 @@ textarea,
     font-size: 37px;
   }
   .page-title p {
-    font-size: 12px;
+    font-size: 0.8125rem;
   }
   .page-title .eyebrow {
-    font-size: 12px;
+    font-size: 0.8125rem;
   }
   .notice {
-    font-size: 12px;
+    font-size: 0.8125rem;
     padding: 13px;
   }
   .search-panel {
@@ -1995,7 +1995,7 @@ textarea,
   }
   .search-panel select {
     flex: 1;
-    font-size: 12px;
+    font-size: 0.8125rem;
   }
   .panel {
     padding: 22px;
@@ -2025,10 +2025,10 @@ textarea,
     font-size: 32px;
   }
   .scenario-text {
-    font-size: 12px !important;
+    font-size: 0.8125rem !important;
   }
   .choices > button {
-    font-size: 12px;
+    font-size: 0.8125rem;
   }
   .steps {
     gap: 18px;
@@ -2039,11 +2039,11 @@ textarea,
     gap: 0;
   }
   .steps > button.selected {
-    font-size: 12px;
+    font-size: 0.8125rem;
     gap: 7px;
   }
   .scenario-nav .button {
-    font-size: 12px;
+    font-size: 0.8125rem;
     padding: 10px;
   }
   .form-footer {
@@ -2059,15 +2059,15 @@ textarea,
     gap: 0;
   }
   .privacy-strip {
-    font-size: 12px;
+    font-size: 0.8125rem;
   }
   .detail-toolbar {
     gap: 10px;
-    font-size: 12px;
+    font-size: 0.8125rem;
     flex-wrap: wrap;
   }
   .detail-toolbar .button {
-    font-size: 12px;
+    font-size: 0.8125rem;
     padding: 8px 10px;
   }
   .facts {
@@ -2084,7 +2084,7 @@ textarea,
     min-height: 390px;
   }
   .graph-controls span {
-    font-size: 12px;
+    font-size: 0.8125rem;
     margin-left: 5px;
   }
   .fictional-ballot .two-columns {
@@ -2112,7 +2112,7 @@ textarea,
   }
   .longform p,
   .longform li {
-    font-size: 12px;
+    font-size: 0.8125rem;
   }
   .source-panel dl {
     display: grid;
@@ -2141,97 +2141,97 @@ textarea,
 }
 /* Small source labels remain legible independently of color. */
 .source-badge {
-  font-size: 12px;
+  font-size: 0.8125rem;
 }
 .source-badge.small {
-  font-size: 12px;
+  font-size: 0.8125rem;
 }
 .card-meta,
 .type-label {
-  font-size: 12px;
+  font-size: 0.8125rem;
 }
 .lead-content p {
-  font-size: 12px;
+  font-size: 0.8125rem;
 }
 .lead-footer > a {
-  font-size: 12px;
+  font-size: 0.8125rem;
 }
 .action-text p {
-  font-size: 12px;
+  font-size: 0.8125rem;
 }
 .values-invite p,
 .briefing p,
 .source-promise p {
-  font-size: 12px;
+  font-size: 0.8125rem;
 }
 .values-invite .eyebrow {
-  font-size: 12px;
+  font-size: 0.8125rem;
 }
 .topic-card .eyebrow {
-  font-size: 12px;
+  font-size: 0.8125rem;
 }
 .topic-card > span:last-child {
-  font-size: 12px;
+  font-size: 0.8125rem;
 }
 .sidebar-bottom > a {
-  font-size: 12px;
+  font-size: 0.8125rem;
 }
 .nav-link {
-  font-size: 13px;
+  font-size: 0.875rem;
 }
 .nav-label {
-  font-size: 12px;
+  font-size: 0.8125rem;
 }
 footer {
-  font-size: 12px;
+  font-size: 0.8125rem;
 }
 .edition-line,
 .live-status {
-  font-size: 12px;
+  font-size: 0.8125rem;
 }
 .values-invite .micro {
-  font-size: 12px;
+  font-size: 0.8125rem;
 }
 .source-badge.small svg {
   width: 12px;
 }
 .no-algorithm {
-  font-size: 12px;
+  font-size: 0.8125rem;
 }
 .topbar .global-search input {
-  font-size: 12px;
+  font-size: 0.8125rem;
 }
 .topbar .breadcrumb {
-  font-size: 12px;
+  font-size: 0.8125rem;
 }
 .lead-footer {
   flex-wrap: wrap;
 }
 .record-grid .source-badge {
-  font-size: 12px;
+  font-size: 0.8125rem;
 }
 @media (max-width: 700px) {
   .edition-line,
   .live-status {
-    font-size: 12px;
+    font-size: 0.8125rem;
   }
   .topbar .global-search input {
-    font-size: 12px;
+    font-size: 0.8125rem;
   }
   .source-badge {
-    font-size: 12px;
+    font-size: 0.8125rem;
   }
   .lead-content p {
-    font-size: 12px;
+    font-size: 0.8125rem;
   }
   .lead-footer > a {
-    font-size: 12px;
+    font-size: 0.8125rem;
   }
   .nav-label {
-    font-size: 12px;
+    font-size: 0.8125rem;
   }
   .nav-link {
-    font-size: 13px;
+    font-size: 0.875rem;
   }
   .sidebar .nav-label {
     margin-top: 7px;
@@ -2241,7 +2241,7 @@ footer {
   }
 }
 .retrieval-line {
-  font-size: 12px;
+  font-size: 0.8125rem;
   color: #636c5c;
   margin-top: 8px;
 }
@@ -2268,7 +2268,7 @@ footer {
   margin: 4px 0 18px;
 }
 .vote-steps a {
-  font-size: 13px;
+  font-size: 0.875rem;
   padding: 8px 13px;
   border: 1px solid var(--line);
   border-radius: 999px;
@@ -2286,7 +2286,7 @@ footer {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  font-size: 12px;
+  font-size: 0.8125rem;
   font-weight: 500;
   padding: 3px 9px;
   border-radius: 999px;
@@ -2318,7 +2318,7 @@ footer {
   display: flex;
   flex-wrap: wrap;
   gap: 6px 22px;
-  font-size: 13px;
+  font-size: 0.875rem;
   color: var(--muted);
   padding: 10px 14px;
   border-left: 3px solid var(--green);
@@ -2407,7 +2407,7 @@ footer {
   font-weight: 600;
 }
 .deadline-state {
-  font-size: 12px;
+  font-size: 0.8125rem;
   white-space: nowrap;
 }
 .deadline-list li.upcoming .deadline-state,
@@ -2427,7 +2427,7 @@ footer {
 }
 .source-list li span {
   display: block;
-  font-size: 12px;
+  font-size: 0.8125rem;
   color: var(--muted);
 }
 .filter-row {
@@ -2438,7 +2438,7 @@ footer {
   margin-bottom: 10px;
 }
 .filter-row button {
-  font-size: 13px;
+  font-size: 0.875rem;
   padding: 8px 13px;
   border: 1px solid var(--line);
   background: var(--white);
@@ -2451,7 +2451,7 @@ footer {
   border-color: var(--ink);
 }
 .topic-select select {
-  font-size: 13px;
+  font-size: 0.875rem;
   padding: 8px 10px;
   border: 1px solid var(--line);
   border-radius: 6px;
@@ -2480,14 +2480,14 @@ footer {
   color: inherit;
 }
 .measure-card .tag {
-  font-size: 12px;
+  font-size: 0.8125rem;
 }
 .measure-card h3 {
   font-size: 18px;
 }
 .measure-card p {
   margin: 0;
-  font-size: 13px;
+  font-size: 0.875rem;
 }
 .measure-card .card-meta {
   flex-wrap: wrap;
@@ -2496,7 +2496,7 @@ footer {
 .card-link {
   margin-top: auto;
   color: var(--green);
-  font-size: 13px;
+  font-size: 0.875rem;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -2505,7 +2505,7 @@ footer {
   display: inline-flex;
   align-items: center;
   gap: 3px;
-  font-size: 12px;
+  font-size: 0.8125rem;
   color: var(--green);
 }
 .yes-no {
@@ -2534,7 +2534,7 @@ footer {
   font-size: 14px;
 }
 .facts dd .muted {
-  font-size: 12px;
+  font-size: 0.8125rem;
 }
 .guide-controls {
   display: flex;
@@ -2547,7 +2547,7 @@ footer {
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  font-size: 13px;
+  font-size: 0.875rem;
   padding: 7px 11px;
   border: 1px solid var(--line);
   border-radius: 6px;
@@ -2567,7 +2567,7 @@ footer {
   color: var(--green);
   text-decoration: underline;
   text-underline-offset: 2px;
-  font-size: 13px;
+  font-size: 0.875rem;
   min-height: 40px;
 }
 .guide-note {
@@ -2597,7 +2597,7 @@ footer {
 .compare-head {
   background: var(--soft);
   font-weight: 600;
-  font-size: 12px !important;
+  font-size: 0.8125rem !important;
   text-transform: uppercase;
   letter-spacing: 0.4px;
 }
@@ -2617,7 +2617,7 @@ footer {
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
-  font-size: 13px;
+  font-size: 0.875rem;
   color: #686c67;
   margin-top: 4px;
 }
@@ -2639,14 +2639,14 @@ footer {
   flex-wrap: wrap;
   align-items: center;
   gap: 8px;
-  font-size: 13px;
+  font-size: 0.875rem;
 }
 .demo-banner {
   background: #5a3d6b;
   color: #fff;
   padding: 12px 16px;
   border-radius: 6px;
-  font-size: 13px;
+  font-size: 0.875rem;
   margin-bottom: 18px;
 }
 .pager {
@@ -2725,7 +2725,7 @@ footer {
 }
 .path-card span {
   display: block;
-  font-size: 13px;
+  font-size: 0.875rem;
   color: var(--muted);
   margin-top: 4px;
 }
@@ -2746,7 +2746,7 @@ footer {
   font-size: 15px;
 }
 .gov-guide p {
-  font-size: 13px;
+  font-size: 0.875rem;
   margin: 4px 0 0;
 }
 @media (max-width: 700px) {
