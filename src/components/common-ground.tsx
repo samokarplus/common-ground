@@ -30,6 +30,13 @@ const IMG_ABS = new URL(IMG, document.baseURI).href;
 /** Which photograph backs a page header. */
 function roomFor(section: string, parts: string[]): string | undefined {
   if (section === "vote" || section === "ballot") return ["contest", "judges", "compare"].includes(parts[1] ?? "") ? "colorado-dome" : "aspens";
+  if (section === "issues") {
+    const ISSUE_PHOTO: Record<string, string> = { "cost-of-living": "market", "consumer-prices": "market", "climate-energy": "aspens", "public-lands": "meadow", "spending-debt": "us-capitol", "federal-spending": "us-capitol", "corruption-ethics": "us-capitol", "foreign-policy": "us-capitol", "ukraine-assistance": "us-capitol" };
+    return ISSUE_PHOTO[parts[0] ?? ""] ?? "reading-room";
+  }
+  if (section === "government" || section === "compare") return "us-capitol";
+  if (section === "data") return "open-book";
+  if (section === "explore") return "reading-room";
   if (section === "congress" || section === "legislation" || section === "action" || section === "saved") return "us-capitol";
   if (section === "policy" || section === "paths" || section === "chain") return "writing";
   if (section === "values") return "open-book";
@@ -661,7 +668,6 @@ export default function CommonGround({
               <ul>
                 <li><Link href="/issues">Issues</Link></li>
                 <li><Link href="/government">Government actions</Link></li>
-                <li><Link href="/government/president">Presidential actions</Link></li>
                 <li><Link href="/compare">Compare candidates</Link></li>
                 <li><Link href="/data">The data</Link></li>
               </ul>
@@ -670,7 +676,6 @@ export default function CommonGround({
               <h3>Explore</h3>
               <ul>
                 <li><Link href="/vote">Help Me Vote</Link></li>
-                <li><Link href="/congress">Congress tracker</Link></li>
                 <li><Link href="/debate/maps">Debate maps</Link></li>
                 <li><Link href="/atlas">Thought Atlas</Link></li>
                 <li><Link href="/values">My Values</Link></li>

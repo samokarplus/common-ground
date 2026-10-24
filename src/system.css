@@ -216,7 +216,7 @@ figure.chart { background: var(--card); border: 1px solid var(--card-border); pa
 .issue-card h3 { margin: 0 0 var(--s-1); }
 .issue-card { display: flex; flex-direction: column; }
 .issue-card .card-link { margin-top: auto; padding-top: var(--s-2); font-weight: 700; color: var(--terracotta-deep); }
-.issue-head { border-left: 6px solid var(--pine); padding-left: var(--s-5); }
+.issue-head { }
 
 /* ---------- Candidate comparison refinements ---------- */
 details.issue-compare { padding: var(--s-3) var(--s-5); margin: var(--s-3) 0; }
@@ -285,3 +285,12 @@ details.review-item h3 { font-size: var(--t-small); font-family: var(--sans); te
 /* Thought Atlas: keep the controls clear of the node labels */
 .graph-controls { bottom: auto; top: 12px; }
 main .panel > h2:first-child { margin-top: 0; }
+
+.quiet-links { margin: var(--s-6) 0 var(--s-5); font-size: var(--t-small); color: var(--ink-soft); }
+.quiet-links a { margin: 0 var(--s-1); }
+
+/* Footer: brand + three link columns */
+.site-footer-inner { grid-template-columns: 1.5fr 1fr 1fr 1fr; }
+.site-footer-inner .fine { grid-column: 1 / -1; }
+@media (max-width: 900px) { .site-footer-inner { grid-template-columns: 1fr 1fr; } .site-footer-inner > div:first-child { grid-column: 1 / -1; } }
+@media (max-width: 560px) { .site-footer-inner { grid-template-columns: 1fr; } }

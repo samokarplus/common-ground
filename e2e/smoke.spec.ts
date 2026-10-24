@@ -440,11 +440,15 @@ test("the home page shows rule-selected developments with originals and why each
 test("the issues hub lists nine issues, says which have a briefing, and an issue page connects numbers, government and candidates", async ({ page }) => {
   await page.goto("#/issues");
   await expect(page.locator(".issue-card")).toHaveCount(9);
-  await expect(page.getByText("Evidence briefing: not yet written").first()).toBeVisible();
+  await expect(page.locator(".issue-card .status-chip")).toHaveCount(4);
   await page.goto("#/issues/immigration");
   await expect(page.getByRole("heading", { level: 1 })).toContainText("Immigration");
   await expect(page.getByText("No evidence briefing yet.")).toBeVisible();
   await expect(page.getByRole("heading", { name: "What government is doing about this" })).toBeVisible();
+  await page.goto("#/issues/public-lands");
+  await expect(page.getByRole("heading", { name: "What candidates have said about this" })).toHaveCount(0);
+  await expect(page.getByRole("heading", { name: "What different people argue" })).toHaveCount(0);
+  await page.goto("#/issues/immigration");
   await expect(page.getByRole("heading", { name: "What candidates have said about this" })).toBeVisible();
   await expect(page.locator('a[href^="https://ohss.dhs.gov"]')).toBeVisible();
   await page.goto("#/issues/cost-of-living");

@@ -42,7 +42,7 @@ export function searchSite(index: SearchIndex, query: string, limitPerGroup = 8)
   for (const a of index.atlas) push(score(a.name, a.description, terms), { group: "Ideas (Thought Atlas)", title: a.name, href: `/atlas?node=${a.id}`, snippet: a.description });
   for (const d of index.debates) push(score(d.question, "", terms), { group: "Debate maps", title: d.question, href: `/debate/maps/${d.id}`, snippet: "Arguments side by side" });
   for (const p of index.pathways) push(score(p.title, p.intro, terms), { group: "Pathways", title: p.title, href: "/paths", snippet: p.intro });
-  for (const p of index.pages) push(score(p.title, p.about, terms), { group: "Pages", title: p.title, href: p.href, snippet: p.about });
+  for (const p of index.pages) push(score(p.title, p.about, terms), { group: /^\/issues\/[a-z-]+$/.test(p.href) ? "Issues" : p.href.startsWith("/compare/") ? "Candidate comparisons" : "Pages", title: p.title, href: p.href, snippet: p.about });
   const counts = new Map<string, number>();
   return out
     .sort((a, b) => b.s - a.s)
@@ -53,3 +53,7 @@ export function searchSite(index: SearchIndex, query: string, limitPerGroup = 8)
     })
     .map((x) => x.hit);
 }
+
+/** Groups shown first, in this order; everything else follows in the order its best hit ranks. */
+export const GROUP_ORDER = ["Issues", "Candidate comparisons", "Pages"];
+export const orderGroups = (groups: string[]) => [...groups].sort((a, b) => (GROUP_ORDER.indexOf(a) + 1 || 99) - (GROUP_ORDER.indexOf(b) + 1 || 99));

@@ -2,7 +2,7 @@ import { ChevronLeft, ExternalLink, Info } from "lucide-react";
 import Link from "./link";
 import ChartView from "./chart";
 import { BRIEFINGS, briefingById } from "./briefings-data";
-import { CandidatesForIssue, GovernmentForIssue } from "./connected";
+import { CandidatesForIssue, GovernmentForIssue, actionsForIssue, comparisonsForIssue } from "./connected";
 import { issueById, issuesForBriefing } from "@/lib/issues";
 import { CLAIM_KIND_LABEL, type Briefing, type Claim } from "@/lib/briefing";
 
@@ -49,7 +49,7 @@ export function BriefingPage({ id }: { id?: string }) {
       </>
     );
   const linked = issuesForBriefing(b.id);
-  const toc: [string, string][] = [["evidence", "Evidence"], ...(b.context.length ? [["context", "Why it matters"] as [string, string]] : []), ...(linked.length ? ([["government", "Government"], ["candidates", "Candidates"]] as [string, string][]) : []), ["disagree", "Different views"], ["sources", "Sources and limits"]];
+  const toc: [string, string][] = [["evidence", "Evidence"], ...(b.context.length ? [["context", "Why it matters"] as [string, string]] : []), ...(linked.some((i) => actionsForIssue(i).length > 0) ? ([["government", "Government"]] as [string, string][]) : []), ...(linked.some((i) => comparisonsForIssue(i).length > 0) ? ([["candidates", "Candidates"]] as [string, string][]) : []), ["disagree", "Different views"], ["sources", "Sources and limits"]];
   return (
     <>
       <nav className="crumbs" aria-label="Breadcrumb">

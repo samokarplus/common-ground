@@ -40,7 +40,7 @@ export default function HomeBody() {
           <h2 id="start-issue">Pick an issue. See the evidence, the arguments and what government is doing.</h2>
         </div>
         <ul className="issue-pills">
-          {ISSUES.map((i) => {
+          {[...ISSUES].sort((a, b) => Number((BRIEFING_FOR_ISSUE[b.id] ?? []).length > 0) - Number((BRIEFING_FOR_ISSUE[a.id] ?? []).length > 0)).map((i) => {
             const Icon = ISSUE_ICON[i.id] ?? Landmark;
             const has = (BRIEFING_FOR_ISSUE[i.id] ?? []).length > 0;
             return (
@@ -50,7 +50,7 @@ export default function HomeBody() {
                   <span className="pill-text">
                     <strong>{i.title}</strong>
                     <span>{i.blurb}</span>
-                    <span className={"status-chip " + (has ? "ok" : "unknown")}>{has ? "Evidence briefing" : "Briefing in progress"}</span>
+                    {has && <span className="status-chip ok">Evidence briefing</span>}
                   </span>
                 </Link>
               </li>
@@ -65,7 +65,7 @@ export default function HomeBody() {
           <h2 id="happening">Recent developments, straight from the official record.</h2>
         </div>
         <div className="dev-grid">
-          {dev.map((d, i) => (
+          {dev.slice(0, 4).map((d, i) => (
             <article key={d.id} className={"dev" + (i === 0 ? " dev-lead" : "")}>
               <div className="card-meta">
                 <span className="tag">{d.kind}</span>
@@ -126,29 +126,9 @@ export default function HomeBody() {
         </div>
       </section>
 
-      <section className="section-space" aria-labelledby="explore-more">
-        <div className="section-intro">
-          <div className="eyebrow">THINK IT THROUGH</div>
-          <h2 id="explore-more">Tools for reasoning, not for telling you what to think.</h2>
-        </div>
-        <div className="deeper">
-          <Link href="/debate/maps" className="deeper-tile">
-            <img src={IMG + "market-sm.jpg"} alt="" width="640" height="420" loading="lazy" />
-            <h3>Compare the strongest arguments</h3>
-            <p>Debate maps keep facts, predictions and values apart.</p>
-          </Link>
-          <Link href="/atlas" className="deeper-tile">
-            <img src={IMG + "reading-room-sm.jpg"} alt="" width="640" height="420" loading="lazy" />
-            <h3>Follow an idea</h3>
-            <p>Eighty-six political and philosophical concepts, connected.</p>
-          </Link>
-          <Link href="/values" className="deeper-tile">
-            <img src={IMG + "writing-sm.jpg"} alt="" width="640" height="420" loading="lazy" />
-            <h3>Reflect, privately</h3>
-            <p>Your notes stay on your device. Nothing is scored.</p>
-          </Link>
-        </div>
-      </section>
+      <p className="quiet-links">
+        Want to think it through? <Link href="/debate/maps">Debate maps</Link> · <Link href="/atlas">Thought Atlas</Link> · <Link href="/values">My Values</Link>
+      </p>
 
       <details className="disclosure" id="freshness">
         <summary>Where the numbers come from, and how fresh they are</summary>
