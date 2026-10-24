@@ -122,14 +122,17 @@ export default function Review() {
         {!ready && decided.length > 0 && reviewer.trim().length < 2 && <p className="muted">Enter your name to enable the download.</p>}
       </section>
       {shown.map((i) => (
-        <section key={i.id} className="panel" aria-labelledby={`r-${i.id}`}>
-          <div className="card-meta">
+        <details key={i.id} className="disclosure review-item" open={!!choice[i.id]}>
+          <summary>
+            <span className="review-title">{i.title}</span>
             <span className="tag">{KIND_LABEL[i.kind]}</span>
-            <span className="tag">{STATE_LABEL[i.state]}</span>
+            <span className={"status-chip " + (i.state === "human-reviewed" ? "ok" : i.state === "machine-checked" ? "warn" : "unknown")}>{STATE_LABEL[i.state]}</span>
+          </summary>
+          <div className="card-meta">
             {i.verifiedOn && <span className="muted">Last checked {i.verifiedOn}</span>}
           </div>
-          <h2 id={`r-${i.id}`}>
-            <Link href={i.href}>{i.title}</Link>
+          <h2 id={`r-${i.id}`} className="review-h">
+            <Link href={i.href}>Open: {i.title}</Link>
           </h2>
           <h3>Sources</h3>
           {i.sources.length ? (
@@ -174,7 +177,7 @@ export default function Review() {
               <textarea value={note[i.id] ?? ""} onChange={(e) => setNote({ ...note, [i.id]: e.target.value })} maxLength={1000} />
             </label>
           )}
-        </section>
+        </details>
       ))}
     </>
   );

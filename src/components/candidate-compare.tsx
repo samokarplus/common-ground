@@ -1,18 +1,34 @@
 import { useMemo, useState } from "react";
 import { ExternalLink, Info } from "lucide-react";
+import GovSubnav from "./gov-subnav";
 import Link, { routeSearch } from "./link";
 import { COMPARISONS, comparisonById } from "./compare-data";
-import { CLAIM_LABEL } from "@/lib/candidate";
 import { RELATION_LABEL, type Comparison, type Entry } from "@/lib/compare";
 import { ISSUES, issueById } from "@/lib/issues";
 
 const dateLabel = (d?: string) => (!d ? "undated page" : new Date((d.length === 4 ? d + "-06-15" : d.length === 7 ? d + "-15" : d) + "T12:00:00Z").toLocaleDateString("en-US", { month: d.length === 4 ? undefined : "long", day: d.length === 10 ? "numeric" : undefined, year: "numeric", timeZone: "UTC" }));
 const longDay = (iso: string) => new Date(iso + "T12:00:00Z").toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" });
 
+const KIND_SHORT: Record<Entry["kind"], string> = {
+  "own-statement": "Own statement",
+  "documented-action": "Documented action",
+  "independent-finding": "Independent finding",
+  allegation: "Allegation, not established",
+  opinion: "Third-party opinion",
+};
+const KIND_MEANS: Record<Entry["kind"], string> = {
+  "own-statement": "What the person or their campaign says. It tells you their stated position, not whether it is accurate or acted on.",
+  "documented-action": "Something an official record shows: a vote, a signed law, a lawsuit filed, an election result.",
+  "independent-finding": "A conclusion reached by a source other than the person or their opponents.",
+  allegation: "A claim that has not been established. Shown only with its source.",
+  opinion: "A judgment by someone else. Not evidence of what happened.",
+};
+const entryLabel = (e: Entry) => (e.kind === "own-statement" && /jamestalarico\.com|kenpaxton\.com/.test(e.sourceUrl) ? "Campaign statement" : KIND_SHORT[e.kind]);
+
 function EntryCard({ e }: { e: Entry }) {
   return (
     <li className="entry">
-      <span className={"kind-badge kind-" + e.kind}>{CLAIM_LABEL[e.kind]}</span>
+      <span className={"kind-badge kind-" + e.kind}>{entryLabel(e)}</span>
       <p>{e.text}</p>
       <details>
         <summary>Evidence</summary>
@@ -36,11 +52,7 @@ export function CompareIndex() {
         <h1>Compare candidates, side by side.</h1>
         <p>What each person has said on the issues, what their record shows, and what is not documented, with the source behind every line. No scores, rankings or recommendations.</p>
       </div>
-      <nav className="subnav" aria-label="Government views">
-        <Link href="/government">All actions</Link>
-        <Link href="/government/president">Presidential actions, dated</Link>
-        <Link href="/compare" aria-current="page">Compare candidates</Link>
-      </nav>
+      <GovSubnav current="compare" />
       <label className="topic-select wide">
         <span className="sr-only">Search races and candidates</span>
         <input type="search" placeholder="Search a candidate or race, e.g. Talarico, Paxton, Texas" value={q} onChange={(e) => setQ(e.target.value)} />
@@ -77,6 +89,7 @@ export function ComparePage({ id }: { id?: string }) {
 function Side({ c }: { c: Comparison }) {
   const initial = new URLSearchParams(routeSearch()).get("issue") ?? "";
   const [issue, setIssue] = useState(ISSUES.some((i) => i.id === initial) ? initial : "");
+  const wide = typeof window !== "undefined" && window.matchMedia?.("(min-width: 900px)").matches;
   const blocks = useMemo(() => c.issues.filter((b) => !issue || b.issue === issue), [c, issue]);
   const [a, b] = c.people;
   return (
@@ -86,11 +99,7 @@ function Side({ c }: { c: Comparison }) {
         <h1>{a.name} and {b.name}</h1>
         <p>{c.summary}</p>
       </div>
-      <nav className="subnav" aria-label="Government views">
-        <Link href="/compare" aria-current="page">Compare candidates</Link>
-        <Link href="/government">Government actions</Link>
-        <Link href="/issues">Issues</Link>
-      </nav>
+      <GovSubnav current="compare" />
 
       <div className="note" role="note">
         <Info size={15} aria-hidden="true" /> <strong>Information, not advice.</strong> There are no scores, rankings or endorsements here. A campaign's own page is that candidate's statement, not a fact-check; "not documented here" means we did not find it, not that the person has no view. Machine-checked from public sources on {longDay(c.asOf)}; not human-reviewed.
@@ -116,6 +125,21 @@ function Side({ c }: { c: Comparison }) {
 
       <section aria-labelledby="by-issue">
         <h2 id="by-issue">Issue by issue</h2>
+        <details className="disclosure key">
+          <summary>How to read the labels</summary>
+          <dl className="label-key">
+            {(Object.keys(KIND_SHORT) as Entry["kind"][]).map((k) => (
+              <div key={k}>
+                <dt><span className={"kind-badge kind-" + k}>{KIND_SHORT[k]}</span></dt>
+                <dd>{KIND_MEANS[k]}</dd>
+              </div>
+            ))}
+            <div>
+              <dt><span className="kind-badge">Nothing documented here</span></dt>
+              <dd>We did not find a source. It does not mean the person has no view.</dd>
+            </div>
+          </dl>
+        </details>
         <div className="chips filter" role="group" aria-label="Filter by issue">
           <button className={"chip-btn" + (!issue ? " on" : "")} aria-pressed={!issue} onClick={() => setIssue("")}>All issues</button>
           {c.issues.map((x) => (
@@ -125,13 +149,16 @@ function Side({ c }: { c: Comparison }) {
           ))}
         </div>
         {blocks.map((blk) => (
-          <article key={blk.issue} className="issue-compare" aria-labelledby={`ic-${blk.issue}`}>
-            <h3 id={`ic-${blk.issue}`}><Link href={`/issues/${blk.issue}`}>{issueById(blk.issue)?.title}</Link></h3>
-            <p className="relation"><span className={"rel rel-" + blk.relation}>{RELATION_LABEL[blk.relation]}</span> {blk.relationNote}</p>
+          <details key={blk.issue + issue} className="issue-compare" open={wide || !!issue} id={`ic-${blk.issue}`}>
+            <summary>
+              <span className="ic-title">{issueById(blk.issue)?.title}</span>
+              <span className={"rel rel-" + blk.relation}>{RELATION_LABEL[blk.relation]}</span>
+            </summary>
+            <p className="relation">{blk.relationNote} <Link href={`/issues/${blk.issue}`}>Evidence, numbers and government actions on this issue →</Link></p>
             <div className="two-col">
-              {c.people.map((p) => (
-                <div key={p.id} className="col">
-                  <h4>{p.name}</h4>
+              {c.people.map((p, pi) => (
+                <div key={p.id} className={"col person-" + pi}>
+                  <h4><span className="person-dot" aria-hidden="true" />{p.name}</h4>
                   {blk.positions[p.id].length ? (
                     <ul className="entries">{blk.positions[p.id].map((e) => (<EntryCard key={e.text} e={e} />))}</ul>
                   ) : (
@@ -140,7 +167,7 @@ function Side({ c }: { c: Comparison }) {
                 </div>
               ))}
             </div>
-          </article>
+          </details>
         ))}
       </section>
 

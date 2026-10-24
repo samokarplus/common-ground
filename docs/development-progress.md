@@ -196,3 +196,9 @@ Fetched current history in a separate branch/worktree and incorporated c4c370c c
 ## Issues, candidate comparison, presidential actions (session 4, branch `product/issues-and-comparison`)
 - Added nine-issue hub and pages, consumer-prices briefing (BLS CPI), presidential actions timeline (whitehouse.gov), Texas Senate comparison (Talarico/Paxton), connected panels on briefings, review-queue entries. Details: `docs/product-refocus.md`.
 - Fixed: `review:apply` did not know briefing ids; it now builds the same queue as the review page.
+
+## Cohesive UI/UX polish (session 5, branch `ui/cohesive-polish`)
+- Based on PR #4 (not merged) plus a merge of the latest `main` research refresh (docs build conflicts resolved by rebuilding).
+- Added `src/system.css`, restructured the homepage (nine-issue entry, one lead development, numbers in plain English, candidate band), briefing pages (breadcrumbs, in-page navigation, stat features with plain-English explanations, evidence → why it matters → government → candidates → different views → sources order), responsive charts with direct labels, collapsible comparison/timeline/review sections, shared Government sub-navigation, footer mirroring the primary navigation.
+- Visual QA rounds: baseline of 27 routes at 3 widths; found horizontal overflow on three pages, tiny chart text on phones, 14,000px mobile comparison page, 27,000px review page; all addressed. Before/after screenshots: `docs/images/ui-polish/`.
+- Not done: photography on issue pages, per-issue hero images, human review of anything, WCAG manual testing beyond axe.

@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { ExternalLink, Info } from "lucide-react";
+import GovSubnav from "./gov-subnav";
 import Link from "./link";
 import presidentialRaw from "../../data/government/presidential-actions.json";
 import annotationsRaw from "../../data/government/annotations.json";
@@ -32,11 +33,7 @@ export default function President() {
         <h1>What has the President been doing lately?</h1>
         <p>A dated list of presidential actions from the White House's own record, with what each one does, how far it has gotten, and what is not yet known.</p>
       </div>
-      <nav className="subnav" aria-label="Government views">
-        <Link href="/government">All actions</Link>
-        <Link href="/government/president" aria-current="page">Presidential actions, dated</Link>
-        <Link href="/compare">Compare candidates</Link>
-      </nav>
+      <GovSubnav current="president" />
 
       <section className="panel" aria-labelledby="how-to-read">
         <h2 id="how-to-read">How to read this page</h2>
@@ -53,7 +50,7 @@ export default function President() {
 
       <section aria-labelledby="timeline">
         <h2 id="timeline">Timeline</h2>
-        <div className="filter-row" role="group" aria-label="Filter presidential actions">
+        <div className="filter-row filter-grid" role="group" aria-label="Filter presidential actions">
           <label className="topic-select">
             <span className="sr-only">Issue</span>
             <select value={issue} onChange={(e) => setIssue(e.target.value)}>
@@ -75,8 +72,8 @@ export default function President() {
         </div>
         <p className="results-count" aria-live="polite">{shown.length} of {all.length} documents</p>
         {groups.map((g) => (
-          <div key={g.m} className="tl-month">
-            <h3>{month(g.m + "-15")}</h3>
+          <details key={g.m + issue + kind} className="tl-month" open={g.m === groups[0].m || !!issue || !!kind}>
+            <summary><h3>{month(g.m + "-15")}</h3><span className="muted">{g.items.length} document{g.items.length === 1 ? "" : "s"}</span></summary>
             <ol className="timeline">
               {g.items.map((a) => {
                 const ann = annotations.get(a.sourceUrl);
@@ -93,7 +90,11 @@ export default function President() {
                         {a.issues.map((id) => (<Link key={id} href={"/issues/" + id} className="chip">{issueById(id)?.title}</Link>))}
                       </p>
                     )}
-                    <p className="muted">Stage: <strong>{ann?.stageNote ?? "Signed presidential document. Whether it is in effect, challenged or carried out is not recorded here."}</strong></p>
+                    <p className="status-row" aria-label="Status">
+                      <span className="status-chip ok">Signed</span>
+                      <span className="status-chip unknown">In effect, challenged or blocked: not recorded</span>
+                    </p>
+                    <p className="stage-note">{ann?.stageNote ?? "A signed presidential document. We have not checked whether it is in effect, being carried out, or challenged in court."}</p>
                     {ann && (
                       <details>
                         <summary>What it changes, what is unknown</summary>
@@ -111,7 +112,7 @@ export default function President() {
                 );
               })}
             </ol>
-          </div>
+          </details>
         ))}
         {shown.length === 0 && <p className="note">Nothing in this window matches. Try removing a filter.</p>}
       </section>

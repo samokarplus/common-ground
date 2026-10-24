@@ -1,30 +1,30 @@
 {
-  "generatedOn": "2026-10-22",
+  "generatedOn": "2026-10-23",
   "sources": {
     "federal-register": {
-      "snapshotRetrievedAt": "2026-10-22T22:59:45.615Z",
+      "snapshotRetrievedAt": "2026-10-23T17:52:53.338Z",
       "snapshotAgeDays": 0,
       "lastCheckAgeDays": 0,
       "stale": false,
       "lastSuccess": "2026-10-23",
       "lastChange": {
-        "at": "2026-10-22T22:59:45.615Z",
-        "added": 0,
-        "changed": 40,
-        "leftWindow": 0,
+        "at": "2026-10-23T17:52:53.338Z",
+        "added": 40,
+        "changed": 0,
+        "leftWindow": 40,
         "rejected": 0
       },
-      "lastCheckedAt": "2026-10-23T03:12:54.175Z"
+      "lastCheckedAt": "2026-10-23T17:52:53.504Z"
     },
     "govinfo-billstatus": {
-      "snapshotRetrievedAt": "2026-10-23T02:04:28.583Z",
+      "snapshotRetrievedAt": "2026-10-23T17:53:46.718Z",
       "snapshotAgeDays": 0,
       "lastCheckAgeDays": 0,
       "stale": false,
       "billCount": 160,
       "lastSuccess": "2026-10-23",
-      "lastChange": "2026-10-23T02:04:28.583Z",
-      "lastCheckedAt": "2026-10-23T03:13:56.316Z"
+      "lastChange": "2026-10-23T17:53:46.718Z",
+      "lastCheckedAt": "2026-10-23T17:53:46.722Z"
     },
     "colorado-2026-election": {
       "dataVerifiedAt": "2026-10-22T23:00:00Z",
@@ -43,26 +43,26 @@
       "date": "2026-10-26",
       "label": "Last day to register and still be mailed a ballot. After this, you can still register and vote in person.",
       "sourceId": "sos-certification",
-      "inDays": 4
+      "inDays": 3
     },
     {
       "date": "2026-10-26",
       "label": "Last suggested day to return a ballot by mail. After this, use a drop box or voting center.",
       "sourceId": "sos-certification",
-      "inDays": 4
+      "inDays": 3
     },
     {
       "date": "2026-10-27",
       "label": "Suggested: return your ballot to a voting center or drop box, or vote in person, from this date through Election Day.",
       "sourceId": "sos-certification",
-      "inDays": 5
+      "inDays": 4
     },
     {
       "date": "2026-11-03",
       "label": "Election Day. Ballots must be received, or you must be in line, by 7 p.m.",
       "time": "19:00",
       "sourceId": "sos-certification",
-      "inDays": 12
+      "inDays": 11
     }
   ],
   "unresolvedDiscrepancies": [

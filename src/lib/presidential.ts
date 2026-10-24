@@ -41,6 +41,17 @@ export const presidentialKind = (a: PresidentialAction): "executive-order" | "pr
 /** Nominations are personnel actions, not policy; they are left out of the actions timeline. */
 export const isPolicyAction = (a: PresidentialAction) => !a.categories.includes("Nominations & Appointments");
 
+/** The White House prints some titles in capitals. Show those in title case; leave mixed-case titles exactly as published. */
+export function tidyTitle(t: string): string {
+  if (t !== t.toUpperCase() || !/[A-Z]{4}/.test(t)) return t;
+  const small = new Set(["a", "an", "and", "as", "at", "by", "for", "in", "of", "on", "or", "the", "to", "with"]);
+  return t
+    .toLowerCase()
+    .split(" ")
+    .map((w, i) => (i > 0 && small.has(w) ? w : w.charAt(0).toUpperCase() + w.slice(1)))
+    .join(" ");
+}
+
 export const normalizeTitle = (t: string) => t.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
 
 import { z } from "zod";

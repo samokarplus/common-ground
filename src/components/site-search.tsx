@@ -5,7 +5,7 @@ import { election } from "./help-me-vote";
 import { atlasNodes } from "@/lib/atlas";
 import { DEBATES } from "@/lib/debates";
 import { PATHWAYS } from "@/lib/pathways";
-import { searchSite } from "@/lib/site-search";
+import { searchSite, orderGroups } from "@/lib/site-search";
 import { routeSearch } from "./link";
 
 import { ISSUES } from "@/lib/issues";
@@ -45,7 +45,7 @@ export default function SiteSearch() {
       ),
     [q],
   );
-  const groups = [...new Set(hits.map((h) => h.group))];
+  const groups = orderGroups([...new Set(hits.map((h) => h.group))]);
   return (
     <>
       <div className="page-title">

@@ -2,8 +2,8 @@ import { ChevronLeft, ExternalLink, Info } from "lucide-react";
 import Link from "./link";
 import ChartView from "./chart";
 import { BRIEFINGS, briefingById } from "./briefings-data";
-import { CandidatesForIssue, GovernmentForIssue } from "./connected";
-import { issuesForBriefing } from "@/lib/issues";
+import { CandidatesForIssue, GovernmentForIssue, actionsForIssue, comparisonsForIssue } from "./connected";
+import { issueById, issuesForBriefing } from "@/lib/issues";
 import { CLAIM_KIND_LABEL, type Briefing, type Claim } from "@/lib/briefing";
 
 const day = (iso: string) => new Date((iso.length === 7 ? iso + "-15" : iso) + "T12:00:00Z").toLocaleDateString("en-US", { month: "long", day: iso.length === 7 ? undefined : "numeric", year: "numeric", timeZone: "UTC" });
@@ -48,11 +48,21 @@ export function BriefingPage({ id }: { id?: string }) {
         <p className="empty">That briefing does not exist.</p>
       </>
     );
+  const linked = issuesForBriefing(b.id);
+  const toc: [string, string][] = [["evidence", "Evidence"], ...(b.context.length ? [["context", "Why it matters"] as [string, string]] : []), ...(linked.some((i) => actionsForIssue(i).length > 0) ? ([["government", "Government"]] as [string, string][]) : []), ...(linked.some((i) => comparisonsForIssue(i).length > 0) ? ([["candidates", "Candidates"]] as [string, string][]) : []), ["disagree", "Different views"], ["sources", "Sources and limits"]];
   return (
     <>
-      <Link href="/issues" className="back-link">
-        <ChevronLeft size={15} /> Issues
-      </Link>
+      <nav className="crumbs" aria-label="Breadcrumb">
+        <Link href="/issues">Issues</Link>
+        {linked[0] && (
+          <>
+            <span aria-hidden="true"> / </span>
+            <Link href={`/issues/${linked[0]}`}>{issueById(linked[0])?.title}</Link>
+          </>
+        )}
+        <span aria-hidden="true"> / </span>
+        <span aria-current="page">Briefing</span>
+      </nav>
       <header className="briefing-head">
         <div className="eyebrow">BRIEFING · {b.topic.toUpperCase()}</div>
         <h1>{b.question}</h1>
@@ -76,30 +86,43 @@ export function BriefingPage({ id }: { id?: string }) {
           </div>
           <div>
             <dt>Editorial review</dt>
-            <dd>{b.review.status === "human-reviewed" ? `Human-reviewed by ${b.review.reviewer}` : "Machine-checked, not human-reviewed"}</dd>
+            <dd>
+              <span className={"status-chip " + (b.review.status === "human-reviewed" ? "ok" : "warn")}>
+                {b.review.status === "human-reviewed" ? `Human-reviewed by ${b.review.reviewer}` : "Machine-checked, not human-reviewed"}
+              </span>
+            </dd>
           </div>
         </dl>
       </header>
 
-      <section aria-labelledby="evidence">
-        <h2 id="evidence">The evidence</h2>
+      <nav className="toc" aria-label="On this page">
+        {toc.map(([id2, label]) => (
+          <a key={id2} href={`#${id2}`} onClick={(e) => { e.preventDefault(); document.getElementById(id2)?.scrollIntoView({ behavior: "smooth", block: "start" }); }}>
+            {label}
+          </a>
+        ))}
+      </nav>
+
+      <section aria-labelledby="evidence-h" id="evidence">
+        <h2 id="evidence-h">The evidence</h2>
         {b.evidence.map((blk, i) =>
           blk.type === "stats" ? (
-            <div key={i} className="stat-row">
-              {blk.items.map((s) => (
-                <div key={s.label} className="stat">
-                  <span className="stat-label">{s.label}</span>
-                  <strong>{s.value}</strong>
-                  {s.note && <span className="stat-note">{s.note}</span>}
-                  <Cite ids={s.sourceIds} b={b} />
+            <div key={i} className="stat-feature">
+              {blk.items.map((st) => (
+                <div key={st.label} className="stat-card">
+                  <span className="stat-label">{st.label}</span>
+                  <strong className="stat-value">{st.value}</strong>
+                  {st.plain && <p className="stat-plain"><span className="sr-only">In plain English: </span>{st.plain}</p>}
+                  {st.note && <p className="stat-note">{st.note}<Cite ids={st.sourceIds} b={b} /></p>}
+                  {!st.note && <Cite ids={st.sourceIds} b={b} />}
                 </div>
               ))}
             </div>
           ) : blk.type === "chart" ? (
-            <div key={i} className="panel chart-panel">
+            <div key={i} className="chart-panel">
               <ChartView chart={blk.chart} />
               <p className="chart-src">
-                Source: {blk.chart.sourceIds.map((sid) => b.sources.find((s) => s.id === sid)?.publisher).join("; ")}
+                Source: {blk.chart.sourceIds.map((sid) => b.sources.find((x) => x.id === sid)?.publisher).join("; ")}
                 <Cite ids={blk.chart.sourceIds} b={b} />
               </p>
             </div>
@@ -113,39 +136,51 @@ export function BriefingPage({ id }: { id?: string }) {
       </section>
 
       {b.context.length > 0 && (
-        <section aria-labelledby="context">
-          <h2 id="context">Historical context</h2>
+        <section aria-labelledby="context-h" id="context">
+          <h2 id="context-h">Why it matters, and how to read it</h2>
           <ClaimList claims={b.context} b={b} />
+          {(b.recent.length > 0 || b.next.length > 0) && (
+            <div className="two-up">
+              {b.recent.length > 0 && (
+                <div className="panel">
+                  <h3>What changed recently</h3>
+                  <ul className="claims">
+                    {b.recent.map((r) => (
+                      <li key={r.text}>
+                        <strong>{day(r.date)}.</strong> {r.href ? <Link href={r.href}>{r.text}</Link> : r.text}
+                        <Cite ids={r.sourceIds} b={b} />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              {b.next.length > 0 && (
+                <div className="panel">
+                  <h3>What happens next</h3>
+                  <ul className="claims">
+                    {b.next.map((n) => (
+                      <li key={n.text}>
+                        <span className={`kind kind-${n.kind === "scheduled" ? "fact" : "unknown"}`}>{n.kind === "scheduled" ? "Scheduled" : "Unknown"}</span> {n.text}
+                        <Cite ids={n.sourceIds} b={b} />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          )}
         </section>
       )}
-      {b.recent.length > 0 && (
-        <section aria-labelledby="recent">
-          <h2 id="recent">What changed recently</h2>
-          <ul className="claims">
-            {b.recent.map((r) => (
-              <li key={r.text}>
-                <strong>{day(r.date)}.</strong> {r.href ? <Link href={r.href}>{r.text}</Link> : r.text}
-                <Cite ids={r.sourceIds} b={b} />
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
-      {b.next.length > 0 && (
-        <section aria-labelledby="next">
-          <h2 id="next">What happens next</h2>
-          <ul className="claims">
-            {b.next.map((n) => (
-              <li key={n.text}>
-                <span className={`kind kind-${n.kind === "scheduled" ? "fact" : "unknown"}`}>{n.kind === "scheduled" ? "Scheduled" : "Unknown"}</span> {n.text}
-                <Cite ids={n.sourceIds} b={b} />
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
-      <section aria-labelledby="disagree">
-        <h2 id="disagree">What people disagree about</h2>
+
+      {linked.map((i) => (
+        <div key={i}>
+          <div id="government"><GovernmentForIssue issue={i} limit={4} /></div>
+          <div id="candidates"><CandidatesForIssue issue={i} /></div>
+        </div>
+      ))}
+
+      <section aria-labelledby="disagree-h" id="disagree">
+        <h2 id="disagree-h">What people disagree about</h2>
         <div className="two-up">
           <div className="panel">
             <h3>Disagreements about facts</h3>
@@ -157,25 +192,24 @@ export function BriefingPage({ id }: { id?: string }) {
           </div>
         </div>
       </section>
-      <section aria-labelledby="sources">
-        <h2 id="sources">Original sources</h2>
+
+      <section aria-labelledby="sources-h" id="sources">
+        <h2 id="sources-h">Original sources and limits</h2>
         <ol className="source-list numbered">
-          {b.sources.map((s) => (
-            <li key={s.id} id={`src-${b.id}-${s.id}`}>
-              <a href={s.url} target="_blank" rel="noreferrer">
-                {s.label} <ExternalLink size={12} />
+          {b.sources.map((x) => (
+            <li key={x.id} id={`src-${b.id}-${x.id}`}>
+              <a href={x.url} target="_blank" rel="noreferrer">
+                {x.label} <ExternalLink size={12} aria-hidden="true" />
               </a>
               <span>
-                {s.publisher} · {s.kind === "official" ? "Official record" : "Official research agency"} · checked {day(s.retrievedOn)}
+                {x.publisher} · {x.kind === "official" ? "Official record" : "Official research agency"} · checked {day(x.retrievedOn)}
               </span>
             </li>
           ))}
         </ol>
-      </section>
-      <section aria-labelledby="limits">
-        <h2 id="limits">Limitations</h2>
+        <h3 id="limits">Limitations</h3>
         <div className="notice">
-          <Info size={18} />
+          <Info size={18} aria-hidden="true" />
           <ul>
             {b.limitations.map((l) => (
               <li key={l}>{l}</li>
@@ -183,12 +217,7 @@ export function BriefingPage({ id }: { id?: string }) {
           </ul>
         </div>
       </section>
-      {issuesForBriefing(b.id).map((i) => (
-        <div key={i}>
-          <GovernmentForIssue issue={i} />
-          <CandidatesForIssue issue={i} />
-        </div>
-      ))}
+
       {b.related.length > 0 && (
         <section aria-labelledby="more">
           <h2 id="more">Keep exploring</h2>

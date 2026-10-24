@@ -1,15 +1,14 @@
 import "@fontsource/dm-sans/latin-400.css";
 import "@fontsource/dm-sans/latin-500.css";
 import "@fontsource/dm-sans/latin-600.css";
-import "@fontsource/libre-caslon-display/latin-400.css";
 import { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import CommonGround from "./components/common-ground";
 import "@fontsource/fraunces/latin-400.css";
-import "@fontsource/fraunces/latin-400-italic.css";
 import "@fontsource/fraunces/latin-600.css";
 import "./styles.css";
 import "./warm.css";
+import "./system.css";
 function App() {
   const [route, setRoute] = useState(window.location.hash.slice(1) || "/");
   useEffect(() => {

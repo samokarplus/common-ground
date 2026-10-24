@@ -65,10 +65,10 @@ export function buildMoneyBriefing(t: TreasuryData): Briefing {
     sourceCheckedOn: retrieved,
     evidence: [
       { type: "stats", items: [
-        { label: `Receipts, FY${last.fy}`, value: money(last.receipts), note: `${pct(prev.receipts, last.receipts) >= 0 ? "Up" : "Down"} ${Math.abs(pct(prev.receipts, last.receipts)).toFixed(1)}% from FY${prev.fy}`, kind: "fact", sourceIds: ["mts"] },
-        { label: `Outlays, FY${last.fy}`, value: money(last.outlays), note: `${pct(prev.outlays, last.outlays) >= 0 ? "Up" : "Down"} ${Math.abs(pct(prev.outlays, last.outlays)).toFixed(1)}% from FY${prev.fy}`, kind: "fact", sourceIds: ["mts"] },
-        { label: `Deficit, FY${last.fy} (outlays minus receipts)`, value: money(deficit(last)), note: `FY${prev.fy}: ${money(deficit(prev))}`, kind: "fact", sourceIds: ["mts"] },
-        { label: "Total public debt outstanding", value: money(t.latestDebt.total), note: `As of ${day(t.latestDebt.date)}`, kind: "fact", sourceIds: ["debt"] },
+        { label: `Receipts, FY${last.fy}`, value: money(last.receipts), note: `${pct(prev.receipts, last.receipts) >= 0 ? "Up" : "Down"} ${Math.abs(pct(prev.receipts, last.receipts)).toFixed(1)}% from FY${prev.fy}`, plain: "All the money the federal government collected in the fiscal year, mostly from taxes.", kind: "fact", sourceIds: ["mts"] },
+        { label: `Outlays, FY${last.fy}`, value: money(last.outlays), note: `${pct(prev.outlays, last.outlays) >= 0 ? "Up" : "Down"} ${Math.abs(pct(prev.outlays, last.outlays)).toFixed(1)}% from FY${prev.fy}`, plain: "All the money the government paid out in the fiscal year, from Social Security and health care to defense and interest.", kind: "fact", sourceIds: ["mts"] },
+        { label: `Deficit, FY${last.fy} (outlays minus receipts)`, value: money(deficit(last)), note: `FY${prev.fy}: ${money(deficit(prev))}`, plain: "The gap when spending is larger than what was collected. The government borrows to cover it.", kind: "fact", sourceIds: ["mts"] },
+        { label: "Total public debt outstanding", value: money(t.latestDebt.total), note: `As of ${day(t.latestDebt.date)}`, plain: "Everything the federal government currently owes. It grows in years when there is a deficit.", kind: "fact", sourceIds: ["debt"] },
       ] },
       { type: "chart", chart: {
         id: "receipts-outlays", title: "Federal receipts and outlays by fiscal year", kind: "line", format: "usd-trillions",
@@ -163,8 +163,8 @@ export function buildUkraineBriefing(u: UkraineData): Briefing {
     sourceCheckedOn: u.source.retrievedOn,
     evidence: [
       { type: "stats", items: [
-        { label: "Appropriated, five supplemental laws", value: `$${u.statedTotal.billions} billion`, note: "FY2022 to FY2024, per CRS", kind: "fact", sourceIds: ["crs"] },
-        { label: "Of which State Department and foreign operations accounts", value: `$${u.stateDepartmentAndForeignOperationsTotal.billions} billion`, note: "About 34%, per CRS", kind: "fact", sourceIds: ["crs"] },
+        { label: "Appropriated, five supplemental laws", value: `$${u.statedTotal.billions} billion`, note: "FY2022 to FY2024, per CRS", plain: "Money Congress made available in law. It is permission to spend, not money already sent to Ukraine.", kind: "fact", sourceIds: ["crs"] },
+        { label: "Of which State Department and foreign operations accounts", value: `$${u.stateDepartmentAndForeignOperationsTotal.billions} billion`, note: "About 34%, per CRS", plain: "The portion placed in State Department and foreign operations accounts; the remainder sits in other accounts.", kind: "fact", sourceIds: ["crs"] },
       ] },
       { type: "chart", chart: {
         id: "ukraine-acts", title: "Emergency supplemental appropriations for Ukraine, by law", kind: "bar", format: "usd-billions",
@@ -226,9 +226,9 @@ export function buildAbortionBriefing(a: AbortionData): Briefing {
     sourceCheckedOn: retrieved,
     evidence: [
       { type: "stats", items: [
-        { label: `Reported abortions, ${last.year} (${a.areas} areas)`, value: last.abortions.toLocaleString("en-US"), note: `${chg(prev.abortions, last.abortions)} from ${prev.year}`, kind: "fact", sourceIds: ["cdc"] },
-        { label: `Rate, ${last.year}`, value: `${last.ratePer1000Women15to44} per 1,000 women aged 15 to 44`, note: `${prev.year}: ${prev.ratePer1000Women15to44}`, kind: "fact", sourceIds: ["cdc"] },
-        { label: `Ratio, ${last.year}`, value: `${last.ratioPer1000LiveBirths} per 1,000 live births`, note: `${prev.year}: ${prev.ratioPer1000LiveBirths}`, kind: "fact", sourceIds: ["cdc"] },
+        { label: `Reported abortions, ${last.year} (${a.areas} areas)`, value: last.abortions.toLocaleString("en-US"), note: `${chg(prev.abortions, last.abortions)} from ${prev.year}`, plain: "How many abortions the CDC was told about in these reporting areas. It is not a count for the whole country.", kind: "fact", sourceIds: ["cdc"] },
+        { label: `Rate, ${last.year}`, value: `${last.ratePer1000Women15to44} per 1,000 women aged 15 to 44`, note: `${prev.year}: ${prev.ratePer1000Women15to44}`, plain: "Abortions for every 1,000 women of childbearing age. A rate keeps years comparable as the population changes.", kind: "fact", sourceIds: ["cdc"] },
+        { label: `Ratio, ${last.year}`, value: `${last.ratioPer1000LiveBirths} per 1,000 live births`, note: `${prev.year}: ${prev.ratioPer1000LiveBirths}`, plain: "Abortions for every 1,000 babies born alive. It can change when births change, even if abortions do not.", kind: "fact", sourceIds: ["cdc"] },
       ] },
       { type: "chart", chart: {
         id: "abortion-count", title: "Abortions reported to the CDC, 47 continuously reporting areas", kind: "line", format: "count",
@@ -332,9 +332,9 @@ export function buildPricesBriefing(c: CpiData): Briefing {
     sourceCheckedOn: retrieved,
     evidence: [
       { type: "stats", items: [
-        { label: `Prices vs. a year earlier, ${monthName(lastMonth)}`, value: f(now), note: `${monthName(`${yr - 1}-${m}`)}: ${f(yearAgo)}`, kind: "fact", sourceIds: ["bls"] },
-        { label: `Prices vs. five years earlier`, value: `${since(5).toFixed(1)}% higher`, note: `${monthName(`${yr - 5}-${m}`)} to ${monthName(lastMonth)}`, kind: "fact", sourceIds: ["bls"] },
-        { label: `Energy vs. a year earlier`, value: f(yoy("energy")!), note: "Energy swings more than other categories", kind: "fact", sourceIds: ["bls"] },
+        { label: `Prices vs. a year earlier, ${monthName(lastMonth)}`, value: f(now), note: `${monthName(`${yr - 1}-${m}`)}: ${f(yearAgo)}`, plain: "How much more the same basket of everyday goods and services costs than a year ago.", kind: "fact", sourceIds: ["bls"] },
+        { label: `Prices vs. five years earlier`, value: `${since(5).toFixed(1)}% higher`, note: `${monthName(`${yr - 5}-${m}`)} to ${monthName(lastMonth)}`, plain: "How much more it costs than five years ago. Prices stay higher even when inflation slows.", kind: "fact", sourceIds: ["bls"] },
+        { label: `Energy vs. a year earlier`, value: f(yoy("energy")!), note: "Energy swings more than other categories", plain: "Fuel and home energy prices, which swing much more than most prices.", kind: "fact", sourceIds: ["bls"] },
       ] },
       { type: "chart", chart: {
         id: "cpi-yoy", title: `Yearly price increase, each ${MONTHS[Number(m) - 1]} (all items)`, kind: "line", format: "percent1",

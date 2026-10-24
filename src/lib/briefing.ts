@@ -68,7 +68,7 @@ export const ChartSchema = z.object({
 export type Chart = z.infer<typeof ChartSchema>;
 
 const Block = z.discriminatedUnion("type", [
-  z.object({ type: z.literal("stats"), items: z.array(z.object({ label: z.string(), value: z.string(), note: z.string().optional(), kind: z.enum(CLAIM_KINDS), sourceIds: z.array(z.string()).min(1) })).min(1) }),
+  z.object({ type: z.literal("stats"), items: z.array(z.object({ label: z.string(), value: z.string(), note: z.string().optional(), plain: z.string().optional(), kind: z.enum(CLAIM_KINDS), sourceIds: z.array(z.string()).min(1) })).min(1) }),
   z.object({ type: z.literal("chart"), chart: ChartSchema }),
   z.object({ type: z.literal("text"), heading: z.string().optional(), claims: z.array(Claim).min(1) }),
 ]);
