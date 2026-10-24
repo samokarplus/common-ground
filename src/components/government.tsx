@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { ExternalLink, Info } from "lucide-react";
+import GovSubnav from "./gov-subnav";
 import Link, { routeSearch } from "./link";
 import billsRaw from "../../data/congress/bills.json";
 import frRaw from "../../data/federal-register.json";
@@ -44,11 +45,7 @@ export default function Government() {
         <h1>What is the federal government doing?</h1>
         <p>Laws from Congress, presidential actions and agency rules, placed on one ladder so you can see how far each has actually gotten, and what it is not.</p>
       </div>
-      <nav className="subnav" aria-label="Government views">
-        <Link href="/government" aria-current="page">All actions</Link>
-        <Link href="/government/president">Presidential actions, dated</Link>
-        <Link href="/compare">Compare candidates</Link>
-      </nav>
+      <GovSubnav current="all" />
 
       <details className="disclosure ladder-box" open={typeof window !== "undefined" && window.matchMedia?.("(min-width: 900px)").matches}>
         <summary><h2 id="ladder">Announced is not enacted: the stages</h2></summary>
@@ -75,7 +72,7 @@ export default function Government() {
           <a href="https://www.congress.gov/" target="_blank" rel="noreferrer">Congress.gov</a> and{" "}
           <a href="https://www.federalregister.gov/" target="_blank" rel="noreferrer">the Federal Register</a>.
         </div>
-        <div className="filter-row" role="group" aria-label="Filter government actions">
+        <div className="filter-row filter-grid" role="group" aria-label="Filter government actions">
           <label className="topic-select">
             <span className="sr-only">Search</span>
             <input type="search" placeholder="Search titles, agencies, topics" value={f.query} onChange={(e) => set({ query: e.target.value })} />

@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { ExternalLink, Info } from "lucide-react";
+import GovSubnav from "./gov-subnav";
 import Link, { routeSearch } from "./link";
 import { COMPARISONS, comparisonById } from "./compare-data";
 import { RELATION_LABEL, type Comparison, type Entry } from "@/lib/compare";
@@ -51,11 +52,7 @@ export function CompareIndex() {
         <h1>Compare candidates, side by side.</h1>
         <p>What each person has said on the issues, what their record shows, and what is not documented, with the source behind every line. No scores, rankings or recommendations.</p>
       </div>
-      <nav className="subnav" aria-label="Government views">
-        <Link href="/government">All actions</Link>
-        <Link href="/government/president">Presidential actions, dated</Link>
-        <Link href="/compare" aria-current="page">Compare candidates</Link>
-      </nav>
+      <GovSubnav current="compare" />
       <label className="topic-select wide">
         <span className="sr-only">Search races and candidates</span>
         <input type="search" placeholder="Search a candidate or race, e.g. Talarico, Paxton, Texas" value={q} onChange={(e) => setQ(e.target.value)} />
@@ -102,11 +99,7 @@ function Side({ c }: { c: Comparison }) {
         <h1>{a.name} and {b.name}</h1>
         <p>{c.summary}</p>
       </div>
-      <nav className="subnav" aria-label="Government views">
-        <Link href="/compare" aria-current="page">Compare candidates</Link>
-        <Link href="/government">Government actions</Link>
-        <Link href="/issues">Issues</Link>
-      </nav>
+      <GovSubnav current="compare" />
 
       <div className="note" role="note">
         <Info size={15} aria-hidden="true" /> <strong>Information, not advice.</strong> There are no scores, rankings or endorsements here. A campaign's own page is that candidate's statement, not a fact-check; "not documented here" means we did not find it, not that the person has no view. Machine-checked from public sources on {longDay(c.asOf)}; not human-reviewed.

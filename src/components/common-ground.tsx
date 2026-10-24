@@ -657,13 +657,23 @@ export default function CommonGround({
               </p>
             </div>
             <div>
+              <h3>Understand</h3>
+              <ul>
+                <li><Link href="/issues">Issues</Link></li>
+                <li><Link href="/government">Government actions</Link></li>
+                <li><Link href="/government/president">Presidential actions</Link></li>
+                <li><Link href="/compare">Compare candidates</Link></li>
+                <li><Link href="/data">The data</Link></li>
+              </ul>
+            </div>
+            <div>
               <h3>Explore</h3>
               <ul>
                 <li><Link href="/vote">Help Me Vote</Link></li>
-                <li><Link href="/congress">Congress</Link></li>
+                <li><Link href="/congress">Congress tracker</Link></li>
                 <li><Link href="/debate/maps">Debate maps</Link></li>
                 <li><Link href="/atlas">Thought Atlas</Link></li>
-                <li><Link href="/paths">Pathways</Link></li>
+                <li><Link href="/values">My Values</Link></li>
               </ul>
             </div>
             <div>

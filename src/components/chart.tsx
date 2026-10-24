@@ -1,14 +1,29 @@
-import { useId } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { axisRange, describeChart, formatTick, formatValue, type Chart } from "@/lib/briefing";
 
 const COLORS = ["#2b5a4c", "#a8461f", "#9a6b12", "#5b4d41"];
-const W = 760;
-const H = 360;
-const M = { l: 62, r: 30, t: 16, b: 48 };
+/** Charts draw at the width they are shown, so text stays a readable 13px on a phone instead of shrinking with the page. */
+const useWidth = () => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [w, setW] = useState(760);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || typeof ResizeObserver === "undefined") return;
+    const ro = new ResizeObserver(() => setW(Math.round(el.clientWidth)));
+    ro.observe(el);
+    setW(Math.round(el.clientWidth));
+    return () => ro.disconnect();
+  }, []);
+  return [ref, Math.min(Math.max(w, 280), 900)] as const;
+};
 
 /** Accessible SVG chart. Gaps (null) are drawn as breaks, never as zero. A data table is always available. */
 export default function ChartView({ chart }: { chart: Chart }) {
   const uid = useId();
+  const [boxRef, W] = useWidth();
+  const narrow = W < 520;
+  const H = narrow ? 300 : 360;
+  const M = narrow ? { l: 46, r: 14, t: 22, b: 52 } : { l: 62, r: 30, t: 22, b: 48 };
   const { min, max, truncated, ticks } = axisRange(chart);
   const xs = [...new Set(chart.series.flatMap((s) => s.points.map((p) => String(p.x))))];
   const slot = (W - M.l - M.r) / xs.length;
@@ -16,14 +31,15 @@ export default function ChartView({ chart }: { chart: Chart }) {
   const px = (x: string) => (chart.kind === "bar" ? M.l + slot * (xs.indexOf(x) + 0.5) : M.l + 8 + (xs.indexOf(x) / Math.max(xs.length - 1, 1)) * (W - M.l - M.r - 16));
   const barW = Math.min(46, (slot * 0.7) / chart.series.length);
   const py = (y: number) => M.t + (1 - (y - min) / (max - min)) * (H - M.t - M.b);
-  const every = Math.ceil(xs.length / 8);
+  const every = chart.kind === "bar" && xs.length <= 6 ? 1 : Math.ceil(xs.length / Math.max(3, Math.floor((W - M.l - M.r) / 64)));
   return (
     <figure className="chart">
       <figcaption>
         <strong id={`${uid}-t`}>{chart.title}</strong>
         <span className="chart-range">{chart.dateRange}</span>
       </figcaption>
-      <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-labelledby={`${uid}-t ${uid}-d`} className="chart-svg">
+      <div ref={boxRef} className="chart-box">
+      <svg viewBox={`0 0 ${W} ${H}`} width={W} height={H} role="img" aria-labelledby={`${uid}-t ${uid}-d`} className="chart-svg">
         <desc id={`${uid}-d`}>{describeChart(chart)}</desc>
         {ticks.map((t) => (
           <g key={t}>
@@ -78,7 +94,26 @@ export default function ChartView({ chart }: { chart: Chart }) {
                 </g>
               );
             })}
+        {chart.kind === "bar" && xs.length <= 8
+          ? chart.series.map((sr, si) =>
+              sr.points.map((p) =>
+                p.y === null ? null : (
+                  <text key={`v-${sr.id}-${p.x}`} x={px(String(p.x)) - (barW * chart.series.length) / 2 + si * barW + barW / 2} y={py(p.y) - 6} textAnchor="middle" fontSize="13" fontWeight="700" fill="#2e2721" aria-hidden="true">
+                    {formatValue(p.y, chart.format)}
+                  </text>
+                ),
+              ),
+            )
+          : chart.series.map((sr) => {
+              const last = [...sr.points].reverse().find((p) => p.y !== null);
+              return last && last.y !== null ? (
+                <text key={`l-${sr.id}`} x={Math.min(px(String(last.x)), W - M.r - 2)} y={py(last.y) - 10} textAnchor="end" fontSize="13" fontWeight="700" fill="#2e2721" aria-hidden="true">
+                  {formatValue(last.y, chart.format)}
+                </text>
+              ) : null;
+            })}
       </svg>
+      </div>
       <div className="chart-legend">
         {chart.series.map((s, si) => (
           <span key={s.id}>

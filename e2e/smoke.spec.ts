@@ -259,10 +259,11 @@ test("candidates without a profile show an explicit research note, not a blank",
 test("review dashboard lists items with sources and questions; decisions need a name and notes, and download a file", async ({ page }) => {
   await page.goto("#/review");
   await expect(page.getByRole("heading", { name: /still needs a human reviewer/ })).toBeVisible();
-  await expect(page.getByText("Outstanding questions").first()).toBeVisible();
+  const first = page.locator("details.review-item").filter({ has: page.locator("h2[id^='r-measure']") }).first();
+  await first.locator("summary").click();
+  await expect(first.getByText("Outstanding questions")).toBeVisible();
   const download = page.getByRole("button", { name: /Download decisions file/ });
   await expect(download).toBeDisabled();
-  const first = page.locator("section.panel[aria-labelledby^='r-measure']").first();
   await first.getByRole("button", { name: "Request corrections" }).click();
   await page.getByLabel(/Your name/).fill("Test Editor");
   await expect(download).toBeDisabled(); // a note is required

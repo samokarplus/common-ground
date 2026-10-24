@@ -74,7 +74,9 @@ a.briefing-card:hover h3 { text-decoration: underline; text-underline-offset: 3p
 select, input[type="search"], input[type="text"] { min-height: var(--tap); font: inherit; font-size: var(--t-small); max-width: 100%; }
 .topic-select { display: block; min-width: 0; }
 .topic-select select, .topic-select input { width: 100%; min-width: 0; }
-.filter-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr)); gap: var(--s-3); margin: var(--s-4) 0; }
+.filter-row { gap: var(--s-2); margin: var(--s-4) 0; }
+.filter-row button { min-height: var(--tap); }
+.filter-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr)); gap: var(--s-3); margin: var(--s-4) 0; align-items: center; }
 .chip-btn, .subnav a { min-height: var(--tap); display: inline-flex; align-items: center; }
 .chip-btn:hover, .subnav a:hover { border-color: var(--pine); background: #fff; }
 .chip-btn.on:hover { background: var(--pine-deep); }
@@ -143,7 +145,7 @@ figure.chart { background: var(--card); border: 1px solid var(--card-border); pa
   .briefing-card, .dev, .action-item { padding: var(--s-4); }
   main h2 { margin-top: var(--s-6); }
   .section-space { margin: var(--s-7) 0; }
-  .filter-row { grid-template-columns: 1fr; }
+  .filter-grid { grid-template-columns: 1fr; }
   .page-title p { font-size: 1.125rem; }
   a, .muted, td, li { overflow-wrap: anywhere; }
 }
@@ -255,3 +257,27 @@ main ul:not([class]) { list-style: disc; }
 main li { margin: 0.3em 0; }
 main .panel ul:not([class]) li { margin: 0.45em 0; }
 .clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* Federal Register / saved feed filters: wrap instead of overflowing */
+.search-panel { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: var(--s-3); align-items: center; }
+.search-panel > label:first-child { grid-column: 1 / -1; }
+.search-panel select, .search-panel input { min-width: 0; width: 100%; }
+.search-panel .check-label input { width: 20px; }
+
+/* Charts */
+.chart-box { width: 100%; }
+.chart-svg { display: block; width: 100%; height: auto; max-width: 100%; }
+figure.chart figcaption { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s-1) var(--s-3); margin-bottom: var(--s-3); }
+figure.chart figcaption strong { font-family: var(--serif-head); font-size: var(--t-h4); line-height: 1.25; }
+.chart-range { font-size: var(--t-meta); color: var(--ink-soft); }
+.chart-legend { display: flex; flex-wrap: wrap; gap: var(--s-1) var(--s-4); font-size: var(--t-small); margin: var(--s-3) 0 var(--s-2); align-items: center; }
+.chart-def { font-size: var(--t-small); max-width: none; }
+.short-answer h2 { margin-top: 0; }
+.short-answer p { font-size: clamp(1.0625rem, 1rem + 0.35vw, 1.25rem); line-height: 1.55; }
+.chart-panel { padding: 0; background: none; border: 0; box-shadow: none; margin: var(--s-5) 0 var(--s-6); }
+
+/* Review queue */
+details.review-item > summary { flex-wrap: wrap; row-gap: var(--s-1); }
+details.review-item .review-title { font-family: var(--serif-head); font-size: var(--t-h4); font-weight: 600; flex: 1 1 18rem; }
+details.review-item .review-h { font-size: var(--t-small); font-family: var(--sans); font-weight: 600; margin: var(--s-1) 0 var(--s-3); }
+details.review-item h3 { font-size: var(--t-small); font-family: var(--sans); text-transform: uppercase; letter-spacing: 0.06em; margin: var(--s-4) 0 var(--s-1); }

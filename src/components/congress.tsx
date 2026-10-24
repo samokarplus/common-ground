@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { ArrowRight, ChevronLeft, ExternalLink, Info } from "lucide-react";
+import GovSubnav from "./gov-subnav";
 import Link from "./link";
 import raw from "../../data/congress/bills.json";
 import { BillSchema, BILL_STATUSES, STATUS_LABEL, type Bill, type BillStatus } from "@/lib/congress";
@@ -89,6 +90,7 @@ function List() {
           <Link href="/congress/how-it-works">How a bill becomes law →</Link>
         </p>
       </div>
+      <GovSubnav current="congress" />
       <Snapshot />
       <div className="filter-row" role="group" aria-label="Filter bills by status">
         {(["all", ...BILL_STATUSES] as const).map((s) => (

@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { ExternalLink, Info } from "lucide-react";
+import GovSubnav from "./gov-subnav";
 import Link from "./link";
 import presidentialRaw from "../../data/government/presidential-actions.json";
 import annotationsRaw from "../../data/government/annotations.json";
@@ -33,11 +34,7 @@ export default function President() {
         <h1>What has the President been doing lately?</h1>
         <p>A dated list of presidential actions from the White House's own record, with what each one does, how far it has gotten, and what is not yet known.</p>
       </div>
-      <nav className="subnav" aria-label="Government views">
-        <Link href="/government">All actions</Link>
-        <Link href="/government/president" aria-current="page">Presidential actions, dated</Link>
-        <Link href="/compare">Compare candidates</Link>
-      </nav>
+      <GovSubnav current="president" />
 
       <section className="panel" aria-labelledby="how-to-read">
         <h2 id="how-to-read">How to read this page</h2>
@@ -54,7 +51,7 @@ export default function President() {
 
       <section aria-labelledby="timeline">
         <h2 id="timeline">Timeline</h2>
-        <div className="filter-row" role="group" aria-label="Filter presidential actions">
+        <div className="filter-row filter-grid" role="group" aria-label="Filter presidential actions">
           <label className="topic-select">
             <span className="sr-only">Issue</span>
             <select value={issue} onChange={(e) => setIssue(e.target.value)}>
