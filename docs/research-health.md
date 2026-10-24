@@ -1,12 +1,12 @@
 # Research health
 
-_Generated 2026-10-22 by `npm run health`. Regenerated automatically when the scheduled refresh changes data._
+_Generated 2026-10-23 by `npm run health`. Regenerated automatically when the scheduled refresh changes data._
 
 ## Sources
 
 | Source | Last updated in repo | Age | Status |
 | --- | --- | --- | --- |
-| Federal Register (refresh script) | 2026-10-22 | 0 days | OK |
+| Federal Register (refresh script) | 2026-10-23 | 0 days | OK |
 | Congress bills, GovInfo (script; scheduled run pending) | 2026-10-23 | 0 days | OK |
 | Colorado 2026 election (source-checked; not human-reviewed) | 2026-10-22 | 0 days | OK |
 
@@ -14,7 +14,7 @@ _Generated 2026-10-22 by `npm run health`. Regenerated automatically when the sc
 
 ## Latest Federal Register change
 
-2026-10-22T22:59:45.615Z: 0 new, 40 updated, 0 left the newest-40 window, 0 rejected as invalid.
+2026-10-23T17:52:53.338Z: 40 new, 0 updated, 40 left the newest-40 window, 0 rejected as invalid.
 
 ## Editorial review queue (Colorado measures)
 
@@ -35,10 +35,10 @@ None. Nothing has been human-reviewed; see `editorial-workflow.md`.
 
 ## Upcoming election deadlines
 
-- 2026-10-26 (in 4 days): Last day to register and still be mailed a ballot. After this, you can still register and vote in person.
-- 2026-10-26 (in 4 days): Last suggested day to return a ballot by mail. After this, use a drop box or voting center.
-- 2026-10-27 (in 5 days): Suggested: return your ballot to a voting center or drop box, or vote in person, from this date through Election Day.
-- 2026-11-03 (in 12 days): Election Day. Ballots must be received, or you must be in line, by 7 p.m.
+- 2026-10-26 (in 3 days): Last day to register and still be mailed a ballot. After this, you can still register and vote in person.
+- 2026-10-26 (in 3 days): Last suggested day to return a ballot by mail. After this, use a drop box or voting center.
+- 2026-10-27 (in 4 days): Suggested: return your ballot to a voting center or drop box, or vote in person, from this date through Election Day.
+- 2026-11-03 (in 11 days): Election Day. Ballots must be received, or you must be in line, by 7 p.m.
 
 ## Unresolved discrepancies
 
