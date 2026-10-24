@@ -22,3 +22,17 @@ A warm, relaxed look: cozy library meets editorial magazine. Implemented in `src
 
 ## Illustrations
 `src/components/art.tsx`: small line drawings (brand mark, book stack, scroll, speech bubbles, sprig). They are decorative and hidden from assistive technology.
+
+## Cohesive polish layer (`src/system.css`, branch `ui/cohesive-polish`)
+Loaded after `styles.css` and `warm.css`; it is where the shared rules live.
+
+- **Fonts:** Fraunces (headings) and DM Sans (everything else). Libre Caslon Display, Arial and Fraunces italic were removed; no italics remain in headings.
+- **Tokens:** spacing `--s-1`..`--s-8` (4px base), type `--t-meta` (0.875rem) to `--t-h1` (fluid), `--radius-card`, `--shadow-card`, `--shadow-lift`, `--tap` (44px). The smallest text anywhere is 0.8125rem (13px) for uppercase eyebrow labels and 0.875rem for other metadata; 160 declarations that were 12px were raised.
+- **One card look:** `.panel`, `.briefing-card`, `.person-card`, `.issue-compare`, `.action-item`, `.dev` and chart figures share border, radius, shadow and padding.
+- **Reusable pieces:** `GovSubnav` (the four ways into Government), `.toc` in-page navigation, `.crumbs` breadcrumbs, `.stat-feature` (number + plain-English line + note + citation), `.status-chip` (ok / warn / unknown), `.empty-state`, `details.disclosure`, `ISSUE_ICON` (one icon per issue).
+- **Disclosure instead of walls of text:** review items, comparison issue blocks (open on wide screens, or when one issue is chosen), timeline months, the government stage ladder (open on wide screens), home source-freshness table.
+- **Charts** draw at the width they are shown, so axis text is a readable 13px on phones; the latest value (lines) or every value (up to 8 bars) is labelled directly; every chart still has a text description and a data table.
+- **Mobile:** select boxes and filter panels wrap instead of overflowing (fixed a 165px horizontal overflow on `#/government` and 366px on the Federal Register and saved pages at tablet width); tap targets are at least 44px.
+
+### Accessibility notes (honest)
+Axe (WCAG 2.0/2.1/2.2 A and AA tags) passes on every routed page in the Playwright suite at 1360, 768 and 390px. Not verified: screen-reader walkthroughs, Windows high-contrast mode, text zoom to 200% on every page. The Thought Atlas graph remains a pointer-driven visual; its accessible list is the supported keyboard route. The sticky in-page navigation scrolls horizontally on narrow screens.

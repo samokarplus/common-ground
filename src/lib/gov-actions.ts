@@ -5,7 +5,7 @@
  */
 import type { Bill } from "./congress.ts";
 import { issuesFor } from "./issues.ts";
-import { isCeremonial, isPolicyAction, normalizeTitle, presidentialKind, type PresidentialAction } from "./presidential.ts";
+import { isCeremonial, isPolicyAction, normalizeTitle, presidentialKind, tidyTitle, type PresidentialAction } from "./presidential.ts";
 
 export const STAGES = [
   { id: "introduced", label: "Introduced", means: "A member of Congress formally filed a bill. Most bills never go further.", notThis: "Not a law and not a vote." },
@@ -115,7 +115,7 @@ export function fromPresidential(p: PresidentialAction): GovAction {
     kind,
     branch: "President",
     stage: "executive-action",
-    title: p.title,
+    title: tidyTitle(p.title),
     date: p.date,
     dateLabel: "Signed",
     detail: `${what}. It directs the executive branch; it is not a law passed by Congress.`,

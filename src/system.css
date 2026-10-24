@@ -281,3 +281,7 @@ details.review-item > summary { flex-wrap: wrap; row-gap: var(--s-1); }
 details.review-item .review-title { font-family: var(--serif-head); font-size: var(--t-h4); font-weight: 600; flex: 1 1 18rem; }
 details.review-item .review-h { font-size: var(--t-small); font-family: var(--sans); font-weight: 600; margin: var(--s-1) 0 var(--s-3); }
 details.review-item h3 { font-size: var(--t-small); font-family: var(--sans); text-transform: uppercase; letter-spacing: 0.06em; margin: var(--s-4) 0 var(--s-1); }
+
+/* Thought Atlas: keep the controls clear of the node labels */
+.graph-controls { bottom: auto; top: 12px; }
+main .panel > h2:first-child { margin-top: 0; }

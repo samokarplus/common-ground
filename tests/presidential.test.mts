@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { isCeremonial, parseListing, presidentialKind, validateAnnotations, type PresidentialAction } from "../src/lib/presidential.ts";
+import { isCeremonial, parseListing, presidentialKind, tidyTitle, validateAnnotations, type PresidentialAction } from "../src/lib/presidential.ts";
 import { fromPresidential, mergeActions } from "../src/lib/gov-actions.ts";
 import { ISSUES, issuesFor } from "../src/lib/issues.ts";
 
@@ -41,7 +41,7 @@ test("the merged feed drops Federal Register copies of documents the White House
   const eo = snap.actions.find((a) => a.categories.includes("Executive Orders"))!;
   const fr = [{ document_number: "2026-1", type: "Presidential Document", title: eo.title, publication_date: eo.date, signing_date: eo.date, executive_order_number: "1", html_url: "https://www.federalregister.gov/d/2026-1", agencies: [] }];
   const merged = mergeActions([], fr, snap.actions, "2026-10-23");
-  assert.equal(merged.filter((a) => a.title === eo.title).length, 1);
+  assert.equal(merged.filter((a) => a.title.toLowerCase() === eo.title.toLowerCase()).length, 1);
 });
 test("issue rules: keywords and policy areas map to issues; unrelated titles map to none", () => {
   assert.ok(issuesFor("Emergency Tax Relief on Diesel Fuel").includes("spending-debt"));
@@ -49,4 +49,10 @@ test("issue rules: keywords and policy areas map to issues; unrelated titles map
   assert.ok(issuesFor("A bill", "Immigration").includes("immigration"));
   assert.deepEqual(issuesFor("Columbus Day, 2026"), []);
   assert.equal(new Set(ISSUES.map((i) => i.id)).size, 9);
+});
+
+test("all-capitals titles become title case; mixed-case titles are untouched", () => {
+  assert.equal(tidyTitle("DECREASING HOUSING COSTS FOR THE AMERICAN PEOPLE"), "Decreasing Housing Costs for the American People");
+  assert.equal(tidyTitle("Emergency Tax Relief on Diesel Fuel"), "Emergency Tax Relief on Diesel Fuel");
+  assert.equal(tidyTitle("H.R. 1"), "H.R. 1");
 });

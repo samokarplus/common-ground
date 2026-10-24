@@ -1944,7 +1944,7 @@ function Atlas() {
   };
   neighborIds.forEach((id, i) => {
     const angle = (i / Math.max(neighborIds.length, 1)) * Math.PI * 2 - Math.PI / 2;
-    positions[id] = { x: 400 + Math.cos(angle) * 270, y: 255 + Math.sin(angle) * 175 };
+    positions[id] = { x: 400 + Math.cos(angle) * 270, y: 262 + Math.sin(angle) * 165 };
   });
   return (
     <>
